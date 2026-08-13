@@ -42,7 +42,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>Instrument ID</summary>
         public int? InstrumentId { get; set; }
-        /// <summary>Liquidation flag for this leg of the fill. False on the counterparty leg of an auto-deleveraging match — that leg is flagged by `adl` instead</summary>
+        /// <summary>Whether this fill was part of a liquidation of the account&apos;s position — true on forced closes and on any fill executed while the account was under liquidation on the instrument, maker or taker. False on the counterparty leg of an auto-deleveraging or backstop match — its fill is part of someone else&apos;s liquidation, flagged by `adl` where applicable</summary>
         public bool? Liquidation { get; set; }
         /// <summary>Order ID</summary>
         public int? OrderId { get; set; }

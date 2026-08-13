@@ -19947,7 +19947,7 @@
       },
       "liq": {
         "type": "boolean",
-        "description": "Liquidation flag for this leg of the fill. False on the counterparty leg of an auto-deleveraging match — that leg is flagged by `adl` instead"
+        "description": "Whether this fill was part of a liquidation of the account's position — true on forced closes and on any fill executed while the account was under liquidation on the instrument, maker or taker. False on the counterparty leg of an auto-deleveraging or backstop match — its fill is part of someone else's liquidation, flagged by `adl` where applicable"
       },
       "adl": {
         "type": "boolean",
@@ -20186,7 +20186,12 @@
       },
       "amount": {
         "type": "string",
-        "description": "Raw token amount including decimals. For withdrawals this matches the uint256 amount in the EIP-712 signature (e.g. \"100000000\" for 100 USDC with 6 decimals).",
+        "description": "Token amount in decimal units (e.g. \"100\" for 100 USDC).",
+        "example": "100"
+      },
+      "op_amount": {
+        "type": "string",
+        "description": "Raw token amount in base units, matching the uint256 amount in the EIP-712 signature (e.g. \"100000000\" for 100 USDC with 6 decimals).",
         "example": "100000000"
       },
       "to": {
@@ -20223,7 +20228,7 @@
                 "$ref": "#/components/schemas/token"
               },
               "amount": {
-                "$ref": "#/components/schemas/amount"
+                "$ref": "#/components/schemas/op_amount"
               },
               "to": {
                 "$ref": "#/components/schemas/to"

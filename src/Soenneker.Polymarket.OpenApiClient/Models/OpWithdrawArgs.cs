@@ -22,7 +22,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Raw token amount including decimals. For withdrawals this matches the uint256 amount in the EIP-712 signature (e.g. &quot;100000000&quot; for 100 USDC with 6 decimals).</summary>
+        /// <summary>Raw token amount in base units, matching the uint256 amount in the EIP-712 signature (e.g. &quot;100000000&quot; for 100 USDC with 6 decimals).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Amount { get; set; }
