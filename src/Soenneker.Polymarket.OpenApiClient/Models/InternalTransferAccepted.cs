@@ -15,7 +15,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferAcceptedStatus? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus? Status { get; set; }
         /// <summary>Internal transfer ID</summary>
         public int? TransferId { get; set; }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferAcceptedStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>(); } },
                 { "transfer_id", n => { TransferId = n.GetIntValue(); } },
             };
         }
@@ -54,7 +54,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferAcceptedStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>("status", Status);
             writer.WriteIntValue("transfer_id", TransferId);
             writer.WriteAdditionalData(AdditionalData);
         }

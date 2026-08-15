@@ -5,12 +5,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OpUpdateLeverageType
+    public enum CreateOrdersType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "updateLeverage")]
+        [EnumMember(Value = "createOrders")]
         #pragma warning disable CS1591
-        UpdateLeverage,
+        CreateOrders,
         #pragma warning restore CS1591
     }
 }

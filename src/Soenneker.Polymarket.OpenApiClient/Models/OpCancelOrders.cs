@@ -23,7 +23,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public List<int?> Args { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.OpCancelOrdersType? Type { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OpCancelOrders"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "args", n => { Args = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpCancelOrdersType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersType>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<int?>("args", Args);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpCancelOrdersType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

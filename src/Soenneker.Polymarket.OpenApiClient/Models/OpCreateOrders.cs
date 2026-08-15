@@ -25,7 +25,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>TPSL grouping</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.Grp? Grp { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.OpCreateOrdersType? Type { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrdersType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OpCreateOrders"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "args", n => { Args = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrder>(global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrder.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "grp", n => { Grp = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Grp>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpCreateOrdersType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrdersType>(); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrder>("args", Args);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Grp>("grp", Grp);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpCreateOrdersType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrdersType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

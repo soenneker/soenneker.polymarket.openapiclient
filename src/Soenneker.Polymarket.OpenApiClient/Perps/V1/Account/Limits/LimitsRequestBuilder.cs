@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Limits
         {
         }
         /// <summary>
-        /// &quot;Get the authenticated account&apos;s effective rate-limit allowances for its currentvolume-based tier: order-action rate, open-order cap, and the display-onlymessages-per-minute figure. `open_orders` reflects the account&apos;s current liveopen-order count; the rate-usage counters (`actions_per_minute`,`actions_burst`, and `reset`) are not tracked here and are reported as 0.&quot;
+        /// Get the authenticated account&apos;s effective rate-limit allowances for its currentvolume-based tier: order-action rate, open-order cap, and the display-onlymessages-per-minute figure. `open_orders` reflects the account&apos;s current liveopen-order count; the rate-usage counters (`actions_per_minute`,`actions_burst`, and `reset`) are not tracked here and are reported as 0.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountLimits"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Limits
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.AccountLimits>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.AccountLimits.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Get the authenticated account&apos;s effective rate-limit allowances for its currentvolume-based tier: order-action rate, open-order cap, and the display-onlymessages-per-minute figure. `open_orders` reflects the account&apos;s current liveopen-order count; the rate-usage counters (`actions_per_minute`,`actions_burst`, and `reset`) are not tracked here and are reported as 0.&quot;
+        /// Get the authenticated account&apos;s effective rate-limit allowances for its currentvolume-based tier: order-action rate, open-order cap, and the display-onlymessages-per-minute figure. `open_orders` reflects the account&apos;s current liveopen-order count; the rate-usage counters (`actions_per_minute`,`actions_burst`, and `reset`) are not tracked here and are reported as 0.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

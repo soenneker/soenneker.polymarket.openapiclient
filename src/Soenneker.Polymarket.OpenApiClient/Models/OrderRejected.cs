@@ -33,7 +33,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Order ID</summary>
         public int? Oid { get; set; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.OrderRejectedStatus? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OrderRejected"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "coid", n => { Coid = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "oid", n => { Oid = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OrderRejectedStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>(); } },
             };
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("coid", Coid);
             writer.WriteStringValue("error", Error);
             writer.WriteIntValue("oid", Oid);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OrderRejectedStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

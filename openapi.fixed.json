@@ -92,7 +92,8 @@
                 "toTokenAddress": "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -206,7 +207,8 @@
                 "address": "0x56687bf447db6ffa42ffe2204a05edaa20f55839"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -267,7 +269,8 @@
                 "recipientAddr": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -317,7 +320,7 @@
           "Bridge"
         ],
         "summary": "Get transaction status",
-        "description": "\u0022Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a \u0060nextCursor\u0060. To read the full history, pass each \u0060nextCursor\u0060 back as \u0060cursor\u0060 until it comes back null. To track only recent activity, keep requesting the first page without a cursor.\n\u0022",
+        "description": "Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a \u0060nextCursor\u0060. To read the full history, pass each \u0060nextCursor\u0060 back as \u0060cursor\u0060 until it comes back null. To track only recent activity, keep requesting the first page without a cursor.\n",
         "operationId": "BridgeGetStatusAddress",
         "parameters": [
           {
@@ -356,7 +359,7 @@
             "in": "query",
             "description": "Compatibility parameter forwarded upstream for existing integrations. Pagination applies whether or not it is sent, so new integrations should omit it and use \u0060cursor\u0060 and \u0060limit\u0060 alone. When sent, the only supported value is \u0060true\u0060.\n",
             "schema": {
-              "$ref": "#/components/schemas/BridgeGetStatusAddressPaginateParameter"
+              "$ref": "#/components/schemas/TrueValuePaginate"
             }
           }
         ],
@@ -1250,7 +1253,7 @@
           {
             "name": "updatedAfter",
             "in": "query",
-            "description": "\u0022Incremental-sync watermark (epoch seconds, inclusive): only rows whose updated_at is at or after this time. Positions mutate on resolution and redemption, so this catches changes a creation-time filter cannot. In sync mode (updatedAfter/updatedBefore/sort=updated_asc) every live row is returned regardless of balance, and the effective upper bound is clamped ~90s behind now (commit-visibility safety lag) \u2014 very recent rows appear on the next poll. Rows at the boundary may re-deliver: upsert by (combo_condition_id, combo_position_id).\u0022",
+            "description": "Incremental-sync watermark (epoch seconds, inclusive): only rows whose updated_at is at or after this time. Positions mutate on resolution and redemption, so this catches changes a creation-time filter cannot. In sync mode (updatedAfter/updatedBefore/sort=updated_asc) every live row is returned regardless of balance, and the effective upper bound is clamped ~90s behind now (commit-visibility safety lag) \u2014 very recent rows appear on the next poll. Rows at the boundary may re-deliver: upsert by (combo_condition_id, combo_position_id).",
             "schema": {
               "type": "integer"
             }
@@ -4325,7 +4328,7 @@
     "/perps/v1/account/limits": {
       "get": {
         "summary": "Get Account Limits",
-        "description": "\u0022Get the authenticated account\u0027s effective rate-limit allowances for its current\nvolume-based tier: order-action rate, open-order cap, and the display-only\nmessages-per-minute figure. \u0060open_orders\u0060 reflects the account\u0027s current live\nopen-order count; the rate-usage counters (\u0060actions_per_minute\u0060,\n\u0060actions_burst\u0060, and \u0060reset\u0060) are not tracked here and are reported as 0.\n\u0022",
+        "description": "Get the authenticated account\u0027s effective rate-limit allowances for its current\nvolume-based tier: order-action rate, open-order cap, and the display-only\nmessages-per-minute figure. \u0060open_orders\u0060 reflects the account\u0027s current live\nopen-order count; the rate-usage counters (\u0060actions_per_minute\u0060,\n\u0060actions_burst\u0060, and \u0060reset\u0060) are not tracked here and are reported as 0.\n",
         "operationId": "PerpsGetAccountLimits",
         "responses": {
           "200": {
@@ -4472,7 +4475,7 @@
     "/perps/v1/account/auto-cancel": {
       "get": {
         "summary": "Get Auto-Cancel Status",
-        "description": "\u0022Get the current auto-cancel status for the authenticated account: the\narmed deadline, how many times the switch has fired today, and when the\ndaily counter resets.\n\u0022",
+        "description": "Get the current auto-cancel status for the authenticated account: the\narmed deadline, how many times the switch has fired today, and when the\ndaily counter resets.\n",
         "operationId": "PerpsGetAutoCancel",
         "responses": {
           "200": {
@@ -4609,7 +4612,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -4820,7 +4824,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -4857,7 +4862,7 @@
     "/perps/v1/blp/enrollment": {
       "get": {
         "summary": "Get BLP Enrollment",
-        "description": "\u0022Get the authenticated account\u0027s Backstop Liquidity Provider (BLP) enrollment\nand the instruments it is subscribed to.\n\nThe endpoint is restricted to program participants: an authenticated account\nthat is not enrolled receives a 404, the same response as an account\nrequesting a route that does not exist for it. A participant that is enrolled\nbut not yet subscribed to any instrument receives an empty \u0060instruments\u0060\nlist.\n\nProgram membership is set by Polymarket under the participation agreement.\nSubscriptions are the participant\u0027s own to manage through\n\u0060POST /v1/blp/enroll\u0060; every subscribed instrument runs at the program\nleverage of 3x, which is locked while the subscription stands.\n\u0022",
+        "description": "Get the authenticated account\u0027s Backstop Liquidity Provider (BLP) enrollment\nand the instruments it is subscribed to.\n\nThe endpoint is restricted to program participants: an authenticated account\nthat is not enrolled receives a 404, the same response as an account\nrequesting a route that does not exist for it. A participant that is enrolled\nbut not yet subscribed to any instrument receives an empty \u0060instruments\u0060\nlist.\n\nProgram membership is set by Polymarket under the participation agreement.\nSubscriptions are the participant\u0027s own to manage through\n\u0060POST /v1/blp/enroll\u0060; every subscribed instrument runs at the program\nleverage of 3x, which is locked while the subscription stands.\n",
         "operationId": "PerpsGetBlpEnrollment",
         "responses": {
           "200": {
@@ -4894,7 +4899,7 @@
     "/perps/v1/blp/enroll": {
       "post": {
         "summary": "Set BLP Instrument Subscription",
-        "description": "\u0022Subscribe the authenticated Backstop Liquidity Provider (BLP) account to an\ninstrument, or unsubscribe it. A participant only receives backstop\nallocations on the instruments it is subscribed to.\n\nThe subscription always applies to the authenticated account \u2014 there is no\naccount parameter. Program membership itself is set by Polymarket under the\nparticipation agreement and cannot be changed here: an authenticated account\nthat is not enrolled receives a 404, matching\n\u0060GET /v1/blp/enrollment\u0060.\n\n**Subscribing sets the instrument\u0027s leverage to the program leverage of\n3x** before the subscription takes effect, and the instrument\u0027s leverage is\nthen locked for as long as the subscription stands \u2014 \u0060PATCH\n/v1/trade/leverage\u0060 on a subscribed instrument rejects with\n\u0060blp_leverage_locked\u0060. The margin mode is left as it is. Unsubscribing\nreleases the lock and leaves the leverage at 3x; set it to whatever you\nwant afterwards.\n\nIf the leverage change is rejected (for example the instrument\u0027s risk tier\ncaps leverage below 3x), the subscription is not applied and the rejection\nis returned unchanged.\n\nThe call is idempotent \u2014 subscribing an already-subscribed instrument, or\nunsubscribing one that was never subscribed, succeeds and changes nothing.\nA repeated subscribe leaves the leverage as the first one set it.\n\u0022",
+        "description": "Subscribe the authenticated Backstop Liquidity Provider (BLP) account to an\ninstrument, or unsubscribe it. A participant only receives backstop\nallocations on the instruments it is subscribed to.\n\nThe subscription always applies to the authenticated account \u2014 there is no\naccount parameter. Program membership itself is set by Polymarket under the\nparticipation agreement and cannot be changed here: an authenticated account\nthat is not enrolled receives a 404, matching\n\u0060GET /v1/blp/enrollment\u0060.\n\n**Subscribing sets the instrument\u0027s leverage to the program leverage of\n3x** before the subscription takes effect, and the instrument\u0027s leverage is\nthen locked for as long as the subscription stands \u2014 \u0060PATCH\n/v1/trade/leverage\u0060 on a subscribed instrument rejects with\n\u0060blp_leverage_locked\u0060. The margin mode is left as it is. Unsubscribing\nreleases the lock and leaves the leverage at 3x; set it to whatever you\nwant afterwards.\n\nIf the leverage change is rejected (for example the instrument\u0027s risk tier\ncaps leverage below 3x), the subscription is not applied and the rejection\nis returned unchanged.\n\nThe call is idempotent \u2014 subscribing an already-subscribed instrument, or\nunsubscribing one that was never subscribed, succeeds and changes nothing.\nA repeated subscribe leaves the leverage as the first one set it.\n",
         "operationId": "PerpsPostBlpEnroll",
         "requestBody": {
           "content": {
@@ -4903,7 +4908,8 @@
                 "$ref": "#/components/schemas/BlpEnrollRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -4946,7 +4952,7 @@
     "/perps/v1/blp/liquidations": {
       "get": {
         "summary": "List BLP Liquidations",
-        "description": "\u0022List the backstop liquidations the authenticated Backstop Liquidity Provider (BLP)\naccount received, most recent first by default.\n\nEach record is one absorption and carries the same fields as a frame on the\n\u0060backstop\u0060 WebSocket channel, so a participant that missed frames while\ndisconnected can replay them from here rather than reconstructing them from\ntrade history. Records do not identify the liquidated account.\n\n\u0060margin\u0060 is the net margin transferred with the positions. It is negative when\nthe absorption carried bad debt \u2014 the fund returned more isolated margin than the\naccount\u0027s balance covered.\n\nLike the other BLP routes, this one is restricted to program participants: an\nauthenticated account that is not enrolled receives a 404, the same response as an\naccount requesting a route that does not exist for it.\n\u0022",
+        "description": "List the backstop liquidations the authenticated Backstop Liquidity Provider (BLP)\naccount received, most recent first by default.\n\nEach record is one absorption and carries the same fields as a frame on the\n\u0060backstop\u0060 WebSocket channel, so a participant that missed frames while\ndisconnected can replay them from here rather than reconstructing them from\ntrade history. Records do not identify the liquidated account.\n\n\u0060margin\u0060 is the net margin transferred with the positions. It is negative when\nthe absorption carried bad debt \u2014 the fund returned more isolated margin than the\naccount\u0027s balance covered.\n\nLike the other BLP routes, this one is restricted to program participants: an\nauthenticated account that is not enrolled receives a 404, the same response as an\naccount requesting a route that does not exist for it.\n",
         "operationId": "PerpsGetBlpLiquidations",
         "parameters": [
           {
@@ -5054,7 +5060,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -5184,6 +5191,14 @@
           },
           "503": {
             "description": "Service unavailable - Trading disabled or cancel-only mode",
+            "headers": {
+              "Retry-After": {
+                "description": "Seconds to wait before retrying when provided by post-only mode.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -5242,7 +5257,8 @@
                 "orderID": "0xabcdef1234567890abcdef1234567890abcdef12"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -5414,7 +5430,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -5565,6 +5582,14 @@
           },
           "503": {
             "description": "Service unavailable - Trading disabled or cancel-only mode",
+            "headers": {
+              "Retry-After": {
+                "description": "Seconds to wait before retrying when provided by post-only mode.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -5625,7 +5650,8 @@
                 "0x1234567890abcdef1234567890abcdef12345678"
               ]
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -6143,7 +6169,8 @@
                 "asset_id": "0xabc123def456..."
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -6431,7 +6458,8 @@
                 }
               ]
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -6562,7 +6590,8 @@
                 }
               ]
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -6775,7 +6804,8 @@
                 }
               ]
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -7524,7 +7554,8 @@
                 }
               ]
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -7796,7 +7827,8 @@
                 }
               ]
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -7876,6 +7908,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         },
         "security": []
@@ -7907,6 +7945,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         },
         "security": []
@@ -7938,6 +7982,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         },
         "security": []
@@ -8076,7 +8126,8 @@
                 "$ref": "#/components/schemas/ClobGetMarketsLiveActivityRequestRequestBody"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -8088,6 +8139,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid markets - request body is missing or empty"
+          },
+          "404": {
+            "description": "Markets not found"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         },
         "security": []
@@ -8122,6 +8182,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid market - condition_id is missing or invalid"
+          },
+          "404": {
+            "description": "Market not found"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         },
         "security": []
@@ -8230,7 +8299,8 @@
                 "$ref": "#/components/schemas/BatchPricesHistoryRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -9144,7 +9214,7 @@
           {
             "name": "signature_type",
             "in": "query",
-            "description": "\u0022Signature type for address derivation:\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n\u0022",
+            "description": "Signature type for address derivation:\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/ClobGetNotificationsSignatureTypeParameter"
@@ -9337,7 +9407,7 @@
           {
             "name": "signature_type",
             "in": "query",
-            "description": "\u0022Signature type for address derivation (required for API KEY auth):\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n\u0022",
+            "description": "Signature type for address derivation (required for API KEY auth):\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n",
             "schema": {
               "$ref": "#/components/schemas/ClobGetEarningsForUserForDaySignatureTypeParameter"
             }
@@ -9486,7 +9556,7 @@
           {
             "name": "signature_type",
             "in": "query",
-            "description": "\u0022Signature type for address derivation (required for API KEY auth):\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n\u0022",
+            "description": "Signature type for address derivation (required for API KEY auth):\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n",
             "schema": {
               "$ref": "#/components/schemas/ClobGetTotalEarningsForUserForDaySignatureTypeParameter"
             }
@@ -9617,7 +9687,7 @@
           {
             "name": "signature_type",
             "in": "query",
-            "description": "\u0022Signature type for address derivation (required for API KEY auth):\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n\u0022",
+            "description": "Signature type for address derivation (required for API KEY auth):\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n",
             "schema": {
               "$ref": "#/components/schemas/ClobGetRewardPercentagesForUserSignatureTypeParameter"
             }
@@ -9731,7 +9801,7 @@
           {
             "name": "signature_type",
             "in": "query",
-            "description": "\u0022Signature type for address derivation (required for API KEY auth):\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n\u0022",
+            "description": "Signature type for address derivation (required for API KEY auth):\n- 0: EOA\n- 1: POLY_PROXY\n- 2: POLY_GNOSIS_SAFE\n",
             "schema": {
               "$ref": "#/components/schemas/ClobGetUserEarningsAndMarketsConfigSignatureTypeParameter"
             }
@@ -10634,7 +10704,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -10957,7 +11028,8 @@
                 "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
               ]
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11500,7 +11572,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11568,7 +11641,8 @@
                 "signature_type": 0
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11637,7 +11711,8 @@
                 "decision": "CONFIRM"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11791,6 +11866,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -11873,6 +11951,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -11906,6 +11987,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12400,6 +12484,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12426,6 +12513,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12453,6 +12543,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12480,6 +12573,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12520,6 +12616,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12595,6 +12694,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12850,6 +12952,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12876,6 +12981,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12903,6 +13011,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12936,6 +13047,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -12954,7 +13068,8 @@
                 "$ref": "#/components/schemas/MarketsInformationBody"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12966,6 +13081,9 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Validation error"
           }
         }
       }
@@ -12984,7 +13102,8 @@
                 "$ref": "#/components/schemas/MarketsInformationBody"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12996,6 +13115,9 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Validation error"
           }
         }
       }
@@ -13815,6 +13937,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -13842,6 +13967,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -13868,6 +13996,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -13894,6 +14025,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -14133,6 +14267,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -14389,7 +14526,8 @@
                 "type": "SAFE"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14867,7 +15005,7 @@
           "Relayer"
         ],
         "summary": "Check if a wallet is deployed",
-        "description": "\u0022Returns whether the wallet at the given address is deployed onchain.\n\nUse the \u0060type\u0060 query parameter to choose which wallet type to check:\n\n- Pass user\u0027s Polymarket \u0060SAFE\u0060 address (default): Gnosis Safe (SignatureType \u00602\u0060).\n- Pass user\u0027s Polymarket \u0060WALLET\u0060 Deposit Wallet address: Deposit Wallet (signatureType \u00603\u0060). See the [Deposit Wallet Guide](/trading/deposit-wallets) for setup.\n\nOmitting \u0060type\u0060 is equivalent to \u0060type=SAFE\u0060.\n\u0022",
+        "description": "Returns whether the wallet at the given address is deployed onchain.\n\nUse the \u0060type\u0060 query parameter to choose which wallet type to check:\n\n- Pass user\u0027s Polymarket \u0060SAFE\u0060 address (default): Gnosis Safe (SignatureType \u00602\u0060).\n- Pass user\u0027s Polymarket \u0060WALLET\u0060 Deposit Wallet address: Deposit Wallet (signatureType \u00603\u0060). See the [Deposit Wallet Guide](/trading/deposit-wallets) for setup.\n\nOmitting \u0060type\u0060 is equivalent to \u0060type=SAFE\u0060.\n",
         "operationId": "RelayerGetDeployed",
         "parameters": [
           {
@@ -14936,7 +15074,7 @@
           "Relayer API Keys"
         ],
         "summary": "Get all relayer API keys",
-        "description": "\u0022Returns all relayer API keys for the authenticated address. Auth allowed: Gamma auth or Relayer API key auth (\u0060RELAYER_API_KEY\u0060 \u002B \u0060RELAYER_API_KEY_ADDRESS\u0060).\n\u0022",
+        "description": "Returns all relayer API keys for the authenticated address. Auth allowed: Gamma auth or Relayer API key auth (\u0060RELAYER_API_KEY\u0060 \u002B \u0060RELAYER_API_KEY_ADDRESS\u0060).\n",
         "operationId": "RelayerGetRelayerApiKeys",
         "parameters": [
           {
@@ -15403,11 +15541,11 @@
           },
           "grossInitialValue": {
             "type": "number",
-            "description": "\u0022Remaining entry basis including attributed BUY fees, at six-decimal source precision. \u0060initialValue\u0060 and \u0060avgPrice\u0060 keep their fee-exclusive semantics, so the fee-exclusive basis is \u0060grossInitialValue - entryFeesUsdc\u0060. Optional: treat an omitted field as unavailable rather than as zero.\u0022"
+            "description": "Remaining entry basis including attributed BUY fees, at six-decimal source precision. \u0060initialValue\u0060 and \u0060avgPrice\u0060 keep their fee-exclusive semantics, so the fee-exclusive basis is \u0060grossInitialValue - entryFeesUsdc\u0060. Optional: treat an omitted field as unavailable rather than as zero."
           },
           "entryFeesUsdc": {
             "type": "number",
-            "description": "\u0022Attributed BUY-fee component of \u0060grossInitialValue\u0060, at six-decimal source precision. SELL fees are exit costs and are never included. Returned as an explicit \u00600\u0060 when the fee component is zero. Optional: treat an omitted field as unavailable rather than as zero.\u0022"
+            "description": "Attributed BUY-fee component of \u0060grossInitialValue\u0060, at six-decimal source precision. SELL fees are exit costs and are never included. Returned as an explicit \u00600\u0060 when the fee component is zero. Optional: treat an omitted field as unavailable rather than as zero."
           },
           "currentValue": {
             "type": "number"
@@ -16410,7 +16548,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/Error429Status"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "error": {
             "type": "string",
@@ -16427,7 +16565,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/Error500Status"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "error": {
             "type": "string",
@@ -16871,7 +17009,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/Error400Status"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "error": {
             "type": "string",
@@ -18051,7 +18189,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpCreateOrdersType"
+            "$ref": "#/components/schemas/CreateOrdersType"
           },
           "args": {
             "type": "array",
@@ -18143,7 +18281,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/OrderAcceptedStatus"
+            "$ref": "#/components/schemas/OkStatus"
           },
           "oid": {
             "type": "integer",
@@ -18165,7 +18303,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/OrderRejectedStatus"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "error": {
             "type": "string",
@@ -18184,9 +18322,6 @@
         }
       },
       "OrderResponse": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -18197,16 +18332,19 @@
           }
         ],
         "properties": {
-          "type": {
+          "oid": {
+            "type": "integer",
+            "description": "Order ID"
+          },
+          "coid": {
+            "maxLength": 32,
+            "pattern": "^[0-9a-f]{32}$",
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "OrderAccepted": "#/components/schemas/OrderAccepted",
-            "OrderRejected": "#/components/schemas/OrderRejected"
+            "description": "Client order ID"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -18218,7 +18356,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpCancelOrdersType"
+            "$ref": "#/components/schemas/CancelOrdersType"
           },
           "args": {
             "type": "array",
@@ -18268,7 +18406,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/CancelAcceptedStatus"
+            "$ref": "#/components/schemas/OkStatus"
           },
           "oid": {
             "type": "integer",
@@ -18290,7 +18428,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/CancelRejectedStatus"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "oid": {
             "type": "integer",
@@ -18309,9 +18447,6 @@
         }
       },
       "CancelResponse": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -18322,16 +18457,19 @@
           }
         ],
         "properties": {
-          "type": {
+          "oid": {
+            "type": "integer",
+            "description": "Order ID"
+          },
+          "coid": {
+            "maxLength": 32,
+            "pattern": "^[0-9a-f]{32}$",
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "CancelAccepted": "#/components/schemas/CancelAccepted",
-            "CancelRejected": "#/components/schemas/CancelRejected"
+            "description": "Client order ID"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -18343,7 +18481,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpCancelAllType"
+            "$ref": "#/components/schemas/CancelAllType"
           },
           "args": {
             "$ref": "#/components/schemas/OpCancelAllArgs"
@@ -18387,7 +18525,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/GenericAcceptedStatus"
+            "$ref": "#/components/schemas/OkStatus"
           }
         }
       },
@@ -18399,7 +18537,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpCancelOrdersByCoidType"
+            "$ref": "#/components/schemas/CancelOrdersCoidType"
           },
           "args": {
             "type": "array",
@@ -18451,7 +18589,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpAutoCancelType"
+            "$ref": "#/components/schemas/AutoCancelType"
           },
           "args": {
             "$ref": "#/components/schemas/OpAutoCancelArgs"
@@ -18495,7 +18633,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/AutoCancelResponseStatus"
+            "$ref": "#/components/schemas/OkStatus"
           },
           "deadline": {
             "type": "integer",
@@ -18513,7 +18651,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/Error404Status"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "error": {
             "type": "string",
@@ -18529,7 +18667,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/GenericRejectedStatus"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "error": {
             "type": "string",
@@ -18554,7 +18692,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpUpdateLeverageType"
+            "$ref": "#/components/schemas/UpdateLeverageType"
           },
           "args": {
             "$ref": "#/components/schemas/OpUpdateLeverageArgs"
@@ -18597,7 +18735,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/LeverageResponseStatus"
+            "$ref": "#/components/schemas/OkStatus"
           },
           "instrument_id": {
             "type": "integer",
@@ -18644,7 +18782,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpUpdateLeveragesType"
+            "$ref": "#/components/schemas/UpdateLeveragesType"
           },
           "args": {
             "maxItems": 100,
@@ -18691,7 +18829,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/LeverageRejectedStatus"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "instrument_id": {
             "type": "integer",
@@ -18704,9 +18842,6 @@
         }
       },
       "LeverageBatchResponse": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -18717,16 +18852,21 @@
           }
         ],
         "properties": {
-          "type": {
+          "instrument_id": {
+            "type": "integer",
+            "description": "Instrument ID"
+          },
+          "leverage": {
+            "type": "integer",
+            "description": "Leverage"
+          },
+          "cross": {
+            "type": "boolean",
+            "description": "Whether to use cross margin mode"
+          },
+          "error": {
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "LeverageResponse": "#/components/schemas/LeverageResponse",
-            "LeverageRejected": "#/components/schemas/LeverageRejected"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -18756,7 +18896,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpCreateProxyType"
+            "$ref": "#/components/schemas/CreateProxyType"
           },
           "args": {
             "$ref": "#/components/schemas/OpCreateProxyArgs"
@@ -18818,7 +18958,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/ProxyResponseStatus"
+            "$ref": "#/components/schemas/OkStatus"
           },
           "secret": {
             "type": "string",
@@ -18834,7 +18974,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpDeleteProxyType"
+            "$ref": "#/components/schemas/DeleteProxyType"
           },
           "args": {
             "$ref": "#/components/schemas/OpDeleteProxyArgs"
@@ -18916,7 +19056,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/Error401Status"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "error": {
             "type": "string",
@@ -19284,7 +19424,7 @@
           },
           "initial_margin": {
             "type": "string",
-            "description": "\u0022Current collateral backing the position. For cross positions, this is\nthe required initial margin based on position size, mark price, the\napplicable risk tier, and configured leverage. For isolated positions,\nthis is the position\u0027s current equity: signed allocated margin plus\nunrealized PnL minus settled funding.\n\nThe legacy \u0060initial_margin\u0060 name is retained for API compatibility;\n\u0060margin\u0060 would more accurately describe the field.\n\u0022"
+            "description": "Current collateral backing the position. For cross positions, this is\nthe required initial margin based on position size, mark price, the\napplicable risk tier, and configured leverage. For isolated positions,\nthis is the position\u0027s current equity: signed allocated margin plus\nunrealized PnL minus settled funding.\n\nThe legacy \u0060initial_margin\u0060 name is retained for API compatibility;\n\u0060margin\u0060 would more accurately describe the field.\n"
           },
           "maintenance_margin": {
             "type": "string",
@@ -19815,7 +19955,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpWithdrawType"
+            "$ref": "#/components/schemas/WithdrawType"
           },
           "args": {
             "$ref": "#/components/schemas/OpWithdrawArgs"
@@ -19862,7 +20002,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/WithdrawAcceptedStatus"
+            "$ref": "#/components/schemas/OkStatus"
           },
           "withdraw_id": {
             "type": "integer",
@@ -19879,7 +20019,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/WithdrawRejectedStatus"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "withdraw_id": {
             "type": "integer",
@@ -19899,7 +20039,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpInternalTransferType"
+            "$ref": "#/components/schemas/InternalTransferType"
           },
           "args": {
             "$ref": "#/components/schemas/OpInternalTransferArgs"
@@ -19950,7 +20090,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/InternalTransferAcceptedStatus"
+            "$ref": "#/components/schemas/OkStatus"
           },
           "transfer_id": {
             "type": "integer",
@@ -19967,7 +20107,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/InternalTransferRejectedStatus"
+            "$ref": "#/components/schemas/ErrStatus"
           },
           "transfer_id": {
             "type": "integer",
@@ -20904,7 +21044,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/CreateInviteResponseStatus"
+            "$ref": "#/components/schemas/OkStatus"
           },
           "code": {
             "type": "string",
@@ -21081,7 +21221,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OpUpdateMarginType"
+            "$ref": "#/components/schemas/UpdateMarginType"
           },
           "args": {
             "$ref": "#/components/schemas/OpUpdateMarginArgs"
@@ -21089,9 +21229,6 @@
         }
       },
       "GenericResponse": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -21102,16 +21239,9 @@
           }
         ],
         "properties": {
-          "type": {
+          "error": {
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "GenericAccepted": "#/components/schemas/GenericAccepted",
-            "GenericRejected": "#/components/schemas/GenericRejected"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -21232,9 +21362,6 @@
         }
       },
       "NotificationsReadRequest": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -21245,16 +21372,17 @@
           }
         ],
         "properties": {
-          "type": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Stable notification id. The same notification always has the same id on the WebSocket feed and in the notifications history, so you can safely deduplicate across the two."
+            },
+            "description": "Notification ids to mark read."
+          },
+          "before": {
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "NotificationsReadRequestOneOf1": "#/components/schemas/NotificationsReadRequestOneOf1",
-            "NotificationsReadRequestOneOf2": "#/components/schemas/NotificationsReadRequestOneOf2"
+            "description": "Pagination cursor. Marks every notification at or before this point as read."
           }
         }
       },
@@ -27660,14 +27788,14 @@
           ]
         }
       },
-      "Error429Status": {
+      "ErrStatus": {
         "enum": [
           "err"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "Error429Status",
+          "name": "ErrStatus",
           "modelAsString": false,
           "values": [
             {
@@ -27677,48 +27805,14 @@
           ]
         }
       },
-      "Error500Status": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "Error500Status",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "Error400Status": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "Error400Status",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "OpCreateOrdersType": {
+      "CreateOrdersType": {
         "enum": [
           "createOrders"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpCreateOrdersType",
+          "name": "CreateOrdersType",
           "modelAsString": false,
           "values": [
             {
@@ -27728,14 +27822,14 @@
           ]
         }
       },
-      "OrderAcceptedStatus": {
+      "OkStatus": {
         "enum": [
           "ok"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OrderAcceptedStatus",
+          "name": "OkStatus",
           "modelAsString": false,
           "values": [
             {
@@ -27745,31 +27839,14 @@
           ]
         }
       },
-      "OrderRejectedStatus": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "OrderRejectedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "OpCancelOrdersType": {
+      "CancelOrdersType": {
         "enum": [
           "cancelOrders"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpCancelOrdersType",
+          "name": "CancelOrdersType",
           "modelAsString": false,
           "values": [
             {
@@ -27779,48 +27856,14 @@
           ]
         }
       },
-      "CancelAcceptedStatus": {
-        "enum": [
-          "ok"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "CancelAcceptedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "ok",
-              "name": "Ok"
-            }
-          ]
-        }
-      },
-      "CancelRejectedStatus": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "CancelRejectedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "OpCancelAllType": {
+      "CancelAllType": {
         "enum": [
           "cancelAll"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpCancelAllType",
+          "name": "CancelAllType",
           "modelAsString": false,
           "values": [
             {
@@ -27830,31 +27873,14 @@
           ]
         }
       },
-      "GenericAcceptedStatus": {
-        "enum": [
-          "ok"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "GenericAcceptedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "ok",
-              "name": "Ok"
-            }
-          ]
-        }
-      },
-      "OpCancelOrdersByCoidType": {
+      "CancelOrdersCoidType": {
         "enum": [
           "cancelOrdersCOID"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpCancelOrdersByCoidType",
+          "name": "CancelOrdersCoidType",
           "modelAsString": false,
           "values": [
             {
@@ -27864,14 +27890,14 @@
           ]
         }
       },
-      "OpAutoCancelType": {
+      "AutoCancelType": {
         "enum": [
           "autoCancel"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpAutoCancelType",
+          "name": "AutoCancelType",
           "modelAsString": false,
           "values": [
             {
@@ -27881,65 +27907,14 @@
           ]
         }
       },
-      "AutoCancelResponseStatus": {
-        "enum": [
-          "ok"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "AutoCancelResponseStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "ok",
-              "name": "Ok"
-            }
-          ]
-        }
-      },
-      "Error404Status": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "Error404Status",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "GenericRejectedStatus": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "GenericRejectedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "OpUpdateLeverageType": {
+      "UpdateLeverageType": {
         "enum": [
           "updateLeverage"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpUpdateLeverageType",
+          "name": "UpdateLeverageType",
           "modelAsString": false,
           "values": [
             {
@@ -27949,31 +27924,14 @@
           ]
         }
       },
-      "LeverageResponseStatus": {
-        "enum": [
-          "ok"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "LeverageResponseStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "ok",
-              "name": "Ok"
-            }
-          ]
-        }
-      },
-      "OpUpdateLeveragesType": {
+      "UpdateLeveragesType": {
         "enum": [
           "updateLeverages"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpUpdateLeveragesType",
+          "name": "UpdateLeveragesType",
           "modelAsString": false,
           "values": [
             {
@@ -27983,31 +27941,14 @@
           ]
         }
       },
-      "LeverageRejectedStatus": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "LeverageRejectedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "OpCreateProxyType": {
+      "CreateProxyType": {
         "enum": [
           "createProxy"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpCreateProxyType",
+          "name": "CreateProxyType",
           "modelAsString": false,
           "values": [
             {
@@ -28017,31 +27958,14 @@
           ]
         }
       },
-      "ProxyResponseStatus": {
-        "enum": [
-          "ok"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "ProxyResponseStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "ok",
-              "name": "Ok"
-            }
-          ]
-        }
-      },
-      "OpDeleteProxyType": {
+      "DeleteProxyType": {
         "enum": [
           "deleteProxy"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpDeleteProxyType",
+          "name": "DeleteProxyType",
           "modelAsString": false,
           "values": [
             {
@@ -28051,27 +27975,11 @@
           ]
         }
       },
-      "Error401Status": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "Error401Status",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
       "ClobGetLastTradePrice200ResponseSide": {
         "enum": [
           "BUY",
-          "SELL"
+          "SELL",
+          ""
         ],
         "type": "string",
         "additionalProperties": false,
@@ -28092,14 +28000,14 @@
           ]
         }
       },
-      "OpWithdrawType": {
+      "WithdrawType": {
         "enum": [
           "withdraw"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpWithdrawType",
+          "name": "WithdrawType",
           "modelAsString": false,
           "values": [
             {
@@ -28109,87 +28017,19 @@
           ]
         }
       },
-      "WithdrawAcceptedStatus": {
-        "enum": [
-          "ok"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "WithdrawAcceptedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "ok",
-              "name": "Ok"
-            }
-          ]
-        }
-      },
-      "WithdrawRejectedStatus": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "WithdrawRejectedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "OpInternalTransferType": {
+      "InternalTransferType": {
         "enum": [
           "internalTransfer"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpInternalTransferType",
+          "name": "InternalTransferType",
           "modelAsString": false,
           "values": [
             {
               "value": "internalTransfer",
               "name": "InternalTransfer"
-            }
-          ]
-        }
-      },
-      "InternalTransferAcceptedStatus": {
-        "enum": [
-          "ok"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "InternalTransferAcceptedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "ok",
-              "name": "Ok"
-            }
-          ]
-        }
-      },
-      "InternalTransferRejectedStatus": {
-        "enum": [
-          "err"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "InternalTransferRejectedStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "err",
-              "name": "Err"
             }
           ]
         }
@@ -28216,31 +28056,14 @@
           ]
         }
       },
-      "CreateInviteResponseStatus": {
-        "enum": [
-          "ok"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "CreateInviteResponseStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "ok",
-              "name": "Ok"
-            }
-          ]
-        }
-      },
-      "OpUpdateMarginType": {
+      "UpdateMarginType": {
         "enum": [
           "updateMargin"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OpUpdateMarginType",
+          "name": "UpdateMarginType",
           "modelAsString": false,
           "values": [
             {
@@ -28524,7 +28347,7 @@
         ],
         "type": "integer",
         "additionalProperties": false,
-        "description": "\u0022Type of notification:\n- 1: Order cancellation\n- 2: Order fill\n- 3: Market registered\n- 4: Market resolved\n- 5: Reward payout\n- 6: Child comment created\n\u0022"
+        "description": "Type of notification:\n- 1: Order cancellation\n- 2: Order fill\n- 3: Market registered\n- 4: Market resolved\n- 5: Reward payout\n- 6: Child comment created\n"
       },
       "ClobTradeSide": {
         "enum": [
@@ -28859,14 +28682,14 @@
           ]
         }
       },
-      "BridgeGetStatusAddressPaginateParameter": {
+      "TrueValuePaginate": {
         "enum": [
           "true"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "BridgeGetStatusAddressPaginateParameter",
+          "name": "TrueValuePaginate",
           "modelAsString": false,
           "values": [
             {
@@ -30198,7 +30021,7 @@
         }
       },
       "BatchError429Response": {
-        "description": "\u0022Too Many Requests. Request-level failures are returned as a single\nrejected item so batch endpoints always return an array. \u0060error\u0060\ndistinguishes the limit that was hit: \u0060ip_rate_limited\u0060 (per-IP token\nbucket), \u0060action_rate_limited\u0060 (per-account action rate), or\n\u0060open_orders_limit\u0060 (resting open-order cap).\n\u0022",
+        "description": "Too Many Requests. Request-level failures are returned as a single\nrejected item so batch endpoints always return an array. \u0060error\u0060\ndistinguishes the limit that was hit: \u0060ip_rate_limited\u0060 (per-IP token\nbucket), \u0060action_rate_limited\u0060 (per-account action rate), or\n\u0060open_orders_limit\u0060 (resting open-order cap).\n",
         "headers": {
           "Retry-After": {
             "description": "Whole seconds to wait before retrying. Present only on token-bucket\nrate-limit rejections (\u0060ip_rate_limited\u0060 and \u0060action_rate_limited\u0060); a\nconservative estimate of when enough capacity will have refilled to\nadmit the request. Absent on \u0060open_orders_limit\u0060, which is a capacity\nlimit, not a rate limit \u2014 waiting does not free order slots; cancel\nresting orders or wait for fills instead.\n",
@@ -30237,7 +30060,7 @@
         }
       },
       "Error422Response": {
-        "description": "\u0022Unprocessable Entity \u2014 the request was well-formed but a domain rule\nrejected it on its merits (insufficient balance, invalid leverage,\nproxy already exists, \u2026). The body is the discriminated rejection\n(\u0060status: err\u0060) with the engine error identifier in \u0060error\u0060.\n\u0022",
+        "description": "Unprocessable Entity \u2014 the request was well-formed but a domain rule\nrejected it on its merits (insufficient balance, invalid leverage,\nproxy already exists, \u2026). The body is the discriminated rejection\n(\u0060status: err\u0060) with the engine error identifier in \u0060error\u0060.\n",
         "content": {
           "application/json": {
             "schema": {
@@ -30485,12 +30308,6 @@
         "description": "Unix timestamp of the request",
         "name": "POLY_TIMESTAMP",
         "in": "header"
-      },
-      "assets_jwt": {
-        "type": "http",
-        "description": "JWT used for assets upload",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
   },

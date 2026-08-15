@@ -5,12 +5,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum InternalTransferRejectedStatus
+    public enum OkStatus
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "err")]
+        [EnumMember(Value = "ok")]
         #pragma warning disable CS1591
-        Err,
+        Ok,
         #pragma warning restore CS1591
     }
 }

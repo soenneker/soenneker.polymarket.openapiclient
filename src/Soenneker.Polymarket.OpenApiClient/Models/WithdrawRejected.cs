@@ -26,7 +26,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawRejectedStatus? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus? Status { get; set; }
         /// <summary>Withdraw ID</summary>
         public int? WithdrawId { get; set; }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawRejectedStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>(); } },
                 { "withdraw_id", n => { WithdrawId = n.GetIntValue(); } },
             };
         }
@@ -67,7 +67,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawRejectedStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>("status", Status);
             writer.WriteIntValue("withdraw_id", WithdrawId);
             writer.WriteAdditionalData(AdditionalData);
         }

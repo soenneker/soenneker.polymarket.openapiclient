@@ -22,7 +22,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Leverage</summary>
         public int? Leverage { get; set; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.LeverageResponseStatus? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.LeverageResponse"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "cross", n => { Cross = n.GetBoolValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
                 { "leverage", n => { Leverage = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.LeverageResponseStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>(); } },
             };
         }
         /// <summary>
@@ -64,7 +64,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("cross", Cross);
             writer.WriteIntValue("instrument_id", InstrumentId);
             writer.WriteIntValue("leverage", Leverage);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.LeverageResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

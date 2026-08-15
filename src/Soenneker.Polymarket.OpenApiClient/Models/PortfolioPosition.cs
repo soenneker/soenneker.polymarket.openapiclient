@@ -32,7 +32,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string EntryPrice { get; set; }
 #endif
-        /// <summary>&quot;Current collateral backing the position. For cross positions, this isthe required initial margin based on position size, mark price, theapplicable risk tier, and configured leverage. For isolated positions,this is the position&apos;s current equity: signed allocated margin plusunrealized PnL minus settled funding.The legacy `initial_margin` name is retained for API compatibility;`margin` would more accurately describe the field.&quot;</summary>
+        /// <summary>Current collateral backing the position. For cross positions, this isthe required initial margin based on position size, mark price, theapplicable risk tier, and configured leverage. For isolated positions,this is the position&apos;s current equity: signed allocated margin plusunrealized PnL minus settled funding.The legacy `initial_margin` name is retained for API compatibility;`margin` would more accurately describe the field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InitialMargin { get; set; }

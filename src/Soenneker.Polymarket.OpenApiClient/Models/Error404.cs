@@ -26,7 +26,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Error404Status? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error404"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Error404Status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>(); } },
             };
         }
         /// <summary>
@@ -64,7 +64,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Error404Status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -18,7 +18,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zeromeans no schedule is armed. When the deadline passes, the exchange cancelsevery open order on the account and the schedule clears.</summary>
         public int? Deadline { get; set; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.AutoCancelResponseStatus? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AutoCancelResponse"/> and sets the default values.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "deadline", n => { Deadline = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.AutoCancelResponseStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>(); } },
             };
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("deadline", Deadline);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.AutoCancelResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

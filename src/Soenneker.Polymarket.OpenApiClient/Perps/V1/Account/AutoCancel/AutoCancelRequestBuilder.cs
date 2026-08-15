@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.AutoCancel
         {
         }
         /// <summary>
-        /// &quot;Get the current auto-cancel status for the authenticated account: thearmed deadline, how many times the switch has fired today, and when thedaily counter resets.&quot;
+        /// Get the current auto-cancel status for the authenticated account: thearmed deadline, how many times the switch has fired today, and when thedaily counter resets.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AutoCancelStatus"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.AutoCancel
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.AutoCancelStatus>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.AutoCancelStatus.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Get the current auto-cancel status for the authenticated account: thearmed deadline, how many times the switch has fired today, and when thedaily counter resets.&quot;
+        /// Get the current auto-cancel status for the authenticated account: thearmed deadline, how many times the switch has fired today, and when thedaily counter resets.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

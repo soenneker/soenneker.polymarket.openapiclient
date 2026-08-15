@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Bridge.Status.Item
         {
         }
         /// <summary>
-        /// &quot;Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a `nextCursor`. To read the full history, pass each `nextCursor` back as `cursor` until it comes back null. To track only recent activity, keep requesting the first page without a cursor.&quot;
+        /// Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a `nextCursor`. To read the full history, pass each `nextCursor` back as `cursor` until it comes back null. To track only recent activity, keep requesting the first page without a cursor.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.TransactionStatusResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Bridge.Status.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.TransactionStatusResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.TransactionStatusResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a `nextCursor`. To read the full history, pass each `nextCursor` back as `cursor` until it comes back null. To track only recent activity, keep requesting the first page without a cursor.&quot;
+        /// Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a `nextCursor`. To read the full history, pass each `nextCursor` back as `cursor` until it comes back null. To track only recent activity, keep requesting the first page without a cursor.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -87,7 +87,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Bridge.Status.Item
             return new global::Soenneker.Polymarket.OpenApiClient.Bridge.Status.Item.WithAddressItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a `nextCursor`. To read the full history, pass each `nextCursor` back as `cursor` until it comes back null. To track only recent activity, keep requesting the first page without a cursor.&quot;
+        /// Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a `nextCursor`. To read the full history, pass each `nextCursor` back as `cursor` until it comes back null. To track only recent activity, keep requesting the first page without a cursor.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithAddressItemRequestBuilderGetQueryParameters 
@@ -107,7 +107,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Bridge.Status.Item
             public int? Limit { get; set; }
             /// <summary>Compatibility parameter forwarded upstream for existing integrations. Pagination applies whether or not it is sent, so new integrations should omit it and use `cursor` and `limit` alone. When sent, the only supported value is `true`.</summary>
             [QueryParameter("paginate")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.BridgeGetStatusAddressPaginateParameter? Paginate { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.TrueValuePaginate? Paginate { get; set; }
         }
     }
 }

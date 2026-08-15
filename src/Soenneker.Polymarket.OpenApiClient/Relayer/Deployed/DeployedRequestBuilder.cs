@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Relayer.Deployed
         {
         }
         /// <summary>
-        /// &quot;Returns whether the wallet at the given address is deployed onchain.Use the `type` query parameter to choose which wallet type to check:- Pass user&apos;s Polymarket `SAFE` address (default): Gnosis Safe (SignatureType `2`).- Pass user&apos;s Polymarket `WALLET` Deposit Wallet address: Deposit Wallet (signatureType `3`). See the [Deposit Wallet Guide](/trading/deposit-wallets) for setup.Omitting `type` is equivalent to `type=SAFE`.&quot;
+        /// Returns whether the wallet at the given address is deployed onchain.Use the `type` query parameter to choose which wallet type to check:- Pass user&apos;s Polymarket `SAFE` address (default): Gnosis Safe (SignatureType `2`).- Pass user&apos;s Polymarket `WALLET` Deposit Wallet address: Deposit Wallet (signatureType `3`). See the [Deposit Wallet Guide](/trading/deposit-wallets) for setup.Omitting `type` is equivalent to `type=SAFE`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.DeployedResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Relayer.Deployed
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.DeployedResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.DeployedResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Returns whether the wallet at the given address is deployed onchain.Use the `type` query parameter to choose which wallet type to check:- Pass user&apos;s Polymarket `SAFE` address (default): Gnosis Safe (SignatureType `2`).- Pass user&apos;s Polymarket `WALLET` Deposit Wallet address: Deposit Wallet (signatureType `3`). See the [Deposit Wallet Guide](/trading/deposit-wallets) for setup.Omitting `type` is equivalent to `type=SAFE`.&quot;
+        /// Returns whether the wallet at the given address is deployed onchain.Use the `type` query parameter to choose which wallet type to check:- Pass user&apos;s Polymarket `SAFE` address (default): Gnosis Safe (SignatureType `2`).- Pass user&apos;s Polymarket `WALLET` Deposit Wallet address: Deposit Wallet (signatureType `3`). See the [Deposit Wallet Guide](/trading/deposit-wallets) for setup.Omitting `type` is equivalent to `type=SAFE`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -87,7 +87,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Relayer.Deployed
             return new global::Soenneker.Polymarket.OpenApiClient.Relayer.Deployed.DeployedRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Returns whether the wallet at the given address is deployed onchain.Use the `type` query parameter to choose which wallet type to check:- Pass user&apos;s Polymarket `SAFE` address (default): Gnosis Safe (SignatureType `2`).- Pass user&apos;s Polymarket `WALLET` Deposit Wallet address: Deposit Wallet (signatureType `3`). See the [Deposit Wallet Guide](/trading/deposit-wallets) for setup.Omitting `type` is equivalent to `type=SAFE`.&quot;
+        /// Returns whether the wallet at the given address is deployed onchain.Use the `type` query parameter to choose which wallet type to check:- Pass user&apos;s Polymarket `SAFE` address (default): Gnosis Safe (SignatureType `2`).- Pass user&apos;s Polymarket `WALLET` Deposit Wallet address: Deposit Wallet (signatureType `3`). See the [Deposit Wallet Guide](/trading/deposit-wallets) for setup.Omitting `type` is equivalent to `type=SAFE`.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DeployedRequestBuilderGetQueryParameters 

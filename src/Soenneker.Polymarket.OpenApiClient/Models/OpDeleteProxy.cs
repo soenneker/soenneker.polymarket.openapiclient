@@ -23,7 +23,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public global::Soenneker.Polymarket.OpenApiClient.Models.OpDeleteProxyArgs Args { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.OpDeleteProxyType? Type { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.DeleteProxyType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OpDeleteProxy"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "args", n => { Args = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpDeleteProxyArgs>(global::Soenneker.Polymarket.OpenApiClient.Models.OpDeleteProxyArgs.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpDeleteProxyType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.DeleteProxyType>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpDeleteProxyArgs>("args", Args);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpDeleteProxyType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.DeleteProxyType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -35,7 +35,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>Unix timestamp when the notification was created</summary>
         public int? Timestamp { get; set; }
-        /// <summary>&quot;Type of notification:- 1: Order cancellation- 2: Order fill- 3: Market registered- 4: Market resolved- 5: Reward payout- 6: Child comment created&quot;</summary>
+        /// <summary>Type of notification:- 1: Order cancellation- 2: Order fill- 3: Market registered- 4: Market resolved- 5: Reward payout- 6: Child comment created</summary>
         public int? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Notification"/> and sets the default values.

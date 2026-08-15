@@ -25,7 +25,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Instrument ID</summary>
         public int? InstrumentId { get; set; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.LeverageRejectedStatus? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.LeverageRejected"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.LeverageRejectedStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>(); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
             writer.WriteIntValue("instrument_id", InstrumentId);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.LeverageRejectedStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

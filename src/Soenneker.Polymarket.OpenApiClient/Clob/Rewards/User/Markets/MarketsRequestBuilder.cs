@@ -151,7 +151,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Rewards.User.Markets
             [QueryParameter("q")]
             public string Q { get; set; }
 #endif
-            /// <summary>&quot;Signature type for address derivation (required for API KEY auth):- 0: EOA- 1: POLY_PROXY- 2: POLY_GNOSIS_SAFE&quot;</summary>
+            /// <summary>Signature type for address derivation (required for API KEY auth):- 0: EOA- 1: POLY_PROXY- 2: POLY_GNOSIS_SAFE</summary>
             [QueryParameter("signature_type")]
             public int? SignatureType { get; set; }
             /// <summary>If true, returns sponsored reward earnings</summary>

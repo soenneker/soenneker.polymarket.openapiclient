@@ -27,7 +27,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Remaining lifetime referrals for this invite code.</summary>
         public int? ReferralsAvailable { get; set; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.CreateInviteResponseStatus? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CreateInviteResponse"/> and sets the default values.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "cooldown_ms", n => { CooldownMs = n.GetIntValue(); } },
                 { "referrals_available", n => { ReferralsAvailable = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CreateInviteResponseStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>(); } },
             };
         }
         /// <summary>
@@ -69,7 +69,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("code", Code);
             writer.WriteIntValue("cooldown_ms", CooldownMs);
             writer.WriteIntValue("referrals_available", ReferralsAvailable);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CreateInviteResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

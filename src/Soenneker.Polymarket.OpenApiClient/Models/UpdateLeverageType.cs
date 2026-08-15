@@ -5,12 +5,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OpDeleteProxyType
+    public enum UpdateLeverageType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "deleteProxy")]
+        [EnumMember(Value = "updateLeverage")]
         #pragma warning disable CS1591
-        DeleteProxy,
+        UpdateLeverage,
         #pragma warning restore CS1591
     }
 }

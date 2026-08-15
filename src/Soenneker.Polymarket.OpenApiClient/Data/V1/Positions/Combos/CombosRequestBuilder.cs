@@ -130,7 +130,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos
             [QueryParameter("status")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1PositionsCombosStatusParameterItem[] Status { get; set; }
 #endif
-            /// <summary>&quot;Incremental-sync watermark (epoch seconds, inclusive): only rows whose updated_at is at or after this time. Positions mutate on resolution and redemption, so this catches changes a creation-time filter cannot. In sync mode (updatedAfter/updatedBefore/sort=updated_asc) every live row is returned regardless of balance, and the effective upper bound is clamped ~90s behind now (commit-visibility safety lag) — very recent rows appear on the next poll. Rows at the boundary may re-deliver: upsert by (combo_condition_id, combo_position_id).&quot;</summary>
+            /// <summary>Incremental-sync watermark (epoch seconds, inclusive): only rows whose updated_at is at or after this time. Positions mutate on resolution and redemption, so this catches changes a creation-time filter cannot. In sync mode (updatedAfter/updatedBefore/sort=updated_asc) every live row is returned regardless of balance, and the effective upper bound is clamped ~90s behind now (commit-visibility safety lag) — very recent rows appear on the next poll. Rows at the boundary may re-deliver: upsert by (combo_condition_id, combo_position_id).</summary>
             [QueryParameter("updatedAfter")]
             public int? UpdatedAfter { get; set; }
             /// <summary>Optional upper bound (epoch seconds, inclusive) for updated_at; clamped to the safety lag. Must be &gt;= updatedAfter.</summary>

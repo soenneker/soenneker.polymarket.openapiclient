@@ -5,12 +5,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OrderRejectedStatus
+    public enum WithdrawType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "err")]
+        [EnumMember(Value = "withdraw")]
         #pragma warning disable CS1591
-        Err,
+        Withdraw,
         #pragma warning restore CS1591
     }
 }

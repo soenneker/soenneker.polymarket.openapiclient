@@ -46,7 +46,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string EndDate { get; set; }
 #endif
-        /// <summary>&quot;Attributed BUY-fee component of `grossInitialValue`, at six-decimal source precision. SELL fees are exit costs and are never included. Returned as an explicit `0` when the fee component is zero. Optional: treat an omitted field as unavailable rather than as zero.&quot;</summary>
+        /// <summary>Attributed BUY-fee component of `grossInitialValue`, at six-decimal source precision. SELL fees are exit costs and are never included. Returned as an explicit `0` when the fee component is zero. Optional: treat an omitted field as unavailable rather than as zero.</summary>
         public double? EntryFeesUsdc { get; set; }
         /// <summary>The eventSlug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,7 +56,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string EventSlug { get; set; }
 #endif
-        /// <summary>&quot;Remaining entry basis including attributed BUY fees, at six-decimal source precision. `initialValue` and `avgPrice` keep their fee-exclusive semantics, so the fee-exclusive basis is `grossInitialValue - entryFeesUsdc`. Optional: treat an omitted field as unavailable rather than as zero.&quot;</summary>
+        /// <summary>Remaining entry basis including attributed BUY fees, at six-decimal source precision. `initialValue` and `avgPrice` keep their fee-exclusive semantics, so the fee-exclusive basis is `grossInitialValue - entryFeesUsdc`. Optional: treat an omitted field as unavailable rather than as zero.</summary>
         public double? GrossInitialValue { get; set; }
         /// <summary>The icon property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

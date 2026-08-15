@@ -5,12 +5,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum LeverageRejectedStatus
+    public enum CreateProxyType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "err")]
+        [EnumMember(Value = "createProxy")]
         #pragma warning disable CS1591
-        Err,
+        CreateProxy,
         #pragma warning restore CS1591
     }
 }

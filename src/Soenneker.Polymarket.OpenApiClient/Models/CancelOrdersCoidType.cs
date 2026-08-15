@@ -5,12 +5,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OpCancelAllType
+    public enum CancelOrdersCoidType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "cancelAll")]
+        [EnumMember(Value = "cancelOrdersCOID")]
         #pragma warning disable CS1591
-        CancelAll,
+        CancelOrdersCoid,
         #pragma warning restore CS1591
     }
 }

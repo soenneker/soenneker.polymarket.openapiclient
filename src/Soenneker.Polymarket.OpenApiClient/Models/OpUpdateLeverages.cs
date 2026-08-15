@@ -23,7 +23,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public List<global::Soenneker.Polymarket.OpenApiClient.Models.OpUpdateLeveragesArgsItem> Args { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.OpUpdateLeveragesType? Type { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.UpdateLeveragesType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OpUpdateLeverages"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "args", n => { Args = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.OpUpdateLeveragesArgsItem>(global::Soenneker.Polymarket.OpenApiClient.Models.OpUpdateLeveragesArgsItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpUpdateLeveragesType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.UpdateLeveragesType>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.OpUpdateLeveragesArgsItem>("args", Args);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpUpdateLeveragesType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.UpdateLeveragesType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
