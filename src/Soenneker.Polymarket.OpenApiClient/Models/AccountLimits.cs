@@ -29,7 +29,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Maximum number of open orders per account</summary>
         public int? OpenOrdersLimit { get; set; }
         /// <summary>Timestamp in milliseconds when the current interval resets</summary>
-        public int? Reset { get; set; }
+        public long? Reset { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountLimits"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "messages_per_minute", n => { MessagesPerMinute = n.GetIntValue(); } },
                 { "open_orders", n => { OpenOrders = n.GetIntValue(); } },
                 { "open_orders_limit", n => { OpenOrdersLimit = n.GetIntValue(); } },
-                { "reset", n => { Reset = n.GetIntValue(); } },
+                { "reset", n => { Reset = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -79,7 +79,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("messages_per_minute", MessagesPerMinute);
             writer.WriteIntValue("open_orders", OpenOrders);
             writer.WriteIntValue("open_orders_limit", OpenOrdersLimit);
-            writer.WriteIntValue("reset", Reset);
+            writer.WriteLongValue("reset", Reset);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

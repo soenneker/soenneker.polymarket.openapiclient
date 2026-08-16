@@ -39,7 +39,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Counterparty { get; set; }
 #endif
         /// <summary>Creation timestamp in milliseconds</summary>
-        public int? CreatedTimestamp { get; set; }
+        public long? CreatedTimestamp { get; set; }
         /// <summary>Requester trade direction</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.Direction2? Direction { get; set; }
         /// <summary>Human-readable label for a proxy key or internal transfer</summary>
@@ -80,7 +80,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "amount", n => { Amount = n.GetStringValue(); } },
                 { "asset", n => { Asset = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Asset2>(global::Soenneker.Polymarket.OpenApiClient.Models.Asset2.CreateFromDiscriminatorValue); } },
                 { "counterparty", n => { Counterparty = n.GetStringValue(); } },
-                { "created_timestamp", n => { CreatedTimestamp = n.GetIntValue(); } },
+                { "created_timestamp", n => { CreatedTimestamp = n.GetLongValue(); } },
                 { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Direction2>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "transfer_id", n => { TransferId = n.GetIntValue(); } },
@@ -96,7 +96,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("amount", Amount);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Asset2>("asset", Asset);
             writer.WriteStringValue("counterparty", Counterparty);
-            writer.WriteIntValue("created_timestamp", CreatedTimestamp);
+            writer.WriteLongValue("created_timestamp", CreatedTimestamp);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Direction2>("direction", Direction);
             writer.WriteStringValue("label", Label);
             writer.WriteIntValue("transfer_id", TransferId);

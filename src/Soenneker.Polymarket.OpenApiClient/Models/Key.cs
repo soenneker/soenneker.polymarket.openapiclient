@@ -15,7 +15,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Expiry timestamp in milliseconds</summary>
-        public int? Expiry { get; set; }
+        public long? Expiry { get; set; }
         /// <summary>Human-readable label for a proxy key or internal transfer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,7 +57,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "expiry", n => { Expiry = n.GetIntValue(); } },
+                { "expiry", n => { Expiry = n.GetLongValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "proxy", n => { Proxy = n.GetStringValue(); } },
             };
@@ -69,7 +69,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("expiry", Expiry);
+            writer.WriteLongValue("expiry", Expiry);
             writer.WriteStringValue("label", Label);
             writer.WriteStringValue("proxy", Proxy);
             writer.WriteAdditionalData(AdditionalData);

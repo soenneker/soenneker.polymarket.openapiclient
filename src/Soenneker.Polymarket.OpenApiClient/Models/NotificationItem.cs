@@ -23,9 +23,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty Notification { get; set; }
 #endif
         /// <summary>When the recipient marked this notification read, Unix milliseconds; null if unread.</summary>
-        public int? ReadAt { get; set; }
+        public long? ReadAt { get; set; }
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public int? Ts { get; set; }
+        public long? Ts { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItem"/> and sets the default values.
         /// </summary>
@@ -52,8 +52,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "notification", n => { Notification = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty>(global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty.CreateFromDiscriminatorValue); } },
-                { "read_at", n => { ReadAt = n.GetIntValue(); } },
-                { "ts", n => { Ts = n.GetIntValue(); } },
+                { "read_at", n => { ReadAt = n.GetLongValue(); } },
+                { "ts", n => { Ts = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -64,8 +64,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty>("notification", Notification);
-            writer.WriteIntValue("read_at", ReadAt);
-            writer.WriteIntValue("ts", Ts);
+            writer.WriteLongValue("read_at", ReadAt);
+            writer.WriteLongValue("ts", Ts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

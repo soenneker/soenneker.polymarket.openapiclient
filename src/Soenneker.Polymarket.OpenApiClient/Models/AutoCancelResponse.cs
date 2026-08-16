@@ -16,7 +16,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zeromeans no schedule is armed. When the deadline passes, the exchange cancelsevery open order on the account and the schedule clears.</summary>
-        public int? Deadline { get; set; }
+        public long? Deadline { get; set; }
         /// <summary>The status property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus? Status { get; set; }
         /// <summary>
@@ -44,7 +44,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "deadline", n => { Deadline = n.GetIntValue(); } },
+                { "deadline", n => { Deadline = n.GetLongValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>(); } },
             };
         }
@@ -55,7 +55,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("deadline", Deadline);
+            writer.WriteLongValue("deadline", Deadline);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

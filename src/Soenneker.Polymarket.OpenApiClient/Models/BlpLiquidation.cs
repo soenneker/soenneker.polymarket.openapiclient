@@ -28,7 +28,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Margin { get; set; }
 #endif
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public int? Timestamp { get; set; }
+        public long? Timestamp { get; set; }
         /// <summary>Trades booked for the positions absorbed in this liquidation, in the order they were booked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "cross", n => { Cross = n.GetBoolValue(); } },
                 { "liquidation_id", n => { LiquidationId = n.GetIntValue(); } },
                 { "margin", n => { Margin = n.GetStringValue(); } },
-                { "timestamp", n => { Timestamp = n.GetIntValue(); } },
+                { "timestamp", n => { Timestamp = n.GetLongValue(); } },
                 { "trades", n => { Trades = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade>(global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -79,7 +79,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("cross", Cross);
             writer.WriteIntValue("liquidation_id", LiquidationId);
             writer.WriteStringValue("margin", Margin);
-            writer.WriteIntValue("timestamp", Timestamp);
+            writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade>("trades", Trades);
             writer.WriteAdditionalData(AdditionalData);
         }

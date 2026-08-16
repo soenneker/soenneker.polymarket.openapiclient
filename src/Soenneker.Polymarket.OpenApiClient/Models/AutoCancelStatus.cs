@@ -17,9 +17,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Maximum number of auto-cancel triggers allowed per UTC day.</summary>
         public int? DailyLimit { get; set; }
         /// <summary>Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zeromeans no schedule is armed. When the deadline passes, the exchange cancelsevery open order on the account and the schedule clears.</summary>
-        public int? Deadline { get; set; }
+        public long? Deadline { get; set; }
         /// <summary>Unix-ms timestamp of the next UTC midnight when the daily triggercount resets to zero.</summary>
-        public int? NextReset { get; set; }
+        public long? NextReset { get; set; }
         /// <summary>Number of times auto-cancel has fired for this account during thecurrent UTC day. Resets to zero at 00:00 UTC.</summary>
         public int? Triggered { get; set; }
         /// <summary>
@@ -48,8 +48,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "daily_limit", n => { DailyLimit = n.GetIntValue(); } },
-                { "deadline", n => { Deadline = n.GetIntValue(); } },
-                { "next_reset", n => { NextReset = n.GetIntValue(); } },
+                { "deadline", n => { Deadline = n.GetLongValue(); } },
+                { "next_reset", n => { NextReset = n.GetLongValue(); } },
                 { "triggered", n => { Triggered = n.GetIntValue(); } },
             };
         }
@@ -61,8 +61,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("daily_limit", DailyLimit);
-            writer.WriteIntValue("deadline", Deadline);
-            writer.WriteIntValue("next_reset", NextReset);
+            writer.WriteLongValue("deadline", Deadline);
+            writer.WriteLongValue("next_reset", NextReset);
             writer.WriteIntValue("triggered", Triggered);
             writer.WriteAdditionalData(AdditionalData);
         }

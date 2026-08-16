@@ -91,7 +91,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Whether this side was the taker</summary>
         public bool? Taker { get; set; }
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public int? Timestamp { get; set; }
+        public long? Timestamp { get; set; }
         /// <summary>Trade ID</summary>
         public int? TradeId { get; set; }
         /// <summary>
@@ -133,7 +133,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "quantity", n => { Quantity = n.GetStringValue(); } },
                 { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>(); } },
                 { "taker", n => { Taker = n.GetBoolValue(); } },
-                { "timestamp", n => { Timestamp = n.GetIntValue(); } },
+                { "timestamp", n => { Timestamp = n.GetLongValue(); } },
                 { "trade_id", n => { TradeId = n.GetIntValue(); } },
             };
         }
@@ -158,7 +158,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("quantity", Quantity);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>("side", Side);
             writer.WriteBoolValue("taker", Taker);
-            writer.WriteIntValue("timestamp", Timestamp);
+            writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteIntValue("trade_id", TradeId);
             writer.WriteAdditionalData(AdditionalData);
         }

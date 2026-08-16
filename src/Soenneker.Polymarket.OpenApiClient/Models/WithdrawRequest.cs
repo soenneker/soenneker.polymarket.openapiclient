@@ -33,7 +33,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Sig { get; set; }
 #endif
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public int? Ts { get; set; }
+        public long? Ts { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawRequest"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "op", n => { Op = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpWithdraw>(global::Soenneker.Polymarket.OpenApiClient.Models.OpWithdraw.CreateFromDiscriminatorValue); } },
                 { "salt", n => { Salt = n.GetIntValue(); } },
                 { "sig", n => { Sig = n.GetStringValue(); } },
-                { "ts", n => { Ts = n.GetIntValue(); } },
+                { "ts", n => { Ts = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpWithdraw>("op", Op);
             writer.WriteIntValue("salt", Salt);
             writer.WriteStringValue("sig", Sig);
-            writer.WriteIntValue("ts", Ts);
+            writer.WriteLongValue("ts", Ts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

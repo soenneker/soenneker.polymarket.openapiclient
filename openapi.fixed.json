@@ -16584,7 +16584,8 @@
         "properties": {
           "time": {
             "type": "integer",
-            "description": "Timestamp in milliseconds"
+            "description": "Timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -16896,6 +16897,7 @@
         "minimum": 0,
         "type": "integer",
         "description": "Unix timestamp in milliseconds when first-party interfaces may display the instrument. A null value means hidden. This advisory field does not affect trading availability.",
+        "format": "int64",
         "nullable": true,
         "example": 1786032000000
       },
@@ -17106,7 +17108,8 @@
           },
           "next_funding": {
             "type": "integer",
-            "description": "Next funding timestamp in milliseconds"
+            "description": "Next funding timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -17164,11 +17167,13 @@
           },
           "next_funding": {
             "type": "integer",
-            "description": "Next funding timestamp in milliseconds"
+            "description": "Next funding timestamp in milliseconds",
+            "format": "int64"
           },
           "timestamp": {
             "type": "integer",
-            "description": "Timestamp in milliseconds"
+            "description": "Timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -17438,7 +17443,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -17508,7 +17514,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Timestamp in milliseconds"
+            "description": "Timestamp in milliseconds",
+            "format": "int64"
           },
           "sequence": {
             "type": "integer",
@@ -17583,7 +17590,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -17665,7 +17673,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "hash": {
             "type": "string",
@@ -17786,7 +17795,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Update timestamp in milliseconds"
+            "description": "Update timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -17809,7 +17819,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -18229,7 +18240,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -18258,11 +18270,13 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "exp": {
             "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time."
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -18390,11 +18404,13 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "exp": {
             "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time."
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -18510,11 +18526,13 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "exp": {
             "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time."
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -18573,11 +18591,13 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "exp": {
             "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time."
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -18618,7 +18638,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -18637,7 +18658,8 @@
           },
           "deadline": {
             "type": "integer",
-            "description": "Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zero\nmeans no schedule is armed. When the deadline passes, the exchange cancels\nevery open order on the account and the schedule clears.\n"
+            "description": "Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zero\nmeans no schedule is armed. When the deadline passes, the exchange cancels\nevery open order on the account and the schedule clears.\n",
+            "format": "int64"
           }
         },
         "description": "The auto-cancel schedule now in effect. The deadline field echoes the\narmed time in Unix milliseconds, or 0 if you cleared the schedule.\n"
@@ -18721,7 +18743,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -18816,7 +18839,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -18931,7 +18955,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "label": {
             "type": "string",
@@ -19003,7 +19028,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -19024,7 +19050,8 @@
           },
           "expiry": {
             "type": "integer",
-            "description": "Expiry timestamp in milliseconds"
+            "description": "Expiry timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -19277,11 +19304,13 @@
           },
           "created_timestamp": {
             "type": "integer",
-            "description": "Create timestamp in milliseconds"
+            "description": "Create timestamp in milliseconds",
+            "format": "int64"
           },
           "updated_timestamp": {
             "type": "integer",
-            "description": "Update timestamp in milliseconds"
+            "description": "Update timestamp in milliseconds",
+            "format": "int64"
           },
           "client_order_id": {
             "maxLength": 32,
@@ -19556,7 +19585,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Update timestamp in milliseconds"
+            "description": "Update timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -19715,7 +19745,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "hash": {
             "type": "string",
@@ -19870,7 +19901,8 @@
         "properties": {
           "id": {
             "type": "integer",
-            "description": "Funding payment ID. Probabilistically unique (same guarantees as trade IDs) and stable across REST and WebSocket for the same funding record."
+            "description": "Funding payment ID. Probabilistically unique (same guarantees as trade IDs) and stable across REST and WebSocket for the same funding record.",
+            "format": "int64"
           },
           "instrument_id": {
             "type": "integer",
@@ -19894,7 +19926,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -19984,7 +20017,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -20068,7 +20102,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "label": {
             "type": "string",
@@ -20221,11 +20256,13 @@
           },
           "created_timestamp": {
             "type": "integer",
-            "description": "Creation timestamp in milliseconds"
+            "description": "Creation timestamp in milliseconds",
+            "format": "int64"
           },
           "confirmed_timestamp": {
             "type": "integer",
-            "description": "Confirmation timestamp in milliseconds"
+            "description": "Confirmation timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -20346,7 +20383,8 @@
           },
           "created_timestamp": {
             "type": "integer",
-            "description": "Creation timestamp in milliseconds"
+            "description": "Creation timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -20453,11 +20491,13 @@
           },
           "created_timestamp": {
             "type": "integer",
-            "description": "Creation timestamp in milliseconds"
+            "description": "Creation timestamp in milliseconds",
+            "format": "int64"
           },
           "confirmed_timestamp": {
             "type": "integer",
-            "description": "Confirmation timestamp in milliseconds"
+            "description": "Confirmation timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -20671,7 +20711,8 @@
           },
           "expiry": {
             "type": "integer",
-            "description": "Expiry timestamp in milliseconds"
+            "description": "Expiry timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -20714,7 +20755,8 @@
           },
           "reset": {
             "type": "integer",
-            "description": "Timestamp in milliseconds when the current interval resets"
+            "description": "Timestamp in milliseconds when the current interval resets",
+            "format": "int64"
           },
           "messages_per_minute": {
             "type": "integer",
@@ -20752,7 +20794,8 @@
         "properties": {
           "time": {
             "type": "integer",
-            "description": "Timestamp in milliseconds"
+            "description": "Timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -21015,7 +21058,8 @@
         "properties": {
           "deadline": {
             "type": "integer",
-            "description": "Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zero\nmeans no schedule is armed. When the deadline passes, the exchange cancels\nevery open order on the account and the schedule clears.\n"
+            "description": "Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zero\nmeans no schedule is armed. When the deadline passes, the exchange cancels\nevery open order on the account and the schedule clears.\n",
+            "format": "int64"
           },
           "triggered": {
             "type": "integer",
@@ -21027,7 +21071,8 @@
           },
           "next_reset": {
             "type": "integer",
-            "description": "Unix-ms timestamp of the next UTC midnight when the daily trigger\ncount resets to zero.\n"
+            "description": "Unix-ms timestamp of the next UTC midnight when the daily trigger\ncount resets to zero.\n",
+            "format": "int64"
           }
         }
       },
@@ -21125,7 +21170,8 @@
         "properties": {
           "exp": {
             "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time."
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -21209,7 +21255,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -21267,13 +21314,15 @@
         "properties": {
           "exp": {
             "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time."
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
       "ReadAt": {
         "type": "integer",
         "description": "When the recipient marked this notification read, Unix milliseconds; null if unread.",
+        "format": "int64",
         "nullable": true,
         "example": 1767225600000
       },
@@ -21293,7 +21342,8 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           }
         }
       },
@@ -21313,7 +21363,8 @@
         "properties": {
           "exp": {
             "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time."
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -21391,7 +21442,8 @@
         "properties": {
           "exp": {
             "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time."
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -21468,7 +21520,8 @@
         "properties": {
           "timestamp": {
             "type": "integer",
-            "description": "Timestamp in milliseconds"
+            "description": "Timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -21559,7 +21612,8 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp)."
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
           },
           "cross": {
             "type": "boolean",

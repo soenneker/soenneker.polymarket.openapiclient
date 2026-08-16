@@ -49,7 +49,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Instrument ID</summary>
         public int? InstrumentId { get; set; }
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public int? Timestamp { get; set; }
+        public long? Timestamp { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Bbo"/> and sets the default values.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "bid_price", n => { BidPrice = n.GetStringValue(); } },
                 { "bid_quantity", n => { BidQuantity = n.GetStringValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
-                { "timestamp", n => { Timestamp = n.GetIntValue(); } },
+                { "timestamp", n => { Timestamp = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -95,7 +95,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("bid_price", BidPrice);
             writer.WriteStringValue("bid_quantity", BidQuantity);
             writer.WriteIntValue("instrument_id", InstrumentId);
-            writer.WriteIntValue("timestamp", Timestamp);
+            writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

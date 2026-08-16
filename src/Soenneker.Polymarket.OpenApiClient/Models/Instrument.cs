@@ -117,7 +117,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Symbol { get; set; }
 #endif
         /// <summary>Unix timestamp in milliseconds when first-party interfaces may display the instrument. A null value means hidden. This advisory field does not affect trading availability.</summary>
-        public int? UiLiveTime { get; set; }
+        public long? UiLiveTime { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Instrument"/> and sets the default values.
         /// </summary>
@@ -161,7 +161,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "quote_asset", n => { QuoteAsset = n.GetStringValue(); } },
                 { "risk_tiers", n => { RiskTiers = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.RiskTier>(global::Soenneker.Polymarket.OpenApiClient.Models.RiskTier.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "symbol", n => { Symbol = n.GetStringValue(); } },
-                { "ui_live_time", n => { UiLiveTime = n.GetIntValue(); } },
+                { "ui_live_time", n => { UiLiveTime = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -189,7 +189,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("quote_asset", QuoteAsset);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.RiskTier>("risk_tiers", RiskTiers);
             writer.WriteStringValue("symbol", Symbol);
-            writer.WriteIntValue("ui_live_time", UiLiveTime);
+            writer.WriteLongValue("ui_live_time", UiLiveTime);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -39,7 +39,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string IndexPrice { get; set; }
 #endif
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public int? Ts { get; set; }
+        public long? Ts { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.IndexObject"/> and sets the default values.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "asset", n => { Asset = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Asset2>(global::Soenneker.Polymarket.OpenApiClient.Models.Asset2.CreateFromDiscriminatorValue); } },
                 { "constituents", n => { Constituents = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent>(global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "index_price", n => { IndexPrice = n.GetStringValue(); } },
-                { "ts", n => { Ts = n.GetIntValue(); } },
+                { "ts", n => { Ts = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Asset2>("asset", Asset);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent>("constituents", Constituents);
             writer.WriteStringValue("index_price", IndexPrice);
-            writer.WriteIntValue("ts", Ts);
+            writer.WriteLongValue("ts", Ts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

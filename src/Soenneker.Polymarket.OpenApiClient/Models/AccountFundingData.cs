@@ -39,7 +39,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string FundingRate { get; set; }
 #endif
         /// <summary>Funding payment ID. Probabilistically unique (same guarantees as trade IDs) and stable across REST and WebSocket for the same funding record.</summary>
-        public int? Id { get; set; }
+        public long? Id { get; set; }
         /// <summary>Instrument ID</summary>
         public int? InstrumentId { get; set; }
         /// <summary>Signed position size in no. of contracts (positive = long, negative = short)</summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Size { get; set; }
 #endif
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public int? Timestamp { get; set; }
+        public long? Timestamp { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountFundingData"/> and sets the default values.
         /// </summary>
@@ -80,10 +80,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "funding", n => { Funding = n.GetStringValue(); } },
                 { "funding_asset", n => { FundingAsset = n.GetStringValue(); } },
                 { "funding_rate", n => { FundingRate = n.GetStringValue(); } },
-                { "id", n => { Id = n.GetIntValue(); } },
+                { "id", n => { Id = n.GetLongValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
                 { "size", n => { Size = n.GetStringValue(); } },
-                { "timestamp", n => { Timestamp = n.GetIntValue(); } },
+                { "timestamp", n => { Timestamp = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -96,10 +96,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("funding", Funding);
             writer.WriteStringValue("funding_asset", FundingAsset);
             writer.WriteStringValue("funding_rate", FundingRate);
-            writer.WriteIntValue("id", Id);
+            writer.WriteLongValue("id", Id);
             writer.WriteIntValue("instrument_id", InstrumentId);
             writer.WriteStringValue("size", Size);
-            writer.WriteIntValue("timestamp", Timestamp);
+            writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

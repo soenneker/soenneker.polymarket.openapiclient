@@ -15,7 +15,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway&apos;s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.</summary>
-        public int? Exp { get; set; }
+        public long? Exp { get; set; }
         /// <summary>The op property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,7 +35,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Sig { get; set; }
 #endif
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public int? Ts { get; set; }
+        public long? Ts { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OrderRequest"/> and sets the default values.
         /// </summary>
@@ -61,11 +61,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "exp", n => { Exp = n.GetIntValue(); } },
+                { "exp", n => { Exp = n.GetLongValue(); } },
                 { "op", n => { Op = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpCreateOrders>(global::Soenneker.Polymarket.OpenApiClient.Models.OpCreateOrders.CreateFromDiscriminatorValue); } },
                 { "salt", n => { Salt = n.GetIntValue(); } },
                 { "sig", n => { Sig = n.GetStringValue(); } },
-                { "ts", n => { Ts = n.GetIntValue(); } },
+                { "ts", n => { Ts = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -75,11 +75,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("exp", Exp);
+            writer.WriteLongValue("exp", Exp);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.OpCreateOrders>("op", Op);
             writer.WriteIntValue("salt", Salt);
             writer.WriteStringValue("sig", Sig);
-            writer.WriteIntValue("ts", Ts);
+            writer.WriteLongValue("ts", Ts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

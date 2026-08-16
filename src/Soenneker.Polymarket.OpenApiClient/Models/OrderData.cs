@@ -25,7 +25,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string ClientOrderId { get; set; }
 #endif
         /// <summary>Create timestamp in milliseconds</summary>
-        public int? CreatedTimestamp { get; set; }
+        public long? CreatedTimestamp { get; set; }
         /// <summary>Filled quantity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +85,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public global::Soenneker.Polymarket.OpenApiClient.Models.TpSlOrderFields Tpsl { get; set; }
 #endif
         /// <summary>Update timestamp in milliseconds</summary>
-        public int? UpdatedTimestamp { get; set; }
+        public long? UpdatedTimestamp { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OrderData"/> and sets the default values.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "buy", n => { Buy = n.GetBoolValue(); } },
                 { "client_order_id", n => { ClientOrderId = n.GetStringValue(); } },
-                { "created_timestamp", n => { CreatedTimestamp = n.GetIntValue(); } },
+                { "created_timestamp", n => { CreatedTimestamp = n.GetLongValue(); } },
                 { "filled_quantity", n => { FilledQuantity = n.GetStringValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
                 { "order_id", n => { OrderId = n.GetIntValue(); } },
@@ -125,7 +125,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "tif", n => { Tif = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Tif>(); } },
                 { "tpsl", n => { Tpsl = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.TpSlOrderFields>(global::Soenneker.Polymarket.OpenApiClient.Models.TpSlOrderFields.CreateFromDiscriminatorValue); } },
-                { "updated_timestamp", n => { UpdatedTimestamp = n.GetIntValue(); } },
+                { "updated_timestamp", n => { UpdatedTimestamp = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -137,7 +137,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("buy", Buy);
             writer.WriteStringValue("client_order_id", ClientOrderId);
-            writer.WriteIntValue("created_timestamp", CreatedTimestamp);
+            writer.WriteLongValue("created_timestamp", CreatedTimestamp);
             writer.WriteStringValue("filled_quantity", FilledQuantity);
             writer.WriteIntValue("instrument_id", InstrumentId);
             writer.WriteIntValue("order_id", OrderId);
@@ -149,7 +149,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("status", Status);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Tif>("tif", Tif);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.TpSlOrderFields>("tpsl", Tpsl);
-            writer.WriteIntValue("updated_timestamp", UpdatedTimestamp);
+            writer.WriteLongValue("updated_timestamp", UpdatedTimestamp);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

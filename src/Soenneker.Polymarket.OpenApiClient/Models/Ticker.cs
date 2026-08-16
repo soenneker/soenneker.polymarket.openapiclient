@@ -57,7 +57,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string MidPrice { get; set; }
 #endif
         /// <summary>Next funding timestamp in milliseconds</summary>
-        public int? NextFunding { get; set; }
+        public long? NextFunding { get; set; }
         /// <summary>Open interest in number of contracts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +75,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Symbol { get; set; }
 #endif
         /// <summary>Timestamp in milliseconds</summary>
-        public int? Timestamp { get; set; }
+        public long? Timestamp { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Ticker"/> and sets the default values.
         /// </summary>
@@ -107,10 +107,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "last_price", n => { LastPrice = n.GetStringValue(); } },
                 { "mark_price", n => { MarkPrice = n.GetStringValue(); } },
                 { "mid_price", n => { MidPrice = n.GetStringValue(); } },
-                { "next_funding", n => { NextFunding = n.GetIntValue(); } },
+                { "next_funding", n => { NextFunding = n.GetLongValue(); } },
                 { "open_interest", n => { OpenInterest = n.GetStringValue(); } },
                 { "symbol", n => { Symbol = n.GetStringValue(); } },
-                { "timestamp", n => { Timestamp = n.GetIntValue(); } },
+                { "timestamp", n => { Timestamp = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -126,10 +126,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("last_price", LastPrice);
             writer.WriteStringValue("mark_price", MarkPrice);
             writer.WriteStringValue("mid_price", MidPrice);
-            writer.WriteIntValue("next_funding", NextFunding);
+            writer.WriteLongValue("next_funding", NextFunding);
             writer.WriteStringValue("open_interest", OpenInterest);
             writer.WriteStringValue("symbol", Symbol);
-            writer.WriteIntValue("timestamp", Timestamp);
+            writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

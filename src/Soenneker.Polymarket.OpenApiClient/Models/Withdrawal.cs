@@ -33,9 +33,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Number of block confirmations</summary>
         public int? Confirmations { get; set; }
         /// <summary>Confirmation timestamp in milliseconds</summary>
-        public int? ConfirmedTimestamp { get; set; }
+        public long? ConfirmedTimestamp { get; set; }
         /// <summary>Creation timestamp in milliseconds</summary>
-        public int? CreatedTimestamp { get; set; }
+        public long? CreatedTimestamp { get; set; }
         /// <summary>Withdrawal transaction fee in decimalized asset units</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,8 +94,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "amount", n => { Amount = n.GetStringValue(); } },
                 { "asset", n => { Asset = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Asset2>(global::Soenneker.Polymarket.OpenApiClient.Models.Asset2.CreateFromDiscriminatorValue); } },
                 { "confirmations", n => { Confirmations = n.GetIntValue(); } },
-                { "confirmed_timestamp", n => { ConfirmedTimestamp = n.GetIntValue(); } },
-                { "created_timestamp", n => { CreatedTimestamp = n.GetIntValue(); } },
+                { "confirmed_timestamp", n => { ConfirmedTimestamp = n.GetLongValue(); } },
+                { "created_timestamp", n => { CreatedTimestamp = n.GetLongValue(); } },
                 { "fee", n => { Fee = n.GetStringValue(); } },
                 { "hash", n => { Hash = n.GetStringValue(); } },
                 { "required_confirmations", n => { RequiredConfirmations = n.GetIntValue(); } },
@@ -114,8 +114,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("amount", Amount);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Asset2>("asset", Asset);
             writer.WriteIntValue("confirmations", Confirmations);
-            writer.WriteIntValue("confirmed_timestamp", ConfirmedTimestamp);
-            writer.WriteIntValue("created_timestamp", CreatedTimestamp);
+            writer.WriteLongValue("confirmed_timestamp", ConfirmedTimestamp);
+            writer.WriteLongValue("created_timestamp", CreatedTimestamp);
             writer.WriteStringValue("fee", Fee);
             writer.WriteStringValue("hash", Hash);
             writer.WriteIntValue("required_confirmations", RequiredConfirmations);

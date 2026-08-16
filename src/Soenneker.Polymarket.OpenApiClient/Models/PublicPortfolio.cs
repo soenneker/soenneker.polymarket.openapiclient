@@ -31,7 +31,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public List<global::Soenneker.Polymarket.OpenApiClient.Models.PublicPortfolioPosition> Positions { get; set; }
 #endif
         /// <summary>Update timestamp in milliseconds</summary>
-        public int? Timestamp { get; set; }
+        public long? Timestamp { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.PublicPortfolio"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "equity", n => { Equity = n.GetStringValue(); } },
                 { "positions", n => { Positions = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PublicPortfolioPosition>(global::Soenneker.Polymarket.OpenApiClient.Models.PublicPortfolioPosition.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "timestamp", n => { Timestamp = n.GetIntValue(); } },
+                { "timestamp", n => { Timestamp = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("equity", Equity);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PublicPortfolioPosition>("positions", Positions);
-            writer.WriteIntValue("timestamp", Timestamp);
+            writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

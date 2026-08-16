@@ -33,7 +33,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public List<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition> Positions { get; set; }
 #endif
         /// <summary>Update timestamp in milliseconds</summary>
-        public int? Timestamp { get; set; }
+        public long? Timestamp { get; set; }
         /// <summary>Withdrawable balance in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +70,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "in_liquidation", n => { InLiquidation = n.GetBoolValue(); } },
                 { "margin", n => { Margin = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary>(global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary.CreateFromDiscriminatorValue); } },
                 { "positions", n => { Positions = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition>(global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "timestamp", n => { Timestamp = n.GetIntValue(); } },
+                { "timestamp", n => { Timestamp = n.GetLongValue(); } },
                 { "withdrawable", n => { Withdrawable = n.GetStringValue(); } },
             };
         }
@@ -84,7 +84,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("in_liquidation", InLiquidation);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary>("margin", Margin);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition>("positions", Positions);
-            writer.WriteIntValue("timestamp", Timestamp);
+            writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteStringValue("withdrawable", Withdrawable);
             writer.WriteAdditionalData(AdditionalData);
         }

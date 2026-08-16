@@ -35,7 +35,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Sequence number</summary>
         public int? Sequence { get; set; }
         /// <summary>Timestamp in milliseconds</summary>
-        public int? Timestamp { get; set; }
+        public long? Timestamp { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Book"/> and sets the default values.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "bids", n => { Bids = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
                 { "sequence", n => { Sequence = n.GetIntValue(); } },
-                { "timestamp", n => { Timestamp = n.GetIntValue(); } },
+                { "timestamp", n => { Timestamp = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -79,7 +79,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("bids", Bids);
             writer.WriteIntValue("instrument_id", InstrumentId);
             writer.WriteIntValue("sequence", Sequence);
-            writer.WriteIntValue("timestamp", Timestamp);
+            writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
