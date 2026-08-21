@@ -2845,6 +2845,77 @@
         "security": []
       }
     },
+    "/perps/v1/info/position-fills": {
+      "get": {
+        "summary": "Get Current Position Fills",
+        "description": "Get every fill in a registered account\u0027s current open position cycle for\none instrument. A cycle begins when the position opens from flat or flips\ndirection. For a flip, every fill from the flipping engine event belongs\nto the new cycle so a fill is never split between cycles.\n\nReturns an empty page when the account has no open position for the\ninstrument. Maximum of 100 entries returned per request. Results are\nordered by time; use \u0060sort\u0060 to choose newest-first (\u0060desc\u0060, default) or\noldest-first (\u0060asc\u0060). To page through more than 100 fills, pass the opaque\n\u0060cursor\u0060 returned by the previous page and keep \u0060sort\u0060 unchanged. Each page\nverifies that the cursor still describes the account\u0027s current position\ncycle. If that position changes while pagination is in progress, the\ncursor returns \u0060400\u0060 and pagination must restart from the first page.\n\nCycle discovery for a position inherited from a gateway snapshot is\nlimited to 250,000 account-history rows. A cycle older than that bound\nreturns \u0060413\u0060 rather than allowing a public request to run an unbounded\nClickHouse scan. Positions opened or flipped after gateway startup carry\ntheir cycle boundary directly and do not use this discovery scan.\n",
+        "operationId": "PerpsGetPublicPositionFills",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instrument_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 4294967295,
+              "minimum": 0,
+              "type": "integer",
+              "description": "Instrument ID",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Sort"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current position fills response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountTrades"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          }
+        },
+        "security": []
+      }
+    },
     "/perps/v1/info/funding": {
       "get": {
         "summary": "Get Historical Funding",
@@ -3715,7 +3786,7 @@
     "/perps/v1/account/fills": {
       "get": {
         "summary": "Get Fills",
-        "description": "Get fill history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use \u0060sort\u0060 to choose newest-first (\u0060desc\u0060,\ndefault) or oldest-first (\u0060asc\u0060). To page through more than 100 fills, pass\n\u0060cursor\u0060 set to the trade ID of the last fill from the previous page (keep\n\u0060sort\u0060 consistent across pages).\n",
+        "description": "Get fill history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use \u0060sort\u0060 to choose newest-first (\u0060desc\u0060,\ndefault) or oldest-first (\u0060asc\u0060). To page through more than 100 fills,\npass the \u0060cursor\u0060 returned by the previous page (keep \u0060sort\u0060 consistent\nacross pages). Passing the trade ID of the last fill from the previous\npage is also still accepted.\n",
         "operationId": "PerpsGetFills",
         "parameters": [
           {
@@ -3782,7 +3853,7 @@
     "/perps/v1/account/equity": {
       "get": {
         "summary": "Get Equity",
-        "description": "Get equity history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 1000 entries returned per request.\n",
+        "description": "Get equity history for the authenticated account.\nIf no end time is provided, the current time will be used.\nEach point is the last equity sample in its \u0060interval\u0060 bucket, stamped with\nthat sample\u0027s own timestamp rather than the bucket\u0027s start \u2014 so every\ntimestamp falls within the requested window. Buckets are aligned to the\nUnix epoch.\nEquity history is served at one-minute resolution, so \u00601s\u0060 is served as\n\u00601m\u0060.\nMaximum of 1000 entries returned per request \u2014 of buckets, so a coarser\ninterval covers a longer window before \u0060more\u0060 is set. When \u0060more\u0060 is true,\npage by re-requesting from one millisecond past the last timestamp\nreturned; that always lands on the next bucket, never back inside the one\njust served.\n",
         "operationId": "PerpsGetEquityHistory",
         "parameters": [
           {
@@ -3844,7 +3915,7 @@
     "/perps/v1/account/pnl": {
       "get": {
         "summary": "Get PnL",
-        "description": "Get PnL history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 1000 entries returned per request.\n",
+        "description": "Get PnL history for the authenticated account.\nIf no end time is provided, the current time will be used.\nEach point is the PnL realized inside its \u0060interval\u0060 bucket \u2014 not a running\ntotal. Buckets are aligned to the Unix epoch, and one in which nothing was\nrealized is omitted, so the series is sparse.\nA point is stamped with the last populated hour in its bucket, not with the\nbucket\u0027s start, so every returned timestamp falls within the requested\nwindow. Window bounds select whole one-hour rollup rows before coarser\nbuckets are formed.\nMaximum of 1000 entries returned per request \u2014 of buckets, so a coarser\ninterval covers a longer window before \u0060more\u0060 is set. When \u0060more\u0060 is true,\npage by re-requesting from one millisecond past the last timestamp\nreturned; that always lands on the next bucket, never back inside the one\njust served.\n",
         "operationId": "PerpsGetPnlHistory",
         "parameters": [
           {
@@ -15147,8 +15218,13 @@
   },
   "components": {
     "schemas": {
-      "ClobDropNotifications200ResponseSchema": {
-        "type": "string"
+      "ClobGetRewardPercentagesForUser200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        },
+        "description": "Map of condition_id to reward percentage"
       },
       "ErrorResponse": {
         "required": [
@@ -15485,13 +15561,13 @@
         },
         "description": "Breakdown of the estimated fees"
       },
-      "ClobGetNotifications200ResponseSchema": {
+      "ClobGetTotalEarningsForUserForDay200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Notification"
+          "$ref": "#/components/schemas/TotalUserEarning"
         }
       },
-      "ClobRevokeBuilderApiKey200ResponseSchema": {
+      "ClobDropNotifications200ResponseSchema": {
         "type": "string"
       },
       "HealthResponse": {
@@ -16159,12 +16235,11 @@
           }
         }
       },
-      "ClobGetBuilderApiKeys200ResponseSchema": {
+      "ClobGetNotifications200ResponseSchema": {
         "type": "array",
         "items": {
-          "type": "string"
-        },
-        "description": "Array of builder API key UUIDs"
+          "$ref": "#/components/schemas/Notification"
+        }
       },
       "Pagination": {
         "type": "object",
@@ -16536,8 +16611,8 @@
           }
         }
       },
-      "ClobUpdateBalanceAllowance200ResponseSchema": {
-        "type": "object"
+      "ClobRevokeBuilderApiKey200ResponseSchema": {
+        "type": "string"
       },
       "Error429": {
         "title": "Error429",
@@ -16573,8 +16648,12 @@
           }
         }
       },
-      "ClobDeleteApiKey200ResponseSchema": {
-        "type": "string"
+      "ClobGetBuilderApiKeys200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of builder API key UUIDs"
       },
       "Time2": {
         "required": [
@@ -16588,6 +16667,12 @@
             "format": "int64"
           }
         }
+      },
+      "ClobUpdateBalanceAllowance200ResponseSchema": {
+        "type": "object"
+      },
+      "ClobDeleteApiKey200ResponseSchema": {
+        "type": "string"
       },
       "ClobGetMarketsLiveActivity200ResponseSchema": {
         "type": "array",
@@ -16612,19 +16697,6 @@
         "items": {
           "$ref": "#/components/schemas/BookRequest"
         }
-      },
-      "ClobGetBooksGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
-        }
-      },
-      "ClobGetPricesPost200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseSchemaAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
       },
       "Exchange": {
         "required": [
@@ -16664,6 +16736,19 @@
           }
         }
       },
+      "ClobGetBooksGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderBookSummary"
+        }
+      },
+      "ClobGetPricesPost200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseSchemaAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
+      },
       "ClobGetPricesPostRequestRequestBody": {
         "type": "array",
         "items": {
@@ -16681,18 +16766,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseSchemaItem"
-        }
-      },
-      "ClobGetLastTradesPricesPostRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
-      },
-      "ClobGetLastTradesPricesGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseSchemaItem"
         }
       },
       "Asset2": {
@@ -16727,12 +16800,11 @@
           }
         }
       },
-      "ClobGetSpreads200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to spread"
+      "ClobGetLastTradesPricesPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
       },
       "InstrumentType": {
         "enum": [
@@ -16784,6 +16856,19 @@
             }
           ]
         }
+      },
+      "ClobGetLastTradesPricesGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseSchemaItem"
+        }
+      },
+      "ClobGetSpreads200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to spread"
       },
       "ClobGetSpreadsRequestRequestBody": {
         "type": "array",
@@ -16861,18 +16946,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/OrderData"
-        }
-      },
-      "PerpsUpdateLeverages200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LeverageBatchResponse"
-        }
-      },
-      "PerpsCancelOrdersByCoid200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/CancelResponse"
         }
       },
       "RiskTier": {
@@ -17019,6 +17092,18 @@
           }
         }
       },
+      "PerpsUpdateLeverages200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LeverageBatchResponse"
+        }
+      },
+      "PerpsCancelOrdersByCoid200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CancelResponse"
+        }
+      },
       "PerpsCancelOrders200ResponseSchema": {
         "type": "array",
         "items": {
@@ -17047,18 +17132,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Statistic"
-        }
-      },
-      "PerpsGetTickers200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Ticker"
-        }
-      },
-      "PerpsGetInstruments200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Instrument"
         }
       },
       "TickerData": {
@@ -17113,10 +17186,10 @@
           }
         }
       },
-      "PerpsGetAssets200ResponseSchema": {
+      "PerpsGetTickers200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Asset2"
+          "$ref": "#/components/schemas/Ticker"
         }
       },
       "Ticker": {
@@ -17177,22 +17250,22 @@
           }
         }
       },
+      "PerpsGetInstruments200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Instrument"
+        }
+      },
+      "PerpsGetAssets200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Asset2"
+        }
+      },
       "DataGetV1Leaderboard200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/TraderLeaderboardEntry"
-        }
-      },
-      "DataGetV1BuildersVolume200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BuilderVolumeEntry"
-        }
-      },
-      "DataGetV1BuildersLeaderboard200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LeaderboardEntry"
         }
       },
       "Kline": {
@@ -17313,22 +17386,22 @@
           ]
         }
       },
+      "DataGetV1BuildersVolume200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BuilderVolumeEntry"
+        }
+      },
+      "DataGetV1BuildersLeaderboard200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LeaderboardEntry"
+        }
+      },
       "DataGetV1MarketPositions200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/MetaMarketPositionV1"
-        }
-      },
-      "DataGetOther200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OtherSize"
-        }
-      },
-      "DataGetClosedPositions200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClosedPosition"
         }
       },
       "KlinesResponse": {
@@ -17379,6 +17452,18 @@
         },
         "description": "- \u00601767225600000\u0060 - Bucket open time (ms)\n- \u0060\u0022160.00\u0022\u0060 - Last mark price in bucket\n"
       },
+      "DataGetOther200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OtherSize"
+        }
+      },
+      "DataGetClosedPositions200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClosedPosition"
+        }
+      },
       "DataGetLiveVolume200ResponseSchema": {
         "type": "array",
         "items": {
@@ -17401,12 +17486,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/RevisionPayload"
-        }
-      },
-      "DataGetHolders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/MetaHolder"
         }
       },
       "Bbo": {
@@ -17468,10 +17547,10 @@
         },
         "description": "- \u0060\u0022100.00\u0022\u0060 - Price\n- \u0060\u002210.00\u0022\u0060 - Quantity\n"
       },
-      "DataGetActivity200ResponseSchema": {
+      "DataGetHolders200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Activity"
+          "$ref": "#/components/schemas/MetaHolder"
         }
       },
       "Book": {
@@ -17523,6 +17602,12 @@
           }
         }
       },
+      "DataGetActivity200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Activity"
+        }
+      },
       "DataGetTrades200ResponseSchema": {
         "type": "array",
         "items": {
@@ -17534,10 +17619,6 @@
         "items": {
           "$ref": "#/components/schemas/Position"
         }
-      },
-      "DataGetV1AccountingSnapshot200ZipResponseSchema": {
-        "type": "string",
-        "format": "binary"
       },
       "IndexConstituent": {
         "required": [
@@ -17595,9 +17676,9 @@
           }
         }
       },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
+      "DataGetV1AccountingSnapshot200ZipResponseSchema": {
+        "type": "string",
+        "format": "binary"
       },
       "Side": {
         "enum": [
@@ -17622,6 +17703,10 @@
           ]
         }
       },
+      "ExamplePayload": {
+        "type": "object",
+        "description": "Placeholder schema for path example refs"
+      },
       "RelayerGetRelayerApiKeys200Response": {
         "type": "array",
         "items": {
@@ -17629,12 +17714,6 @@
         }
       },
       "RelayerGetTransactions200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelayerTransaction"
-        }
-      },
-      "RelayerGetTransaction200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/RelayerTransaction"
@@ -17702,6 +17781,12 @@
           }
         }
       },
+      "RelayerGetTransaction200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RelayerTransaction"
+        }
+      },
       "GammaGetSportsMetadata200Response": {
         "type": "array",
         "items": {
@@ -17715,12 +17800,6 @@
         }
       },
       "GammaGetCommentsById200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Comment"
-        }
-      },
-      "GammaListComments200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Comment"
@@ -17763,16 +17842,16 @@
           }
         }
       },
+      "GammaListComments200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Comment"
+        }
+      },
       "GammaListSeries200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Series"
-        }
-      },
-      "GammaGetAbridgedMarkets200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GammaMarket"
         }
       },
       "PublicPortfolio": {
@@ -17800,7 +17879,7 @@
           }
         }
       },
-      "GammaGetMarketsInformation200Response": {
+      "GammaGetAbridgedMarkets200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/GammaMarket"
@@ -17843,6 +17922,12 @@
           }
         }
       },
+      "GammaGetMarketsInformation200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GammaMarket"
+        }
+      },
       "GammaGetMarketTags200Response": {
         "type": "array",
         "items": {
@@ -17853,12 +17938,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/GammaMarket"
-        }
-      },
-      "GammaListEventCreators200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/EventCreator"
         }
       },
       "FeeTier": {
@@ -17929,6 +18008,12 @@
           }
         }
       },
+      "GammaListEventCreators200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/EventCreator"
+        }
+      },
       "GammaGetEventTags200Response": {
         "type": "array",
         "items": {
@@ -17960,12 +18045,6 @@
         }
       },
       "GammaGetRelatedTagsBySlug200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelatedTag"
-        }
-      },
-      "GammaGetRelatedTagsById200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/RelatedTag"
@@ -18013,10 +18092,10 @@
           }
         }
       },
-      "GammaListTags200Response": {
+      "GammaGetRelatedTagsById200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Tag"
+          "$ref": "#/components/schemas/RelatedTag"
         }
       },
       "InviteCheckResponse": {
@@ -18035,10 +18114,10 @@
           }
         }
       },
-      "GammaListTeams200Response": {
+      "GammaListTags200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Team"
+          "$ref": "#/components/schemas/Tag"
         }
       },
       "Tif": {
@@ -18069,6 +18148,12 @@
           ]
         }
       },
+      "GammaListTeams200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Team"
+        }
+      },
       "GammaGetGammaStatus200PlainResponse": {
         "type": "string",
         "example": "OK"
@@ -18093,12 +18178,6 @@
           "format": "double"
         },
         "description": "Map of condition_id to reward percentage"
-      },
-      "ClobGetTotalEarningsForUserForDay200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/TotalUserEarning"
-        }
       },
       "Tpsl": {
         "enum": [
@@ -18213,14 +18292,14 @@
           }
         }
       },
-      "ClobDropNotifications200Response": {
-        "type": "string"
-      },
-      "ClobGetNotifications200Response": {
+      "ClobGetTotalEarningsForUserForDay200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Notification"
+          "$ref": "#/components/schemas/TotalUserEarning"
         }
+      },
+      "ClobDropNotifications200Response": {
+        "type": "string"
       },
       "BaseOp": {
         "required": [
@@ -18245,8 +18324,11 @@
           }
         }
       },
-      "ClobRevokeBuilderApiKey200Response": {
-        "type": "string"
+      "ClobGetNotifications200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Notification"
+        }
       },
       "OrderRequest": {
         "required": [
@@ -18280,12 +18362,8 @@
           }
         }
       },
-      "ClobGetBuilderApiKeys200Response": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "description": "Array of builder API key UUIDs"
+      "ClobRevokeBuilderApiKey200Response": {
+        "type": "string"
       },
       "OrderAccepted": {
         "required": [
@@ -18417,7 +18495,8 @@
       "CancelAccepted": {
         "required": [
           "status",
-          "oid"
+          "oid",
+          "ts"
         ],
         "type": "object",
         "properties": {
@@ -18433,13 +18512,19 @@
             "pattern": "^[0-9a-f]{32}$",
             "type": "string",
             "description": "Client order ID"
+          },
+          "ts": {
+            "type": "integer",
+            "description": "Cancellation outcome timestamp in Unix milliseconds",
+            "format": "int64"
           }
         }
       },
       "CancelRejected": {
         "required": [
           "status",
-          "error"
+          "error",
+          "ts"
         ],
         "type": "object",
         "properties": {
@@ -18459,6 +18544,11 @@
           "error": {
             "type": "string",
             "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+          },
+          "ts": {
+            "type": "integer",
+            "description": "Cancellation outcome timestamp in Unix milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -18482,6 +18572,11 @@
             "pattern": "^[0-9a-f]{32}$",
             "type": "string",
             "description": "Client order ID"
+          },
+          "ts": {
+            "type": "integer",
+            "description": "Cancellation outcome timestamp in Unix milliseconds",
+            "format": "int64"
           },
           "error": {
             "type": "string",
@@ -18643,8 +18738,12 @@
           }
         }
       },
-      "ClobUpdateBalanceAllowance200Response": {
-        "type": "object"
+      "ClobGetBuilderApiKeys200Response": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of builder API key UUIDs"
       },
       "AutoCancelResponse": {
         "required": [
@@ -18681,6 +18780,40 @@
           }
         }
       },
+      "Error408": {
+        "title": "Error408",
+        "required": [
+          "status",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ErrStatus"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+          }
+        }
+      },
+      "Error413": {
+        "title": "Error413",
+        "required": [
+          "status",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ErrStatus"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+          }
+        }
+      },
       "GenericRejected": {
         "required": [
           "status",
@@ -18697,14 +18830,11 @@
           }
         }
       },
+      "ClobUpdateBalanceAllowance200Response": {
+        "type": "object"
+      },
       "ClobDeleteApiKey200Response": {
         "type": "string"
-      },
-      "ClobGetMarketsLiveActivity200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LiveActivityMarket"
-        }
       },
       "OpUpdateLeverage": {
         "required": [
@@ -18894,6 +19024,12 @@
           }
         }
       },
+      "ClobGetMarketsLiveActivity200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LiveActivityMarket"
+        }
+      },
       "ClobGetMarketsLiveActivityRequest": {
         "type": "array",
         "items": {
@@ -18904,12 +19040,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/OrderBookSummary"
-        }
-      },
-      "ClobGetBooksPostRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
         }
       },
       "OpCreateProxy": {
@@ -18927,10 +19057,10 @@
           }
         }
       },
-      "ClobGetBooksGet200Response": {
+      "ClobGetBooksPostRequest": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
+          "$ref": "#/components/schemas/BookRequest"
         }
       },
       "ProxyRequest": {
@@ -18968,12 +19098,11 @@
           }
         }
       },
-      "ClobGetPricesPost200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
+      "ClobGetBooksGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderBookSummary"
+        }
       },
       "ProxyResponse": {
         "required": [
@@ -19091,6 +19220,13 @@
           }
         }
       },
+      "ClobGetPricesPost200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
+      },
       "ClobGetPricesPostRequest": {
         "type": "array",
         "items": {
@@ -19128,12 +19264,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/BookRequest"
-        }
-      },
-      "ClobGetLastTradesPricesGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseItem"
         }
       },
       "Kind": {
@@ -19182,6 +19312,12 @@
           ]
         }
       },
+      "ClobGetLastTradesPricesGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseItem"
+        }
+      },
       "ClobGetLastTradePrice200Response": {
         "required": [
           "price",
@@ -19198,13 +19334,6 @@
             "$ref": "#/components/schemas/ClobGetLastTradePrice200ResponseSide"
           }
         }
-      },
-      "ClobGetSpreads200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to spread"
       },
       "TpSlOrderFields": {
         "required": [
@@ -19323,23 +19452,17 @@
           }
         }
       },
+      "ClobGetSpreads200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to spread"
+      },
       "ClobGetSpreadsRequest": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/BookRequest"
-        }
-      },
-      "ClobGetSpread200Response": {
-        "required": [
-          "spread"
-        ],
-        "type": "object",
-        "properties": {
-          "spread": {
-            "type": "string",
-            "description": "Spread as a string",
-            "example": "0.02"
-          }
         }
       },
       "Balance2": {
@@ -19361,6 +19484,19 @@
           "value": {
             "type": "string",
             "description": "USD value"
+          }
+        }
+      },
+      "ClobGetSpread200Response": {
+        "required": [
+          "spread"
+        ],
+        "type": "object",
+        "properties": {
+          "spread": {
+            "type": "string",
+            "description": "Spread as a string",
+            "example": "0.02"
           }
         }
       },
@@ -19401,13 +19537,6 @@
         "type": "integer",
         "description": "Unix timestamp (seconds since epoch)",
         "format": "int64"
-      },
-      "ClobCancelOrdersRequest": {
-        "maxItems": 1000,
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
       },
       "PortfolioPosition": {
         "required": [
@@ -19481,6 +19610,13 @@
           }
         }
       },
+      "ClobCancelOrdersRequest": {
+        "maxItems": 1000,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
       "ClobPostOrders200Response": {
         "type": "array",
         "items": {
@@ -19504,12 +19640,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Balance2"
-        }
-      },
-      "PerpsGetOpenOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderData"
         }
       },
       "MarginSummary": {
@@ -19544,16 +19674,16 @@
           }
         }
       },
-      "PerpsGetOrders200Response": {
+      "PerpsGetOpenOrders200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/OrderData"
         }
       },
-      "PerpsUpdateLeverages200Response": {
+      "PerpsGetOrders200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/LeverageBatchResponse"
+          "$ref": "#/components/schemas/OrderData"
         }
       },
       "Portfolio": {
@@ -19588,6 +19718,12 @@
             "description": "Update timestamp in milliseconds",
             "format": "int64"
           }
+        }
+      },
+      "PerpsUpdateLeverages200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LeverageBatchResponse"
         }
       },
       "PerpsCancelOrdersByCoid200Response": {
@@ -19771,6 +19907,10 @@
           "more": {
             "type": "boolean",
             "description": "More data available"
+          },
+          "cursor": {
+            "type": "string",
+            "description": "Opaque keyset pagination cursor for the next page of fills. Present while \u0060more\u0060 is true; pass it as \u0060cursor\u0060 on the next request, keeping the other parameters the same across pages."
           }
         }
       },
@@ -27184,20 +27324,6 @@
           }
         }
       },
-      "ClobGetTotalEarningsForUserForDay200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/TotalUserEarning"
-        }
-      },
-      "ClobGetRewardPercentagesForUser200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number",
-          "format": "double"
-        },
-        "description": "Map of condition_id to reward percentage"
-      },
       "ClobGetCurrentRebatedFees200ResponseSchema": {
         "type": "array",
         "items": {
@@ -30129,6 +30255,26 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error401"
+            }
+          }
+        }
+      },
+      "Error408Response": {
+        "description": "Request Timeout \u2014 the request body was not delivered within the\ngateway\u0027s read deadline. Protects against slow uploads holding\nconnections open; send the complete body promptly and retry.\n\u0060error\u0060 is \u0060request_body_timeout\u0060.\n",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error408"
+            }
+          }
+        }
+      },
+      "Error413Response": {
+        "description": "Content Too Large \u2014 the request body exceeds the gateway\u0027s size cap,\njudged on the declared \u0060Content-Length\u0060 or the actual stream. Split\noversized batches into smaller requests. \u0060error\u0060 is\n\u0060payload_too_large\u0060.\n",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error413"
             }
           }
         }

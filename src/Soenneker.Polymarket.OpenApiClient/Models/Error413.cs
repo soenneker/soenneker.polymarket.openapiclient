@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
+using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -9,45 +10,39 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AccountTrades : IAdditionalDataHolder, IParsable
+    public partial class Error413 : ApiException, IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Opaque keyset pagination cursor for the next page of fills. Present while `more` is true; pass it as `cursor` on the next request, keeping the other parameters the same across pages.</summary>
+        /// <summary>Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `unauthorized`, `not_found`. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cursor { get; set; }
+        public string? Error { get; set; }
 #nullable restore
 #else
-        public string Cursor { get; set; }
+        public string Error { get; set; }
 #endif
-        /// <summary>Account&apos;s trade history</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.AccountTradeData>? Data { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.AccountTradeData> Data { get; set; }
-#endif
-        /// <summary>More data available</summary>
-        public bool? More { get; set; }
+        /// <summary>The primary error message.</summary>
+        public override string Message { get => base.Message; }
+        /// <summary>The status property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus? Status { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error413"/> and sets the default values.
         /// </summary>
-        public AccountTrades()
+        public Error413()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error413"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Polymarket.OpenApiClient.Models.Error413 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades();
+            return new global::Soenneker.Polymarket.OpenApiClient.Models.Error413();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,9 +52,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cursor", n => { Cursor = n.GetStringValue(); } },
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.AccountTradeData>(global::Soenneker.Polymarket.OpenApiClient.Models.AccountTradeData.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "more", n => { More = n.GetBoolValue(); } },
+                { "error", n => { Error = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>(); } },
             };
         }
         /// <summary>
@@ -69,9 +63,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("cursor", Cursor);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.AccountTradeData>("data", Data);
-            writer.WriteBoolValue("more", More);
+            writer.WriteStringValue("error", Error);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

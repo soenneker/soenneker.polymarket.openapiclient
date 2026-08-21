@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Pnl
         {
         }
         /// <summary>
-        /// Get PnL history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 1000 entries returned per request.
+        /// Get PnL history for the authenticated account.If no end time is provided, the current time will be used.Each point is the PnL realized inside its `interval` bucket — not a runningtotal. Buckets are aligned to the Unix epoch, and one in which nothing wasrealized is omitted, so the series is sparse.A point is stamped with the last populated hour in its bucket, not with thebucket&apos;s start, so every returned timestamp falls within the requestedwindow. Window bounds select whole one-hour rollup rows before coarserbuckets are formed.Maximum of 1000 entries returned per request — of buckets, so a coarserinterval covers a longer window before `more` is set. When `more` is true,page by re-requesting from one millisecond past the last timestampreturned; that always lands on the next bucket, never back inside the onejust served.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.PnlHistory"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Pnl
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.PnlHistory>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.PnlHistory.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get PnL history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 1000 entries returned per request.
+        /// Get PnL history for the authenticated account.If no end time is provided, the current time will be used.Each point is the PnL realized inside its `interval` bucket — not a runningtotal. Buckets are aligned to the Unix epoch, and one in which nothing wasrealized is omitted, so the series is sparse.A point is stamped with the last populated hour in its bucket, not with thebucket&apos;s start, so every returned timestamp falls within the requestedwindow. Window bounds select whole one-hour rollup rows before coarserbuckets are formed.Maximum of 1000 entries returned per request — of buckets, so a coarserinterval covers a longer window before `more` is set. When `more` is true,page by re-requesting from one millisecond past the last timestampreturned; that always lands on the next bucket, never back inside the onejust served.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Pnl
             return new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Pnl.PnlRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get PnL history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 1000 entries returned per request.
+        /// Get PnL history for the authenticated account.If no end time is provided, the current time will be used.Each point is the PnL realized inside its `interval` bucket — not a runningtotal. Buckets are aligned to the Unix epoch, and one in which nothing wasrealized is omitted, so the series is sparse.A point is stamped with the last populated hour in its bucket, not with thebucket&apos;s start, so every returned timestamp falls within the requestedwindow. Window bounds select whole one-hour rollup rows before coarserbuckets are formed.Maximum of 1000 entries returned per request — of buckets, so a coarserinterval covers a longer window before `more` is set. When `more` is true,page by re-requesting from one millisecond past the last timestampreturned; that always lands on the next bucket, never back inside the onejust served.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PnlRequestBuilderGetQueryParameters 

@@ -16,6 +16,7 @@ using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.LimitTiers;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.MarkHistory;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Ping;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Portfolio;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionFills;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Statistics;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Tickers;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Time;
@@ -101,6 +102,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Portfolio.PortfolioRequestBuilder Portfolio
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Portfolio.PortfolioRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The positionFills property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionFills.PositionFillsRequestBuilder PositionFills
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionFills.PositionFillsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The statistics property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Statistics.StatisticsRequestBuilder Statistics

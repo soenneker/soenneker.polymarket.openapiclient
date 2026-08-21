@@ -34,6 +34,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public int? Oid { get; set; }
         /// <summary>The status property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus? Status { get; set; }
+        /// <summary>Cancellation outcome timestamp in Unix milliseconds</summary>
+        public long? Ts { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CancelRejected"/> and sets the default values.
         /// </summary>
@@ -63,6 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "oid", n => { Oid = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>(); } },
+                { "ts", n => { Ts = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -76,6 +79,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("error", Error);
             writer.WriteIntValue("oid", Oid);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ErrStatus>("status", Status);
+            writer.WriteLongValue("ts", Ts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

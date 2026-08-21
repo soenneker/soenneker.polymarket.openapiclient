@@ -3081,6 +3081,80 @@
         }
       }
     },
+    "/perps/v1/info/position-fills": {
+      "get": {
+        "summary": "Get Current Position Fills",
+        "description": "Get every fill in a registered account's current open position cycle for\none instrument. A cycle begins when the position opens from flat or flips\ndirection. For a flip, every fill from the flipping engine event belongs\nto the new cycle so a fill is never split between cycles.\n\nReturns an empty page when the account has no open position for the\ninstrument. Maximum of 100 entries returned per request. Results are\nordered by time; use `sort` to choose newest-first (`desc`, default) or\noldest-first (`asc`). To page through more than 100 fills, pass the opaque\n`cursor` returned by the previous page and keep `sort` unchanged. Each page\nverifies that the cursor still describes the account's current position\ncycle. If that position changes while pagination is in progress, the\ncursor returns `400` and pagination must restart from the first page.\n\nCycle discovery for a position inherited from a gateway snapshot is\nlimited to 250,000 account-history rows. A cycle older than that bound\nreturns `413` rather than allowing a public request to run an unbounded\nClickHouse scan. Positions opened or flipped after gateway startup carry\ntheir cycle boundary directly and do not use this discovery scan.\n",
+        "operationId": "perps_getPublicPositionFills",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/address"
+            }
+          },
+          {
+            "name": "instrument_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 4294967295,
+              "minimum": 0,
+              "type": "integer",
+              "description": "Instrument ID",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/fills_cursor"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/sort"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current position fills response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountTrades"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          }
+        },
+        "security": [ ],
+        "x-mint": {
+          "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **10**</Badge>\n<br/>\n<Badge color=\"gray\" size=\"md\">Cached 2s — a request served from cache costs **1**</Badge>"
+        }
+      }
+    },
     "/perps/v1/info/funding": {
       "get": {
         "summary": "Get Historical Funding",
@@ -4029,7 +4103,7 @@
     "/perps/v1/account/fills": {
       "get": {
         "summary": "Get Fills",
-        "description": "Get fill history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use `sort` to choose newest-first (`desc`,\ndefault) or oldest-first (`asc`). To page through more than 100 fills, pass\n`cursor` set to the trade ID of the last fill from the previous page (keep\n`sort` consistent across pages).\n",
+        "description": "Get fill history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use `sort` to choose newest-first (`desc`,\ndefault) or oldest-first (`asc`). To page through more than 100 fills,\npass the `cursor` returned by the previous page (keep `sort` consistent\nacross pages). Passing the trade ID of the last fill from the previous\npage is also still accepted.\n",
         "operationId": "perps_getFills",
         "parameters": [
           {
@@ -4099,7 +4173,7 @@
     "/perps/v1/account/equity": {
       "get": {
         "summary": "Get Equity",
-        "description": "Get equity history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 1000 entries returned per request.\n",
+        "description": "Get equity history for the authenticated account.\nIf no end time is provided, the current time will be used.\nEach point is the last equity sample in its `interval` bucket, stamped with\nthat sample's own timestamp rather than the bucket's start — so every\ntimestamp falls within the requested window. Buckets are aligned to the\nUnix epoch.\nEquity history is served at one-minute resolution, so `1s` is served as\n`1m`.\nMaximum of 1000 entries returned per request — of buckets, so a coarser\ninterval covers a longer window before `more` is set. When `more` is true,\npage by re-requesting from one millisecond past the last timestamp\nreturned; that always lands on the next bucket, never back inside the one\njust served.\n",
         "operationId": "perps_getEquityHistory",
         "parameters": [
           {
@@ -4164,7 +4238,7 @@
     "/perps/v1/account/pnl": {
       "get": {
         "summary": "Get PnL",
-        "description": "Get PnL history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 1000 entries returned per request.\n",
+        "description": "Get PnL history for the authenticated account.\nIf no end time is provided, the current time will be used.\nEach point is the PnL realized inside its `interval` bucket — not a running\ntotal. Buckets are aligned to the Unix epoch, and one in which nothing was\nrealized is omitted, so the series is sparse.\nA point is stamped with the last populated hour in its bucket, not with the\nbucket's start, so every returned timestamp falls within the requested\nwindow. Window bounds select whole one-hour rollup rows before coarser\nbuckets are formed.\nMaximum of 1000 entries returned per request — of buckets, so a coarser\ninterval covers a longer window before `more` is set. When `more` is true,\npage by re-requesting from one millisecond past the last timestamp\nreturned; that always lands on the next bucket, never back inside the one\njust served.\n",
         "operationId": "perps_getPnlHistory",
         "parameters": [
           {
@@ -18055,6 +18129,11 @@
         "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
         "example": 1767225600000
       },
+      "cancel_ts": {
+        "type": "integer",
+        "description": "Cancellation outcome timestamp in Unix milliseconds",
+        "example": 1767225600000
+      },
       "BBO": {
         "title": "BBO",
         "required": [
@@ -18888,7 +18967,8 @@
       "CancelAccepted": {
         "required": [
           "status",
-          "oid"
+          "oid",
+          "ts"
         ],
         "type": "object",
         "properties": {
@@ -18903,13 +18983,17 @@
           },
           "coid": {
             "$ref": "#/components/schemas/coid"
+          },
+          "ts": {
+            "$ref": "#/components/schemas/cancel_ts"
           }
         }
       },
       "CancelRejected": {
         "required": [
           "status",
-          "error"
+          "error",
+          "ts"
         ],
         "type": "object",
         "properties": {
@@ -18927,6 +19011,9 @@
           },
           "error": {
             "$ref": "#/components/schemas/error"
+          },
+          "ts": {
+            "$ref": "#/components/schemas/cancel_ts"
           }
         }
       },
@@ -19122,6 +19209,44 @@
       },
       "Error404": {
         "title": "Error404",
+        "required": [
+          "status",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "err"
+            ],
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/error"
+          }
+        }
+      },
+      "Error408": {
+        "title": "Error408",
+        "required": [
+          "status",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "err"
+            ],
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/error"
+          }
+        }
+      },
+      "Error413": {
+        "title": "Error413",
         "required": [
           "status",
           "error"
@@ -19903,9 +20028,14 @@
         }
       },
       "cursor": {
-        "type": "integer",
-        "description": "Pagination cursor. Pass the trade ID of the last fill from the previous page to fetch the next page. Paging follows the `sort` direction (strictly older fills when `sort=desc`, strictly newer when `sort=asc`).",
-        "example": 1
+        "type": "string",
+        "description": "Pagination cursor. Pass the opaque `cursor` returned by the previous page to fetch the next page. Paging follows the `sort` direction (strictly older fills when `sort=desc`, strictly newer when `sort=asc`). The trade ID of the last fill from the previous page is also accepted for backwards compatibility.",
+        "example": "eyJ0cyI6MTc2NzIyNTYwMDAwMDAwMDAwMCwiaWQiOjF9"
+      },
+      "fills_cursor": {
+        "type": "string",
+        "description": "Opaque keyset pagination cursor for the next page of fills. Present while `more` is true; pass it as `cursor` on the next request, keeping the other parameters the same across pages.",
+        "example": "eyJ0cyI6MTc2NzIyNTYwMDAwMDAwMDAwMCwiaWQiOjF9"
       },
       "sort": {
         "enum": [
@@ -20040,6 +20170,9 @@
           },
           "more": {
             "$ref": "#/components/schemas/more"
+          },
+          "cursor": {
+            "$ref": "#/components/schemas/fills_cursor"
           }
         }
       },
@@ -27194,6 +27327,26 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error401"
+            }
+          }
+        }
+      },
+      "Error408Response": {
+        "description": "Request Timeout — the request body was not delivered within the\ngateway's read deadline. Protects against slow uploads holding\nconnections open; send the complete body promptly and retry.\n`error` is `request_body_timeout`.\n",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error408"
+            }
+          }
+        }
+      },
+      "Error413Response": {
+        "description": "Content Too Large — the request body exceeds the gateway's size cap,\njudged on the declared `Content-Length` or the actual stream. Split\noversized batches into smaller requests. `error` is\n`payload_too_large`.\n",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error413"
             }
           }
         }

@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Equity
         {
         }
         /// <summary>
-        /// Get equity history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 1000 entries returned per request.
+        /// Get equity history for the authenticated account.If no end time is provided, the current time will be used.Each point is the last equity sample in its `interval` bucket, stamped withthat sample&apos;s own timestamp rather than the bucket&apos;s start — so everytimestamp falls within the requested window. Buckets are aligned to theUnix epoch.Equity history is served at one-minute resolution, so `1s` is served as`1m`.Maximum of 1000 entries returned per request — of buckets, so a coarserinterval covers a longer window before `more` is set. When `more` is true,page by re-requesting from one millisecond past the last timestampreturned; that always lands on the next bucket, never back inside the onejust served.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.EquityHistory"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Equity
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.EquityHistory>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.EquityHistory.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get equity history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 1000 entries returned per request.
+        /// Get equity history for the authenticated account.If no end time is provided, the current time will be used.Each point is the last equity sample in its `interval` bucket, stamped withthat sample&apos;s own timestamp rather than the bucket&apos;s start — so everytimestamp falls within the requested window. Buckets are aligned to theUnix epoch.Equity history is served at one-minute resolution, so `1s` is served as`1m`.Maximum of 1000 entries returned per request — of buckets, so a coarserinterval covers a longer window before `more` is set. When `more` is true,page by re-requesting from one millisecond past the last timestampreturned; that always lands on the next bucket, never back inside the onejust served.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Equity
             return new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Equity.EquityRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get equity history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 1000 entries returned per request.
+        /// Get equity history for the authenticated account.If no end time is provided, the current time will be used.Each point is the last equity sample in its `interval` bucket, stamped withthat sample&apos;s own timestamp rather than the bucket&apos;s start — so everytimestamp falls within the requested window. Buckets are aligned to theUnix epoch.Equity history is served at one-minute resolution, so `1s` is served as`1m`.Maximum of 1000 entries returned per request — of buckets, so a coarserinterval covers a longer window before `more` is set. When `more` is true,page by re-requesting from one millisecond past the last timestampreturned; that always lands on the next bucket, never back inside the onejust served.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EquityRequestBuilderGetQueryParameters 
