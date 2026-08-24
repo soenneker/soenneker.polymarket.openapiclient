@@ -1028,6 +1028,52 @@
             "$ref": "#/components/responses/Error500Response"
           }
         }
+      },
+      "patch": {
+        "operationId": "modifyOrders",
+        "summary": "Modify Orders",
+        "security": [],
+        "x-mint": {
+          "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **1 + floor(n / 20)**</Badge> <Badge color=\"gray\" size=\"md\">Action Weight: **1 / order**</Badge>"
+        },
+        "description": "Modify the price and total quantity of existing orders by exchange order ID.\nRequires proxy signature, see [proxy signing](/http/signing#2-proxy-signing).\n",
+        "requestBody": {
+          "description": "Modify request.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "One modify result per requested order, in request order.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModifyResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BatchError400Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/BatchError404Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/BatchError429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/BatchError500Response"
+          }
+        }
       }
     },
     "/v1/trade/orders/all": {
@@ -1113,6 +1159,52 @@
           },
           "500": {
             "$ref": "#/components/responses/Error500Response"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "modifyOrdersByCoid",
+        "summary": "Modify Orders COID",
+        "security": [],
+        "x-mint": {
+          "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **1 + floor(n / 20)**</Badge> <Badge color=\"gray\" size=\"md\">Action Weight: **1 / order**</Badge>"
+        },
+        "description": "Modify the price and total quantity of existing orders by client order ID.\nRequires proxy signature, see [proxy signing](/http/signing#2-proxy-signing).\n",
+        "requestBody": {
+          "description": "Modify by coid request.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyByCoidRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "One modify result per requested order, in request order.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModifyResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BatchError400Response"
+          },
+          "404": {
+            "$ref": "#/components/responses/BatchError404Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/BatchError429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/BatchError500Response"
           }
         }
       }
@@ -7234,6 +7326,256 @@
             "$ref": "#/components/schemas/more"
           }
         }
+      },
+      "ModifyAccepted": {
+        "type": "object",
+        "required": [
+          "status",
+          "order"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ]
+          },
+          "order": {
+            "$ref": "#/components/schemas/Order"
+          }
+        }
+      },
+      "ModifyByCoidRequest": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "op"
+            ],
+            "properties": {
+              "op": {
+                "$ref": "#/components/schemas/OpModifyOrdersByCoid"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/BaseOp"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "exp": {
+                "$ref": "#/components/schemas/exp"
+              }
+            }
+          }
+        ]
+      },
+      "ModifyOrder": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "oid",
+          "p",
+          "qty"
+        ],
+        "properties": {
+          "oid": {
+            "$ref": "#/components/schemas/oid"
+          },
+          "p": {
+            "$ref": "#/components/schemas/p"
+          },
+          "qty": {
+            "$ref": "#/components/schemas/qty"
+          }
+        }
+      },
+      "ModifyOrderByCoid": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "coid",
+          "p",
+          "qty"
+        ],
+        "properties": {
+          "coid": {
+            "$ref": "#/components/schemas/coid"
+          },
+          "p": {
+            "$ref": "#/components/schemas/p"
+          },
+          "qty": {
+            "$ref": "#/components/schemas/qty"
+          }
+        }
+      },
+      "ModifyRejected": {
+        "type": "object",
+        "required": [
+          "status",
+          "error"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "err"
+            ]
+          },
+          "oid": {
+            "$ref": "#/components/schemas/oid"
+          },
+          "coid": {
+            "$ref": "#/components/schemas/coid"
+          },
+          "error": {
+            "$ref": "#/components/schemas/error"
+          }
+        }
+      },
+      "ModifyRequest": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "op"
+            ],
+            "properties": {
+              "op": {
+                "$ref": "#/components/schemas/OpModifyOrders"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/BaseOp"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "exp": {
+                "$ref": "#/components/schemas/exp"
+              }
+            }
+          }
+        ]
+      },
+      "ModifyResponse": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ModifyAccepted"
+          },
+          {
+            "$ref": "#/components/schemas/ModifyRejected"
+          }
+        ]
+      },
+      "OpModifyOrders": {
+        "type": "object",
+        "required": [
+          "type",
+          "args"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "modifyOrders"
+            ]
+          },
+          "args": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/ModifyOrder"
+            }
+          }
+        }
+      },
+      "OpModifyOrdersByCoid": {
+        "type": "object",
+        "required": [
+          "type",
+          "args"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "modifyOrdersCOID"
+            ]
+          },
+          "args": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/ModifyOrderByCoid"
+            }
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "required": [
+          "oid",
+          "iid",
+          "buy",
+          "p",
+          "qty",
+          "tif",
+          "po",
+          "ro",
+          "status",
+          "rest",
+          "fill",
+          "cts",
+          "uts"
+        ],
+        "properties": {
+          "oid": {
+            "$ref": "#/components/schemas/oid"
+          },
+          "iid": {
+            "$ref": "#/components/schemas/iid"
+          },
+          "buy": {
+            "$ref": "#/components/schemas/buy"
+          },
+          "p": {
+            "$ref": "#/components/schemas/p"
+          },
+          "qty": {
+            "$ref": "#/components/schemas/qty"
+          },
+          "tif": {
+            "$ref": "#/components/schemas/tif"
+          },
+          "po": {
+            "$ref": "#/components/schemas/po"
+          },
+          "ro": {
+            "$ref": "#/components/schemas/ro"
+          },
+          "rest": {
+            "$ref": "#/components/schemas/rest"
+          },
+          "fill": {
+            "$ref": "#/components/schemas/fill"
+          },
+          "cts": {
+            "$ref": "#/components/schemas/cts"
+          },
+          "uts": {
+            "$ref": "#/components/schemas/uts"
+          },
+          "status": {
+            "$ref": "#/components/schemas/st"
+          },
+          "coid": {
+            "$ref": "#/components/schemas/coid"
+          }
+        }
       }
     },
     "responses": {
@@ -7356,6 +7698,21 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error401"
+            }
+          }
+        }
+      },
+      "BatchError404Response": {
+        "description": "Not found — the batch endpoint is disabled on this venue. Request-level\nfailures are returned as a single rejected item so batch endpoints always\nreturn an array. `error` is `not_found`.\n",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "$ref": "#/components/schemas/GenericRejected"
+              }
             }
           }
         }

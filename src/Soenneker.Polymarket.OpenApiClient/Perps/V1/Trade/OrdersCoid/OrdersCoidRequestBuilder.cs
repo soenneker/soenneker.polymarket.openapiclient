@@ -64,6 +64,38 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.OrdersCoid
             return collectionResult?.AsList();
         }
         /// <summary>
+        /// Modify the price and total quantity of existing orders by client order ID.Requires proxy signature, see [proxy signing](/http/signing#2-proxy-signing).
+        /// </summary>
+        /// <returns>A List&lt;global::Soenneker.Polymarket.OpenApiClient.Models.ModifyResponse&gt;</returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="List<global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected>">When receiving a 400 status code</exception>
+        /// <exception cref="List<global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected>">When receiving a 404 status code</exception>
+        /// <exception cref="List<global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected>">When receiving a 429 status code</exception>
+        /// <exception cref="List<global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected>">When receiving a 500 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<List<global::Soenneker.Polymarket.OpenApiClient.Models.ModifyResponse>?> PatchAsync(global::Soenneker.Polymarket.OpenApiClient.Models.ModifyByCoidRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<List<global::Soenneker.Polymarket.OpenApiClient.Models.ModifyResponse>> PatchAsync(global::Soenneker.Polymarket.OpenApiClient.Models.ModifyByCoidRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
+            };
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Polymarket.OpenApiClient.Models.ModifyResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.ModifyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
+        }
+        /// <summary>
         /// Cancel orders by client order ID.Requires proxy signature, see [proxy signing](/http/signing#2-proxy-signing).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -80,6 +112,28 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.OrdersCoid
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
+        }
+        /// <summary>
+        /// Modify the price and total quantity of existing orders by client order ID.Requires proxy signature, see [proxy signing](/http/signing#2-proxy-signing).
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Polymarket.OpenApiClient.Models.ModifyByCoidRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Polymarket.OpenApiClient.Models.ModifyByCoidRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

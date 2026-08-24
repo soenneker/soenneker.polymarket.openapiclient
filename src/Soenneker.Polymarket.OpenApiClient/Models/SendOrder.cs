@@ -19,10 +19,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Order payload submitted to the CLOB API. In CLOB V2, `expiration` remains inthe POST /order wire body for GTD/order-expiry handling, but it is not partof the EIP-712 signed order struct.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Order? Order { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder? Order { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Order Order { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder Order { get; set; }
 #endif
         /// <summary>Time in force</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderOrderType? OrderType { get; set; }
@@ -64,7 +64,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "deferExec", n => { DeferExec = n.GetBoolValue(); } },
-                { "order", n => { Order = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Order>(global::Soenneker.Polymarket.OpenApiClient.Models.Order.CreateFromDiscriminatorValue); } },
+                { "order", n => { Order = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder>(global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder.CreateFromDiscriminatorValue); } },
                 { "orderType", n => { OrderType = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderOrderType>(); } },
                 { "owner", n => { Owner = n.GetStringValue(); } },
                 { "postOnly", n => { PostOnly = n.GetBoolValue(); } },
@@ -78,7 +78,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("deferExec", DeferExec);
-            writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Order>("order", Order);
+            writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder>("order", Order);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderOrderType>("orderType", OrderType);
             writer.WriteStringValue("owner", Owner);
             writer.WriteBoolValue("postOnly", PostOnly);

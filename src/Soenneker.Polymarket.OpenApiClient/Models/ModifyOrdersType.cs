@@ -3,17 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Polymarket.OpenApiClient.Models
 {
-    /// <summary>Order side</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum OrderSide
+    #pragma warning disable CS1591
+    public enum ModifyOrdersType
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "BUY")]
+        [EnumMember(Value = "modifyOrders")]
         #pragma warning disable CS1591
-        Buy,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "SELL")]
-        #pragma warning disable CS1591
-        Sell,
+        ModifyOrders,
         #pragma warning restore CS1591
     }
 }

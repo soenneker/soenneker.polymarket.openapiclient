@@ -7,100 +7,77 @@ using System.IO;
 using System;
 namespace Soenneker.Polymarket.OpenApiClient.Models
 {
-    /// <summary>
-    /// Order payload submitted to the CLOB API. In CLOB V2, `expiration` remains inthe POST /order wire body for GTD/order-expiry handling, but it is not partof the EIP-712 signed order struct.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Order : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Builder code (bytes32) for integrator attribution. `0x` + 64 hex chars or empty.</summary>
+        /// <summary>Is buy</summary>
+        public bool? Buy { get; set; }
+        /// <summary>Client order ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Builder { get; set; }
+        public string? Coid { get; set; }
 #nullable restore
 #else
-        public string Builder { get; set; }
+        public string Coid { get; set; }
 #endif
-        /// <summary>Unix timestamp when the order expires. Present in the API wire body; not part of the CLOB V2 EIP-712 signed order struct.</summary>
+        /// <summary>Create timestamp in milliseconds</summary>
+        public long? Cts { get; set; }
+        /// <summary>Filled quantity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Expiration { get; set; }
+        public string? Fill { get; set; }
 #nullable restore
 #else
-        public string Expiration { get; set; }
+        public string Fill { get; set; }
 #endif
-        /// <summary>Ethereum address of the maker (In the default case, this is your proxy address)</summary>
+        /// <summary>Instrument ID</summary>
+        public int? Iid { get; set; }
+        /// <summary>Order ID</summary>
+        public int? Oid { get; set; }
+        /// <summary>Price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Maker { get; set; }
+        public string? P { get; set; }
 #nullable restore
 #else
-        public string Maker { get; set; }
+        public string P { get; set; }
 #endif
-        /// <summary>Amount the maker is providing in fixed-math with 6 decimals</summary>
+        /// <summary>Post only</summary>
+        public bool? Po { get; set; }
+        /// <summary>Quantity in no. of contracts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerAmount { get; set; }
+        public string? Qty { get; set; }
 #nullable restore
 #else
-        public string MakerAmount { get; set; }
+        public string Qty { get; set; }
 #endif
-        /// <summary>Reserved for future use</summary>
+        /// <summary>Resting quantity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Metadata { get; set; }
+        public string? Rest { get; set; }
 #nullable restore
 #else
-        public string Metadata { get; set; }
+        public string Rest { get; set; }
 #endif
-        /// <summary>Random salt for order uniqueness</summary>
-        public int? Salt { get; set; }
-        /// <summary>Order side</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.OrderSide? Side { get; set; }
-        /// <summary>Cryptographic signature of the order</summary>
+        /// <summary>Reduce only</summary>
+        public bool? Ro { get; set; }
+        /// <summary>Order status</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Signature { get; set; }
+        public string? Status { get; set; }
 #nullable restore
 #else
-        public string Signature { get; set; }
+        public string Status { get; set; }
 #endif
-        /// <summary>Type of signature (0 = EOA, 1 = POLY_PROXY, 2 = POLY_GNOSIS_SAFE)</summary>
-        public int? SignatureType { get; set; }
-        /// <summary>Ethereum address of the signer</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Signer { get; set; }
-#nullable restore
-#else
-        public string Signer { get; set; }
-#endif
-        /// <summary>Amount the taker is providing in fixed-math with 6 decimals</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TakerAmount { get; set; }
-#nullable restore
-#else
-        public string TakerAmount { get; set; }
-#endif
-        /// <summary>Unix timestamp in milliseconds when the order was created (used for order uniqueness)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Timestamp { get; set; }
-#nullable restore
-#else
-        public string Timestamp { get; set; }
-#endif
-        /// <summary>Token ID (asset ID) for the order</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TokenId { get; set; }
-#nullable restore
-#else
-        public string TokenId { get; set; }
-#endif
+        /// <summary>Time in force</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Tif? Tif { get; set; }
+        /// <summary>Update timestamp in milliseconds</summary>
+        public long? Uts { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Order"/> and sets the default values.
         /// </summary>
@@ -126,19 +103,20 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "builder", n => { Builder = n.GetStringValue(); } },
-                { "expiration", n => { Expiration = n.GetStringValue(); } },
-                { "maker", n => { Maker = n.GetStringValue(); } },
-                { "makerAmount", n => { MakerAmount = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetStringValue(); } },
-                { "salt", n => { Salt = n.GetIntValue(); } },
-                { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OrderSide>(); } },
-                { "signature", n => { Signature = n.GetStringValue(); } },
-                { "signatureType", n => { SignatureType = n.GetIntValue(); } },
-                { "signer", n => { Signer = n.GetStringValue(); } },
-                { "takerAmount", n => { TakerAmount = n.GetStringValue(); } },
-                { "timestamp", n => { Timestamp = n.GetStringValue(); } },
-                { "tokenId", n => { TokenId = n.GetStringValue(); } },
+                { "buy", n => { Buy = n.GetBoolValue(); } },
+                { "coid", n => { Coid = n.GetStringValue(); } },
+                { "cts", n => { Cts = n.GetLongValue(); } },
+                { "fill", n => { Fill = n.GetStringValue(); } },
+                { "iid", n => { Iid = n.GetIntValue(); } },
+                { "oid", n => { Oid = n.GetIntValue(); } },
+                { "p", n => { P = n.GetStringValue(); } },
+                { "po", n => { Po = n.GetBoolValue(); } },
+                { "qty", n => { Qty = n.GetStringValue(); } },
+                { "rest", n => { Rest = n.GetStringValue(); } },
+                { "ro", n => { Ro = n.GetBoolValue(); } },
+                { "status", n => { Status = n.GetStringValue(); } },
+                { "tif", n => { Tif = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Tif>(); } },
+                { "uts", n => { Uts = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -148,19 +126,20 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("builder", Builder);
-            writer.WriteStringValue("expiration", Expiration);
-            writer.WriteStringValue("maker", Maker);
-            writer.WriteStringValue("makerAmount", MakerAmount);
-            writer.WriteStringValue("metadata", Metadata);
-            writer.WriteIntValue("salt", Salt);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OrderSide>("side", Side);
-            writer.WriteStringValue("signature", Signature);
-            writer.WriteIntValue("signatureType", SignatureType);
-            writer.WriteStringValue("signer", Signer);
-            writer.WriteStringValue("takerAmount", TakerAmount);
-            writer.WriteStringValue("timestamp", Timestamp);
-            writer.WriteStringValue("tokenId", TokenId);
+            writer.WriteBoolValue("buy", Buy);
+            writer.WriteStringValue("coid", Coid);
+            writer.WriteLongValue("cts", Cts);
+            writer.WriteStringValue("fill", Fill);
+            writer.WriteIntValue("iid", Iid);
+            writer.WriteIntValue("oid", Oid);
+            writer.WriteStringValue("p", P);
+            writer.WriteBoolValue("po", Po);
+            writer.WriteStringValue("qty", Qty);
+            writer.WriteStringValue("rest", Rest);
+            writer.WriteBoolValue("ro", Ro);
+            writer.WriteStringValue("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Tif>("tif", Tif);
+            writer.WriteLongValue("uts", Uts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
