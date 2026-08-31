@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Description>A .NET client generated from Polymarket's combined OpenAPI documentation, updated daily</Description>
+        <Description>Generated request builders and models for Polymarket's public APIs.</Description>
         <Version Condition="'$(BUILD_VERSION)' == ''">4.0.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.Polymarket.OpenApiClient</AssemblyName>
