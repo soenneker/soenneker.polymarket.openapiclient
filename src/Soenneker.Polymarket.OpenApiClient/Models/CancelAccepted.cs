@@ -26,7 +26,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public int? Oid { get; set; }
         /// <summary>The status property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus? Status { get; set; }
-        /// <summary>Cancellation outcome timestamp in Unix milliseconds</summary>
+        /// <summary>The time when the exchange decided this cancellation outcome, in Unix milliseconds. Sequenced outcomes use the exchange event time. Rejections created before sequencing use the gateway’s decision time. This is not the client request timestamp.</summary>
         public long? Ts { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CancelAccepted"/> and sets the default values.

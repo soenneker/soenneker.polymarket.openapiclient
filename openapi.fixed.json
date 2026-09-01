@@ -18599,7 +18599,7 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Cancellation outcome timestamp in Unix milliseconds",
+            "description": "The time when the exchange decided this cancellation outcome, in Unix milliseconds. Sequenced outcomes use the exchange event time. Rejections created before sequencing use the gateway\u2019s decision time. This is not the client request timestamp.",
             "format": "int64"
           }
         }
@@ -18631,7 +18631,7 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Cancellation outcome timestamp in Unix milliseconds",
+            "description": "The time when the exchange decided this cancellation outcome, in Unix milliseconds. Sequenced outcomes use the exchange event time. Rejections created before sequencing use the gateway\u2019s decision time. This is not the client request timestamp.",
             "format": "int64"
           }
         }
@@ -18659,7 +18659,7 @@
           },
           "ts": {
             "type": "integer",
-            "description": "Cancellation outcome timestamp in Unix milliseconds",
+            "description": "The time when the exchange decided this cancellation outcome, in Unix milliseconds. Sequenced outcomes use the exchange event time. Rejections created before sequencing use the gateway\u2019s decision time. This is not the client request timestamp.",
             "format": "int64"
           },
           "error": {

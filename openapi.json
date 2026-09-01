@@ -18223,7 +18223,7 @@
       },
       "cancel_ts": {
         "type": "integer",
-        "description": "Cancellation outcome timestamp in Unix milliseconds",
+        "description": "The time when the exchange decided this cancellation outcome, in Unix milliseconds. Sequenced outcomes use the exchange event time. Rejections created before sequencing use the gateway’s decision time. This is not the client request timestamp.",
         "example": 1767225600000
       },
       "BBO": {
