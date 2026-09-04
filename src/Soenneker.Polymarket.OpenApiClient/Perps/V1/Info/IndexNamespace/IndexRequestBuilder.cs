@@ -96,12 +96,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.IndexNamespace
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("asset")]
             public string? Asset { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("asset")]
             public string Asset { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

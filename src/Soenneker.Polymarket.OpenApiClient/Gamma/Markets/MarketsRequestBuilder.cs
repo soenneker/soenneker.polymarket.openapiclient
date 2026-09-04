@@ -59,7 +59,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Markets
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MarketsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gamma/markets{?ascending*,clob_token_ids*,closed*,condition_ids*,cyom*,end_date_max*,end_date_min*,game_id*,id*,include_tag*,limit*,liquidity_num_max*,liquidity_num_min*,market_maker_address*,offset*,order*,question_ids*,related_tags*,rewards_min_size*,slug*,sports_market_types*,start_date_max*,start_date_min*,tag_id*,uma_resolution_status*,volume_num_max*,volume_num_min*}", pathParameters)
+        public MarketsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gamma/markets{?ascending*,clob_token_ids*,closed*,condition_ids*,cyom*,end_date_max*,end_date_min*,game_id*,id*,include_tag*,limit*,liquidity_num_max*,liquidity_num_min*,offset*,order*,question_ids*,related_tags*,rewards_min_size*,slug*,sports_market_types*,start_date_max*,start_date_min*,tag_id*,uma_resolution_status*,volume_num_max*,volume_num_min*}", pathParameters)
         {
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Markets
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MarketsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gamma/markets{?ascending*,clob_token_ids*,closed*,condition_ids*,cyom*,end_date_max*,end_date_min*,game_id*,id*,include_tag*,limit*,liquidity_num_max*,liquidity_num_min*,market_maker_address*,offset*,order*,question_ids*,related_tags*,rewards_min_size*,slug*,sports_market_types*,start_date_max*,start_date_min*,tag_id*,uma_resolution_status*,volume_num_max*,volume_num_min*}", rawUrl)
+        public MarketsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gamma/markets{?ascending*,clob_token_ids*,closed*,condition_ids*,cyom*,end_date_max*,end_date_min*,game_id*,id*,include_tag*,limit*,liquidity_num_max*,liquidity_num_min*,offset*,order*,question_ids*,related_tags*,rewards_min_size*,slug*,sports_market_types*,start_date_max*,start_date_min*,tag_id*,uma_resolution_status*,volume_num_max*,volume_num_min*}", rawUrl)
         {
         }
         /// <summary>
@@ -123,71 +123,98 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Markets
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MarketsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("ascending")]
             public bool? Ascending { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("clob_token_ids")]
             public string[]? ClobTokenIds { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("clob_token_ids")]
             public string[] ClobTokenIds { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("closed")]
             public bool? Closed { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("condition_ids")]
             public string[]? ConditionIds { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("condition_ids")]
             public string[] ConditionIds { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("cyom")]
             public bool? Cyom { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("end_date_max")]
             public DateTimeOffset? EndDateMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("end_date_min")]
             public DateTimeOffset? EndDateMin { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("game_id")]
             public string? GameId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("game_id")]
             public string GameId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("id")]
             public int?[]? Id { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("id")]
             public int?[] Id { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("include_tag")]
             public bool? IncludeTag { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("liquidity_num_max")]
             public double? LiquidityNumMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("liquidity_num_min")]
             public double? LiquidityNumMin { get; set; }
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("market_maker_address")]
-            public string[]? MarketMakerAddress { get; set; }
-#nullable restore
-#else
-            [QueryParameter("market_maker_address")]
-            public string[] MarketMakerAddress { get; set; }
-#endif
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Comma-separated list of fields to order by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -200,54 +227,84 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Markets
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("question_ids")]
             public string[]? QuestionIds { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("question_ids")]
             public string[] QuestionIds { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("related_tags")]
             public bool? RelatedTags { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("rewards_min_size")]
             public double? RewardsMinSize { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("slug")]
             public string[]? Slug { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("slug")]
             public string[] Slug { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("sports_market_types")]
             public string[]? SportsMarketTypes { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("sports_market_types")]
             public string[] SportsMarketTypes { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("start_date_max")]
             public DateTimeOffset? StartDateMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("start_date_min")]
             public DateTimeOffset? StartDateMin { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("tag_id")]
             public int? TagId { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("uma_resolution_status")]
             public string? UmaResolutionStatus { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("uma_resolution_status")]
             public string UmaResolutionStatus { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("volume_num_max")]
             public double? VolumeNumMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("volume_num_min")]
             public double? VolumeNumMin { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

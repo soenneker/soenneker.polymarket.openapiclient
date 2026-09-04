@@ -85,8 +85,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Markets.Slug.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithSlugItemRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("include_tag")]
             public bool? IncludeTag { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

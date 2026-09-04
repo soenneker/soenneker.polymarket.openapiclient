@@ -104,8 +104,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos
             [QueryParameter("cursor")]
             public string Cursor { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Comma-separated combo_condition_id values to filter to specific combos. These equal the market_id of isCombo rows on /activity. Omit for all of the user&apos;s combos.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -116,10 +118,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos
             [QueryParameter("market_id")]
             public string[] MarketId { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("sort")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1PositionsCombosSortParameter? Sort { get; set; }
+            #pragma warning restore CS1591
             /// <summary>One or more statuses, comma-separated (e.g. status=RESOLVED_WIN,RESOLVED_PARTIAL,RESOLVED_LOSS). Values are case-insensitive; any invalid member is a 400. Omit for the default listing (open positions plus resolved positions with a recorded resolution).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,12 +144,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos
             public int? UpdatedBefore { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("user")]
             public string? User { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("user")]
             public string User { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

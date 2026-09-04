@@ -127,10 +127,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Activity
             /// <summary>Starting index for pagination. Requests past the cap are rejected with a 400 (never silently clamped). To read history deeper than offset 5000, page inside `start`/`end` windows — each window has its own offset budget.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("side")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetActivitySideParameter? Side { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("sortBy")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetActivitySortByParameter? SortBy { get; set; }
+            #pragma warning restore CS1591
             /// <summary>`DESC` (default) returns the newest rows first; `ASC` the oldest first. Both orders are stable — the same query returns the same rows at any `limit`/`offset`, so pages compose without gaps or repeats.</summary>
             [QueryParameter("sortDirection")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetActivitySortDirectionParameter? SortDirection { get; set; }
@@ -149,12 +153,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Activity
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("user")]
             public string? User { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("user")]
             public string User { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

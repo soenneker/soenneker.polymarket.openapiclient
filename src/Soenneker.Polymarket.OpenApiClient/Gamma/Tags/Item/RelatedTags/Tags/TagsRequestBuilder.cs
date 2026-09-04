@@ -86,10 +86,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Tags.Item.RelatedTags.Tags
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TagsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("omit_empty")]
             public bool? OmitEmpty { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("status")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.GammaGetTagsRelatedToATagByIdStatusParameter? Status { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

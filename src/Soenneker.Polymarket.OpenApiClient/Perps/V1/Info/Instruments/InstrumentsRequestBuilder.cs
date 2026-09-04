@@ -95,12 +95,18 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Instruments
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class InstrumentsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("category")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.Category? Category { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("instrument_id")]
             public long? InstrumentId { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("instrument_type")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType? InstrumentType { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

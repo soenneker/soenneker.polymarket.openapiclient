@@ -642,12 +642,6 @@ paths:
           type: array
           items:
             type: string
-      - name: market_maker_address
-        in: query
-        schema:
-          type: array
-          items:
-            type: string
       - name: liquidity_num_min
         in: query
         schema:
@@ -940,12 +934,6 @@ paths:
           items:
             type: string
       - name: question_ids
-        in: query
-        schema:
-          type: array
-          items:
-            type: string
-      - name: market_maker_address
         in: query
         schema:
           type: array
@@ -1870,9 +1858,6 @@ components:
         category:
           type: string
           nullable: true
-        ammType:
-          type: string
-          nullable: true
         liquidity:
           type: string
           nullable: true
@@ -1940,8 +1925,6 @@ components:
         closed:
           type: boolean
           nullable: true
-        marketMakerAddress:
-          type: string
         createdBy:
           type: integer
           nullable: true
@@ -2073,21 +2056,6 @@ components:
         umaReward:
           type: string
           nullable: true
-        fpmmLive:
-          type: boolean
-          nullable: true
-        volume24hrAmm:
-          type: number
-          nullable: true
-        volume1wkAmm:
-          type: number
-          nullable: true
-        volume1moAmm:
-          type: number
-          nullable: true
-        volume1yrAmm:
-          type: number
-          nullable: true
         volume24hrClob:
           type: number
           nullable: true
@@ -2100,13 +2068,7 @@ components:
         volume1yrClob:
           type: number
           nullable: true
-        volumeAmm:
-          type: number
-          nullable: true
         volumeClob:
-          type: number
-          nullable: true
-        liquidityAmm:
           type: number
           nullable: true
         liquidityClob:
@@ -2455,9 +2417,6 @@ components:
           nullable: true
         enableOrderBook:
           type: boolean
-          nullable: true
-        liquidityAmm:
-          type: number
           nullable: true
         liquidityClob:
           type: number
@@ -3304,10 +3263,6 @@ components:
           items:
             type: string
         conditionIds:
-          type: array
-          items:
-            type: string
-        marketMakerAddress:
           type: array
           items:
             type: string

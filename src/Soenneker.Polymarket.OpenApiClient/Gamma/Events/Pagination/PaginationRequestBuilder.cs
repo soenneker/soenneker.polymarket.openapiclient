@@ -85,16 +85,26 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Pagination
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PaginationRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("ascending")]
             public bool? Ascending { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("include_chat")]
             public bool? IncludeChat { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("include_template")]
             public bool? IncludeTemplate { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Comma-separated list of fields to order by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -107,12 +117,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Pagination
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("recurrence")]
             public string? Recurrence { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("recurrence")]
             public string Recurrence { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

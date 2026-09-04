@@ -60,14 +60,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public double? LiquidityNumMax { get; set; }
         /// <summary>The liquidityNumMin property</summary>
         public double? LiquidityNumMin { get; set; }
-        /// <summary>The marketMakerAddress property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? MarketMakerAddress { get; set; }
-#nullable restore
-#else
-        public List<string> MarketMakerAddress { get; set; }
-#endif
         /// <summary>The questionIds property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -150,7 +142,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "includeTags", n => { IncludeTags = n.GetBoolValue(); } },
                 { "liquidityNumMax", n => { LiquidityNumMax = n.GetDoubleValue(); } },
                 { "liquidityNumMin", n => { LiquidityNumMin = n.GetDoubleValue(); } },
-                { "marketMakerAddress", n => { MarketMakerAddress = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "questionIds", n => { QuestionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "relatedTags", n => { RelatedTags = n.GetBoolValue(); } },
                 { "rewardsMinSize", n => { RewardsMinSize = n.GetDoubleValue(); } },
@@ -182,7 +173,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("includeTags", IncludeTags);
             writer.WriteDoubleValue("liquidityNumMax", LiquidityNumMax);
             writer.WriteDoubleValue("liquidityNumMin", LiquidityNumMin);
-            writer.WriteCollectionOfPrimitiveValues<string>("marketMakerAddress", MarketMakerAddress);
             writer.WriteCollectionOfPrimitiveValues<string>("questionIds", QuestionIds);
             writer.WriteBoolValue("relatedTags", RelatedTags);
             writer.WriteDoubleValue("rewardsMinSize", RewardsMinSize);

@@ -108,8 +108,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Holders
             [QueryParameter("market")]
             public string[] Market { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("minBalance")]
             public int? MinBalance { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

@@ -114,8 +114,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.MarketPositions
             /// <summary>Sort positions by:- `TOKENS` — Position size (number of tokens)- `CASH_PNL` — Unrealized cash PnL- `REALIZED_PNL` — Realized PnL- `TOTAL_PNL` — Total PnL (cash_pnl + realized_pnl)</summary>
             [QueryParameter("sortBy")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1MarketPositionsSortByParameter? SortBy { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("sortDirection")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1MarketPositionsSortDirectionParameter? SortDirection { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Filter positions by status.- `OPEN` — Only positions with size &gt; 0.01- `CLOSED` — Only positions with size &lt;= 0.01- `ALL` — All positions regardless of size</summary>
             [QueryParameter("status")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1MarketPositionsStatusParameter? Status { get; set; }

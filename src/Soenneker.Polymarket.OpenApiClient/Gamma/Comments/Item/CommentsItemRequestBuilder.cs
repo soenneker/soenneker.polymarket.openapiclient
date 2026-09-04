@@ -86,8 +86,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Comments.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CommentsItemRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("get_positions")]
             public bool? GetPositions { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

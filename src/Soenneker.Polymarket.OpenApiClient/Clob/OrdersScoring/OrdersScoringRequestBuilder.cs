@@ -107,7 +107,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.OrdersScoring
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Clob.OrdersScoring.OrdersScoringRequestBuilder.OrdersScoringRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/clob/orders-scoring?order_ids={order_ids}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/clob/orders-scoring{?order_ids*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

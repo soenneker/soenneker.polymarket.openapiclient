@@ -98,33 +98,47 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Withdrawals
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("end_timestamp")]
             public string? EndTimestamp { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("end_timestamp")]
             public string EndTimestamp { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("hash")]
             public string? Hash { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("hash")]
             public string Hash { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("start_timestamp")]
             public string? StartTimestamp { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("start_timestamp")]
             public string StartTimestamp { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("withdrawal_status")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawalStatus? WithdrawalStatus { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

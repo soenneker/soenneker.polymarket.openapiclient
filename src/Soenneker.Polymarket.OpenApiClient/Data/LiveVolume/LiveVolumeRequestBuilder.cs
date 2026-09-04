@@ -93,8 +93,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.LiveVolume
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LiveVolumeRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("id")]
             public int? Id { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

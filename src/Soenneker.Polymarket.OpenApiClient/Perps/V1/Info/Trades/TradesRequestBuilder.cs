@@ -96,23 +96,33 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Trades
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("end_timestamp")]
             public string? EndTimestamp { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("end_timestamp")]
             public string EndTimestamp { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("instrument_id")]
             public long? InstrumentId { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("start_timestamp")]
             public string? StartTimestamp { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("start_timestamp")]
             public string StartTimestamp { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

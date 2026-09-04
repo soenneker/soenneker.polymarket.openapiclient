@@ -105,16 +105,26 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Comments
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CommentsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("ascending")]
             public bool? Ascending { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("get_positions")]
             public bool? GetPositions { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("holders_only")]
             public bool? HoldersOnly { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Comma-separated list of fields to order by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -125,10 +135,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Comments
             [QueryParameter("order")]
             public string Order { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("parent_entity_id")]
             public int? ParentEntityId { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("parent_entity_type")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.GammaListCommentsParentEntityTypeParameter? ParentEntityType { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

@@ -104,8 +104,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Activity.Combos
             [QueryParameter("cursor")]
             public string Cursor { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Comma-separated combo_condition_id values to filter to specific combos. These equal the market_id of isCombo rows on /activity. Omit for all of the user&apos;s combo activity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -116,16 +118,22 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Activity.Combos
             [QueryParameter("market_id")]
             public string[] MarketId { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("user")]
             public string? User { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("user")]
             public string User { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

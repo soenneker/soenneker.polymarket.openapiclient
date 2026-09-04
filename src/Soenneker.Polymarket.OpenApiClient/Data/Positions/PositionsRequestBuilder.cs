@@ -108,8 +108,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Positions
             /// <summary>Include positions in archived markets that are still active. Archived positions are excluded by default.</summary>
             [QueryParameter("includeArchived")]
             public bool? IncludeArchived { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Comma-separated list of condition IDs. Mutually exclusive with eventId.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,26 +122,42 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Positions
             [QueryParameter("market")]
             public string[] Market { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("mergeable")]
             public bool? Mergeable { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("redeemable")]
             public bool? Redeemable { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("sizeThreshold")]
             public double? SizeThreshold { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("sortBy")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetPositionsSortByParameter? SortBy { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("sortDirection")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetPositionsSortDirectionParameter? SortDirection { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("title")]
             public string? Title { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("title")]
             public string Title { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>User address (required)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

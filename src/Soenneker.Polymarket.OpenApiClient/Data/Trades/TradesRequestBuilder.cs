@@ -130,21 +130,29 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Trades
             /// <summary>Starting index for pagination. Requests past the cap are rejected with a 400 (never silently clamped). To read history deeper than offset 10000, page inside `start`/`end` windows — each window has its own offset budget.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("side")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetTradesSideParameter? Side { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Lower-bound timestamp (epoch seconds) for the trade window. Omit or pass `0` for the default window (most recent ~3 years); pass a positive epoch (e.g. `1`) to retrieve full history on user-scoped requests. Market/event-scoped requests keep the ~3-year floor — `start` can only narrow their window, not extend it.</summary>
             [QueryParameter("start")]
             public int? Start { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("takerOnly")]
             public bool? TakerOnly { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("user")]
             public string? User { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("user")]
             public string User { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

@@ -103,10 +103,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EventsItemRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("include_chat")]
             public bool? IncludeChat { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("include_template")]
             public bool? IncludeTemplate { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

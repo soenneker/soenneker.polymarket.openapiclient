@@ -234,8 +234,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public bool? IsTemplate { get; set; }
         /// <summary>The liquidity property</summary>
         public double? Liquidity { get; set; }
-        /// <summary>The liquidityAmm property</summary>
-        public double? LiquidityAmm { get; set; }
         /// <summary>The liquidityClob property</summary>
         public double? LiquidityClob { get; set; }
         /// <summary>The live property</summary>
@@ -512,7 +510,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "imageOptimized", n => { ImageOptimized = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ImageOptimization>(global::Soenneker.Polymarket.OpenApiClient.Models.ImageOptimization.CreateFromDiscriminatorValue); } },
                 { "isTemplate", n => { IsTemplate = n.GetBoolValue(); } },
                 { "liquidity", n => { Liquidity = n.GetDoubleValue(); } },
-                { "liquidityAmm", n => { LiquidityAmm = n.GetDoubleValue(); } },
                 { "liquidityClob", n => { LiquidityClob = n.GetDoubleValue(); } },
                 { "live", n => { Live = n.GetBoolValue(); } },
                 { "markets", n => { Markets = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.GammaMarket>(global::Soenneker.Polymarket.OpenApiClient.Models.GammaMarket.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -611,7 +608,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ImageOptimization>("imageOptimized", ImageOptimized);
             writer.WriteBoolValue("isTemplate", IsTemplate);
             writer.WriteDoubleValue("liquidity", Liquidity);
-            writer.WriteDoubleValue("liquidityAmm", LiquidityAmm);
             writer.WriteDoubleValue("liquidityClob", LiquidityClob);
             writer.WriteBoolValue("live", Live);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.GammaMarket>("markets", Markets);

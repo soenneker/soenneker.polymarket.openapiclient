@@ -107,27 +107,43 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Keyset
             /// <summary>Sort direction. Only used when order is set.</summary>
             [QueryParameter("ascending")]
             public bool? Ascending { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("closed")]
             public bool? Closed { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("created_by")]
             public string[]? CreatedBy { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("created_by")]
             public string[] CreatedBy { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("cyom")]
             public bool? Cyom { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("end_date_max")]
             public DateTimeOffset? EndDateMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("end_date_min")]
             public DateTimeOffset? EndDateMin { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("event_date")]
             public DateTimeOffset? EventDate { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("event_week")]
             public int? EventWeek { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Tag IDs to exclude. Cannot overlap with tag_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,27 +154,39 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Keyset
             [QueryParameter("exclude_tag_id")]
             public int?[] ExcludeTagId { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("featured")]
             public bool? Featured { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("featured_order")]
             public bool? FeaturedOrder { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("game_id")]
             public int?[]? GameId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("game_id")]
             public int?[] GameId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("id")]
             public int?[]? Id { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("id")]
             public int?[] Id { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>When true, includes BestLines relation</summary>
             [QueryParameter("include_best_lines")]
@@ -166,28 +194,40 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Keyset
             /// <summary>When true, includes Chats and Series.Chats relations</summary>
             [QueryParameter("include_chat")]
             public bool? IncludeChat { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("include_children")]
             public bool? IncludeChildren { get; set; }
+            #pragma warning restore CS1591
             /// <summary>When true, includes Templates relation</summary>
             [QueryParameter("include_template")]
             public bool? IncludeTemplate { get; set; }
             /// <summary>Maximum number of results to return (max 500)</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("liquidity_max")]
             public double? LiquidityMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("liquidity_min")]
             public double? LiquidityMin { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("live")]
             public bool? Live { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("locale")]
             public string? Locale { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("locale")]
             public string Locale { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>Not allowed. Returns 422 if provided.</summary>
             [QueryParameter("offset")]
@@ -202,8 +242,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Keyset
             [QueryParameter("order")]
             public string Order { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("parent_event_id")]
             public int? ParentEventId { get; set; }
+            #pragma warning restore CS1591
             /// <summary>When set, external_partners are attached to matching events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -216,81 +258,123 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Keyset
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("recurrence")]
             public string? Recurrence { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("recurrence")]
             public string Recurrence { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("related_tags")]
             public bool? RelatedTags { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("series_id")]
             public int?[]? SeriesId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("series_id")]
             public int?[] SeriesId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("slug")]
             public string[]? Slug { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("slug")]
             public string[] Slug { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("start_date_max")]
             public DateTimeOffset? StartDateMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("start_date_min")]
             public DateTimeOffset? StartDateMin { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("start_time_max")]
             public DateTimeOffset? StartTimeMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("start_time_min")]
             public DateTimeOffset? StartTimeMin { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("tag_id")]
             public int?[]? TagId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("tag_id")]
             public int?[] TagId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("tag_match")]
             public string? TagMatch { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("tag_match")]
             public string TagMatch { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("tag_slug")]
             public string? TagSlug { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("tag_slug")]
             public string TagSlug { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("title_search")]
             public string? TitleSearch { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("title_search")]
             public string TitleSearch { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("volume_max")]
             public double? VolumeMax { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("volume_min")]
             public double? VolumeMin { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

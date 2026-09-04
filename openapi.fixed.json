@@ -12913,16 +12913,6 @@
             }
           },
           {
-            "name": "market_maker_address",
-            "in": "query",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          {
             "name": "liquidity_num_min",
             "in": "query",
             "schema": {
@@ -13383,16 +13373,6 @@
           },
           {
             "name": "question_ids",
-            "in": "query",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "market_maker_address",
             "in": "query",
             "schema": {
               "type": "array",
@@ -25364,10 +25344,6 @@
             "type": "string",
             "nullable": true
           },
-          "ammType": {
-            "type": "string",
-            "nullable": true
-          },
           "liquidity": {
             "type": "string",
             "nullable": true
@@ -25456,9 +25432,6 @@
           "closed": {
             "type": "boolean",
             "nullable": true
-          },
-          "marketMakerAddress": {
-            "type": "string"
           },
           "createdBy": {
             "type": "integer",
@@ -25634,26 +25607,6 @@
             "type": "string",
             "nullable": true
           },
-          "fpmmLive": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "volume24hrAmm": {
-            "type": "number",
-            "nullable": true
-          },
-          "volume1wkAmm": {
-            "type": "number",
-            "nullable": true
-          },
-          "volume1moAmm": {
-            "type": "number",
-            "nullable": true
-          },
-          "volume1yrAmm": {
-            "type": "number",
-            "nullable": true
-          },
           "volume24hrClob": {
             "type": "number",
             "nullable": true
@@ -25670,15 +25623,7 @@
             "type": "number",
             "nullable": true
           },
-          "volumeAmm": {
-            "type": "number",
-            "nullable": true
-          },
           "volumeClob": {
-            "type": "number",
-            "nullable": true
-          },
-          "liquidityAmm": {
             "type": "number",
             "nullable": true
           },
@@ -26146,10 +26091,6 @@
           },
           "enableOrderBook": {
             "type": "boolean",
-            "nullable": true
-          },
-          "liquidityAmm": {
-            "type": "number",
             "nullable": true
           },
           "liquidityClob": {
@@ -27315,12 +27256,6 @@
             }
           },
           "conditionIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "marketMakerAddress": {
             "type": "array",
             "items": {
               "type": "string"

@@ -20,14 +20,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ammType property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AmmType { get; set; }
-#nullable restore
-#else
-        public string AmmType { get; set; }
-#endif
         /// <summary>The archived property</summary>
         public bool? Archived { get; set; }
         /// <summary>The automaticallyActive property</summary>
@@ -188,8 +180,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string FormatType { get; set; }
 #endif
-        /// <summary>The fpmmLive property</summary>
-        public bool? FpmmLive { get; set; }
         /// <summary>The funded property</summary>
         public bool? Funded { get; set; }
         /// <summary>The fundedTimestamp property</summary>
@@ -288,8 +278,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string Liquidity { get; set; }
 #endif
-        /// <summary>The liquidityAmm property</summary>
-        public double? LiquidityAmm { get; set; }
         /// <summary>The liquidityClob property</summary>
         public double? LiquidityClob { get; set; }
         /// <summary>The liquidityNum property</summary>
@@ -324,14 +312,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public bool? ManualActivation { get; set; }
         /// <summary>The marketGroup property</summary>
         public int? MarketGroup { get; set; }
-        /// <summary>The marketMakerAddress property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MarketMakerAddress { get; set; }
-#nullable restore
-#else
-        public string MarketMakerAddress { get; set; }
-#endif
         /// <summary>The marketType property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -614,30 +594,20 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>The volume1mo property</summary>
         public double? Volume1mo { get; set; }
-        /// <summary>The volume1moAmm property</summary>
-        public double? Volume1moAmm { get; set; }
         /// <summary>The volume1moClob property</summary>
         public double? Volume1moClob { get; set; }
         /// <summary>The volume1wk property</summary>
         public double? Volume1wk { get; set; }
-        /// <summary>The volume1wkAmm property</summary>
-        public double? Volume1wkAmm { get; set; }
         /// <summary>The volume1wkClob property</summary>
         public double? Volume1wkClob { get; set; }
         /// <summary>The volume1yr property</summary>
         public double? Volume1yr { get; set; }
-        /// <summary>The volume1yrAmm property</summary>
-        public double? Volume1yrAmm { get; set; }
         /// <summary>The volume1yrClob property</summary>
         public double? Volume1yrClob { get; set; }
         /// <summary>The volume24hr property</summary>
         public double? Volume24hr { get; set; }
-        /// <summary>The volume24hrAmm property</summary>
-        public double? Volume24hrAmm { get; set; }
         /// <summary>The volume24hrClob property</summary>
         public double? Volume24hrClob { get; set; }
-        /// <summary>The volumeAmm property</summary>
-        public double? VolumeAmm { get; set; }
         /// <summary>The volumeClob property</summary>
         public double? VolumeClob { get; set; }
         /// <summary>The volumeNum property</summary>
@@ -688,7 +658,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "acceptingOrders", n => { AcceptingOrders = n.GetBoolValue(); } },
                 { "acceptingOrdersTimestamp", n => { AcceptingOrdersTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "active", n => { Active = n.GetBoolValue(); } },
-                { "ammType", n => { AmmType = n.GetStringValue(); } },
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "automaticallyActive", n => { AutomaticallyActive = n.GetBoolValue(); } },
                 { "automaticallyResolved", n => { AutomaticallyResolved = n.GetBoolValue(); } },
@@ -724,7 +693,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "feeSchedule", n => { FeeSchedule = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.FeeSchedule>(global::Soenneker.Polymarket.OpenApiClient.Models.FeeSchedule.CreateFromDiscriminatorValue); } },
                 { "feesEnabled", n => { FeesEnabled = n.GetBoolValue(); } },
                 { "formatType", n => { FormatType = n.GetStringValue(); } },
-                { "fpmmLive", n => { FpmmLive = n.GetBoolValue(); } },
                 { "funded", n => { Funded = n.GetBoolValue(); } },
                 { "fundedTimestamp", n => { FundedTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "gameId", n => { GameId = n.GetStringValue(); } },
@@ -741,7 +709,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "lastTradePrice", n => { LastTradePrice = n.GetDoubleValue(); } },
                 { "line", n => { Line = n.GetDoubleValue(); } },
                 { "liquidity", n => { Liquidity = n.GetStringValue(); } },
-                { "liquidityAmm", n => { LiquidityAmm = n.GetDoubleValue(); } },
                 { "liquidityClob", n => { LiquidityClob = n.GetDoubleValue(); } },
                 { "liquidityNum", n => { LiquidityNum = n.GetDoubleValue(); } },
                 { "lowerBound", n => { LowerBound = n.GetStringValue(); } },
@@ -750,7 +717,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "makerBaseFee", n => { MakerBaseFee = n.GetIntValue(); } },
                 { "manualActivation", n => { ManualActivation = n.GetBoolValue(); } },
                 { "marketGroup", n => { MarketGroup = n.GetIntValue(); } },
-                { "marketMakerAddress", n => { MarketMakerAddress = n.GetStringValue(); } },
                 { "marketType", n => { MarketType = n.GetStringValue(); } },
                 { "negRiskOther", n => { NegRiskOther = n.GetBoolValue(); } },
                 { "new", n => { New = n.GetBoolValue(); } },
@@ -808,18 +774,13 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "upperBoundDate", n => { UpperBoundDate = n.GetStringValue(); } },
                 { "volume", n => { Volume = n.GetStringValue(); } },
                 { "volume1mo", n => { Volume1mo = n.GetDoubleValue(); } },
-                { "volume1moAmm", n => { Volume1moAmm = n.GetDoubleValue(); } },
                 { "volume1moClob", n => { Volume1moClob = n.GetDoubleValue(); } },
                 { "volume1wk", n => { Volume1wk = n.GetDoubleValue(); } },
-                { "volume1wkAmm", n => { Volume1wkAmm = n.GetDoubleValue(); } },
                 { "volume1wkClob", n => { Volume1wkClob = n.GetDoubleValue(); } },
                 { "volume1yr", n => { Volume1yr = n.GetDoubleValue(); } },
-                { "volume1yrAmm", n => { Volume1yrAmm = n.GetDoubleValue(); } },
                 { "volume1yrClob", n => { Volume1yrClob = n.GetDoubleValue(); } },
                 { "volume24hr", n => { Volume24hr = n.GetDoubleValue(); } },
-                { "volume24hrAmm", n => { Volume24hrAmm = n.GetDoubleValue(); } },
                 { "volume24hrClob", n => { Volume24hrClob = n.GetDoubleValue(); } },
-                { "volumeAmm", n => { VolumeAmm = n.GetDoubleValue(); } },
                 { "volumeClob", n => { VolumeClob = n.GetDoubleValue(); } },
                 { "volumeNum", n => { VolumeNum = n.GetDoubleValue(); } },
                 { "wideFormat", n => { WideFormat = n.GetBoolValue(); } },
@@ -837,7 +798,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("acceptingOrders", AcceptingOrders);
             writer.WriteDateTimeOffsetValue("acceptingOrdersTimestamp", AcceptingOrdersTimestamp);
             writer.WriteBoolValue("active", Active);
-            writer.WriteStringValue("ammType", AmmType);
             writer.WriteBoolValue("archived", Archived);
             writer.WriteBoolValue("automaticallyActive", AutomaticallyActive);
             writer.WriteBoolValue("automaticallyResolved", AutomaticallyResolved);
@@ -873,7 +833,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.FeeSchedule>("feeSchedule", FeeSchedule);
             writer.WriteBoolValue("feesEnabled", FeesEnabled);
             writer.WriteStringValue("formatType", FormatType);
-            writer.WriteBoolValue("fpmmLive", FpmmLive);
             writer.WriteBoolValue("funded", Funded);
             writer.WriteDateTimeOffsetValue("fundedTimestamp", FundedTimestamp);
             writer.WriteStringValue("gameId", GameId);
@@ -890,7 +849,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteDoubleValue("lastTradePrice", LastTradePrice);
             writer.WriteDoubleValue("line", Line);
             writer.WriteStringValue("liquidity", Liquidity);
-            writer.WriteDoubleValue("liquidityAmm", LiquidityAmm);
             writer.WriteDoubleValue("liquidityClob", LiquidityClob);
             writer.WriteDoubleValue("liquidityNum", LiquidityNum);
             writer.WriteStringValue("lowerBound", LowerBound);
@@ -899,7 +857,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("makerBaseFee", MakerBaseFee);
             writer.WriteBoolValue("manualActivation", ManualActivation);
             writer.WriteIntValue("marketGroup", MarketGroup);
-            writer.WriteStringValue("marketMakerAddress", MarketMakerAddress);
             writer.WriteStringValue("marketType", MarketType);
             writer.WriteBoolValue("negRiskOther", NegRiskOther);
             writer.WriteBoolValue("new", New);
@@ -957,18 +914,13 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("upperBoundDate", UpperBoundDate);
             writer.WriteStringValue("volume", Volume);
             writer.WriteDoubleValue("volume1mo", Volume1mo);
-            writer.WriteDoubleValue("volume1moAmm", Volume1moAmm);
             writer.WriteDoubleValue("volume1moClob", Volume1moClob);
             writer.WriteDoubleValue("volume1wk", Volume1wk);
-            writer.WriteDoubleValue("volume1wkAmm", Volume1wkAmm);
             writer.WriteDoubleValue("volume1wkClob", Volume1wkClob);
             writer.WriteDoubleValue("volume1yr", Volume1yr);
-            writer.WriteDoubleValue("volume1yrAmm", Volume1yrAmm);
             writer.WriteDoubleValue("volume1yrClob", Volume1yrClob);
             writer.WriteDoubleValue("volume24hr", Volume24hr);
-            writer.WriteDoubleValue("volume24hrAmm", Volume24hrAmm);
             writer.WriteDoubleValue("volume24hrClob", Volume24hrClob);
-            writer.WriteDoubleValue("volumeAmm", VolumeAmm);
             writer.WriteDoubleValue("volumeClob", VolumeClob);
             writer.WriteDoubleValue("volumeNum", VolumeNum);
             writer.WriteBoolValue("wideFormat", WideFormat);
