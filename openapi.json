@@ -4875,7 +4875,7 @@
     "/perps/v1/account/rewards": {
       "get": {
         "summary": "Get Account Rewards",
-        "description": "Get per-instrument daily liquidity reward shares for the authenticated account.\nReward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.\nOI rewards pay 6% APR on the account's full daily average gross OI across all\ninstruments when the combined daily average gross OI of its rewards entity is\nat least $1M. Accounts without an entity mapping qualify independently.\nThe first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,\nthe latest computed reward period is returned.\n",
+        "description": "Get per-instrument daily liquidity reward shares for the authenticated account.\nReward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.\nOI rewards pay 6% APR on the account's full daily average gross OI across all\ninstruments when the combined daily average gross OI of its rewards entity is\nat least $5M. Accounts without an entity mapping qualify independently.\nThe first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,\nthe latest computed reward period is returned.\n",
         "operationId": "perps_getAccountRewards",
         "parameters": [
           {

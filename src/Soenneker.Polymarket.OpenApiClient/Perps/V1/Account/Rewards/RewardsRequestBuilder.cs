@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Rewards
         {
         }
         /// <summary>
-        /// Get per-instrument daily liquidity reward shares for the authenticated account.Reward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.OI rewards pay 6% APR on the account&apos;s full daily average gross OI across allinstruments when the combined daily average gross OI of its rewards entity isat least $1M. Accounts without an entity mapping qualify independently.The first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,the latest computed reward period is returned.
+        /// Get per-instrument daily liquidity reward shares for the authenticated account.Reward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.OI rewards pay 6% APR on the account&apos;s full daily average gross OI across allinstruments when the combined daily average gross OI of its rewards entity isat least $5M. Accounts without an entity mapping qualify independently.The first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,the latest computed reward period is returned.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewards"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Rewards
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewards>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewards.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get per-instrument daily liquidity reward shares for the authenticated account.Reward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.OI rewards pay 6% APR on the account&apos;s full daily average gross OI across allinstruments when the combined daily average gross OI of its rewards entity isat least $1M. Accounts without an entity mapping qualify independently.The first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,the latest computed reward period is returned.
+        /// Get per-instrument daily liquidity reward shares for the authenticated account.Reward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.OI rewards pay 6% APR on the account&apos;s full daily average gross OI across allinstruments when the combined daily average gross OI of its rewards entity isat least $5M. Accounts without an entity mapping qualify independently.The first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,the latest computed reward period is returned.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Rewards
             return new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Rewards.RewardsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get per-instrument daily liquidity reward shares for the authenticated account.Reward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.OI rewards pay 6% APR on the account&apos;s full daily average gross OI across allinstruments when the combined daily average gross OI of its rewards entity isat least $1M. Accounts without an entity mapping qualify independently.The first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,the latest computed reward period is returned.
+        /// Get per-instrument daily liquidity reward shares for the authenticated account.Reward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.OI rewards pay 6% APR on the account&apos;s full daily average gross OI across allinstruments when the combined daily average gross OI of its rewards entity isat least $5M. Accounts without an entity mapping qualify independently.The first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,the latest computed reward period is returned.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RewardsRequestBuilderGetQueryParameters 
