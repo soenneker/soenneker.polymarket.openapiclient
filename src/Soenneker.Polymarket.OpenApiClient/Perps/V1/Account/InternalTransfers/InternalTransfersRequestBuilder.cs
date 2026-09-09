@@ -22,7 +22,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfers
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public InternalTransfersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/account/internal-transfers{?end_timestamp*,start_timestamp*}", pathParameters)
+        public InternalTransfersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/account/internal-transfers{?direction*,end_timestamp*,start_timestamp*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfers
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public InternalTransfersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/account/internal-transfers{?end_timestamp*,start_timestamp*}", rawUrl)
+        public InternalTransfersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/account/internal-transfers{?direction*,end_timestamp*,start_timestamp*}", rawUrl)
         {
         }
         /// <summary>
-        /// Get settled internal transfer history for the authenticated account.Returns both inbound and outbound transfers.
+        /// Get settled internal transfer history for the authenticated account.Returns both inbound and outbound transfers unless `direction` narrowsthe page to one side; a value other than `in` or `out` is refused.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransfers"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfers
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransfers>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransfers.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get settled internal transfer history for the authenticated account.Returns both inbound and outbound transfers.
+        /// Get settled internal transfer history for the authenticated account.Returns both inbound and outbound transfers unless `direction` narrowsthe page to one side; a value other than `in` or `out` is refused.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,11 +91,15 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfers
             return new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfers.InternalTransfersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get settled internal transfer history for the authenticated account.Returns both inbound and outbound transfers.
+        /// Get settled internal transfer history for the authenticated account.Returns both inbound and outbound transfers unless `direction` narrowsthe page to one side; a value other than `in` or `out` is refused.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class InternalTransfersRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
+            [QueryParameter("direction")]
+            public global::Soenneker.Polymarket.OpenApiClient.Models.Direction? Direction { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             #pragma warning disable CS1591

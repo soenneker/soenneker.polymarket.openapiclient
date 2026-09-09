@@ -22,7 +22,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Fills
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FillsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/account/fills{?cursor*,end_timestamp*,sort*,start_timestamp*}", pathParameters)
+        public FillsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/account/fills{?cursor*,end_timestamp*,instrument_id*,sort*,start_timestamp*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Fills
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FillsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/account/fills{?cursor*,end_timestamp*,sort*,start_timestamp*}", rawUrl)
+        public FillsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/account/fills{?cursor*,end_timestamp*,instrument_id*,sort*,start_timestamp*}", rawUrl)
         {
         }
         /// <summary>
-        /// Get fill history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 100 entries returned per request.Results are ordered by time; use `sort` to choose newest-first (`desc`,default) or oldest-first (`asc`). To page through more than 100 fills,pass the `cursor` returned by the previous page (keep `sort` consistentacross pages). Passing the trade ID of the last fill from the previouspage is also still accepted.
+        /// Get fill history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 100 entries returned per request.Results are ordered by time; use `sort` to choose newest-first (`desc`,default) or oldest-first (`asc`). To page through more than 100 fills,pass the `cursor` returned by the previous page (keep `sort` consistentacross pages). Passing the trade ID of the last fill from the previouspage is also still accepted. Pass `instrument_id` to narrow the page toone instrument&apos;s fills; the window, cursor and sort apply unchanged.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Fills
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get fill history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 100 entries returned per request.Results are ordered by time; use `sort` to choose newest-first (`desc`,default) or oldest-first (`asc`). To page through more than 100 fills,pass the `cursor` returned by the previous page (keep `sort` consistentacross pages). Passing the trade ID of the last fill from the previouspage is also still accepted.
+        /// Get fill history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 100 entries returned per request.Results are ordered by time; use `sort` to choose newest-first (`desc`,default) or oldest-first (`asc`). To page through more than 100 fills,pass the `cursor` returned by the previous page (keep `sort` consistentacross pages). Passing the trade ID of the last fill from the previouspage is also still accepted. Pass `instrument_id` to narrow the page toone instrument&apos;s fills; the window, cursor and sort apply unchanged.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Fills
             return new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Fills.FillsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get fill history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 100 entries returned per request.Results are ordered by time; use `sort` to choose newest-first (`desc`,default) or oldest-first (`asc`). To page through more than 100 fills,pass the `cursor` returned by the previous page (keep `sort` consistentacross pages). Passing the trade ID of the last fill from the previouspage is also still accepted.
+        /// Get fill history for the authenticated account.If no end time is provided, the current time will be used.Maximum of 100 entries returned per request.Results are ordered by time; use `sort` to choose newest-first (`desc`,default) or oldest-first (`asc`). To page through more than 100 fills,pass the `cursor` returned by the previous page (keep `sort` consistentacross pages). Passing the trade ID of the last fill from the previouspage is also still accepted. Pass `instrument_id` to narrow the page toone instrument&apos;s fills; the window, cursor and sort apply unchanged.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FillsRequestBuilderGetQueryParameters 
@@ -122,6 +122,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Fills
             public string EndTimestamp { get; set; }
             #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
+            [QueryParameter("instrument_id")]
+            public long? InstrumentId { get; set; }
+            #pragma warning restore CS1591
             #pragma warning disable CS1591
             [QueryParameter("sort")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.Sort? Sort { get; set; }

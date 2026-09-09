@@ -293,6 +293,65 @@
         }
       }
     },
+    "/v1/info/exchange-stats": {
+      "get": {
+        "operationId": "getExchangeStatistics",
+        "summary": "Get Exchange Statistics",
+        "security": [],
+        "x-mint": {
+          "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **10**</Badge>\n<br/>\n<Badge color=\"gray\" size=\"md\">Cached 5m — a request served from cache costs **1**</Badge>\n"
+        },
+        "description": "Get aggregate statistics for all pUSD-quoted Polymarket perpetual markets.\nThe time window is half-open: trades at `start_timestamp` are included and trades at\n`end_timestamp` are excluded. The maximum window is 31 days.\nOpen interest is the one-sided USD notional from the latest complete sample before\n`end_timestamp`; its value and timestamp are null when no complete sample is available.\nFees are gross positive maker and taker trading fees. Rebates, incentives, and referral\npayments are excluded.\n",
+        "parameters": [
+          {
+            "name": "start_timestamp",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/start_timestamp"
+            }
+          },
+          {
+            "name": "end_timestamp",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/end_timestamp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exchange statistics response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeStatistics"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503Response"
+          }
+        }
+      }
+    },
     "/v1/info/klines": {
       "get": {
         "operationId": "getKlines",
@@ -1831,8 +1890,20 @@
         "x-mint": {
           "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **10**</Badge>"
         },
-        "description": "Get fill history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use `sort` to choose newest-first (`desc`,\ndefault) or oldest-first (`asc`). To page through more than 100 fills,\npass the `cursor` returned by the previous page (keep `sort` consistent\nacross pages). Passing the trade ID of the last fill from the previous\npage is also still accepted.\n",
+        "description": "Get fill history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use `sort` to choose newest-first (`desc`,\ndefault) or oldest-first (`asc`). To page through more than 100 fills,\npass the `cursor` returned by the previous page (keep `sort` consistent\nacross pages). Passing the trade ID of the last fill from the previous\npage is also still accepted. Pass `instrument_id` to narrow the page to\none instrument's fills; the window, cursor and sort apply unchanged.\n",
         "parameters": [
+          {
+            "name": "instrument_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 0,
+              "maximum": 4294967295,
+              "description": "Instrument ID — when set, only fills on this instrument are returned"
+            }
+          },
           {
             "name": "start_timestamp",
             "in": "query",
@@ -2324,8 +2395,16 @@
         "x-mint": {
           "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **10**</Badge>"
         },
-        "description": "Get settled internal transfer history for the authenticated account.\nReturns both inbound and outbound transfers.\n",
+        "description": "Get settled internal transfer history for the authenticated account.\nReturns both inbound and outbound transfers unless `direction` narrows\nthe page to one side; a value other than `in` or `out` is refused.\n",
         "parameters": [
+          {
+            "name": "direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/direction"
+            }
+          },
           {
             "name": "start_timestamp",
             "in": "query",
@@ -3288,6 +3367,25 @@
           }
         }
       },
+      "Error503": {
+        "title": "Error503",
+        "type": "object",
+        "required": [
+          "status",
+          "error"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "err"
+            ]
+          },
+          "error": {
+            "$ref": "#/components/schemas/error"
+          }
+        }
+      },
       "time": {
         "type": "integer",
         "description": "Timestamp in milliseconds",
@@ -3752,6 +3850,28 @@
         "description": "24-hour trading volume in contracts",
         "example": "1000.00"
       },
+      "exchange_volume": {
+        "type": "string",
+        "description": "Matched trading volume in USD notional for the requested window, as an unformatted numeric string",
+        "example": "10164976.25"
+      },
+      "exchange_open_interest": {
+        "type": "string",
+        "nullable": true,
+        "description": "One-sided open interest in USD notional at the latest complete sample before the requested window end, as an unformatted numeric string. Null when no complete sample is available.",
+        "example": "9238345.12"
+      },
+      "open_interest_timestamp": {
+        "type": "integer",
+        "nullable": true,
+        "description": "Timestamp of the open-interest sample in Unix milliseconds. Null when no complete sample is available.",
+        "example": 1767225570000
+      },
+      "exchange_fees": {
+        "type": "string",
+        "description": "Gross positive maker and taker trading fees in USD for the requested window, as an unformatted numeric string. Rebates, incentives, and referral payments are excluded.",
+        "example": "1245.67"
+      },
       "open_price": {
         "type": "string",
         "description": "Opening price from 24 hours ago",
@@ -3801,6 +3921,37 @@
           },
           "klines": {
             "$ref": "#/components/schemas/klines"
+          }
+        }
+      },
+      "ExchangeStatistics": {
+        "type": "object",
+        "required": [
+          "start_timestamp",
+          "end_timestamp",
+          "volume",
+          "open_interest",
+          "open_interest_timestamp",
+          "fees"
+        ],
+        "properties": {
+          "start_timestamp": {
+            "$ref": "#/components/schemas/start_timestamp"
+          },
+          "end_timestamp": {
+            "$ref": "#/components/schemas/end_timestamp"
+          },
+          "volume": {
+            "$ref": "#/components/schemas/exchange_volume"
+          },
+          "open_interest": {
+            "$ref": "#/components/schemas/exchange_open_interest"
+          },
+          "open_interest_timestamp": {
+            "$ref": "#/components/schemas/open_interest_timestamp"
+          },
+          "fees": {
+            "$ref": "#/components/schemas/exchange_fees"
           }
         }
       },
@@ -7604,6 +7755,25 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error500"
+            }
+          }
+        }
+      },
+      "Error503Response": {
+        "description": "Service unavailable — the request was deliberately shed and did not\nexecute; it is safe to retry with backoff, honoring `Retry-After` when\npresent. Causes include the replica's pod-level in-flight cap (shed\nbefore dispatch, with `Retry-After`), a database read shed as\nbackpressure under overload (by the local read gate or by the database\nserver's concurrency cap — the query never executed), a required\ninternal cache that is stale or not yet primed and would return wrong\ndata, or a full bounded deferred-write queue. `error` is\n`service_unavailable`.\n",
+        "headers": {
+          "Retry-After": {
+            "description": "Whole seconds to wait before retrying. Present on pre-dispatch\nin-flight-cap sheds — a transient overload signal, so the hint is\nshort and constant.\n",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error503"
             }
           }
         }

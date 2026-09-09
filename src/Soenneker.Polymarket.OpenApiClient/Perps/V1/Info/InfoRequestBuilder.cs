@@ -6,6 +6,7 @@ using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Assets;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Bbo;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Book;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Exchange;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.ExchangeStats;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fees;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Funding;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.IndexNamespace;
@@ -52,6 +53,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Exchange.ExchangeRequestBuilder Exchange
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Exchange.ExchangeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The exchangeStats property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.ExchangeStats.ExchangeStatsRequestBuilder ExchangeStats
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.ExchangeStats.ExchangeStatsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The fees property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fees.FeesRequestBuilder Fees

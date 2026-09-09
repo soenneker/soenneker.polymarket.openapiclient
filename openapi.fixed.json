@@ -2472,6 +2472,62 @@
         "security": []
       }
     },
+    "/perps/v1/info/exchange-stats": {
+      "get": {
+        "summary": "Get Exchange Statistics",
+        "description": "Get aggregate statistics for all pUSD-quoted Polymarket perpetual markets.\nThe time window is half-open: trades at \u0060start_timestamp\u0060 are included and trades at\n\u0060end_timestamp\u0060 are excluded. The maximum window is 31 days.\nOpen interest is the one-sided USD notional from the latest complete sample before\n\u0060end_timestamp\u0060; its value and timestamp are null when no complete sample is available.\nFees are gross positive maker and taker trading fees. Rebates, incentives, and referral\npayments are excluded.\n",
+        "operationId": "PerpsGetExchangeStatistics",
+        "parameters": [
+          {
+            "name": "start_timestamp",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_timestamp",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exchange statistics response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeStatistics"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503Response"
+          }
+        },
+        "security": []
+      }
+    },
     "/perps/v1/info/klines": {
       "get": {
         "summary": "Get Klines",
@@ -3866,9 +3922,20 @@
     "/perps/v1/account/fills": {
       "get": {
         "summary": "Get Fills",
-        "description": "Get fill history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use \u0060sort\u0060 to choose newest-first (\u0060desc\u0060,\ndefault) or oldest-first (\u0060asc\u0060). To page through more than 100 fills,\npass the \u0060cursor\u0060 returned by the previous page (keep \u0060sort\u0060 consistent\nacross pages). Passing the trade ID of the last fill from the previous\npage is also still accepted.\n",
+        "description": "Get fill history for the authenticated account.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use \u0060sort\u0060 to choose newest-first (\u0060desc\u0060,\ndefault) or oldest-first (\u0060asc\u0060). To page through more than 100 fills,\npass the \u0060cursor\u0060 returned by the previous page (keep \u0060sort\u0060 consistent\nacross pages). Passing the trade ID of the last fill from the previous\npage is also still accepted. Pass \u0060instrument_id\u0060 to narrow the page to\none instrument\u0027s fills; the window, cursor and sort apply unchanged.\n",
         "operationId": "PerpsGetFills",
         "parameters": [
+          {
+            "name": "instrument_id",
+            "in": "query",
+            "schema": {
+              "maximum": 4294967295,
+              "minimum": 0,
+              "type": "integer",
+              "description": "Instrument ID \u2014 when set, only fills on this instrument are returned",
+              "format": "int64"
+            }
+          },
           {
             "name": "start_timestamp",
             "in": "query",
@@ -4325,9 +4392,16 @@
     "/perps/v1/account/internal-transfers": {
       "get": {
         "summary": "Get Internal Transfers",
-        "description": "Get settled internal transfer history for the authenticated account.\nReturns both inbound and outbound transfers.\n",
+        "description": "Get settled internal transfer history for the authenticated account.\nReturns both inbound and outbound transfers unless \u0060direction\u0060 narrows\nthe page to one side; a value other than \u0060in\u0060 or \u0060out\u0060 is refused.\n",
         "operationId": "PerpsGetInternalTransfers",
         "parameters": [
+          {
+            "name": "direction",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Direction"
+            }
+          },
           {
             "name": "start_timestamp",
             "in": "query",
@@ -15278,11 +15352,8 @@
   },
   "components": {
     "schemas": {
-      "ClobGetMarketsLiveActivityRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+      "ClobDeleteApiKey200ResponseSchema": {
+        "type": "string"
       },
       "ErrorResponse": {
         "required": [
@@ -15619,16 +15690,16 @@
         },
         "description": "Breakdown of the estimated fees"
       },
-      "ClobGetBooksPost200ResponseSchema": {
+      "ClobGetMarketsLiveActivity200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
+          "$ref": "#/components/schemas/LiveActivityMarket"
         }
       },
-      "ClobGetBooksPostRequestRequestBody": {
+      "ClobGetMarketsLiveActivityRequestRequestBody": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/BookRequest"
+          "type": "string"
         }
       },
       "HealthResponse": {
@@ -16296,7 +16367,7 @@
           }
         }
       },
-      "ClobGetBooksGet200ResponseSchema": {
+      "ClobGetBooksPost200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/OrderBookSummary"
@@ -16672,12 +16743,11 @@
           }
         }
       },
-      "ClobGetPricesPost200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseSchemaAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
+      "ClobGetBooksPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
       },
       "Error429": {
         "title": "Error429",
@@ -16713,10 +16783,27 @@
           }
         }
       },
-      "ClobGetPricesPostRequestRequestBody": {
+      "Error503": {
+        "title": "Error503",
+        "required": [
+          "status",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ErrStatus"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+          }
+        }
+      },
+      "ClobGetBooksGet200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/BookRequest"
+          "$ref": "#/components/schemas/OrderBookSummary"
         }
       },
       "Time2": {
@@ -16730,6 +16817,19 @@
             "description": "Timestamp in milliseconds",
             "format": "int64"
           }
+        }
+      },
+      "ClobGetPricesPost200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseSchemaAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
+      },
+      "ClobGetPricesPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
         }
       },
       "ClobGetPricesGet200ResponseSchema": {
@@ -16755,19 +16855,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseSchemaItem"
-        }
-      },
-      "ClobGetSpreads200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to spread"
-      },
-      "ClobGetSpreadsRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
         }
       },
       "Exchange": {
@@ -16808,6 +16895,19 @@
           }
         }
       },
+      "ClobGetSpreads200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to spread"
+      },
+      "ClobGetSpreadsRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
       "ClobGetMidpointsPost200ResponseSchema": {
         "type": "object",
         "additionalProperties": {
@@ -16827,18 +16927,6 @@
           "type": "string"
         },
         "description": "Map of token ID to midpoint price"
-      },
-      "ClobGetTime200ResponseSchema": {
-        "type": "integer",
-        "description": "Unix timestamp (seconds since epoch)",
-        "format": "int64"
-      },
-      "ClobCancelOrdersRequestRequestBody": {
-        "maxItems": 1000,
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
       },
       "Asset2": {
         "required": [
@@ -16872,11 +16960,10 @@
           }
         }
       },
-      "ClobPostOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SendOrderResponse"
-        }
+      "ClobGetTime200ResponseSchema": {
+        "type": "integer",
+        "description": "Unix timestamp (seconds since epoch)",
+        "format": "int64"
       },
       "InstrumentType": {
         "enum": [
@@ -16927,6 +17014,19 @@
               "name": "Crypto"
             }
           ]
+        }
+      },
+      "ClobCancelOrdersRequestRequestBody": {
+        "maxItems": 1000,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "ClobPostOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SendOrderResponse"
         }
       },
       "ClobPostOrdersRequestRequestBody": {
@@ -17003,18 +17103,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/LimitTier"
-        }
-      },
-      "PerpsGetBbo200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Bbo"
-        }
-      },
-      "PerpsGetStatistics200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Statistic"
         }
       },
       "RiskTier": {
@@ -17161,6 +17249,18 @@
           }
         }
       },
+      "PerpsGetBbo200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Bbo"
+        }
+      },
+      "PerpsGetStatistics200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Statistic"
+        }
+      },
       "PerpsGetTickers200ResponseSchema": {
         "type": "array",
         "items": {
@@ -17189,18 +17289,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/BuilderVolumeEntry"
-        }
-      },
-      "DataGetV1BuildersLeaderboard200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LeaderboardEntry"
-        }
-      },
-      "DataGetV1MarketPositions200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/MetaMarketPositionV1"
         }
       },
       "TickerData": {
@@ -17255,10 +17343,10 @@
           }
         }
       },
-      "DataGetOther200ResponseSchema": {
+      "DataGetV1BuildersLeaderboard200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/OtherSize"
+          "$ref": "#/components/schemas/LeaderboardEntry"
         }
       },
       "Ticker": {
@@ -17319,11 +17407,36 @@
           }
         }
       },
+      "DataGetV1MarketPositions200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/MetaMarketPositionV1"
+        }
+      },
+      "DataGetOther200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OtherSize"
+        }
+      },
       "DataGetClosedPositions200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ClosedPosition"
         }
+      },
+      "ExchangeOpenInterest": {
+        "type": "string",
+        "description": "One-sided open interest in USD notional at the latest complete sample before the requested window end, as an unformatted numeric string. Null when no complete sample is available.",
+        "nullable": true,
+        "example": "9238345.12"
+      },
+      "OpenInterestTimestamp": {
+        "type": "integer",
+        "description": "Timestamp of the open-interest sample in Unix milliseconds. Null when no complete sample is available.",
+        "format": "int64",
+        "nullable": true,
+        "example": 1767225570000
       },
       "DataGetLiveVolume200ResponseSchema": {
         "type": "array",
@@ -17384,6 +17497,43 @@
               "$ref": "#/components/schemas/Kline"
             },
             "description": "Last 24-hour kline data"
+          }
+        }
+      },
+      "ExchangeStatistics": {
+        "required": [
+          "start_timestamp",
+          "end_timestamp",
+          "volume",
+          "open_interest",
+          "open_interest_timestamp",
+          "fees"
+        ],
+        "type": "object",
+        "properties": {
+          "start_timestamp": {
+            "type": "integer",
+            "description": "Start timestamp in milliseconds",
+            "format": "int64"
+          },
+          "end_timestamp": {
+            "type": "integer",
+            "description": "End timestamp in milliseconds",
+            "format": "int64"
+          },
+          "volume": {
+            "type": "string",
+            "description": "Matched trading volume in USD notional for the requested window, as an unformatted numeric string"
+          },
+          "open_interest": {
+            "$ref": "#/components/schemas/ExchangeOpenInterest"
+          },
+          "open_interest_timestamp": {
+            "$ref": "#/components/schemas/OpenInterestTimestamp"
+          },
+          "fees": {
+            "type": "string",
+            "description": "Gross positive maker and taker trading fees in USD for the requested window, as an unformatted numeric string. Rebates, incentives, and referral payments are excluded."
           }
         }
       },
@@ -27668,15 +27818,6 @@
           }
         }
       },
-      "ClobGetMarketsLiveActivity200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LiveActivityMarket"
-        }
-      },
-      "ClobDeleteApiKey200ResponseSchema": {
-        "type": "string"
-      },
       "ClobUpdateBalanceAllowance200ResponseSchema": {
         "type": "object"
       },
@@ -30607,6 +30748,25 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error500"
+            }
+          }
+        }
+      },
+      "Error503Response": {
+        "description": "Service unavailable \u2014 the request was deliberately shed and did not\nexecute; it is safe to retry with backoff, honoring \u0060Retry-After\u0060 when\npresent. Causes include the replica\u0027s pod-level in-flight cap (shed\nbefore dispatch, with \u0060Retry-After\u0060), a database read shed as\nbackpressure under overload (by the local read gate or by the database\nserver\u0027s concurrency cap \u2014 the query never executed), a required\ninternal cache that is stale or not yet primed and would return wrong\ndata, or a full bounded deferred-write queue. \u0060error\u0060 is\n\u0060service_unavailable\u0060.\n",
+        "headers": {
+          "Retry-After": {
+            "description": "Whole seconds to wait before retrying. Present on pre-dispatch\nin-flight-cap sheds \u2014 a transient overload signal, so the hint is\nshort and constant.\n",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error503"
             }
           }
         }
