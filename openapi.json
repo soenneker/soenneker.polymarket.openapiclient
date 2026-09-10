@@ -591,6 +591,7 @@
           "Core"
         ],
         "summary": "Get current positions for a user",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/positions`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_positions",
         "parameters": [
           {
@@ -774,6 +775,7 @@
           "Core"
         ],
         "summary": "Get trades for a user or markets",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/trades`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_trades",
         "parameters": [
           {
@@ -942,6 +944,7 @@
           "Core"
         ],
         "summary": "Get user activity",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/activity`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_activity",
         "parameters": [
           {
@@ -1143,7 +1146,7 @@
           "Core"
         ],
         "summary": "Get user combo activity",
-        "description": "Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/activity/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).\nCombo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).",
         "operationId": "data_get_v1_activity_combos",
         "parameters": [
           {
@@ -1245,7 +1248,7 @@
           "Core"
         ],
         "summary": "Get user combo positions",
-        "description": "Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by \"sell all\" cashouts); resolved positions are served regardless of balance.",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/positions/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).\nCombinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by \"sell all\" cashouts); resolved positions are served regardless of balance.",
         "operationId": "data_get_v1_positions_combos",
         "parameters": [
           {
@@ -1397,6 +1400,7 @@
           "Core"
         ],
         "summary": "Get top holders for markets",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/holders`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_holders",
         "parameters": [
           {
@@ -1613,6 +1617,7 @@
           "Core"
         ],
         "summary": "Get total value of a user's positions",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/value`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_value",
         "parameters": [
           {
@@ -1678,6 +1683,7 @@
           "Misc"
         ],
         "summary": "Get open interest",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/oi`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_oi",
         "parameters": [
           {
@@ -1735,6 +1741,7 @@
           "Misc"
         ],
         "summary": "Get live volume for an event",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/live-volume`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_live_volume",
         "parameters": [
           {
@@ -1790,6 +1797,7 @@
           "Core"
         ],
         "summary": "Get closed positions for a user",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/positions?status=CLOSED`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_closed_positions",
         "parameters": [
           {
@@ -2004,6 +2012,7 @@
           "Core"
         ],
         "summary": "Get positions for a market",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/positions`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_v1_market_positions",
         "parameters": [
           {
@@ -2140,6 +2149,7 @@
           "Builders"
         ],
         "summary": "Get aggregated builder leaderboard",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/builders/leaderboard`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_v1_builders_leaderboard",
         "parameters": [
           {
@@ -2223,6 +2233,7 @@
           "Builders"
         ],
         "summary": "Get daily builder volume time-series",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/builders/volume`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_v1_builders_volume",
         "parameters": [
           {
@@ -2284,6 +2295,7 @@
           "Core"
         ],
         "summary": "Get trader leaderboard rankings",
+        "description": "**Data API v2:** this route has a v2 counterpart, `GET /v2/leaderboard`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).",
         "operationId": "data_get_v1_leaderboard",
         "parameters": [
           {

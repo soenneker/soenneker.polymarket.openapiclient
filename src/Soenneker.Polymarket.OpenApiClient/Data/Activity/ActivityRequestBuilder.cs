@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Activity
         {
         }
         /// <summary>
-        /// Get user activity
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/activity`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.Polymarket.OpenApiClient.Models.Activity&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -62,7 +62,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Activity
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Get user activity
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/activity`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -90,7 +90,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Activity
             return new global::Soenneker.Polymarket.OpenApiClient.Data.Activity.ActivityRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get user activity
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/activity`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ActivityRequestBuilderGetQueryParameters 

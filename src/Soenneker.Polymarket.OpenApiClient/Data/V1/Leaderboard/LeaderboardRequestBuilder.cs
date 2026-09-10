@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Leaderboard
         {
         }
         /// <summary>
-        /// Get trader leaderboard rankings
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/leaderboard`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.Polymarket.OpenApiClient.Models.TraderLeaderboardEntry&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -60,7 +60,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Leaderboard
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Get trader leaderboard rankings
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/leaderboard`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -88,7 +88,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Leaderboard
             return new global::Soenneker.Polymarket.OpenApiClient.Data.V1.Leaderboard.LeaderboardRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get trader leaderboard rankings
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/leaderboard`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LeaderboardRequestBuilderGetQueryParameters 

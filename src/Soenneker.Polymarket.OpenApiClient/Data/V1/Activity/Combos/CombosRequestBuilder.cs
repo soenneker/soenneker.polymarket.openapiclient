@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Activity.Combos
         {
         }
         /// <summary>
-        /// Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/activity/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CombosActivityResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Activity.Combos
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.CombosActivityResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.CombosActivityResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/activity/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Activity.Combos
             return new global::Soenneker.Polymarket.OpenApiClient.Data.V1.Activity.Combos.CombosRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/activity/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CombosRequestBuilderGetQueryParameters 

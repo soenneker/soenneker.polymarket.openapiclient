@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.MarketPositions
         {
         }
         /// <summary>
-        /// Get positions for a market
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/positions`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.Polymarket.OpenApiClient.Models.MetaMarketPositionV1&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -62,7 +62,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.MarketPositions
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Get positions for a market
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/positions`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -90,7 +90,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.MarketPositions
             return new global::Soenneker.Polymarket.OpenApiClient.Data.V1.MarketPositions.MarketPositionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get positions for a market
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/positions`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MarketPositionsRequestBuilderGetQueryParameters 

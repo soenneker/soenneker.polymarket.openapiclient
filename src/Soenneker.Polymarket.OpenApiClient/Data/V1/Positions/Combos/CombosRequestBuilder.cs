@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos
         {
         }
         /// <summary>
-        /// Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by &quot;sell all&quot; cashouts); resolved positions are served regardless of balance.
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/positions/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by &quot;sell all&quot; cashouts); resolved positions are served regardless of balance.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CombosResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.CombosResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.CombosResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by &quot;sell all&quot; cashouts); resolved positions are served regardless of balance.
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/positions/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by &quot;sell all&quot; cashouts); resolved positions are served regardless of balance.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos
             return new global::Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos.CombosRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by &quot;sell all&quot; cashouts); resolved positions are served regardless of balance.
+        /// **Data API v2:** this route has a v2 counterpart, `GET /v2/positions/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by &quot;sell all&quot; cashouts); resolved positions are served regardless of balance.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CombosRequestBuilderGetQueryParameters 
