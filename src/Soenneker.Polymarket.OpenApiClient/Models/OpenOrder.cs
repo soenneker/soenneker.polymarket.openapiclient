@@ -66,7 +66,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>Order type</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.OpenOrderOrderType? OrderType { get; set; }
-        /// <summary>Original order size in fixed-math with 6 decimals</summary>
+        /// <summary>Original order size in shares, as a decimal string. Already normalized; do not divide by 1e6.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OriginalSize { get; set; }
@@ -100,7 +100,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>Order side</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.OpenOrderSide? Side { get; set; }
-        /// <summary>Size that has been matched in fixed-math with 6 decimals</summary>
+        /// <summary>Matched size in shares, as a decimal string. Retained after cancellation; this is not the current position balance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SizeMatched { get; set; }
@@ -108,7 +108,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string SizeMatched { get; set; }
 #endif
-        /// <summary>Order status</summary>
+        /// <summary>Order status. CANCELED_MARKET_RESOLVED cancels the unfilled remainder when the market resolves; it does not undo settled fills.</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.OpenOrderStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OpenOrder"/> and sets the default values.

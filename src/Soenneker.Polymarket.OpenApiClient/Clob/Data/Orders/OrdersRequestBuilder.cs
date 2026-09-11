@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Data.Orders
         {
         }
         /// <summary>
-        /// Retrieves open orders for the authenticated user. Returns paginated results.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+        /// Retrieves live orders for the authenticated user. Returns paginated results.Filtering by id returns that order regardless of status, including canceled or fully matched orders.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OrdersResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Data.Orders
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.OrdersResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.OrdersResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves open orders for the authenticated user. Returns paginated results.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+        /// Retrieves live orders for the authenticated user. Returns paginated results.Filtering by id returns that order regardless of status, including canceled or fully matched orders.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Data.Orders
             return new global::Soenneker.Polymarket.OpenApiClient.Clob.Data.Orders.OrdersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieves open orders for the authenticated user. Returns paginated results.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+        /// Retrieves live orders for the authenticated user. Returns paginated results.Filtering by id returns that order regardless of status, including canceled or fully matched orders.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class OrdersRequestBuilderGetQueryParameters 

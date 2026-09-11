@@ -3,29 +3,29 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Polymarket.OpenApiClient.Models
 {
-    /// <summary>Order status</summary>
+    /// <summary>Order status. CANCELED_MARKET_RESOLVED cancels the unfilled remainder when the market resolves; it does not undo settled fills.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OpenOrderStatus
     {
-        [EnumMember(Value = "ORDER_STATUS_LIVE")]
+        [EnumMember(Value = "LIVE")]
         #pragma warning disable CS1591
-        OrderStatusLive,
+        Live,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ORDER_STATUS_INVALID")]
+        [EnumMember(Value = "INVALID")]
         #pragma warning disable CS1591
-        OrderStatusInvalid,
+        Invalid,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ORDER_STATUS_CANCELED_MARKET_RESOLVED")]
+        [EnumMember(Value = "CANCELED_MARKET_RESOLVED")]
         #pragma warning disable CS1591
-        OrderStatusCanceledMarketResolved,
+        CanceledMarketResolved,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ORDER_STATUS_CANCELED")]
+        [EnumMember(Value = "CANCELED")]
         #pragma warning disable CS1591
-        OrderStatusCanceled,
+        Canceled,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ORDER_STATUS_MATCHED")]
+        [EnumMember(Value = "MATCHED")]
         #pragma warning disable CS1591
-        OrderStatusMatched,
+        Matched,
         #pragma warning restore CS1591
     }
 }

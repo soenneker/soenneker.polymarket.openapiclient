@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Data.Order.Item
         {
         }
         /// <summary>
-        /// Retrieves a specific order by its ID (order hash) for the authenticated user.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+        /// Retrieves a specific order by its ID (order hash) for the authenticated user, including canceled or fully matched orders.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OpenOrder"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Data.Order.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.OpenOrder>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.OpenOrder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves a specific order by its ID (order hash) for the authenticated user.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+        /// Retrieves a specific order by its ID (order hash) for the authenticated user, including canceled or fully matched orders.Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

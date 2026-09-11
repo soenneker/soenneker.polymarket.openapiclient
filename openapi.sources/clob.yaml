@@ -555,7 +555,8 @@ paths:
     get:
       summary: Get user orders
       description: |
-        Retrieves open orders for the authenticated user. Returns paginated results.
+        Retrieves live orders for the authenticated user. Returns paginated results.
+        Filtering by id returns that order regardless of status, including canceled or fully matched orders.
         Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
       operationId: getOrders
       tags:
@@ -611,13 +612,13 @@ paths:
                     count: 2
                     data:
                       - id: '0xabcdef1234567890abcdef1234567890abcdef12'
-                        status: ORDER_STATUS_LIVE
+                        status: LIVE
                         owner: f4f247b7-4ac7-ff29-a152-04fda0a8755a
                         maker_address: '0x1234567890123456789012345678901234567890'
                         market: '0x0000000000000000000000000000000000000000000000000000000000000001'
                         asset_id: 0xabc123def456...
                         side: BUY
-                        original_size: '100000000'
+                        original_size: '100'
                         size_matched: '0'
                         price: '0.5'
                         outcome: 'YES'
@@ -626,14 +627,14 @@ paths:
                         associate_trades: []
                         created_at: 1700000000
                       - id: '0xfedcba0987654321fedcba0987654321fedcba09'
-                        status: ORDER_STATUS_LIVE
+                        status: LIVE
                         owner: f4f247b7-4ac7-ff29-a152-04fda0a8755a
                         maker_address: '0x1234567890123456789012345678901234567890'
                         market: '0x0000000000000000000000000000000000000000000000000000000000000002'
                         asset_id: 0xdef456abc789...
                         side: SELL
-                        original_size: '200000000'
-                        size_matched: '50000000'
+                        original_size: '200'
+                        size_matched: '50'
                         price: '0.75'
                         outcome: 'NO'
                         expiration: '1735689600'
@@ -669,7 +670,7 @@ paths:
     get:
       summary: Get single order by ID
       description: |
-        Retrieves a specific order by its ID (order hash) for the authenticated user.
+        Retrieves a specific order by its ID (order hash) for the authenticated user, including canceled or fully matched orders.
         Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
       operationId: getOrder
       tags:
@@ -697,13 +698,13 @@ paths:
                 $ref: '#/components/schemas/OpenOrder'
               example:
                 id: '0xabcdef1234567890abcdef1234567890abcdef12'
-                status: ORDER_STATUS_LIVE
+                status: LIVE
                 owner: f4f247b7-4ac7-ff29-a152-04fda0a8755a
                 maker_address: '0x1234567890123456789012345678901234567890'
                 market: '0x0000000000000000000000000000000000000000000000000000000000000001'
                 asset_id: 0xabc123def456...
                 side: BUY
-                original_size: '100000000'
+                original_size: '100'
                 size_matched: '0'
                 price: '0.5'
                 outcome: 'YES'
@@ -4961,13 +4962,13 @@ components:
           example: '0xabcdef1234567890abcdef1234567890abcdef12'
         status:
           type: string
-          description: Order status
+          description: Order status. CANCELED_MARKET_RESOLVED cancels the unfilled remainder when the market resolves; it does not undo settled fills.
           enum:
-            - ORDER_STATUS_LIVE
-            - ORDER_STATUS_INVALID
-            - ORDER_STATUS_CANCELED_MARKET_RESOLVED
-            - ORDER_STATUS_CANCELED
-            - ORDER_STATUS_MATCHED
+            - LIVE
+            - INVALID
+            - CANCELED_MARKET_RESOLVED
+            - CANCELED
+            - MATCHED
         owner:
           type: string
           description: UUID of the order owner
@@ -4993,11 +4994,11 @@ components:
           example: BUY
         original_size:
           type: string
-          description: Original order size in fixed-math with 6 decimals
-          example: '100000000'
+          description: Original order size in shares, as a decimal string. Already normalized; do not divide by 1e6.
+          example: '100'
         size_matched:
           type: string
-          description: Size that has been matched in fixed-math with 6 decimals
+          description: Matched size in shares, as a decimal string. Retained after cancellation; this is not the current position balance.
           example: '0'
         price:
           type: string
