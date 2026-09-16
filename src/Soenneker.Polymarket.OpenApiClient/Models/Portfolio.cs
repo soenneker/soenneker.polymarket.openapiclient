@@ -14,6 +14,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Zero-based effective account fee tier index in the perpetual equity fee schedule returned by /v1/info/fees. Defaults to 0 without a current tier assignment and is capped at the highest configured tier.</summary>
+        public int? FeeTier { get; set; }
         /// <summary>Whether the account is currently under liquidation</summary>
         public bool? InLiquidation { get; set; }
         /// <summary>The margin property</summary>
@@ -67,6 +69,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "fee_tier", n => { FeeTier = n.GetIntValue(); } },
                 { "in_liquidation", n => { InLiquidation = n.GetBoolValue(); } },
                 { "margin", n => { Margin = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary>(global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary.CreateFromDiscriminatorValue); } },
                 { "positions", n => { Positions = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition>(global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -81,6 +84,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("fee_tier", FeeTier);
             writer.WriteBoolValue("in_liquidation", InLiquidation);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary>("margin", Margin);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition>("positions", Positions);

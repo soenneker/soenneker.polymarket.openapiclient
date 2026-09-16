@@ -532,59 +532,6 @@
         }
       }
     },
-    "/data/v1/approvals": {
-      "get": {
-        "tags": [
-          "Misc"
-        ],
-        "summary": "Get token approval state for a wallet",
-        "description": "Reports whether a wallet has granted the token approvals Polymarket needs, so a client can prompt for the missing ones instead of reading each allowance onchain. Every tracked token and spender pair is returned, including pairs the wallet has never approved.",
-        "operationId": "data_get_v1_approvals",
-        "parameters": [
-          {
-            "name": "user",
-            "in": "query",
-            "description": "User address (0x-prefixed)",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/data_Address"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApprovalsResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/data_ErrorResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/data_ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/data/positions": {
       "get": {
         "tags": [
@@ -17545,90 +17492,6 @@
           }
         }
       },
-      "ApprovalContract": {
-        "required": [
-          "id",
-          "feature",
-          "token",
-          "spender",
-          "standard",
-          "approved"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Stable identifier for the token and spender pair, such as `UsdcExchange` or `CtfExchangeIsApprovedForAll`.",
-            "example": "UsdcExchange"
-          },
-          "feature": {
-            "enum": [
-              "trading",
-              "perps",
-              "rewards",
-              "auto-redeem"
-            ],
-            "type": "string",
-            "description": "What the approval unlocks."
-          },
-          "token": {
-            "$ref": "#/components/schemas/data_Address"
-          },
-          "spender": {
-            "$ref": "#/components/schemas/data_Address"
-          },
-          "standard": {
-            "enum": [
-              "ERC20",
-              "ERC1155"
-            ],
-            "type": "string",
-            "description": "Token standard of the approval. `ERC20` entries carry an allowance amount; `ERC1155` entries are an operator flag with no amount."
-          },
-          "amount": {
-            "type": "string",
-            "description": "Allowance semantics for `ERC20` entries. Entries that require an unlimited allowance always report the constant `max`, describing what the feature needs rather than what the wallet granted — read `approved` for the granted state. Entries that accept any positive allowance report the wallet's current allowance in the token's base units as a decimal string. Omitted for `ERC1155` entries.",
-            "example": "max"
-          },
-          "approved": {
-            "type": "boolean",
-            "description": "Whether the approval is sufficient for its feature. Unlimited trading approvals require the maximum allowance, `perps` and `rewards` approvals require any positive allowance, and `ERC1155` entries reflect the operator flag."
-          }
-        },
-        "description": "Approval state for one token and spender pair."
-      },
-      "ApprovalsResponse": {
-        "required": [
-          "address",
-          "chainId",
-          "checkedAt",
-          "contracts"
-        ],
-        "type": "object",
-        "properties": {
-          "address": {
-            "$ref": "#/components/schemas/data_Address"
-          },
-          "chainId": {
-            "type": "integer",
-            "description": "Chain the approvals were read on.",
-            "example": 137
-          },
-          "checkedAt": {
-            "type": "string",
-            "description": "RFC 3339 timestamp of when this response was generated. Approval state is tracked from onchain events, so this is not the timestamp of a fresh onchain read.",
-            "format": "date-time",
-            "example": "2026-08-10T12:34:56Z"
-          },
-          "contracts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ApprovalContract"
-            },
-            "description": "Every approval Polymarket tracks, in a stable display order. Pairs the wallet has never approved are still present with `approved` false, so the array length does not change with wallet state."
-          }
-        }
-      },
       "error": {
         "type": "string",
         "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `unauthorized`, `not_found`. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
@@ -20236,6 +20099,7 @@
           "margin",
           "withdrawable",
           "in_liquidation",
+          "fee_tier",
           "timestamp"
         ],
         "type": "object",
@@ -20254,6 +20118,9 @@
           },
           "in_liquidation": {
             "$ref": "#/components/schemas/in_liquidation"
+          },
+          "fee_tier": {
+            "$ref": "#/components/schemas/fee_tier"
           },
           "timestamp": {
             "$ref": "#/components/schemas/update_timestamp"
@@ -22027,6 +21894,11 @@
             "$ref": "#/components/schemas/coid"
           }
         }
+      },
+      "fee_tier": {
+        "type": "integer",
+        "description": "Zero-based effective account fee tier index in the perpetual equity fee schedule returned by /v1/info/fees. Defaults to 0 without a current tier assignment and is capped at the highest configured tier.",
+        "example": 0
       },
       "clob_Order": {
         "required": [

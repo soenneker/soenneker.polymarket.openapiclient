@@ -5936,6 +5936,7 @@
           "margin",
           "withdrawable",
           "in_liquidation",
+          "fee_tier",
           "timestamp"
         ],
         "properties": {
@@ -5953,6 +5954,9 @@
           },
           "in_liquidation": {
             "$ref": "#/components/schemas/in_liquidation"
+          },
+          "fee_tier": {
+            "$ref": "#/components/schemas/fee_tier"
           },
           "timestamp": {
             "$ref": "#/components/schemas/update_timestamp"
@@ -7727,6 +7731,11 @@
             "$ref": "#/components/schemas/coid"
           }
         }
+      },
+      "fee_tier": {
+        "type": "integer",
+        "description": "Zero-based effective account fee tier index in the perpetual equity fee schedule returned by /v1/info/fees. Defaults to 0 without a current tier assignment and is capped at the highest configured tier.",
+        "example": 0
       }
     },
     "responses": {

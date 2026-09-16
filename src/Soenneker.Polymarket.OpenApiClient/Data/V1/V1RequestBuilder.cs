@@ -4,7 +4,6 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Polymarket.OpenApiClient.Data.V1.Accounting;
 using Soenneker.Polymarket.OpenApiClient.Data.V1.Activity;
-using Soenneker.Polymarket.OpenApiClient.Data.V1.Approvals;
 using Soenneker.Polymarket.OpenApiClient.Data.V1.Builders;
 using Soenneker.Polymarket.OpenApiClient.Data.V1.Leaderboard;
 using Soenneker.Polymarket.OpenApiClient.Data.V1.MarketPositions;
@@ -30,11 +29,6 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1
         public global::Soenneker.Polymarket.OpenApiClient.Data.V1.Activity.ActivityRequestBuilder Activity
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Data.V1.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The approvals property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.V1.Approvals.ApprovalsRequestBuilder Approvals
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.V1.Approvals.ApprovalsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The builders property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Data.V1.Builders.BuildersRequestBuilder Builders
