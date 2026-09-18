@@ -34,16 +34,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfer
         {
         }
         /// <summary>
-        /// Submit a signed internal ledger transfer between two exchange accounts.Requires proxy signature using the standard signed-op flow.
+        /// Submit a signed internal ledger transfer between two exchange accounts.Sign with the source account owner or a non-expired trading key registeredto the source account. Trading-key signatures require both accounts tobelong to the same nonzero, exchange-managed account group. Owner signaturesremain valid regardless of group membership.Expired trading keys receive `proxy_expired`; other authorization failuresreceive `signer_does_not_match_account`. An unknown destination receives 400`destination account not found`.A 503 does not prove that the transfer was not submitted. Retry with backoff,honoring `Retry-After` when present, and resend the exact original signedrequest. Do not create a fresh signature, salt, or timestamp for the retry: itwould identify a separate transfer. A `signature_already_used` rejection doesnot confirm whether the original transfer completed.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferAccepted"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error400">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferRejected">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error429">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error500">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error503">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferAccepted?> PostAsync(global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -58,14 +58,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfer
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.Error400.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferRejected.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Polymarket.OpenApiClient.Models.Error429.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.Error500.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Polymarket.OpenApiClient.Models.Error503.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferAccepted>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.InternalTransferAccepted.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Submit a signed internal ledger transfer between two exchange accounts.Requires proxy signature using the standard signed-op flow.
+        /// Submit a signed internal ledger transfer between two exchange accounts.Sign with the source account owner or a non-expired trading key registeredto the source account. Trading-key signatures require both accounts tobelong to the same nonzero, exchange-managed account group. Owner signaturesremain valid regardless of group membership.Expired trading keys receive `proxy_expired`; other authorization failuresreceive `signer_does_not_match_account`. An unknown destination receives 400`destination account not found`.A 503 does not prove that the transfer was not submitted. Retry with backoff,honoring `Retry-After` when present, and resend the exact original signedrequest. Do not create a fresh signature, salt, or timestamp for the retry: itwould identify a separate transfer. A `signature_already_used` rejection doesnot confirm whether the original transfer completed.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

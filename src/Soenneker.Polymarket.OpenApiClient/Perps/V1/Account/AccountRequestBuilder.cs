@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.AutoCancel;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Backstops;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Balances;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Config;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Credentials;
@@ -41,6 +42,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.AutoCancel.AutoCancelRequestBuilder AutoCancel
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.AutoCancel.AutoCancelRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The backstops property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Backstops.BackstopsRequestBuilder Backstops
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Backstops.BackstopsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The balances property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Balances.BalancesRequestBuilder Balances

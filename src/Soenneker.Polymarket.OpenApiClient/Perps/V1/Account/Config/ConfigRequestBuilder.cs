@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Config
         {
         }
         /// <summary>
-        /// Get per-instrument configuration (leverage and margin mode) for the authenticated account.
+        /// Get resolved per-instrument configuration (leverage and margin mode) for the authenticated account.Each setting resolves independently: explicit per-instrument setting, thenexchange-managed account-group default, then instrument maximum leverage andisolated margin. Group leverage is capped at the instrument maximum; a groupcross default resolves to isolated on isolated-only instruments. Group defaultsapply to new listings and never overwrite explicit settings.Use the leverage update operations to set explicit per-instrument overrides.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.Polymarket.OpenApiClient.Models.AccountConfig&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -64,7 +64,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Config
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Get per-instrument configuration (leverage and margin mode) for the authenticated account.
+        /// Get resolved per-instrument configuration (leverage and margin mode) for the authenticated account.Each setting resolves independently: explicit per-instrument setting, thenexchange-managed account-group default, then instrument maximum leverage andisolated margin. Group leverage is capped at the instrument maximum; a groupcross default resolves to isolated on isolated-only instruments. Group defaultsapply to new listings and never overwrite explicit settings.Use the leverage update operations to set explicit per-instrument overrides.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -92,7 +92,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Config
             return new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Config.ConfigRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get per-instrument configuration (leverage and margin mode) for the authenticated account.
+        /// Get resolved per-instrument configuration (leverage and margin mode) for the authenticated account.Each setting resolves independently: explicit per-instrument setting, thenexchange-managed account-group default, then instrument maximum leverage andisolated margin. Group leverage is capped at the instrument maximum; a groupcross default resolves to isolated on isolated-only instruments. Group defaultsapply to new listings and never overwrite explicit settings.Use the leverage update operations to set explicit per-instrument overrides.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ConfigRequestBuilderGetQueryParameters 

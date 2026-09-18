@@ -3395,7 +3395,7 @@
     "/perps/v1/trade/leverage": {
       "patch": {
         "summary": "Update Leverage",
-        "description": "Update leverage for an instrument.\nRequires proxy signature, see [proxy signing](/http/signing#2-proxy-signing).\n",
+        "description": "Update leverage for an instrument.\n\nEach setting resolves independently: explicit per-instrument setting, then\nexchange-managed account-group default, then instrument maximum leverage and\nisolated margin. Group leverage is capped at the instrument maximum; a group\ncross default resolves to isolated on isolated-only instruments. Group defaults\napply to new listings and never overwrite explicit settings.\nThis operation sets both settings explicitly; GET /v1/account/config reports\nresolved values. Submit the current resolved pair to preserve it against later\ngroup changes. Leverage bounds and BLP locks also apply to unchanged values.\nSet your preferred leverage and margin mode after listing and before placing\nyour first order. An unknown instrument ID (never listed) is rejected with\n\u0060instrument_not_found\u0060; a disabled instrument is not rejected merely because\nit is disabled.\n\nMargin mode can change only when the account has no position and no open\norders in that instrument, including orders awaiting risk approval or execution.\nClose the position and cancel all orders before switching between isolated\nand cross margin. A position blocks a mode change with \u0060position_exists\u0060;\nopen orders block it with \u0060open_orders_exist\u0060. Leverage changes within the\nsame mode remain subject to leverage limits and margin checks. Leverage must\nbe positive (\u0060lev: 0\u0060 returns 400); exceeding the instrument maximum returns\n\u0060invalid_leverage\u0060. BLP-subscribed instruments reject leverage or mode updates\nwith \u0060blp_leverage_locked\u0060; unsubscribe before changing the configuration.\n\nRequires proxy signature, see [proxy signing](/http/signing#2-proxy-signing).\n",
         "operationId": "PerpsUpdateLeverage",
         "requestBody": {
           "description": "Leverage request.",
@@ -3455,7 +3455,7 @@
     "/perps/v1/trade/leverage/batch": {
       "patch": {
         "summary": "Update Leverage for Multiple Instruments",
-        "description": "Update leverage for up to 100 unique instruments. Updates are processed\nsequentially and are not atomic. If only some responses arrive before the\ngateway deadline, missing item results use \u0060internal_error\u0060; whether those\nupdates applied is unknown. If no responses arrive, the request returns 500.\nRequires proxy signature, see [Update Leverage](/perps/trading#update-leverage).\n",
+        "description": "Update leverage for up to 100 unique instruments. Updates are processed\nsequentially and are not atomic. If only some responses arrive before the\ngateway deadline, missing item results use \u0060internal_error\u0060; whether those\nupdates applied is unknown. If no responses arrive, the request returns\n503 \u2014 retryable, since each update is an idempotent leverage/margin-type\nset that converges to the same value whether or not the original attempt\nwas admitted.\n\nEach setting resolves independently: explicit per-instrument setting, then\nexchange-managed account-group default, then instrument maximum leverage and\nisolated margin. Group leverage is capped at the instrument maximum; a group\ncross default resolves to isolated on isolated-only instruments. Group defaults\napply to new listings and never overwrite explicit settings.\nThis operation sets both settings explicitly; GET /v1/account/config reports\nresolved values. Submit the current resolved pair to preserve it against later\ngroup changes. Leverage bounds and BLP locks also apply to unchanged values.\nSet your preferred leverage and margin mode after listing and before placing\nyour first order. An unknown instrument ID (never listed) is rejected with\n\u0060instrument_not_found\u0060; a disabled instrument is not rejected merely because\nit is disabled.\n\nMargin mode can change only when the account has no position and no open\norders in that instrument, including orders awaiting risk approval or execution.\nClose the position and cancel all orders before switching between isolated\nand cross margin. A position blocks a mode change with \u0060position_exists\u0060;\nopen orders block it with \u0060open_orders_exist\u0060. Leverage changes within the\nsame mode remain subject to leverage limits and margin checks. Leverage must\nbe positive (\u0060lev: 0\u0060 returns 400); exceeding the instrument maximum returns\n\u0060invalid_leverage\u0060. BLP-subscribed instruments reject leverage or mode updates\nwith \u0060blp_leverage_locked\u0060; unsubscribe before changing the configuration.\n\nRequires proxy signature, see [Update Leverage](/perps/trading#update-leverage).\n",
         "operationId": "PerpsUpdateLeverages",
         "requestBody": {
           "description": "Batch leverage request.",
@@ -3529,6 +3529,9 @@
           },
           "500": {
             "$ref": "#/components/responses/BatchError500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/BatchError503Response"
           }
         },
         "security": []
@@ -4080,6 +4083,75 @@
         ]
       }
     },
+    "/perps/v1/account/backstops": {
+      "get": {
+        "summary": "Get Account Backstop Transfers",
+        "description": "Get exact quote cash transfers for backstops of the authenticated account.\nDefaults to the last 90 days. Rows are ordered newest first.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\n",
+        "operationId": "PerpsGetAccountBackstops",
+        "parameters": [
+          {
+            "name": "start_timestamp",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_timestamp",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account backstop history response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountBackstops"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503Response"
+          }
+        },
+        "security": [
+          {
+            "polymarket_proxy": [],
+            "polymarket_secret": []
+          }
+        ]
+      }
+    },
     "/perps/v1/account/funding": {
       "get": {
         "summary": "Get Funding Charges",
@@ -4215,7 +4287,7 @@
     "/perps/v1/account/internal-transfer": {
       "post": {
         "summary": "Internal Transfer",
-        "description": "Submit a signed internal ledger transfer between two exchange accounts.\nRequires proxy signature using the standard signed-op flow.\n",
+        "description": "Submit a signed internal ledger transfer between two exchange accounts.\nSign with the source account owner or a non-expired trading key registered\nto the source account. Trading-key signatures require both accounts to\nbelong to the same nonzero, exchange-managed account group. Owner signatures\nremain valid regardless of group membership.\n\nExpired trading keys receive \u0060proxy_expired\u0060; other authorization failures\nreceive \u0060signer_does_not_match_account\u0060. An unknown destination receives 400\n\u0060destination account not found\u0060.\n\nA 503 does not prove that the transfer was not submitted. Retry with backoff,\nhonoring \u0060Retry-After\u0060 when present, and resend the exact original signed\nrequest. Do not create a fresh signature, salt, or timestamp for the retry: it\nwould identify a separate transfer. A \u0060signature_already_used\u0060 rejection does\nnot confirm whether the original transfer completed.\n",
         "operationId": "PerpsInternalTransfer",
         "requestBody": {
           "description": "Internal transfer request.",
@@ -4262,11 +4334,11 @@
             "$ref": "#/components/responses/Error400Response"
           },
           "422": {
-            "description": "The transfer was rejected on its merits (e.g. insufficient balance,\ntransfer to self). The body carries \u0060transfer_id\u0060 and \u0060error\u0060.\n",
+            "description": "The transfer was rejected (e.g. insufficient balance, transfer to self,\nor \u0060signer_does_not_match_account\u0060 at the gateway or sequencer). Expired\ntrading keys receive \u0060proxy_expired\u0060 before source/group checks. Sequencer\nand worker rejections carry \u0060transfer_id\u0060; gateway authorization rejections\ncarry \u0060error\u0060 without that ID.\n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/InternalTransferRejected"
+                  "$ref": "#/components/schemas/PerpsInternalTransfer422Response"
                 }
               }
             }
@@ -4276,6 +4348,25 @@
           },
           "500": {
             "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "description": "Service unavailable. A freshness or load-shed rejection occurs before submission, but an engine response timeout can happen after submission. Retry only the exact original signed request, with backoff, honoring Retry-After when present. Do not re-sign the transfer. A replay rejection does not establish the original transfer outcome.",
+            "headers": {
+              "Retry-After": {
+                "description": "Whole seconds to wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error503"
+                }
+              }
+            }
           }
         },
         "security": []
@@ -4613,7 +4704,7 @@
     "/perps/v1/account/config": {
       "get": {
         "summary": "Get Instrument Config",
-        "description": "Get per-instrument configuration (leverage and margin mode) for the authenticated account.",
+        "description": "Get resolved per-instrument configuration (leverage and margin mode) for the authenticated account.\nEach setting resolves independently: explicit per-instrument setting, then\nexchange-managed account-group default, then instrument maximum leverage and\nisolated margin. Group leverage is capped at the instrument maximum; a group\ncross default resolves to isolated on isolated-only instruments. Group defaults\napply to new listings and never overwrite explicit settings.\nUse the leverage update operations to set explicit per-instrument overrides.\n",
         "operationId": "PerpsGetConfig",
         "parameters": [
           {
@@ -4911,6 +5002,25 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service unavailable. The adjustment may already have been admitted. Retry with backoff using only the exact original signed payload; do not generate a new signature, salt, or timestamp, which would create a separate margin delta. A signature_already_used rejection does not confirm success, and a portfolio snapshot cannot establish the request outcome. Do not sign another adjustment for the same account until the original outcome is confirmed out of band. See [Recover an Isolated-Margin Adjustment](/perps/errors#recover-an-isolated-margin-adjustment).",
+            "headers": {
+              "Retry-After": {
+                "description": "Whole seconds to wait before retrying, when present.",
+                "schema": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error503"
                 }
               }
             }
@@ -15311,8 +15421,8 @@
   },
   "components": {
     "schemas": {
-      "ClobUpdateBalanceAllowance200ResponseSchema": {
-        "type": "object"
+      "ClobRevokeBuilderApiKey200ResponseSchema": {
+        "type": "string"
       },
       "ErrorResponse": {
         "required": [
@@ -15649,14 +15759,15 @@
         },
         "description": "Breakdown of the estimated fees"
       },
-      "ClobDeleteApiKey200ResponseSchema": {
-        "type": "string"
-      },
-      "ClobGetMarketsLiveActivity200ResponseSchema": {
+      "ClobGetBuilderApiKeys200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/LiveActivityMarket"
-        }
+          "type": "string"
+        },
+        "description": "Array of builder API key UUIDs"
+      },
+      "ClobUpdateBalanceAllowance200ResponseSchema": {
+        "type": "object"
       },
       "HealthResponse": {
         "type": "object",
@@ -16323,11 +16434,8 @@
           }
         }
       },
-      "ClobGetMarketsLiveActivityRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+      "ClobDeleteApiKey200ResponseSchema": {
+        "type": "string"
       },
       "Pagination": {
         "type": "object",
@@ -16621,10 +16729,10 @@
           }
         }
       },
-      "ClobGetBooksPost200ResponseSchema": {
+      "ClobGetMarketsLiveActivity200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
+          "$ref": "#/components/schemas/LiveActivityMarket"
         }
       },
       "Error429": {
@@ -16640,7 +16748,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -16657,7 +16765,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -16674,14 +16782,14 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
-      "ClobGetBooksPostRequestRequestBody": {
+      "ClobGetMarketsLiveActivityRequestRequestBody": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/BookRequest"
+          "type": "string"
         }
       },
       "Time2": {
@@ -16695,6 +16803,18 @@
             "description": "Timestamp in milliseconds",
             "format": "int64"
           }
+        }
+      },
+      "ClobGetBooksPost200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderBookSummary"
+        }
+      },
+      "ClobGetBooksPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
         }
       },
       "ClobGetBooksGet200ResponseSchema": {
@@ -16722,18 +16842,6 @@
           "$ref": "#/components/schemas/ClobGetPricesGet200ResponseSchemaAdditionalProperties"
         },
         "description": "Map of token ID to map of side to price"
-      },
-      "ClobGetLastTradesPricesPost200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseSchemaItem"
-        }
-      },
-      "ClobGetLastTradesPricesPostRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
       },
       "Exchange": {
         "required": [
@@ -16773,6 +16881,18 @@
           }
         }
       },
+      "ClobGetLastTradesPricesPost200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseSchemaItem"
+        }
+      },
+      "ClobGetLastTradesPricesPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
       "ClobGetLastTradesPricesGet200ResponseSchema": {
         "type": "array",
         "items": {
@@ -16787,19 +16907,6 @@
         "description": "Map of token ID to spread"
       },
       "ClobGetSpreadsRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
-      },
-      "ClobGetMidpointsPost200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to midpoint price"
-      },
-      "ClobGetMidpointsPostRequestRequestBody": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/BookRequest"
@@ -16837,7 +16944,7 @@
           }
         }
       },
-      "ClobGetMidpointsGet200ResponseSchema": {
+      "ClobGetMidpointsPost200ResponseSchema": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -16894,6 +17001,19 @@
             }
           ]
         }
+      },
+      "ClobGetMidpointsPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetMidpointsGet200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to midpoint price"
       },
       "ClobGetTime200ResponseSchema": {
         "type": "integer",
@@ -16969,18 +17089,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ModifyResponse"
-        }
-      },
-      "PerpsCancelOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/CancelResponse"
-        }
-      },
-      "PerpsCreateOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderResponse"
         }
       },
       "RiskTier": {
@@ -17123,8 +17231,20 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
+        }
+      },
+      "PerpsCancelOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CancelResponse"
+        }
+      },
+      "PerpsCreateOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderResponse"
         }
       },
       "PerpsGetLimitTiers200ResponseSchema": {
@@ -17155,18 +17275,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Instrument"
-        }
-      },
-      "PerpsGetAssets200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Asset2"
-        }
-      },
-      "DataGetV1Leaderboard200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/TraderLeaderboardEntry"
         }
       },
       "TickerData": {
@@ -17221,10 +17329,10 @@
           }
         }
       },
-      "DataGetV1BuildersVolume200ResponseSchema": {
+      "PerpsGetAssets200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/BuilderVolumeEntry"
+          "$ref": "#/components/schemas/Asset2"
         }
       },
       "Ticker": {
@@ -17285,22 +17393,22 @@
           }
         }
       },
+      "DataGetV1Leaderboard200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/TraderLeaderboardEntry"
+        }
+      },
+      "DataGetV1BuildersVolume200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BuilderVolumeEntry"
+        }
+      },
       "DataGetV1BuildersLeaderboard200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/LeaderboardEntry"
-        }
-      },
-      "DataGetV1MarketPositions200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/MetaMarketPositionV1"
-        }
-      },
-      "DataGetOther200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OtherSize"
         }
       },
       "ExchangeOpenInterest": {
@@ -17316,16 +17424,16 @@
         "nullable": true,
         "example": 1767225570000
       },
-      "DataGetClosedPositions200ResponseSchema": {
+      "DataGetV1MarketPositions200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ClosedPosition"
+          "$ref": "#/components/schemas/MetaMarketPositionV1"
         }
       },
-      "DataGetLiveVolume200ResponseSchema": {
+      "DataGetOther200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/LiveVolume"
+          "$ref": "#/components/schemas/OtherSize"
         }
       },
       "Kline": {
@@ -17483,22 +17591,22 @@
           ]
         }
       },
+      "DataGetClosedPositions200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClosedPosition"
+        }
+      },
+      "DataGetLiveVolume200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LiveVolume"
+        }
+      },
       "DataGetOi200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/OpenInterest"
-        }
-      },
-      "DataGetValue200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ValueValue"
-        }
-      },
-      "DataGetRevisions200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RevisionPayload"
         }
       },
       "KlinesResponse": {
@@ -17549,6 +17657,18 @@
         },
         "description": "- \u00601767225600000\u0060 - Bucket open time (ms)\n- \u0060\u0022160.00\u0022\u0060 - Last mark price in bucket\n"
       },
+      "DataGetValue200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ValueValue"
+        }
+      },
+      "DataGetRevisions200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RevisionPayload"
+        }
+      },
       "DataGetHolders200ResponseSchema": {
         "type": "array",
         "items": {
@@ -17572,14 +17692,6 @@
         "items": {
           "$ref": "#/components/schemas/Position"
         }
-      },
-      "DataGetV1AccountingSnapshot200ZipResponseSchema": {
-        "type": "string",
-        "format": "binary"
-      },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
       },
       "Bbo": {
         "title": "BBO",
@@ -17640,11 +17752,9 @@
         },
         "description": "- \u0060\u0022100.00\u0022\u0060 - Price\n- \u0060\u002210.00\u0022\u0060 - Quantity\n"
       },
-      "RelayerGetRelayerApiKeys200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelayerApiKey"
-        }
+      "DataGetV1AccountingSnapshot200ZipResponseSchema": {
+        "type": "string",
+        "format": "binary"
       },
       "Book": {
         "required": [
@@ -17695,22 +17805,20 @@
           }
         }
       },
+      "ExamplePayload": {
+        "type": "object",
+        "description": "Placeholder schema for path example refs"
+      },
+      "RelayerGetRelayerApiKeys200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RelayerApiKey"
+        }
+      },
       "RelayerGetTransactions200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/RelayerTransaction"
-        }
-      },
-      "RelayerGetTransaction200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelayerTransaction"
-        }
-      },
-      "GammaGetSportsMetadata200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SportsMetadata"
         }
       },
       "IndexConstituent": {
@@ -17769,10 +17877,10 @@
           }
         }
       },
-      "GammaGetCommentsByUserAddress200Response": {
+      "RelayerGetTransaction200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Comment"
+          "$ref": "#/components/schemas/RelayerTransaction"
         }
       },
       "Side": {
@@ -17798,22 +17906,22 @@
           ]
         }
       },
+      "GammaGetSportsMetadata200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SportsMetadata"
+        }
+      },
+      "GammaGetCommentsByUserAddress200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Comment"
+        }
+      },
       "GammaGetCommentsById200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Comment"
-        }
-      },
-      "GammaListComments200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Comment"
-        }
-      },
-      "GammaListSeries200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Series"
         }
       },
       "TradeData": {
@@ -17878,6 +17986,18 @@
           }
         }
       },
+      "GammaListComments200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Comment"
+        }
+      },
+      "GammaListSeries200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Series"
+        }
+      },
       "GammaGetAbridgedMarkets200Response": {
         "type": "array",
         "items": {
@@ -17885,18 +18005,6 @@
         }
       },
       "GammaGetMarketsInformation200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GammaMarket"
-        }
-      },
-      "GammaGetMarketTags200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Tag"
-        }
-      },
-      "GammaListMarkets200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/GammaMarket"
@@ -17939,16 +18047,16 @@
           }
         }
       },
-      "GammaListEventCreators200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/EventCreator"
-        }
-      },
-      "GammaGetEventTags200Response": {
+      "GammaGetMarketTags200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Tag"
+        }
+      },
+      "GammaListMarkets200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GammaMarket"
         }
       },
       "PublicPortfolio": {
@@ -17976,10 +18084,10 @@
           }
         }
       },
-      "GammaListSportEventsResults200Response": {
+      "GammaListEventCreators200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/EventType"
+          "$ref": "#/components/schemas/EventCreator"
         }
       },
       "FundingRate2": {
@@ -18019,22 +18127,22 @@
           }
         }
       },
-      "GammaListEvents200Response": {
+      "GammaGetEventTags200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Tag"
+        }
+      },
+      "GammaListSportEventsResults200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/EventType"
         }
       },
-      "GammaGetTagsRelatedToATagBySlug200Response": {
+      "GammaListEvents200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Tag"
-        }
-      },
-      "GammaGetTagsRelatedToATagById200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Tag"
+          "$ref": "#/components/schemas/EventType"
         }
       },
       "FeeTier": {
@@ -18105,6 +18213,18 @@
           }
         }
       },
+      "GammaGetTagsRelatedToATagBySlug200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Tag"
+        }
+      },
+      "GammaGetTagsRelatedToATagById200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Tag"
+        }
+      },
       "GammaGetRelatedTagsBySlug200Response": {
         "type": "array",
         "items": {
@@ -18132,19 +18252,6 @@
       "GammaGetGammaStatus200PlainResponse": {
         "type": "string",
         "example": "OK"
-      },
-      "ClobPostOrdersScoringRequest": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "description": "Array of order IDs (order hashes) to check scoring status for"
-      },
-      "ClobGetCurrentRebatedFees200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RebatedFees"
-        }
       },
       "LimitTier": {
         "required": [
@@ -18188,13 +18295,12 @@
           }
         }
       },
-      "ClobGetRewardPercentagesForUser200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number",
-          "format": "double"
+      "ClobPostOrdersScoringRequest": {
+        "type": "array",
+        "items": {
+          "type": "string"
         },
-        "description": "Map of condition_id to reward percentage"
+        "description": "Array of order IDs (order hashes) to check scoring status for"
       },
       "InviteCheckResponse": {
         "required": [
@@ -18212,10 +18318,10 @@
           }
         }
       },
-      "ClobGetTotalEarningsForUserForDay200Response": {
+      "ClobGetCurrentRebatedFees200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/TotalUserEarning"
+          "$ref": "#/components/schemas/RebatedFees"
         }
       },
       "Tif": {
@@ -18246,6 +18352,20 @@
           ]
         }
       },
+      "ClobGetRewardPercentagesForUser200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        },
+        "description": "Map of condition_id to reward percentage"
+      },
+      "ClobGetTotalEarningsForUserForDay200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/TotalUserEarning"
+        }
+      },
       "ClobDropNotifications200Response": {
         "type": "string"
       },
@@ -18257,16 +18377,6 @@
       },
       "ClobRevokeBuilderApiKey200Response": {
         "type": "string"
-      },
-      "ClobGetBuilderApiKeys200Response": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "description": "Array of builder API key UUIDs"
-      },
-      "ClobUpdateBalanceAllowance200Response": {
-        "type": "object"
       },
       "Tpsl": {
         "enum": [
@@ -18381,14 +18491,15 @@
           }
         }
       },
-      "ClobDeleteApiKey200Response": {
-        "type": "string"
-      },
-      "ClobGetMarketsLiveActivity200Response": {
+      "ClobGetBuilderApiKeys200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/LiveActivityMarket"
-        }
+          "type": "string"
+        },
+        "description": "Array of builder API key UUIDs"
+      },
+      "ClobUpdateBalanceAllowance200Response": {
+        "type": "object"
       },
       "BaseOp": {
         "required": [
@@ -18413,11 +18524,8 @@
           }
         }
       },
-      "ClobGetMarketsLiveActivityRequest": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+      "ClobDeleteApiKey200Response": {
+        "type": "string"
       },
       "OrderRequest": {
         "required": [
@@ -18451,10 +18559,10 @@
           }
         }
       },
-      "ClobGetBooksPost200Response": {
+      "ClobGetMarketsLiveActivity200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
+          "$ref": "#/components/schemas/LiveActivityMarket"
         }
       },
       "OrderAccepted": {
@@ -18491,7 +18599,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           },
           "oid": {
             "type": "integer",
@@ -18528,7 +18636,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -18635,7 +18743,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           },
           "ts": {
             "type": "integer",
@@ -18672,7 +18780,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -18830,10 +18938,10 @@
           }
         }
       },
-      "ClobGetBooksPostRequest": {
+      "ClobGetMarketsLiveActivityRequest": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/BookRequest"
+          "type": "string"
         }
       },
       "AutoCancelResponse": {
@@ -18867,7 +18975,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -18884,7 +18992,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -18901,7 +19009,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -18917,22 +19025,21 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
-      "ClobGetBooksGet200Response": {
+      "ClobGetBooksPost200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/OrderBookSummary"
         }
       },
-      "ClobGetPricesPost200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
+      "ClobGetBooksPostRequest": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
       },
       "OpUpdateLeverage": {
         "required": [
@@ -19089,7 +19196,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -19118,35 +19225,27 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
+      },
+      "ClobGetBooksGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderBookSummary"
+        }
+      },
+      "ClobGetPricesPost200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
       },
       "ClobGetPricesPostRequest": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/BookRequest"
-        }
-      },
-      "ClobGetPricesGet200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesGet200ResponseAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
-      },
-      "ClobGetPrice200Response": {
-        "required": [
-          "price"
-        ],
-        "type": "object",
-        "properties": {
-          "price": {
-            "type": "number",
-            "description": "Market price as a decimal number",
-            "format": "double",
-            "example": 0.45
-          }
         }
       },
       "OpCreateProxy": {
@@ -19164,11 +19263,12 @@
           }
         }
       },
-      "ClobGetLastTradesPricesPost200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseItem"
-        }
+      "ClobGetPricesGet200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesGet200ResponseAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
       },
       "ProxyRequest": {
         "required": [
@@ -19205,10 +19305,18 @@
           }
         }
       },
-      "ClobGetLastTradesPricesPostRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
+      "ClobGetPrice200Response": {
+        "required": [
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "number",
+            "description": "Market price as a decimal number",
+            "format": "double",
+            "example": 0.45
+          }
         }
       },
       "ProxyResponse": {
@@ -19323,8 +19431,20 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
+        }
+      },
+      "ClobGetLastTradesPricesPost200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseItem"
+        }
+      },
+      "ClobGetLastTradesPricesPostRequest": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
         }
       },
       "ClobGetLastTradesPricesGet200Response": {
@@ -19362,26 +19482,6 @@
         "items": {
           "$ref": "#/components/schemas/BookRequest"
         }
-      },
-      "ClobGetSpread200Response": {
-        "required": [
-          "spread"
-        ],
-        "type": "object",
-        "properties": {
-          "spread": {
-            "type": "string",
-            "description": "Spread as a string",
-            "example": "0.02"
-          }
-        }
-      },
-      "ClobGetMidpointsPost200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to midpoint price"
       },
       "Kind": {
         "enum": [
@@ -19429,13 +19529,20 @@
           ]
         }
       },
-      "ClobGetMidpointsPostRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
+      "ClobGetSpread200Response": {
+        "required": [
+          "spread"
+        ],
+        "type": "object",
+        "properties": {
+          "spread": {
+            "type": "string",
+            "description": "Spread as a string",
+            "example": "0.02"
+          }
         }
       },
-      "ClobGetMidpointsGet200Response": {
+      "ClobGetMidpointsPost200Response": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -19559,23 +19666,18 @@
           }
         }
       },
-      "ClobGetMidpoint200Response": {
-        "required": [
-          "mid_price"
-        ],
-        "type": "object",
-        "properties": {
-          "mid_price": {
-            "type": "string",
-            "description": "Midpoint price as a string",
-            "example": "0.45"
-          }
+      "ClobGetMidpointsPostRequest": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
         }
       },
-      "ClobGetTime200Response": {
-        "type": "integer",
-        "description": "Unix timestamp (seconds since epoch)",
-        "format": "int64"
+      "ClobGetMidpointsGet200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to midpoint price"
       },
       "Balance2": {
         "required": [
@@ -19598,6 +19700,24 @@
             "description": "USD value"
           }
         }
+      },
+      "ClobGetMidpoint200Response": {
+        "required": [
+          "mid_price"
+        ],
+        "type": "object",
+        "properties": {
+          "mid_price": {
+            "type": "string",
+            "description": "Midpoint price as a string",
+            "example": "0.45"
+          }
+        }
+      },
+      "ClobGetTime200Response": {
+        "type": "integer",
+        "description": "Unix timestamp (seconds since epoch)",
+        "format": "int64"
       },
       "ClobCancelOrdersRequest": {
         "maxItems": 1000,
@@ -19623,18 +19743,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/AccountConfig"
-        }
-      },
-      "PerpsGetBalances200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Balance2"
-        }
-      },
-      "PerpsGetOpenOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderData"
         }
       },
       "PortfolioPosition": {
@@ -19709,6 +19817,42 @@
           }
         }
       },
+      "PerpsInternalTransfer422Response": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/InternalTransferRejected"
+          },
+          {
+            "$ref": "#/components/schemas/PerpsInternalTransfer422ResponseOneOf2"
+          }
+        ],
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ErrStatus"
+          },
+          "transfer_id": {
+            "type": "integer",
+            "description": "Internal transfer ID"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+          }
+        }
+      },
+      "PerpsGetBalances200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Balance2"
+        }
+      },
+      "PerpsGetOpenOrders200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderData"
+        }
+      },
       "PerpsGetOrders200Response": {
         "type": "array",
         "items": {
@@ -19719,24 +19863,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/LeverageBatchResponse"
-        }
-      },
-      "PerpsModifyOrdersByCoid200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ModifyResponse"
-        }
-      },
-      "PerpsCancelOrdersByCoid200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/CancelResponse"
-        }
-      },
-      "PerpsModifyOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ModifyResponse"
         }
       },
       "MarginSummary": {
@@ -19771,16 +19897,16 @@
           }
         }
       },
-      "PerpsCancelOrders200Response": {
+      "PerpsModifyOrdersByCoid200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ModifyResponse"
+        }
+      },
+      "PerpsCancelOrdersByCoid200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/CancelResponse"
-        }
-      },
-      "PerpsCreateOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderResponse"
         }
       },
       "Portfolio": {
@@ -19822,16 +19948,22 @@
           }
         }
       },
-      "PerpsGetLimitTiers200Response": {
+      "PerpsModifyOrders200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/LimitTier"
+          "$ref": "#/components/schemas/ModifyResponse"
         }
       },
-      "PerpsGetBbo200Response": {
+      "PerpsCancelOrders200Response": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Bbo"
+          "$ref": "#/components/schemas/CancelResponse"
+        }
+      },
+      "PerpsCreateOrders200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderResponse"
         }
       },
       "Sort": {
@@ -19855,6 +19987,18 @@
               "name": "Asc"
             }
           ]
+        }
+      },
+      "PerpsGetLimitTiers200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LimitTier"
+        }
+      },
+      "PerpsGetBbo200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Bbo"
         }
       },
       "PerpsGetStatistics200Response": {
@@ -19897,18 +20041,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/TraderLeaderboardEntry"
-        }
-      },
-      "DataGetV1BuildersVolume200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BuilderVolumeEntry"
-        }
-      },
-      "DataGetV1BuildersLeaderboard200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LeaderboardEntry"
         }
       },
       "AccountTradeData": {
@@ -20105,6 +20237,18 @@
           }
         }
       },
+      "DataGetV1BuildersVolume200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BuilderVolumeEntry"
+        }
+      },
+      "DataGetV1BuildersLeaderboard200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LeaderboardEntry"
+        }
+      },
       "DataGetV1MarketPositions200Response": {
         "type": "array",
         "items": {
@@ -20127,6 +20271,94 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/LiveVolume"
+        }
+      },
+      "AccountBackstop": {
+        "required": [
+          "id",
+          "cross",
+          "instrument_id",
+          "asset",
+          "transferred",
+          "cash_before",
+          "cash_after",
+          "timestamp",
+          "sequence"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Liquidation ID. Identifies one absorption of an account\u0027s positions by the insurance fund. Probabilistically unique (same guarantees as trade IDs)."
+          },
+          "cross": {
+            "type": "boolean",
+            "description": "Whether to use cross margin mode"
+          },
+          "instrument_id": {
+            "type": "integer",
+            "description": "Absorbed instrument ID, or null for a cross-margin absorption.",
+            "nullable": true
+          },
+          "asset": {
+            "type": "string",
+            "description": "Funding asset name"
+          },
+          "transferred": {
+            "type": "string",
+            "description": "Signed raw quote margin allocated by the absorption, without rounding."
+          },
+          "cash_before": {
+            "type": "string",
+            "description": "Raw quote cash bucket immediately before the absorption."
+          },
+          "cash_after": {
+            "type": "string",
+            "description": "Raw quote cash bucket immediately after the absorption. The difference from cash_before is the authoritative wallet delta."
+          },
+          "timestamp": {
+            "type": "integer",
+            "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+            "format": "int64"
+          },
+          "sequence": {
+            "type": "integer",
+            "description": "Engine sequence of the history event."
+          }
+        }
+      },
+      "AccountBackstops": {
+        "required": [
+          "data",
+          "more"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountBackstop"
+            }
+          },
+          "more": {
+            "type": "boolean",
+            "description": "More data available"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/AccountBackstopsCoverage"
+          }
+        }
+      },
+      "DataGetOi200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OpenInterest"
+        }
+      },
+      "DataGetValue200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ValueValue"
         }
       },
       "AccountFundingData": {
@@ -20192,18 +20424,6 @@
           }
         }
       },
-      "DataGetOi200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OpenInterest"
-        }
-      },
-      "DataGetValue200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ValueValue"
-        }
-      },
       "DataGetRevisions200Response": {
         "type": "array",
         "items": {
@@ -20220,6 +20440,18 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Activity"
+        }
+      },
+      "DataGetTrades200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Trade"
+        }
+      },
+      "DataGetPositions200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Position"
         }
       },
       "OpWithdraw": {
@@ -20264,11 +20496,9 @@
           }
         }
       },
-      "DataGetTrades200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Trade"
-        }
+      "DataGetV1AccountingSnapshot200ZipResponse": {
+        "type": "string",
+        "format": "binary"
       },
       "WithdrawAccepted": {
         "required": [
@@ -20303,7 +20533,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -20353,81 +20583,6 @@
           }
         }
       },
-      "DataGetPositions200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Position"
-        }
-      },
-      "InternalTransferAccepted": {
-        "required": [
-          "status",
-          "transfer_id"
-        ],
-        "type": "object",
-        "properties": {
-          "status": {
-            "$ref": "#/components/schemas/OkStatus"
-          },
-          "transfer_id": {
-            "type": "integer",
-            "description": "Internal transfer ID"
-          }
-        }
-      },
-      "InternalTransferRejected": {
-        "required": [
-          "status",
-          "transfer_id",
-          "error"
-        ],
-        "type": "object",
-        "properties": {
-          "status": {
-            "$ref": "#/components/schemas/ErrStatus"
-          },
-          "transfer_id": {
-            "type": "integer",
-            "description": "Internal transfer ID"
-          },
-          "error": {
-            "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
-          }
-        }
-      },
-      "DepositStatus": {
-        "enum": [
-          "pending",
-          "confirmed",
-          "removed"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Deposit status",
-        "x-ms-enum": {
-          "name": "DepositStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "pending",
-              "name": "Pending"
-            },
-            {
-              "value": "confirmed",
-              "name": "Confirmed"
-            },
-            {
-              "value": "removed",
-              "name": "Removed"
-            }
-          ]
-        }
-      },
-      "DataGetV1AccountingSnapshot200ZipResponse": {
-        "type": "string",
-        "format": "binary"
-      },
       "ClobTradeMakerOrdersItem": {
         "type": "object",
         "properties": {
@@ -20468,6 +20623,71 @@
           }
         }
       },
+      "InternalTransferAccepted": {
+        "required": [
+          "status",
+          "transfer_id"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/OkStatus"
+          },
+          "transfer_id": {
+            "type": "integer",
+            "description": "Internal transfer ID"
+          }
+        }
+      },
+      "InternalTransferRejected": {
+        "required": [
+          "status",
+          "transfer_id",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ErrStatus"
+          },
+          "transfer_id": {
+            "type": "integer",
+            "description": "Internal transfer ID"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+          }
+        }
+      },
+      "DepositStatus": {
+        "enum": [
+          "pending",
+          "confirmed",
+          "removed"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Deposit status",
+        "x-ms-enum": {
+          "name": "DepositStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "confirmed",
+              "name": "Confirmed"
+            },
+            {
+              "value": "removed",
+              "name": "Removed"
+            }
+          ]
+        }
+      },
       "NotificationPayload": {
         "type": "object",
         "description": "Dynamic payload containing notification-specific data"
@@ -20492,6 +20712,28 @@
           }
         },
         "description": "Map of market asset id to array of price data points."
+      },
+      "RewardsRatesItem": {
+        "type": "object",
+        "properties": {
+          "asset_address": {
+            "type": "string"
+          },
+          "rewards_daily_rate": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "CancelOrdersResponseNotCanceled": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of order IDs that could not be canceled with error messages",
+        "example": {
+          "0xabcdef1234567890abcdef1234567890abcdef12": "Order not found or already canceled"
+        }
       },
       "Deposit": {
         "required": [
@@ -20591,17 +20833,9 @@
           ]
         }
       },
-      "RewardsRatesItem": {
+      "NotificationItemNotification": {
         "type": "object",
-        "properties": {
-          "asset_address": {
-            "type": "string"
-          },
-          "rewards_daily_rate": {
-            "type": "number",
-            "format": "double"
-          }
-        }
+        "description": "The notification payload. Fields vary by notification type; see the [Notifications channel](/api-reference/wss/perps-notifications) for the per-type shapes."
       },
       "InternalTransfer": {
         "required": [
@@ -20775,20 +21009,6 @@
           }
         }
       },
-      "CancelOrdersResponseNotCanceled": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of order IDs that could not be canceled with error messages",
-        "example": {
-          "0xabcdef1234567890abcdef1234567890abcdef12": "Order not found or already canceled"
-        }
-      },
-      "NotificationItemNotification": {
-        "type": "object",
-        "description": "The notification payload. Fields vary by notification type; see the [Notifications channel](/api-reference/wss/perps-notifications) for the per-type shapes."
-      },
       "OpUpdateMarginArgs": {
         "required": [
           "iid",
@@ -20860,6 +21080,21 @@
           }
         }
       },
+      "AccountBackstopsCoverage": {
+        "required": [
+          "notes"
+        ],
+        "type": "object",
+        "properties": {
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Present when backstop history is unavailable because its schema is pending."
+      },
       "OpDeleteProxyArgs": {
         "required": [
           "proxy"
@@ -20892,6 +21127,28 @@
             "type": "integer",
             "description": "Expiry timestamp in milliseconds",
             "format": "int64"
+          }
+        }
+      },
+      "OpUpdateLeverageArgs": {
+        "required": [
+          "iid",
+          "lev",
+          "cross"
+        ],
+        "type": "object",
+        "properties": {
+          "iid": {
+            "type": "integer",
+            "description": "Instrument ID"
+          },
+          "lev": {
+            "type": "integer",
+            "description": "Leverage"
+          },
+          "cross": {
+            "type": "boolean",
+            "description": "Whether to use cross margin mode"
           }
         }
       },
@@ -20934,28 +21191,6 @@
           }
         }
       },
-      "OpUpdateLeverageArgs": {
-        "required": [
-          "iid",
-          "lev",
-          "cross"
-        ],
-        "type": "object",
-        "properties": {
-          "iid": {
-            "type": "integer",
-            "description": "Instrument ID"
-          },
-          "lev": {
-            "type": "integer",
-            "description": "Leverage"
-          },
-          "cross": {
-            "type": "boolean",
-            "description": "Whether to use cross margin mode"
-          }
-        }
-      },
       "OpAutoCancelArgs": {
         "required": [
           "time"
@@ -20995,6 +21230,31 @@
           }
         },
         "description": "Optional trigger attached to this order."
+      },
+      "DepositResponseAddress": {
+        "type": "object",
+        "properties": {
+          "evm": {
+            "type": "string",
+            "description": "EVM-compatible bridge address (Ethereum, Polygon, Arbitrum, Base, etc.)",
+            "example": "0x23566f8b2E82aDfCf01846E54899d110e97AC053"
+          },
+          "svm": {
+            "type": "string",
+            "description": "Solana Virtual Machine bridge address",
+            "example": "CrvTBvzryYxBHbWu2TiQpcqD5M7Le7iBKzVmEj3f36Jb"
+          },
+          "btc": {
+            "type": "string",
+            "description": "Bitcoin bridge address",
+            "example": "bc1q8eau83qffxcj8ht4hsjdza3lha9r3egfqysj3g"
+          },
+          "tron": {
+            "type": "string",
+            "description": "Tron bridge address"
+          }
+        },
+        "description": "Bridge addresses for different blockchain networks"
       },
       "AccountLimits": {
         "required": [
@@ -21043,31 +21303,6 @@
             "description": "Display-only per-minute action/message allowance, equal to actions_per_minute_limit. Not separately configured or enforced."
           }
         }
-      },
-      "DepositResponseAddress": {
-        "type": "object",
-        "properties": {
-          "evm": {
-            "type": "string",
-            "description": "EVM-compatible bridge address (Ethereum, Polygon, Arbitrum, Base, etc.)",
-            "example": "0x23566f8b2E82aDfCf01846E54899d110e97AC053"
-          },
-          "svm": {
-            "type": "string",
-            "description": "Solana Virtual Machine bridge address",
-            "example": "CrvTBvzryYxBHbWu2TiQpcqD5M7Le7iBKzVmEj3f36Jb"
-          },
-          "btc": {
-            "type": "string",
-            "description": "Bitcoin bridge address",
-            "example": "bc1q8eau83qffxcj8ht4hsjdza3lha9r3egfqysj3g"
-          },
-          "tron": {
-            "type": "string",
-            "description": "Tron bridge address"
-          }
-        },
-        "description": "Bridge addresses for different blockchain networks"
       },
       "ModifyRequestAllOf3": {
         "type": "object",
@@ -21152,6 +21387,15 @@
           }
         }
       },
+      "InternalTransferRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Human-readable label for a proxy key or internal transfer"
+          }
+        }
+      },
       "AccountRewardInstrument": {
         "required": [
           "instrument_id",
@@ -21174,12 +21418,14 @@
           }
         }
       },
-      "InternalTransferRequestAllOf3": {
+      "InternalTransferRequestAllOf1": {
+        "required": [
+          "op"
+        ],
         "type": "object",
         "properties": {
-          "label": {
-            "type": "string",
-            "description": "Human-readable label for a proxy key or internal transfer"
+          "op": {
+            "$ref": "#/components/schemas/OpInternalTransfer"
           }
         }
       },
@@ -21274,17 +21520,6 @@
         },
         "description": "Account configuration."
       },
-      "InternalTransferRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpInternalTransfer"
-          }
-        }
-      },
       "WithdrawRequestAllOf1": {
         "required": [
           "op"
@@ -21304,6 +21539,19 @@
         "properties": {
           "op": {
             "$ref": "#/components/schemas/OpDeleteProxy"
+          }
+        }
+      },
+      "ProxyRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Human-readable label for a proxy key or internal transfer"
+          },
+          "code": {
+            "type": "string",
+            "description": "Referral or invite code"
           }
         }
       },
@@ -21368,19 +21616,6 @@
           }
         }
       },
-      "ProxyRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "label": {
-            "type": "string",
-            "description": "Human-readable label for a proxy key or internal transfer"
-          },
-          "code": {
-            "type": "string",
-            "description": "Referral or invite code"
-          }
-        }
-      },
       "ProxyRequestAllOf1": {
         "required": [
           "op"
@@ -21432,6 +21667,17 @@
             "type": "integer",
             "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
             "format": "int64"
+          }
+        }
+      },
+      "CancelByCoidRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpCancelOrdersByCoid"
           }
         }
       },
@@ -21548,18 +21794,17 @@
         "properties": {
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
-      "CancelByCoidRequestAllOf1": {
-        "required": [
-          "op"
-        ],
+      "CancelAllRequestAllOf3": {
         "type": "object",
         "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCancelOrdersByCoid"
+          "exp": {
+            "type": "integer",
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -21569,13 +21814,14 @@
         "nullable": true,
         "example": "eyJ0cyI6MTc2NzIyNTYwMDAwMCwiaWQiOiIwYTVkOGYxZS0zYjJjLTVlNGEtOWY4Yi0xYzJkM2U0ZjVhNmIifQ"
       },
-      "CancelAllRequestAllOf3": {
+      "CancelAllRequestAllOf1": {
+        "required": [
+          "op"
+        ],
         "type": "object",
         "properties": {
-          "exp": {
-            "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
-            "format": "int64"
+          "op": {
+            "$ref": "#/components/schemas/OpCancelAll"
           }
         }
       },
@@ -21607,17 +21853,6 @@
           }
         }
       },
-      "CancelAllRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCancelAll"
-          }
-        }
-      },
       "CancelRequestAllOf3": {
         "type": "object",
         "properties": {
@@ -21625,6 +21860,17 @@
             "type": "integer",
             "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
             "format": "int64"
+          }
+        }
+      },
+      "CancelRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpCancelOrders"
           }
         }
       },
@@ -21661,14 +21907,13 @@
           }
         }
       },
-      "CancelRequestAllOf1": {
-        "required": [
-          "op"
-        ],
+      "OrderRequestAllOf3": {
         "type": "object",
         "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCancelOrders"
+          "exp": {
+            "type": "integer",
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
           }
         }
       },
@@ -21697,13 +21942,14 @@
           }
         }
       },
-      "OrderRequestAllOf3": {
+      "OrderRequestAllOf1": {
+        "required": [
+          "op"
+        ],
         "type": "object",
         "properties": {
-          "exp": {
-            "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
-            "format": "int64"
+          "op": {
+            "$ref": "#/components/schemas/OpCreateOrders"
           }
         }
       },
@@ -21744,14 +21990,16 @@
           }
         }
       },
-      "OrderRequestAllOf1": {
+      "TickerAllOf2": {
         "required": [
-          "op"
+          "timestamp"
         ],
         "type": "object",
         "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCreateOrders"
+          "timestamp": {
+            "type": "integer",
+            "description": "Timestamp in milliseconds",
+            "format": "int64"
           }
         }
       },
@@ -21772,20 +22020,15 @@
           }
         }
       },
-      "TickerAllOf2": {
-        "required": [
-          "timestamp"
-        ],
-        "type": "object",
-        "properties": {
-          "timestamp": {
-            "type": "integer",
-            "description": "Timestamp in milliseconds",
-            "format": "int64"
-          }
+      "BatchError404ResponseResponse": {
+        "maxItems": 1,
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GenericRejected"
         }
       },
-      "BatchError404ResponseResponse": {
+      "BatchError503ResponseResponse": {
         "maxItems": 1,
         "minItems": 1,
         "type": "array",
@@ -22030,7 +22273,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -22092,7 +22335,7 @@
           },
           "error": {
             "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
           }
         }
       },
@@ -27707,16 +27950,6 @@
           }
         }
       },
-      "ClobGetBuilderApiKeys200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "description": "Array of builder API key UUIDs"
-      },
-      "ClobRevokeBuilderApiKey200ResponseSchema": {
-        "type": "string"
-      },
       "ClobGetNotifications200ResponseSchema": {
         "type": "array",
         "items": {
@@ -27926,6 +28159,14 @@
           "$ref": "#/components/schemas/GenericRejected"
         }
       },
+      "BatchError503ResponseResponseContent": {
+        "maxItems": 1,
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GenericRejected"
+        }
+      },
       "BatchError404ResponseResponseContent": {
         "maxItems": 1,
         "minItems": 1,
@@ -27933,6 +28174,33 @@
         "items": {
           "$ref": "#/components/schemas/GenericRejected"
         }
+      },
+      "PerpsInternalTransfer422ResponseOneOf2": {
+        "required": [
+          "status",
+          "error"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "type": "object",
+            "not": {
+              "required": [
+                "transfer_id"
+              ]
+            }
+          }
+        ],
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ErrStatus"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+          }
+        },
+        "description": "Gateway authorization rejection before a transfer ID is assigned."
       },
       "ClobGetPricesPost200ResponseSchemaAdditionalProperties": {
         "type": "object",
@@ -30583,7 +30851,7 @@
         }
       },
       "Error503Response": {
-        "description": "Service unavailable \u2014 the request was deliberately shed and did not\nexecute; it is safe to retry with backoff, honoring \u0060Retry-After\u0060 when\npresent. Causes include the replica\u0027s pod-level in-flight cap (shed\nbefore dispatch, with \u0060Retry-After\u0060), a database read shed as\nbackpressure under overload (by the local read gate or by the database\nserver\u0027s concurrency cap \u2014 the query never executed), a required\ninternal cache that is stale or not yet primed and would return wrong\ndata, or a full bounded deferred-write queue. \u0060error\u0060 is\n\u0060service_unavailable\u0060.\n",
+        "description": "Service unavailable \u2014 safe to retry with backoff, honoring\n\u0060Retry-After\u0060 when present. \u0060error\u0060 is\n\u0060service_unavailable\u0060.\n\nMost causes are a request deliberately shed before it reached the\nengine, so the request definitely did not execute: the replica\u0027s\npod-level in-flight cap (shed before dispatch, with \u0060Retry-After\u0060), a\ndatabase read shed as backpressure under overload (by the local read\ngate or by the database server\u0027s concurrency cap \u2014 the query never\nexecuted), a required internal cache that is stale or not yet primed\nand would return wrong data, or a full bounded deferred-write queue.\n\nOn a subset of order/state-mutating routes, this status is also\nreturned when the engine round-trip itself times out with zero\nresponses observed. That is retryable engine backpressure, but \u2014\nunlike the sheds above \u2014 it does not prove non-execution: the command\nmay already have been admitted, with its response simply not reaching\nthe gateway before the deadline. This status is only used for that\ncase on routes that are safe to retry regardless (idempotent\nstate-setting, or an engine-side replay guard); routes where a bare\nretry cannot safely resolve the ambiguity keep the outcome a\nnon-retryable 500 instead.\n",
         "headers": {
           "Retry-After": {
             "description": "Whole seconds to wait before retrying. Present on pre-dispatch\nin-flight-cap sheds \u2014 a transient overload signal, so the hint is\nshort and constant.\n",
@@ -30646,6 +30914,25 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/BatchError500ResponseResponseContent"
+            }
+          }
+        }
+      },
+      "BatchError503Response": {
+        "description": "Service unavailable \u2014 safe to retry with backoff, honoring\n\u0060Retry-After\u0060 when present. Request-level failures are returned as a\nsingle rejected item so batch endpoints always return an array.\n\u0060error\u0060 is \u0060service_unavailable\u0060.\n\nMost causes are the replica shedding the request at its pod-level\nin-flight cap before dispatch \u2014 the request definitely did not\nexecute, and the shed is transient by design.\n\nOn a subset of routes, this status is also returned when the engine\nround-trip itself times out with zero responses observed. That is\nretryable engine backpressure, but it does not prove non-execution:\nthe command may already have been admitted, with its response simply\nnot reaching the gateway before the deadline. This status is only\nused for that case on routes that are safe to retry regardless\n(idempotent state-setting); routes where a bare retry cannot safely\nresolve the ambiguity keep the outcome a non-retryable 500 instead.\n",
+        "headers": {
+          "Retry-After": {
+            "description": "Whole seconds to wait before retrying. The shed is a transient\noverload signal, so the hint is short and constant.\n",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BatchError503ResponseResponseContent"
             }
           }
         }

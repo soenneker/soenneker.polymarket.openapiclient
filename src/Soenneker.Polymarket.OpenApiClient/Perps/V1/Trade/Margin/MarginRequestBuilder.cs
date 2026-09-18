@@ -43,6 +43,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Margin
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error400">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error429">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error500">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error503">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Polymarket.OpenApiClient.Models.GenericResponse?> PatchAsync(global::Soenneker.Polymarket.OpenApiClient.Models.MarginRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -59,6 +60,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Margin
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.Error400.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Polymarket.OpenApiClient.Models.Error429.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.Error500.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Polymarket.OpenApiClient.Models.Error503.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.GenericResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.GenericResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
