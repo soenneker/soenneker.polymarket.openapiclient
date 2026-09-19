@@ -101,7 +101,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Builders.Leaderboard
             public int? Offset { get; set; }
             /// <summary>The time period to aggregate results over.</summary>
             [QueryParameter("timePeriod")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1BuildersLeaderboardTimePeriodParameter? TimePeriod { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11Builders1LeaderboardGetTimePeriodParameter? TimePeriod { get; set; }
         }
     }
 }

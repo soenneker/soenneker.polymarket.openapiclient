@@ -95,7 +95,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Builders.Volume
         {
             /// <summary>The time period to fetch daily records for.</summary>
             [QueryParameter("timePeriod")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1BuildersVolumeTimePeriodParameter? TimePeriod { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11Builders1VolumeGetTimePeriodParameter? TimePeriod { get; set; }
         }
     }
 }

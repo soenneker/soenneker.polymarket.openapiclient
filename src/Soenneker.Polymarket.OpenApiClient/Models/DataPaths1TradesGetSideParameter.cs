@@ -5,24 +5,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum DataGetV1BuildersLeaderboardTimePeriodParameter
+    public enum DataPaths1TradesGetSideParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "DAY")]
+        [EnumMember(Value = "BUY")]
         #pragma warning disable CS1591
-        Day,
+        Buy,
         #pragma warning restore CS1591
-        [EnumMember(Value = "WEEK")]
+        [EnumMember(Value = "SELL")]
         #pragma warning disable CS1591
-        Week,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "MONTH")]
-        #pragma warning disable CS1591
-        Month,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "ALL")]
-        #pragma warning disable CS1591
-        All,
+        Sell,
         #pragma warning restore CS1591
     }
 }

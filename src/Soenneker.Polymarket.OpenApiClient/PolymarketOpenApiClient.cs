@@ -73,11 +73,6 @@ namespace Soenneker.Polymarket.OpenApiClient
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
-            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl))
-            {
-                RequestAdapter.BaseUrl = "https://bridge.polymarket.com";
-            }
-            PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
         }
     }
 }

@@ -5,28 +5,24 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum DataGetV1PositionsCombosSortParameter
+    public enum DataPaths1V11Builders1LeaderboardGetTimePeriodParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "current_value_desc")]
+        [EnumMember(Value = "DAY")]
         #pragma warning disable CS1591
-        CurrentValueDesc,
+        Day,
         #pragma warning restore CS1591
-        [EnumMember(Value = "first_entry_desc")]
+        [EnumMember(Value = "WEEK")]
         #pragma warning disable CS1591
-        FirstEntryDesc,
+        Week,
         #pragma warning restore CS1591
-        [EnumMember(Value = "entry_cost_desc")]
+        [EnumMember(Value = "MONTH")]
         #pragma warning disable CS1591
-        EntryCostDesc,
+        Month,
         #pragma warning restore CS1591
-        [EnumMember(Value = "resolved_at_desc")]
+        [EnumMember(Value = "ALL")]
         #pragma warning disable CS1591
-        ResolvedAtDesc,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "updated_asc")]
-        #pragma warning disable CS1591
-        UpdatedAsc,
+        All,
         #pragma warning restore CS1591
     }
 }

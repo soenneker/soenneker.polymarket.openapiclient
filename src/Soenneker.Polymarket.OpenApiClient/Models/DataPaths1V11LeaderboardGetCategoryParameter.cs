@@ -5,44 +5,52 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum DataGetPositionsSortByParameter
+    public enum DataPaths1V11LeaderboardGetCategoryParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "CURRENT")]
+        [EnumMember(Value = "OVERALL")]
         #pragma warning disable CS1591
-        Current,
+        Overall,
         #pragma warning restore CS1591
-        [EnumMember(Value = "INITIAL")]
+        [EnumMember(Value = "POLITICS")]
         #pragma warning disable CS1591
-        Initial,
+        Politics,
         #pragma warning restore CS1591
-        [EnumMember(Value = "TOKENS")]
+        [EnumMember(Value = "SPORTS")]
         #pragma warning disable CS1591
-        Tokens,
+        Sports,
         #pragma warning restore CS1591
-        [EnumMember(Value = "CASHPNL")]
+        [EnumMember(Value = "ESPORTS")]
         #pragma warning disable CS1591
-        Cashpnl,
+        Esports,
         #pragma warning restore CS1591
-        [EnumMember(Value = "PERCENTPNL")]
+        [EnumMember(Value = "CRYPTO")]
         #pragma warning disable CS1591
-        Percentpnl,
+        Crypto,
         #pragma warning restore CS1591
-        [EnumMember(Value = "TITLE")]
+        [EnumMember(Value = "CULTURE")]
         #pragma warning disable CS1591
-        Title,
+        Culture,
         #pragma warning restore CS1591
-        [EnumMember(Value = "RESOLVING")]
+        [EnumMember(Value = "MENTIONS")]
         #pragma warning disable CS1591
-        Resolving,
+        Mentions,
         #pragma warning restore CS1591
-        [EnumMember(Value = "PRICE")]
+        [EnumMember(Value = "WEATHER")]
         #pragma warning disable CS1591
-        Price,
+        Weather,
         #pragma warning restore CS1591
-        [EnumMember(Value = "AVGPRICE")]
+        [EnumMember(Value = "ECONOMICS")]
         #pragma warning disable CS1591
-        Avgprice,
+        Economics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TECH")]
+        #pragma warning disable CS1591
+        Tech,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FINANCE")]
+        #pragma warning disable CS1591
+        Finance,
         #pragma warning restore CS1591
     }
 }

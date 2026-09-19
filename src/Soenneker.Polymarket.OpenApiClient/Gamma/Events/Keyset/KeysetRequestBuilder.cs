@@ -201,7 +201,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events.Keyset
             /// <summary>When true, includes Templates relation</summary>
             [QueryParameter("include_template")]
             public bool? IncludeTemplate { get; set; }
-            /// <summary>Maximum number of results to return (max 500)</summary>
+            /// <summary>Maximum number of results to return (max 100)</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             #pragma warning disable CS1591

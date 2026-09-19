@@ -113,7 +113,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Trades
             public double? FilterAmount { get; set; }
             /// <summary>Must be provided together with filterAmount.</summary>
             [QueryParameter("filterType")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetTradesFilterTypeParameter? FilterType { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1TradesGetFilterTypeParameter? FilterType { get; set; }
             /// <summary>Page size. Values above the maximum are clamped to 10000.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -132,7 +132,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Trades
             public int? Offset { get; set; }
             #pragma warning disable CS1591
             [QueryParameter("side")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetTradesSideParameter? Side { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1TradesGetSideParameter? Side { get; set; }
             #pragma warning restore CS1591
             /// <summary>Lower-bound timestamp (epoch seconds) for the trade window. Omit or pass `0` for the default window (most recent ~3 years); pass a positive epoch (e.g. `1`) to retrieve full history on user-scoped requests. Market/event-scoped requests keep the ~3-year floor — `start` can only narrow their window, not extend it.</summary>
             [QueryParameter("start")]

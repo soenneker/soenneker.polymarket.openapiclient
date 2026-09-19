@@ -95,7 +95,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Leaderboard
         {
             /// <summary>Market category for the leaderboard</summary>
             [QueryParameter("category")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1LeaderboardCategoryParameter? Category { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11LeaderboardGetCategoryParameter? Category { get; set; }
             /// <summary>Max number of leaderboard traders to return</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -104,10 +104,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Leaderboard
             public int? Offset { get; set; }
             /// <summary>Leaderboard ordering criteria</summary>
             [QueryParameter("orderBy")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1LeaderboardOrderByParameter? OrderBy { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11LeaderboardGetOrderByParameter? OrderBy { get; set; }
             /// <summary>Time period for leaderboard results</summary>
             [QueryParameter("timePeriod")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1LeaderboardTimePeriodParameter? TimePeriod { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11LeaderboardGetTimePeriodParameter? TimePeriod { get; set; }
             /// <summary>Limit leaderboard to a single user by address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

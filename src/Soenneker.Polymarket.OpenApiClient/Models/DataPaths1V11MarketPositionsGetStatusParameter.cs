@@ -5,16 +5,20 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum DataGetPositionsSortDirectionParameter
+    public enum DataPaths1V11MarketPositionsGetStatusParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "ASC")]
+        [EnumMember(Value = "OPEN")]
         #pragma warning disable CS1591
-        Asc,
+        Open,
         #pragma warning restore CS1591
-        [EnumMember(Value = "DESC")]
+        [EnumMember(Value = "CLOSED")]
         #pragma warning disable CS1591
-        Desc,
+        Closed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ALL")]
+        #pragma warning disable CS1591
+        All,
         #pragma warning restore CS1591
     }
 }

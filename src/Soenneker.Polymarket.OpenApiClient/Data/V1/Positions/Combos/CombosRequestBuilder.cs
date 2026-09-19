@@ -124,17 +124,17 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.Positions.Combos
             #pragma warning restore CS1591
             #pragma warning disable CS1591
             [QueryParameter("sort")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1PositionsCombosSortParameter? Sort { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11Positions1CombosGetSortParameter? Sort { get; set; }
             #pragma warning restore CS1591
             /// <summary>One or more statuses, comma-separated (e.g. status=RESOLVED_WIN,RESOLVED_PARTIAL,RESOLVED_LOSS). Values are case-insensitive; any invalid member is a 400. Omit for the default listing (open positions plus resolved positions with a recorded resolution).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1PositionsCombosStatusParameterItem[]? Status { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11Positions1CombosGetStatusParameterItem[]? Status { get; set; }
 #nullable restore
 #else
             [QueryParameter("status")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1PositionsCombosStatusParameterItem[] Status { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11Positions1CombosGetStatusParameterItem[] Status { get; set; }
 #endif
             /// <summary>Incremental-sync watermark (epoch seconds, inclusive): only rows whose updated_at is at or after this time. Positions mutate on resolution and redemption, so this catches changes a creation-time filter cannot. In sync mode (updatedAfter/updatedBefore/sort=updated_asc) every live row is returned regardless of balance, and the effective upper bound is clamped ~90s behind now (commit-visibility safety lag) — very recent rows appear on the next poll. Rows at the boundary may re-deliver: upsert by (combo_condition_id, combo_position_id).</summary>
             [QueryParameter("updatedAfter")]

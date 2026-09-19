@@ -123,10 +123,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.ClosedPositions
             public int? Offset { get; set; }
             /// <summary>The sort criteria</summary>
             [QueryParameter("sortBy")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetClosedPositionsSortByParameter? SortBy { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1ClosedPositionsGetSortByParameter? SortBy { get; set; }
             /// <summary>The sort direction</summary>
             [QueryParameter("sortDirection")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetClosedPositionsSortDirectionParameter? SortDirection { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1ClosedPositionsGetSortDirectionParameter? SortDirection { get; set; }
             /// <summary>Filter by market title</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

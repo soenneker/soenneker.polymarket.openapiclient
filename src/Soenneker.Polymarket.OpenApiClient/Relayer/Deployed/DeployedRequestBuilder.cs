@@ -104,7 +104,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Relayer.Deployed
 #endif
             /// <summary>Wallet type to check. Defaults to `SAFE` when omitted.</summary>
             [QueryParameter("type")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.RelayerGetDeployedTypeParameter? Type { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.RelayerPaths1DeployedGetTypeParameter? Type { get; set; }
         }
     }
 }

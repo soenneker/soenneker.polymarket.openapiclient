@@ -5,16 +5,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum RelayerGetNonceTypeParameter
+    public enum RelayerPaths1DeployedGetTypeParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "PROXY")]
-        #pragma warning disable CS1591
-        Proxy,
-        #pragma warning restore CS1591
         [EnumMember(Value = "SAFE")]
         #pragma warning disable CS1591
         Safe,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WALLET")]
+        #pragma warning disable CS1591
+        Wallet,
         #pragma warning restore CS1591
     }
 }

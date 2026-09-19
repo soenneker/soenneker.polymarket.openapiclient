@@ -9,9 +9,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ModifyOrder : IParsable
+    public partial class ModifyOrder : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Order ID</summary>
         public int? Oid { get; set; }
         /// <summary>Price</summary>
@@ -30,6 +32,13 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string Qty { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.ModifyOrder"/> and sets the default values.
+        /// </summary>
+        public ModifyOrder()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,6 +72,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("oid", Oid);
             writer.WriteStringValue("p", P);
             writer.WriteStringValue("qty", Qty);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

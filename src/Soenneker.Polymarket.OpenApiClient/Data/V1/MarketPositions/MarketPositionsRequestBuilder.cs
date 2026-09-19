@@ -113,14 +113,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.MarketPositions
             public int? Offset { get; set; }
             /// <summary>Sort positions by:- `TOKENS` — Position size (number of tokens)- `CASH_PNL` — Unrealized cash PnL- `REALIZED_PNL` — Realized PnL- `TOTAL_PNL` — Total PnL (cash_pnl + realized_pnl)</summary>
             [QueryParameter("sortBy")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1MarketPositionsSortByParameter? SortBy { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11MarketPositionsGetSortByParameter? SortBy { get; set; }
             #pragma warning disable CS1591
             [QueryParameter("sortDirection")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1MarketPositionsSortDirectionParameter? SortDirection { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11MarketPositionsGetSortDirectionParameter? SortDirection { get; set; }
             #pragma warning restore CS1591
             /// <summary>Filter positions by status.- `OPEN` — Only positions with size &gt; 0.01- `CLOSED` — Only positions with size &lt;= 0.01- `ALL` — All positions regardless of size</summary>
             [QueryParameter("status")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetV1MarketPositionsStatusParameter? Status { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1V11MarketPositionsGetStatusParameter? Status { get; set; }
             /// <summary>Filter to a single user by proxy wallet address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

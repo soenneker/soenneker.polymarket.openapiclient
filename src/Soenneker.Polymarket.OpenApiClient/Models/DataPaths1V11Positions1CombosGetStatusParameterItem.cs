@@ -5,28 +5,28 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum DataGetClosedPositionsSortByParameter
+    public enum DataPaths1V11Positions1CombosGetStatusParameterItem
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "REALIZEDPNL")]
+        [EnumMember(Value = "OPEN")]
         #pragma warning disable CS1591
-        Realizedpnl,
+        Open,
         #pragma warning restore CS1591
-        [EnumMember(Value = "TITLE")]
+        [EnumMember(Value = "PARTIAL")]
         #pragma warning disable CS1591
-        Title,
+        Partial,
         #pragma warning restore CS1591
-        [EnumMember(Value = "PRICE")]
+        [EnumMember(Value = "RESOLVED_PARTIAL")]
         #pragma warning disable CS1591
-        Price,
+        ResolvedPartial,
         #pragma warning restore CS1591
-        [EnumMember(Value = "AVGPRICE")]
+        [EnumMember(Value = "RESOLVED_WIN")]
         #pragma warning disable CS1591
-        Avgprice,
+        ResolvedWin,
         #pragma warning restore CS1591
-        [EnumMember(Value = "TIMESTAMP")]
+        [EnumMember(Value = "RESOLVED_LOSS")]
         #pragma warning disable CS1591
-        Timestamp,
+        ResolvedLoss,
         #pragma warning restore CS1591
     }
 }

@@ -140,11 +140,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Positions
             #pragma warning restore CS1591
             #pragma warning disable CS1591
             [QueryParameter("sortBy")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetPositionsSortByParameter? SortBy { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1PositionsGetSortByParameter? SortBy { get; set; }
             #pragma warning restore CS1591
             #pragma warning disable CS1591
             [QueryParameter("sortDirection")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetPositionsSortDirectionParameter? SortDirection { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1PositionsGetSortDirectionParameter? SortDirection { get; set; }
             #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

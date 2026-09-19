@@ -5,16 +5,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum DataGetClosedPositionsSortDirectionParameter
+    public enum RelayerPaths1NonceGetTypeParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "ASC")]
+        [EnumMember(Value = "PROXY")]
         #pragma warning disable CS1591
-        Asc,
+        Proxy,
         #pragma warning restore CS1591
-        [EnumMember(Value = "DESC")]
+        [EnumMember(Value = "SAFE")]
         #pragma warning disable CS1591
-        Desc,
+        Safe,
         #pragma warning restore CS1591
     }
 }

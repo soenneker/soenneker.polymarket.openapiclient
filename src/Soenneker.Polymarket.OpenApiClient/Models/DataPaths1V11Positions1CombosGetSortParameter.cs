@@ -5,28 +5,28 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum DataGetV1PositionsCombosStatusParameterItem
+    public enum DataPaths1V11Positions1CombosGetSortParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "OPEN")]
+        [EnumMember(Value = "current_value_desc")]
         #pragma warning disable CS1591
-        Open,
+        CurrentValueDesc,
         #pragma warning restore CS1591
-        [EnumMember(Value = "PARTIAL")]
+        [EnumMember(Value = "first_entry_desc")]
         #pragma warning disable CS1591
-        Partial,
+        FirstEntryDesc,
         #pragma warning restore CS1591
-        [EnumMember(Value = "RESOLVED_PARTIAL")]
+        [EnumMember(Value = "entry_cost_desc")]
         #pragma warning disable CS1591
-        ResolvedPartial,
+        EntryCostDesc,
         #pragma warning restore CS1591
-        [EnumMember(Value = "RESOLVED_WIN")]
+        [EnumMember(Value = "resolved_at_desc")]
         #pragma warning disable CS1591
-        ResolvedWin,
+        ResolvedAtDesc,
         #pragma warning restore CS1591
-        [EnumMember(Value = "RESOLVED_LOSS")]
+        [EnumMember(Value = "updated_asc")]
         #pragma warning disable CS1591
-        ResolvedLoss,
+        UpdatedAsc,
         #pragma warning restore CS1591
     }
 }

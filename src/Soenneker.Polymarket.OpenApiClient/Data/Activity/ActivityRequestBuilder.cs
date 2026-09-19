@@ -129,15 +129,15 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Activity
             public int? Offset { get; set; }
             #pragma warning disable CS1591
             [QueryParameter("side")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetActivitySideParameter? Side { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1ActivityGetSideParameter? Side { get; set; }
             #pragma warning restore CS1591
             #pragma warning disable CS1591
             [QueryParameter("sortBy")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetActivitySortByParameter? SortBy { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1ActivityGetSortByParameter? SortBy { get; set; }
             #pragma warning restore CS1591
             /// <summary>`DESC` (default) returns the newest rows first; `ASC` the oldest first. Both orders are stable — the same query returns the same rows at any `limit`/`offset`, so pages compose without gaps or repeats.</summary>
             [QueryParameter("sortDirection")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetActivitySortDirectionParameter? SortDirection { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1ActivityGetSortDirectionParameter? SortDirection { get; set; }
             /// <summary>Lower-bound timestamp (epoch seconds) for the activity window. Omit or pass `0` for the default window (most recent ~3 years); pass a positive epoch (e.g. `1`) to retrieve full history. With `sortDirection=ASC`, omitting `start` already reads from the beginning of the account&apos;s history (no default window).</summary>
             [QueryParameter("start")]
             public int? Start { get; set; }
@@ -145,11 +145,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.Activity
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("type")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetActivityTypeParameterItem[]? Type { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1ActivityGetTypeParameterItem[]? Type { get; set; }
 #nullable restore
 #else
             [QueryParameter("type")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.DataGetActivityTypeParameterItem[] Type { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.DataPaths1ActivityGetTypeParameterItem[] Type { get; set; }
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

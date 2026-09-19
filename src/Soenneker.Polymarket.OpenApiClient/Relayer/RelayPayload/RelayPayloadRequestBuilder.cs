@@ -104,7 +104,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Relayer.RelayPayload
 #endif
             /// <summary>Type of nonce to retrieve</summary>
             [QueryParameter("type")]
-            public global::Soenneker.Polymarket.OpenApiClient.Models.RelayerGetRelayPayloadTypeParameter? Type { get; set; }
+            public global::Soenneker.Polymarket.OpenApiClient.Models.RelayerPaths1RelayPayloadGetTypeParameter? Type { get; set; }
         }
     }
 }
