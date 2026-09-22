@@ -23,7 +23,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Price { get; set; }
 #endif
         /// <summary>Last trade side (BUY or SELL)</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetLastTradesPricesGet200ResponseSchemaItemSide? Side { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetLastTradesPricesGet200ResponseItemSide? Side { get; set; }
         /// <summary>Token ID (asset ID)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,7 +58,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "price", n => { Price = n.GetStringValue(); } },
-                { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetLastTradesPricesGet200ResponseSchemaItemSide>(); } },
+                { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetLastTradesPricesGet200ResponseItemSide>(); } },
                 { "token_id", n => { TokenId = n.GetStringValue(); } },
             };
         }
@@ -70,7 +70,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("price", Price);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetLastTradesPricesGet200ResponseSchemaItemSide>("side", Side);
+            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetLastTradesPricesGet200ResponseItemSide>("side", Side);
             writer.WriteStringValue("token_id", TokenId);
             writer.WriteAdditionalData(AdditionalData);
         }

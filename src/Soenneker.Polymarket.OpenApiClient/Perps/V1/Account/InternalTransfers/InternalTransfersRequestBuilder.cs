@@ -100,32 +100,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfers
             [QueryParameter("direction")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.Direction? Direction { get; set; }
             #pragma warning restore CS1591
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             #pragma warning disable CS1591
             [QueryParameter("end_timestamp")]
-            public string? EndTimestamp { get; set; }
+            public long? EndTimestamp { get; set; }
             #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("end_timestamp")]
-            public string EndTimestamp { get; set; }
-            #pragma warning restore CS1591
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             #pragma warning disable CS1591
             [QueryParameter("start_timestamp")]
-            public string? StartTimestamp { get; set; }
+            public long? StartTimestamp { get; set; }
             #pragma warning restore CS1591
-#nullable restore
-#else
-            #pragma warning disable CS1591
-            [QueryParameter("start_timestamp")]
-            public string StartTimestamp { get; set; }
-            #pragma warning restore CS1591
-#endif
         }
     }
 }

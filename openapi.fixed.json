@@ -500,7 +500,9 @@
             "description": "User address (0x-prefixed)",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -663,7 +665,9 @@
             "description": "User address (required)",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -830,7 +834,9 @@
             "name": "user",
             "in": "query",
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -1009,7 +1015,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -1120,7 +1128,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -1266,7 +1276,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -1431,7 +1443,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -1509,7 +1523,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{64}$",
+              "type": "string",
+              "description": "0x-prefixed 64-hex string"
             }
           }
         ],
@@ -1582,7 +1598,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -1840,7 +1858,9 @@
             "description": "The address of the user in question",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -1917,7 +1937,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -1989,7 +2011,9 @@
             "description": "The condition ID of the market to query positions for",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{64}$",
+              "type": "string",
+              "description": "0x-prefixed 64-hex string"
             }
           },
           {
@@ -2031,7 +2055,9 @@
             "in": "query",
             "description": "Filter to a single user by proxy wallet address",
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -2286,7 +2312,9 @@
             "in": "query",
             "description": "Limit leaderboard to a single user by address",
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "User Profile Address (0x-prefixed, 40 hex chars)"
             }
           },
           {
@@ -2565,7 +2593,8 @@
             "name": "instrument_id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Instrument ID"
             }
           }
         ],
@@ -2611,7 +2640,8 @@
             "name": "instrument_id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Instrument ID"
             }
           }
         ],
@@ -2658,7 +2688,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -2666,7 +2698,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -2728,7 +2762,9 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -2756,7 +2792,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -2806,7 +2844,9 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -2834,7 +2874,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -2884,7 +2926,8 @@
             "name": "instrument_id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Instrument ID"
             }
           }
         ],
@@ -2997,7 +3040,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Asset name"
             }
           }
         ],
@@ -3065,7 +3109,9 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -3084,7 +3130,9 @@
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -3135,7 +3183,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Address"
             }
           }
         ],
@@ -3186,14 +3235,16 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Address"
             }
           },
           {
             "name": "cursor",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Opaque keyset pagination cursor for the next page of fills. Present while \u0060more\u0060 is true; pass it as \u0060cursor\u0060 on the next request, keeping the other parameters the same across pages."
             }
           },
           {
@@ -3270,7 +3321,9 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -3289,7 +3342,9 @@
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -3413,7 +3468,8 @@
             "name": "address",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Address"
             }
           },
           {
@@ -3421,7 +3477,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Referral or invite code"
             }
           }
         ],
@@ -4227,35 +4284,45 @@
             "name": "client_order_id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "maxLength": 32,
+              "minLength": 32,
+              "pattern": "^[0-9a-f]{32}$",
+              "type": "string",
+              "description": "Client order ID"
             }
           },
           {
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
             "name": "instrument_id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Instrument ID"
             }
           },
           {
             "name": "order_id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Order ID"
             }
           },
           {
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -4314,7 +4381,8 @@
             "name": "instrument_id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Instrument ID"
             }
           }
         ],
@@ -4469,14 +4537,17 @@
             "name": "cursor",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Pagination cursor. Pass the opaque \u0060cursor\u0060 returned by the previous page to fetch the next page. Paging follows the \u0060sort\u0060 direction (strictly older fills when \u0060sort=desc\u0060, strictly newer when \u0060sort=asc\u0060). The trade ID of the last fill from the previous page is also accepted for backwards compatibility."
             }
           },
           {
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -4501,7 +4572,9 @@
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -4560,7 +4633,9 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -4576,7 +4651,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -4635,7 +4712,9 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -4651,7 +4730,9 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -4710,21 +4791,26 @@
             "name": "cursor",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Pass the last row id from the previous page as a decimal string. The server resolves its exact timestamp within the authenticated account. An opaque URL-safe unpadded base64 JSON cursor with ts (native nanoseconds) and id is also accepted. Keep the timestamp window unchanged when paging."
             }
           },
           {
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -4795,7 +4881,9 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -4813,7 +4901,9 @@
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -5059,21 +5149,26 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
             "name": "hash",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "On-chain transaction hash, \u00220x\u0022 if not yet mined"
             }
           },
           {
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -5139,14 +5234,18 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -5205,21 +5304,26 @@
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
             "name": "hash",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "On-chain transaction hash, \u00220x\u0022 if not yet mined"
             }
           },
           {
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -5377,28 +5481,32 @@
             "name": "date",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "UTC reward period end date in YYYY-MM-DD format"
             }
           },
           {
             "name": "end_date",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Inclusive UTC end date in YYYY-MM-DD format"
             }
           },
           {
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Maximum number of entries to return"
             }
           },
           {
             "name": "start_date",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Inclusive UTC start date in YYYY-MM-DD format"
             }
           }
         ],
@@ -5457,7 +5565,8 @@
             "name": "instrument_id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Instrument ID"
             }
           }
         ],
@@ -5866,14 +5975,16 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Maximum number of entries to return"
             }
           },
           {
             "name": "since_seq",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Backfill anchor for gap recovery. Pass the sequence number (sq) of the last notifications data frame you processed before the gap, never the sq of a resync frame. The bound is inclusive, so the response repeats the boundary event in full; deduplicate by notification id."
             }
           }
         ],
@@ -6127,14 +6238,17 @@
             "name": "cursor",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Pagination cursor. Pass the liquidation ID of the last record from the previous page to fetch the next page. Paging follows the \u0060sort\u0060 direction (strictly older records when \u0060sort=desc\u0060, strictly newer when \u0060sort=asc\u0060)."
             }
           },
           {
             "name": "end_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "End timestamp in milliseconds",
+              "format": "int64"
             }
           },
           {
@@ -6148,7 +6262,9 @@
             "name": "start_timestamp",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "description": "Start timestamp in milliseconds",
+              "format": "int64"
             }
           }
         ],
@@ -16691,7 +16807,9 @@
             "in": "header",
             "description": "Address that owns the key (when using Relayer API Key auth)",
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "Ethereum address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -16967,7 +17085,9 @@
             "in": "header",
             "description": "Address that owns the key (when using Relayer API Key auth)",
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "Ethereum address (0x-prefixed, 40 hex chars)"
             }
           }
         ],
@@ -17069,7 +17189,9 @@
             "description": "User\u0027s signer address",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "Ethereum address (0x-prefixed, 40 hex chars)"
             },
             "example": "0x77837466dd64fb52ECD00C737F060d0ff5CCB575"
           },
@@ -17155,7 +17277,9 @@
             "description": "User\u0027s signer address",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "Ethereum address (0x-prefixed, 40 hex chars)"
             },
             "example": "0x77837466dd64fb52ECD00C737F060d0ff5CCB575"
           },
@@ -17242,7 +17366,9 @@
             "description": "Address of the wallet to check",
             "required": true,
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "Ethereum address (0x-prefixed, 40 hex chars)"
             },
             "example": "0x6d8c4e9aDF5748Af82Dabe2C6225207770d6B4fa"
           },
@@ -17326,7 +17452,9 @@
             "in": "header",
             "description": "Address that owns the key (when using relayer API key auth). Must match the address that owns the key.",
             "schema": {
-              "type": "string"
+              "pattern": "^0x[a-fA-F0-9]{40}$",
+              "type": "string",
+              "description": "Ethereum address (0x-prefixed, 40 hex chars)"
             },
             "example": "0xabc..."
           }
@@ -17389,8 +17517,11 @@
   },
   "components": {
     "schemas": {
-      "ClobRevokeBuilderApiKey200ResponseSchema": {
-        "type": "string"
+      "Address": {
+        "pattern": "^0x[a-fA-F0-9]{40}$",
+        "type": "string",
+        "description": "Ethereum address (0x-prefixed, 40 hex chars)",
+        "example": "0x56687bf447db6ffa42ffe2204a05edaa20f55839"
       },
       "ErrorResponse": {
         "required": [
@@ -17730,15 +17861,17 @@
         },
         "description": "Breakdown of the estimated fees"
       },
-      "ClobGetBuilderApiKeys200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "description": "Array of builder API key UUIDs"
+      "DataAddress": {
+        "pattern": "^0x[a-fA-F0-9]{40}$",
+        "type": "string",
+        "description": "User Profile Address (0x-prefixed, 40 hex chars)",
+        "example": "0x56687bf447db6ffa42ffe2204a05edaa20f55839"
       },
-      "ClobUpdateBalanceAllowance200ResponseSchema": {
-        "type": "object"
+      "Hash64": {
+        "pattern": "^0x[a-fA-F0-9]{64}$",
+        "type": "string",
+        "description": "0x-prefixed 64-hex string",
+        "example": "0xdd22472e552920b8438158ea7238bfadfa4f736aa4cee91a6b86c39ead110917"
       },
       "HealthResponse": {
         "type": "object",
@@ -18405,8 +18538,11 @@
           }
         }
       },
-      "ClobDeleteApiKey200ResponseSchema": {
-        "type": "string"
+      "ComboConditionId": {
+        "pattern": "^0x[a-fA-F0-9]{62}$",
+        "type": "string",
+        "description": "Combo condition ID (0x-prefixed, 62 hex chars / bytes31). Equals the market_id (unified) / conditionId (legacy) of isCombo rows on /activity.",
+        "example": "0x0391ab0ebea17b65ba87e071b0566e816b0000000000000000000000000000"
       },
       "Pagination": {
         "type": "object",
@@ -18712,11 +18848,10 @@
           }
         }
       },
-      "ClobGetMarketsLiveActivity200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LiveActivityMarket"
-        }
+      "Error": {
+        "type": "string",
+        "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)",
+        "example": "insufficient_margin"
       },
       "Error429": {
         "title": "Error429",
@@ -18769,11 +18904,11 @@
           }
         }
       },
-      "ClobGetMarketsLiveActivityRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+      "Time": {
+        "type": "integer",
+        "description": "Timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
       "Time2": {
         "required": [
@@ -18788,43 +18923,36 @@
           }
         }
       },
-      "ClobGetBooksPost200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
-        }
+      "Name": {
+        "type": "string",
+        "description": "Exchange name used in the EIP-712 domain.",
+        "example": "Polymarket"
       },
-      "ClobGetBooksPostRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "Version": {
+        "type": "string",
+        "description": "Exchange version used in the EIP-712 domain.",
+        "example": "1"
       },
-      "ClobGetBooksGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
-        }
+      "ChainId": {
+        "type": "integer",
+        "description": "Chain ID of the network the exchange is deployed on.",
+        "format": "uint32",
+        "example": 137
       },
-      "ClobGetPricesPost200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseSchemaAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
+      "Contract": {
+        "type": "string",
+        "description": "Verifying contract address or the EIP-712 domain.",
+        "example": "0x1234567890abcdef1234567890abcdef12345678"
       },
-      "ClobGetPricesPostRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "CancelOnly": {
+        "type": "boolean",
+        "description": "True while the exchange is in cancel-only (maintenance) mode \u2014 only order cancellation is accepted.",
+        "example": false
       },
-      "ClobGetPricesGet200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesGet200ResponseSchemaAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
+      "EngineVersion": {
+        "type": "string",
+        "description": "Engine release version of the build serving this response.",
+        "example": "0.0.61"
       },
       "Exchange": {
         "required": [
@@ -18864,36 +18992,30 @@
           }
         }
       },
-      "ClobGetLastTradesPricesPost200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseSchemaItem"
-        }
+      "Asset": {
+        "type": "string",
+        "description": "Asset name",
+        "example": "USDC"
       },
-      "ClobGetLastTradesPricesPostRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "Address2": {
+        "type": "string",
+        "description": "Address",
+        "example": "0x1234567890abcdef1234567890abcdef12345678"
       },
-      "ClobGetLastTradesPricesGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseSchemaItem"
-        }
+      "Decimals": {
+        "type": "integer",
+        "description": "Asset decimals",
+        "example": 6
       },
-      "ClobGetSpreads200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to spread"
+      "CollateralRatio": {
+        "type": "string",
+        "description": "Collateral ratio",
+        "example": "1.00"
       },
-      "ClobGetSpreadsRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "WithdrawalFee": {
+        "type": "string",
+        "description": "Withdrawal transaction fee in decimalized asset units",
+        "example": "5.00"
       },
       "Asset2": {
         "required": [
@@ -18927,12 +19049,9 @@
           }
         }
       },
-      "ClobGetMidpointsPost200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to midpoint price"
+      "InstrumentId": {
+        "type": "integer",
+        "description": "Instrument ID"
       },
       "InstrumentType": {
         "enum": [
@@ -18985,97 +19104,79 @@
           ]
         }
       },
-      "ClobGetMidpointsPostRequestRequestBody": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "IsolatedOnly": {
+        "type": "boolean",
+        "description": "Whether the instrument supports only isolated account margin. When false, both cross and isolated account margin modes are supported."
       },
-      "ClobGetMidpointsGet200ResponseSchema": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to midpoint price"
+      "Symbol": {
+        "type": "string",
+        "description": "Instrument symbol",
+        "example": "NVDA-USDC"
       },
-      "ClobGetTime200ResponseSchema": {
+      "BaseAsset": {
+        "type": "string",
+        "description": "Base asset name",
+        "example": "NVDA"
+      },
+      "QuoteAsset": {
+        "type": "string",
+        "description": "Quote asset name",
+        "example": "USDC"
+      },
+      "FundingInterval": {
+        "type": "string",
+        "description": "Funding interval",
+        "example": "1h"
+      },
+      "QuantityDecimals": {
         "type": "integer",
-        "description": "Unix timestamp (seconds since epoch)",
-        "format": "int64"
+        "description": "Number of decimal places for quantity.",
+        "example": 2
       },
-      "ClobCancelOrdersRequestRequestBody": {
-        "maxItems": 1000,
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+      "PriceDecimals": {
+        "type": "integer",
+        "description": "Number of decimal places for price. Non-integer prices have a maximum of 5 significant figures; integer prices are allowed regardless of significant figures.",
+        "example": 2
       },
-      "ClobPostOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SendOrderResponse"
-        }
+      "PriceBounds": {
+        "type": "string",
+        "description": "Price bounds percentage",
+        "example": "0.05"
       },
-      "ClobPostOrdersRequestRequestBody": {
-        "maxItems": 15,
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SendOrder"
-        }
+      "LiquidationFee": {
+        "type": "string",
+        "description": "Liquidation fee rate",
+        "example": "0.025"
       },
-      "PerpsCreateAccountInviteRequest": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/PerpsCreateAccountInviteRequestAdditionalProperties"
-        }
+      "MaxOrderCount": {
+        "type": "integer",
+        "description": "Maximum open order count",
+        "example": 200
       },
-      "PerpsGetConfig200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/AccountConfig"
-        }
+      "MinNotional": {
+        "type": "string",
+        "description": "Minimum notional value in USD",
+        "example": "1.00"
       },
-      "PerpsGetBalances200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Balance2"
-        }
+      "MaxMarketNotional": {
+        "type": "string",
+        "description": "Maximum market order notional value in USD",
+        "example": "1000000.00"
       },
-      "PerpsGetOpenOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderData"
-        }
+      "MaxLimitNotional": {
+        "type": "string",
+        "description": "Maximum limit order notional value in USD",
+        "example": "10000000.00"
       },
-      "PerpsGetOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderData"
-        }
+      "MaxLeverage": {
+        "type": "integer",
+        "description": "Maximum leverage",
+        "example": 20
       },
-      "PerpsUpdateLeverages200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LeverageBatchResponse"
-        }
-      },
-      "PerpsModifyOrdersByCoid200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ModifyResponse"
-        }
-      },
-      "PerpsCancelOrdersByCoid200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/CancelResponse"
-        }
-      },
-      "PerpsModifyOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ModifyResponse"
-        }
+      "LowerBound": {
+        "type": "string",
+        "description": "Position size lower bound",
+        "example": "0"
       },
       "RiskTier": {
         "required": [
@@ -19223,47 +19324,41 @@
           }
         }
       },
-      "PerpsCancelOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/CancelResponse"
-        }
+      "IndexPrice": {
+        "type": "string",
+        "description": "Index price",
+        "example": "100.00"
       },
-      "PerpsCreateOrders200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderResponse"
-        }
+      "MarkPrice": {
+        "type": "string",
+        "description": "Mark price",
+        "example": "100.00"
       },
-      "PerpsGetLimitTiers200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LimitTier"
-        }
+      "LastPrice": {
+        "type": "string",
+        "description": "Last traded price",
+        "example": "100.00"
       },
-      "PerpsGetBbo200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Bbo"
-        }
+      "MidPrice": {
+        "type": "string",
+        "description": "Mid price",
+        "example": "100.00"
       },
-      "PerpsGetStatistics200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Statistic"
-        }
+      "OpenInterest2": {
+        "type": "string",
+        "description": "Open interest in number of contracts",
+        "example": "10.00"
       },
-      "PerpsGetTickers200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Ticker"
-        }
+      "FundingRate": {
+        "type": "string",
+        "description": "Funding rate",
+        "example": "0.0001"
       },
-      "PerpsGetInstruments200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Instrument"
-        }
+      "NextFunding": {
+        "type": "integer",
+        "description": "Next funding timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
       "TickerData": {
         "required": [
@@ -19317,11 +19412,11 @@
           }
         }
       },
-      "PerpsGetAssets200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Asset2"
-        }
+      "Timestamp": {
+        "type": "integer",
+        "description": "Timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
       "Ticker": {
         "required": [
@@ -19381,23 +19476,20 @@
           }
         }
       },
-      "DataPaths1V11LeaderboardGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/TraderLeaderboardEntry"
-        }
+      "Iid": {
+        "type": "integer",
+        "description": "Instrument ID",
+        "example": 1
       },
-      "DataPaths1V11Builders1VolumeGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BuilderVolumeEntry"
-        }
+      "Volume": {
+        "type": "string",
+        "description": "24-hour trading volume in contracts",
+        "example": "1000.00"
       },
-      "DataPaths1V11Builders1LeaderboardGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LeaderboardEntry"
-        }
+      "ExchangeVolume": {
+        "type": "string",
+        "description": "Matched trading volume in USD notional for the requested window, as an unformatted numeric string",
+        "example": "10164976.25"
       },
       "ExchangeOpenInterest": {
         "type": [
@@ -19416,17 +19508,15 @@
         "format": "int64",
         "example": 1767225570000
       },
-      "DataPaths1V11MarketPositionsGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/MetaMarketPositionV1"
-        }
+      "ExchangeFees": {
+        "type": "string",
+        "description": "Gross positive maker and taker trading fees in USD for the requested window, as an unformatted numeric string. Rebates, incentives, and referral payments are excluded.",
+        "example": "1245.67"
       },
-      "DataPaths1OtherGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OtherSize"
-        }
+      "OpenPrice": {
+        "type": "string",
+        "description": "Opening price from 24 hours ago",
+        "example": "100.50"
       },
       "Kline": {
         "type": "array",
@@ -19583,23 +19673,21 @@
           ]
         }
       },
-      "DataPaths1ClosedPositionsGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClosedPosition"
-        }
+      "StartTimestamp": {
+        "type": "integer",
+        "description": "Start timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
-      "DataPaths1LiveVolumeGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LiveVolume"
-        }
+      "EndTimestamp": {
+        "type": "integer",
+        "description": "End timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767229200000
       },
-      "DataPaths1OiGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OpenInterest"
-        }
+      "More": {
+        "type": "boolean",
+        "description": "More data available"
       },
       "KlinesResponse": {
         "required": [
@@ -19649,41 +19737,37 @@
         },
         "description": "- \u00601767225600000\u0060 - Bucket open time (ms)\n- \u0060\u0022160.00\u0022\u0060 - Last mark price in bucket\n"
       },
-      "DataPaths1ValueGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ValueValue"
-        }
+      "BestBidPrice": {
+        "type": "string",
+        "description": "Best bid price",
+        "example": "99.50"
       },
-      "DataPaths1RevisionsGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RevisionPayload"
-        }
+      "BestBidQuantity": {
+        "type": "string",
+        "description": "Best bid quantity",
+        "example": "10.00"
       },
-      "DataPaths1HoldersGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/MetaHolder"
-        }
+      "BestAskPrice": {
+        "type": "string",
+        "description": "Best ask price",
+        "example": "100.50"
       },
-      "DataPaths1ActivityGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Activity"
-        }
+      "BestAskQuantity": {
+        "type": "string",
+        "description": "Best ask quantity",
+        "example": "10.00"
       },
-      "DataPaths1TradesGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Trade"
-        }
+      "Ts": {
+        "type": "integer",
+        "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+        "format": "int64",
+        "example": 1767225600000
       },
-      "DataPaths1PositionsGet200ResponseSchema": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Position"
-        }
+      "CancelTs": {
+        "type": "integer",
+        "description": "The time when the exchange decided this cancellation outcome, in Unix milliseconds. Sequenced outcomes use the exchange event time. Rejections created before sequencing use the gateway\u2019s decision time. This is not the client request timestamp.",
+        "format": "int64",
+        "example": 1767225600000
       },
       "Bbo": {
         "title": "BBO",
@@ -19744,9 +19828,10 @@
         },
         "description": "- \u0060\u0022100.00\u0022\u0060 - Price\n- \u0060\u002210.00\u0022\u0060 - Quantity\n"
       },
-      "DataPaths1V11Accounting1SnapshotGet200ZipResponseSchema": {
-        "type": "string",
-        "format": "binary"
+      "Sequence": {
+        "type": "integer",
+        "description": "Sequence number",
+        "example": 1234567890
       },
       "Book": {
         "required": [
@@ -19797,21 +19882,20 @@
           }
         }
       },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
+      "Source": {
+        "type": "string",
+        "description": "Source name",
+        "example": "chainlink"
       },
-      "RelayerPaths1Relayer1Api1KeysGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelayerApiKey"
-        }
+      "Weight": {
+        "type": "string",
+        "description": "Index constituent weight",
+        "example": "0.25"
       },
-      "RelayerPaths1TransactionsGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelayerTransaction"
-        }
+      "Price": {
+        "type": "string",
+        "description": "Price",
+        "example": "100.00"
       },
       "IndexConstituent": {
         "required": [
@@ -19869,11 +19953,10 @@
           }
         }
       },
-      "RelayerPaths1TransactionGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelayerTransaction"
-        }
+      "Tid": {
+        "type": "integer",
+        "description": "Trade ID",
+        "example": 1
       },
       "Side": {
         "enum": [
@@ -19898,23 +19981,21 @@
           ]
         }
       },
-      "GammaGetSportsMetadata200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SportsMetadata"
-        }
+      "P": {
+        "type": "string",
+        "description": "Price",
+        "example": "100.00"
       },
-      "GammaGetCommentsByUserAddress200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Comment"
-        }
+      "Qty": {
+        "type": "string",
+        "description": "Quantity in no. of contracts",
+        "example": "10.00"
       },
-      "GammaGetCommentsById200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Comment"
-        }
+      "Hash": {
+        "type": "string",
+        "description": "On-chain transaction hash, \u00220x\u0022 if not yet mined",
+        "default": "0x",
+        "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
       },
       "TradeData": {
         "required": [
@@ -19978,29 +20059,25 @@
           }
         }
       },
-      "GammaListComments200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Comment"
-        }
+      "Size": {
+        "type": "string",
+        "description": "Signed position size in no. of contracts (positive = long, negative = short)",
+        "example": "10.00"
       },
-      "GammaListSeries200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Series"
-        }
+      "EntryPrice": {
+        "type": "string",
+        "description": "Average entry price",
+        "example": "2986.30"
       },
-      "GammaGetAbridgedMarkets200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GammaMarket"
-        }
+      "UnrealizedPnl": {
+        "type": "string",
+        "description": "Unrealized PnL in USD",
+        "example": "-0.01"
       },
-      "GammaGetMarketsInformation200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GammaMarket"
-        }
+      "ReturnOnEquity": {
+        "type": "string",
+        "description": "Unrealized PnL divided by the position\u0027s current required initial margin, as a decimal.",
+        "example": "-0.0027"
       },
       "PublicPortfolioPosition": {
         "required": [
@@ -20039,17 +20116,16 @@
           }
         }
       },
-      "GammaGetMarketTags200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Tag"
-        }
+      "Equity": {
+        "type": "string",
+        "description": "Equity in USD",
+        "example": "10000.00"
       },
-      "GammaListMarkets200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GammaMarket"
-        }
+      "UpdateTimestamp": {
+        "type": "integer",
+        "description": "Update timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
       "PublicPortfolio": {
         "required": [
@@ -20076,11 +20152,10 @@
           }
         }
       },
-      "GammaListEventCreators200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/EventCreator"
-        }
+      "Fr": {
+        "type": "string",
+        "description": "Funding rate",
+        "example": "0.0001"
       },
       "FundingRate2": {
         "required": [
@@ -20119,23 +20194,20 @@
           }
         }
       },
-      "GammaGetEventTags200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Tag"
-        }
+      "TakerFeeRate": {
+        "type": "string",
+        "description": "Taker fee rate",
+        "example": "0.0002"
       },
-      "GammaListSportEventsResults200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/EventType"
-        }
+      "MakerFeeRate": {
+        "type": "string",
+        "description": "Maker fee rate",
+        "example": "-0.00005"
       },
-      "GammaListEvents200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/EventType"
-        }
+      "MinVolume30D": {
+        "type": "string",
+        "description": "Minimum rolling 30-day notional volume in USD required for this tier",
+        "example": "5000000"
       },
       "FeeTier": {
         "required": [
@@ -20205,45 +20277,38 @@
           }
         }
       },
-      "GammaGetTagsRelatedToATagBySlug200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Tag"
-        }
-      },
-      "GammaGetTagsRelatedToATagById200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Tag"
-        }
-      },
-      "GammaGetRelatedTagsBySlug200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelatedTag"
-        }
-      },
-      "GammaGetRelatedTagsById200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RelatedTag"
-        }
-      },
-      "GammaListTags200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Tag"
-        }
-      },
-      "GammaListTeams200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Team"
-        }
-      },
-      "GammaGetGammaStatus200PlainResponse": {
+      "MinVolume": {
         "type": "string",
-        "example": "OK"
+        "description": "Minimum volume threshold for this tier",
+        "example": "0"
+      },
+      "RatePerMinuteLimit": {
+        "type": "integer",
+        "description": "Maximum IP request weight per minute. In limit tiers, this is a legacy field and is not used for gateway enforcement.",
+        "example": 1200
+      },
+      "RateBurstLimit": {
+        "type": "integer",
+        "description": "Legacy limit-tier request-rate field. It is not used for gateway enforcement."
+      },
+      "ActionsPerMinuteLimit": {
+        "type": "integer",
+        "description": "Maximum order action tokens per account per minute",
+        "example": 300
+      },
+      "ActionsBurstLimit": {
+        "type": "integer",
+        "description": "Additional account action allowance limit"
+      },
+      "OpenOrdersLimit": {
+        "type": "integer",
+        "description": "Maximum number of open orders per account",
+        "example": 1000
+      },
+      "MessagesPerMinute": {
+        "type": "integer",
+        "description": "Display-only per-minute action/message allowance, equal to actions_per_minute_limit. Not separately configured or enforced.",
+        "example": 300
       },
       "LimitTier": {
         "required": [
@@ -20287,12 +20352,10 @@
           }
         }
       },
-      "ClobPostOrdersScoringRequest": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "description": "Array of order IDs (order hashes) to check scoring status for"
+      "Code": {
+        "type": "string",
+        "description": "Referral or invite code",
+        "example": "ABC123"
       },
       "InviteCheckResponse": {
         "required": [
@@ -20310,11 +20373,10 @@
           }
         }
       },
-      "ClobGetCurrentRebatedFees200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RebatedFees"
-        }
+      "Buy": {
+        "type": "boolean",
+        "description": "Is buy",
+        "example": true
       },
       "Tif": {
         "enum": [
@@ -20344,31 +20406,34 @@
           ]
         }
       },
-      "ClobGetRewardPercentagesForUser200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number",
-          "format": "double"
-        },
-        "description": "Map of condition_id to reward percentage"
+      "Po": {
+        "type": "boolean",
+        "description": "Post only",
+        "default": false,
+        "example": false
       },
-      "ClobGetTotalEarningsForUserForDay200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/TotalUserEarning"
-        }
+      "Ro": {
+        "type": "boolean",
+        "description": "Reduce only",
+        "default": false,
+        "example": false
       },
-      "ClobDropNotifications200Response": {
-        "type": "string"
+      "Coid": {
+        "maxLength": 32,
+        "minLength": 32,
+        "pattern": "^[0-9a-f]{32}$",
+        "type": "string",
+        "description": "Client order ID",
+        "example": "550e8400e29b41d4a716446655440000"
       },
-      "ClobGetNotifications200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Notification"
-        }
+      "Market": {
+        "type": "boolean",
+        "description": "Whether the trigger executes as a market order"
       },
-      "ClobRevokeBuilderApiKey200Response": {
-        "type": "string"
+      "Trp": {
+        "type": "string",
+        "description": "Trigger price",
+        "example": "110.00"
       },
       "Tpsl": {
         "enum": [
@@ -20483,15 +20548,15 @@
           }
         }
       },
-      "ClobGetBuilderApiKeys200Response": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "description": "Array of builder API key UUIDs"
+      "Sig": {
+        "type": "string",
+        "description": "Signature in hex format",
+        "example": "0x1234567890..."
       },
-      "ClobUpdateBalanceAllowance200Response": {
-        "type": "object"
+      "Salt": {
+        "type": "integer",
+        "description": "Salt",
+        "example": 1234567890
       },
       "BaseOp": {
         "required": [
@@ -20516,8 +20581,11 @@
           }
         }
       },
-      "ClobDeleteApiKey200Response": {
-        "type": "string"
+      "Exp": {
+        "type": "integer",
+        "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+        "format": "int64",
+        "example": 1767225600000
       },
       "OrderRequest": {
         "required": [
@@ -20551,11 +20619,10 @@
           }
         }
       },
-      "ClobGetMarketsLiveActivity200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LiveActivityMarket"
-        }
+      "Oid": {
+        "type": "integer",
+        "description": "Order ID",
+        "example": 1234567890
       },
       "OrderAccepted": {
         "required": [
@@ -20930,11 +20997,11 @@
           }
         }
       },
-      "ClobGetMarketsLiveActivityRequest": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+      "AutoCancelDeadline": {
+        "type": "integer",
+        "description": "Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zero\nmeans no schedule is armed. When the deadline passes, the exchange cancels\nevery open order on the account and the schedule clears.\n",
+        "format": "int64",
+        "example": 1767000045000
       },
       "AutoCancelResponse": {
         "required": [
@@ -21021,17 +21088,14 @@
           }
         }
       },
-      "ClobGetBooksPost200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
-        }
+      "Lev": {
+        "type": "integer",
+        "description": "Leverage",
+        "example": 10
       },
-      "ClobGetBooksPostRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "Cross": {
+        "type": "boolean",
+        "description": "Whether to use cross margin mode"
       },
       "OpUpdateLeverage": {
         "required": [
@@ -21221,24 +21285,21 @@
           }
         }
       },
-      "ClobGetBooksGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderBookSummary"
-        }
+      "Owner": {
+        "type": "string",
+        "description": "Owner address in hex format",
+        "example": "0x1234567890abcdef1234567890abcdef12345678"
       },
-      "ClobGetPricesPost200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
+      "Proxy": {
+        "type": "string",
+        "description": "Proxy address in hex format",
+        "example": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
       },
-      "ClobGetPricesPostRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "Expiry": {
+        "type": "integer",
+        "description": "Expiry timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
       "OpCreateProxy": {
         "required": [
@@ -21255,12 +21316,10 @@
           }
         }
       },
-      "ClobGetPricesGet200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ClobGetPricesGet200ResponseAdditionalProperties"
-        },
-        "description": "Map of token ID to map of side to price"
+      "Label": {
+        "type": "string",
+        "description": "Human-readable label for a proxy key or internal transfer",
+        "example": "trading-bot"
       },
       "ProxyRequest": {
         "required": [
@@ -21297,19 +21356,10 @@
           }
         }
       },
-      "ClobGetPrice200Response": {
-        "required": [
-          "price"
-        ],
-        "type": "object",
-        "properties": {
-          "price": {
-            "type": "number",
-            "description": "Market price as a decimal number",
-            "format": "double",
-            "example": 0.45
-          }
-        }
+      "Secret": {
+        "type": "string",
+        "description": "API secret",
+        "example": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
       },
       "ProxyResponse": {
         "required": [
@@ -21427,53 +21477,36 @@
           }
         }
       },
-      "ClobGetLastTradesPricesPost200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseItem"
-        }
+      "OrderId": {
+        "type": "integer",
+        "description": "Order ID"
       },
-      "ClobGetLastTradesPricesPostRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "Rest": {
+        "type": "string",
+        "description": "Resting quantity",
+        "example": "9.00"
       },
-      "ClobGetLastTradesPricesGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseItem"
-        }
+      "Fill": {
+        "type": "string",
+        "description": "Filled quantity",
+        "example": "1.00"
       },
-      "ClobGetLastTradePrice200Response": {
-        "required": [
-          "price",
-          "side"
-        ],
-        "type": "object",
-        "properties": {
-          "price": {
-            "type": "string",
-            "description": "Last trade price",
-            "example": "0.45"
-          },
-          "side": {
-            "$ref": "#/components/schemas/ClobGetLastTradePrice200ResponseSide"
-          }
-        }
+      "St": {
+        "type": "string",
+        "description": "Order status",
+        "example": "open"
       },
-      "ClobGetSpreads200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to spread"
+      "Cts": {
+        "type": "integer",
+        "description": "Create timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
-      "ClobGetSpreadsRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "Uts": {
+        "type": "integer",
+        "description": "Update timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
       "Kind": {
         "enum": [
@@ -21521,25 +21554,17 @@
           ]
         }
       },
-      "ClobGetSpread200Response": {
-        "required": [
-          "spread"
-        ],
-        "type": "object",
-        "properties": {
-          "spread": {
-            "type": "string",
-            "description": "Spread as a string",
-            "example": "0.02"
-          }
-        }
+      "ParentOid": {
+        "type": "integer",
+        "description": "Parent entry order id. Optional \u2014 omit it (do not send \u00600\u0060) when the parent is created in the same request (inline \u0060CreateOrder.tpsl\u0060 or \u0060CreateTpSlArgs.parent\u0060); the gateway auto-wires the child to it. Set it only to attach an order-scoped leg to an existing resting order. Inline \u0060CreateOrder.tpsl\u0060 rejects a non-zero value; position-scoped legs carry no parent.",
+        "example": 1234567890
       },
-      "ClobGetMidpointsPost200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to midpoint price"
+      "SlipBps": {
+        "maximum": 10000,
+        "minimum": 0,
+        "type": "integer",
+        "description": "Per-order market-trigger slippage cap in basis points. 0 = use the per-instrument default. Clamped to the instrument cap.",
+        "example": 1000
       },
       "TpSlOrderFields": {
         "required": [
@@ -21659,18 +21684,15 @@
           }
         }
       },
-      "ClobGetMidpointsPostRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BookRequest"
-        }
+      "Balance": {
+        "type": "string",
+        "description": "Total balance",
+        "example": "10000.00"
       },
-      "ClobGetMidpointsGet200Response": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of token ID to midpoint price"
+      "ValueValue2": {
+        "type": "string",
+        "description": "USD value",
+        "example": "10000.00"
       },
       "Balance2": {
         "required": [
@@ -21694,49 +21716,35 @@
           }
         }
       },
-      "ClobGetMidpoint200Response": {
-        "required": [
-          "mid_price"
-        ],
-        "type": "object",
-        "properties": {
-          "mid_price": {
-            "type": "string",
-            "description": "Midpoint price as a string",
-            "example": "0.45"
-          }
-        }
-      },
-      "ClobGetTime200Response": {
+      "Leverage": {
         "type": "integer",
-        "description": "Unix timestamp (seconds since epoch)",
-        "format": "int64"
+        "description": "Leverage",
+        "example": 10
       },
-      "ClobCancelOrdersRequest": {
-        "maxItems": 1000,
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+      "InitialMargin": {
+        "type": "string",
+        "description": "Current collateral backing the position. For cross positions, this is\nthe required initial margin based on position size, mark price, the\napplicable risk tier, and configured leverage. For isolated positions,\nthis is the position\u0027s current equity: signed allocated margin plus\nunrealized PnL minus settled funding.\n\nThe legacy \u0060initial_margin\u0060 name is retained for API compatibility;\n\u0060margin\u0060 would more accurately describe the field.\n",
+        "example": "10.00"
       },
-      "ClobPostOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SendOrderResponse"
-        }
+      "MaintenanceMarginAmount": {
+        "type": "string",
+        "description": "Maintenance margin amount",
+        "example": "100.00"
       },
-      "ClobPostOrdersRequest": {
-        "maxItems": 15,
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SendOrder"
-        }
+      "PositionValue": {
+        "type": "string",
+        "description": "Notional position value in USD",
+        "example": "100.03"
       },
-      "PerpsGetConfig200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/AccountConfig"
-        }
+      "LiquidationPrice": {
+        "type": "string",
+        "description": "Liquidation price",
+        "example": "2866.27"
+      },
+      "CumulativeFunding": {
+        "type": "string",
+        "description": "Cumulative funding paid/received in USD",
+        "example": "514.09"
       },
       "PortfolioPosition": {
         "required": [
@@ -21810,53 +21818,30 @@
           }
         }
       },
-      "PerpsInternalTransfer422Response": {
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/InternalTransferRejected"
-          },
-          {
-            "$ref": "#/components/schemas/PerpsInternalTransfer422ResponseOneOf2"
-          }
-        ],
-        "properties": {
-          "status": {
-            "$ref": "#/components/schemas/ErrStatus"
-          },
-          "transfer_id": {
-            "type": "integer",
-            "description": "Internal transfer ID"
-          },
-          "error": {
-            "type": "string",
-            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
-          }
-        }
+      "TotalAccountValue": {
+        "type": "string",
+        "description": "Total account value in USD (equity \u002B unrealized PnL)",
+        "example": "13109.48"
       },
-      "PerpsGetBalances200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Balance2"
-        }
+      "AvailableOrderMargin": {
+        "type": "string",
+        "description": "Collateral available in USD for additional order initial margin after existing exposure, open orders, orders and isolated-margin additions awaiting risk processing, and pending withdrawals or transfers",
+        "example": "5055.79"
       },
-      "PerpsGetOpenOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderData"
-        }
+      "TotalInitialMargin": {
+        "type": "string",
+        "description": "Total initial margin in use across all positions",
+        "example": "4.97"
       },
-      "PerpsGetOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderData"
-        }
+      "TotalMaintenanceMargin": {
+        "type": "string",
+        "description": "Total maintenance margin across all positions",
+        "example": "2.49"
       },
-      "PerpsUpdateLeverages200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LeverageBatchResponse"
-        }
+      "TotalPositionValue": {
+        "type": "string",
+        "description": "Total notional position value in USD",
+        "example": "100.03"
       },
       "MarginSummary": {
         "required": [
@@ -21890,17 +21875,14 @@
           }
         }
       },
-      "PerpsModifyOrdersByCoid200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ModifyResponse"
-        }
+      "Withdrawable": {
+        "type": "string",
+        "description": "Withdrawable balance in USD",
+        "example": "13104.51"
       },
-      "PerpsCancelOrdersByCoid200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/CancelResponse"
-        }
+      "InLiquidation": {
+        "type": "boolean",
+        "description": "Whether the account is currently under liquidation"
       },
       "Portfolio": {
         "required": [
@@ -21941,23 +21923,19 @@
           }
         }
       },
-      "PerpsModifyOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ModifyResponse"
-        }
+      "AccountBackstopsCursor": {
+        "type": "string",
+        "description": "Pass the last row id from the previous page as a decimal string. The server resolves its exact timestamp within the authenticated account. An opaque URL-safe unpadded base64 JSON cursor with ts (native nanoseconds) and id is also accepted. Keep the timestamp window unchanged when paging."
       },
-      "PerpsCancelOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/CancelResponse"
-        }
+      "Cursor": {
+        "type": "string",
+        "description": "Pagination cursor. Pass the opaque \u0060cursor\u0060 returned by the previous page to fetch the next page. Paging follows the \u0060sort\u0060 direction (strictly older fills when \u0060sort=desc\u0060, strictly newer when \u0060sort=asc\u0060). The trade ID of the last fill from the previous page is also accepted for backwards compatibility.",
+        "example": "eyJ0cyI6MTc2NzIyNTYwMDAwMDAwMDAwMCwiaWQiOjF9"
       },
-      "PerpsCreateOrders200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OrderResponse"
-        }
+      "FillsCursor": {
+        "type": "string",
+        "description": "Opaque keyset pagination cursor for the next page of fills. Present while \u0060more\u0060 is true; pass it as \u0060cursor\u0060 on the next request, keeping the other parameters the same across pages.",
+        "example": "eyJ0cyI6MTc2NzIyNTYwMDAwMDAwMDAwMCwiaWQiOjF9"
       },
       "Sort": {
         "enum": [
@@ -21982,59 +21960,42 @@
           ]
         }
       },
-      "PerpsGetLimitTiers200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LimitTier"
-        }
+      "Taker": {
+        "type": "boolean",
+        "description": "Whether this side was the taker"
       },
-      "PerpsGetBbo200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Bbo"
-        }
+      "Fee": {
+        "type": "string",
+        "description": "Fee amount for this trade side",
+        "example": "1.25"
       },
-      "PerpsGetStatistics200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Statistic"
-        }
+      "Fea": {
+        "type": "string",
+        "description": "Fee asset name",
+        "example": "USDC"
       },
-      "PerpsGetTickers200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Ticker"
-        }
+      "Psz": {
+        "type": "string",
+        "description": "Position size before the fill",
+        "example": "26.86"
       },
-      "PerpsGetInstruments200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Instrument"
-        }
+      "Pep": {
+        "type": "string",
+        "description": "Position entry price before the fill",
+        "example": "100.00"
       },
-      "PerpsGetAssets200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Asset2"
-        }
+      "Pnl": {
+        "type": "string",
+        "description": "PnL in USD",
+        "example": "100.00"
       },
-      "PerpsGetPing200Response": {
-        "required": [
-          "status"
-        ],
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string",
-            "example": "ok"
-          }
-        }
+      "Liq": {
+        "type": "boolean",
+        "description": "Whether this fill was part of a liquidation of the account\u0027s position \u2014 true on forced closes and on any fill executed while the account was under liquidation on the instrument, maker or taker. False on the counterparty leg of an auto-deleveraging or backstop match \u2014 its fill is part of someone else\u0027s liquidation, flagged by \u0060adl\u0060 where applicable"
       },
-      "DataPaths1V11LeaderboardGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/TraderLeaderboardEntry"
-        }
+      "Adl": {
+        "type": "boolean",
+        "description": "Whether the fill came from auto-deleveraging"
       },
       "AccountTradeData": {
         "required": [
@@ -22230,41 +22191,31 @@
           }
         }
       },
-      "DataPaths1V11Builders1VolumeGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BuilderVolumeEntry"
-        }
+      "Sz": {
+        "type": "string",
+        "description": "Signed position size in no. of contracts (positive = long, negative = short)",
+        "example": "10.00"
       },
-      "DataPaths1V11Builders1LeaderboardGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LeaderboardEntry"
-        }
+      "Fua": {
+        "type": "string",
+        "description": "Funding asset name",
+        "example": "USDC"
       },
-      "DataPaths1V11MarketPositionsGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/MetaMarketPositionV1"
-        }
+      "BackstopTransferred": {
+        "type": "string",
+        "description": "Signed raw quote margin allocated by the absorption, without rounding."
       },
-      "DataPaths1OtherGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OtherSize"
-        }
+      "BackstopCashBefore": {
+        "type": "string",
+        "description": "Raw quote cash bucket immediately before the absorption."
       },
-      "DataPaths1ClosedPositionsGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ClosedPosition"
-        }
+      "BackstopCashAfter": {
+        "type": "string",
+        "description": "Raw quote cash bucket immediately after the absorption. The difference from cash_before is the authoritative wallet delta."
       },
-      "DataPaths1LiveVolumeGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/LiveVolume"
-        }
+      "HistorySequence": {
+        "type": "integer",
+        "description": "Engine sequence of the history event."
       },
       "AccountBackstop": {
         "required": [
@@ -22344,17 +22295,16 @@
           }
         }
       },
-      "DataPaths1OiGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OpenInterest"
-        }
+      "Fund": {
+        "type": "string",
+        "description": "Funding paid in USD",
+        "example": "1.00"
       },
-      "DataPaths1ValueGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ValueValue"
-        }
+      "Fid": {
+        "type": "integer",
+        "description": "Funding payment ID. Probabilistically unique (same guarantees as trade IDs) and stable across REST and WebSocket for the same funding record.",
+        "format": "int64",
+        "example": 3055723280187747
       },
       "AccountFundingData": {
         "required": [
@@ -22419,35 +22369,30 @@
           }
         }
       },
-      "DataPaths1RevisionsGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/RevisionPayload"
-        }
+      "Account": {
+        "type": "string",
+        "description": "Account address in hex format",
+        "example": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
       },
-      "DataPaths1HoldersGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/MetaHolder"
-        }
+      "Token2": {
+        "type": "string",
+        "description": "Token contract address in hex format",
+        "example": "0xaf88d065e77c8cc2239327c5edb3a432268e5831"
       },
-      "DataPaths1ActivityGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Activity"
-        }
+      "Amount": {
+        "type": "string",
+        "description": "Token amount in decimal units (e.g. \u0022100\u0022 for 100 USDC).",
+        "example": "100"
       },
-      "DataPaths1TradesGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Trade"
-        }
+      "OpAmount": {
+        "type": "string",
+        "description": "Raw token amount in base units, matching the uint256 amount in the EIP-712 signature (e.g. \u0022100000000\u0022 for 100 USDC with 6 decimals).",
+        "example": "100000000"
       },
-      "DataPaths1PositionsGet200Response": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Position"
-        }
+      "To": {
+        "type": "string",
+        "description": "Destination address in hex format",
+        "example": "0x1234567890abcdef1234567890abcdef12345678"
       },
       "OpWithdraw": {
         "required": [
@@ -22491,9 +22436,9 @@
           }
         }
       },
-      "DataPaths1V11Accounting1SnapshotGet200ZipResponse": {
-        "type": "string",
-        "format": "binary"
+      "WithdrawId": {
+        "type": "integer",
+        "description": "Withdraw ID"
       },
       "WithdrawAccepted": {
         "required": [
@@ -22578,45 +22523,9 @@
           }
         }
       },
-      "ClobTradeMakerOrdersItem": {
-        "type": "object",
-        "properties": {
-          "order_id": {
-            "type": "string",
-            "description": "Order ID (hash)"
-          },
-          "owner": {
-            "type": "string",
-            "description": "Owner UUID"
-          },
-          "maker_address": {
-            "type": "string",
-            "description": "Maker address"
-          },
-          "matched_amount": {
-            "type": "string",
-            "description": "Matched amount"
-          },
-          "price": {
-            "type": "string",
-            "description": "Price"
-          },
-          "fee_rate_bps": {
-            "type": "string",
-            "description": "Fee rate in basis points"
-          },
-          "asset_id": {
-            "type": "string",
-            "description": "Asset ID"
-          },
-          "outcome": {
-            "type": "string",
-            "description": "Outcome"
-          },
-          "side": {
-            "$ref": "#/components/schemas/ClobTradeMakerOrdersItemSide"
-          }
-        }
+      "TransferId": {
+        "type": "integer",
+        "description": "Internal transfer ID"
       },
       "InternalTransferAccepted": {
         "required": [
@@ -22683,55 +22592,32 @@
           ]
         }
       },
-      "NotificationPayload": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/NotificationPayloadAdditionalProperties"
-        },
-        "description": "Dynamic payload containing notification-specific data"
+      "From": {
+        "type": "string",
+        "description": "Sender address in hex format",
+        "example": "0x1234567890abcdef1234567890abcdef12345678"
       },
-      "BalanceAllowanceResponseAllowances": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of spender addresses to allowance amounts",
-        "example": {
-          "0x1234567890123456789012345678901234567890": "500000000000000000",
-          "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd": "1000000000000000000"
-        }
+      "Confirmations": {
+        "type": "integer",
+        "description": "Number of block confirmations",
+        "example": 12
       },
-      "BatchPricesHistoryResponseHistory": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/MarketPrice"
-          }
-        },
-        "description": "Map of market asset id to array of price data points."
+      "RequiredConfirmations": {
+        "type": "integer",
+        "description": "Required number of block confirmations",
+        "example": 12
       },
-      "RewardsRatesItem": {
-        "type": "object",
-        "properties": {
-          "asset_address": {
-            "type": "string"
-          },
-          "rewards_daily_rate": {
-            "type": "number",
-            "format": "double"
-          }
-        }
+      "CreatedTimestamp": {
+        "type": "integer",
+        "description": "Creation timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
-      "CancelOrdersResponseNotCanceled": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Map of order IDs that could not be canceled with error messages",
-        "example": {
-          "0xabcdef1234567890abcdef1234567890abcdef12": "Order not found or already canceled"
-        }
+      "ConfirmedTimestamp": {
+        "type": "integer",
+        "description": "Confirmation timestamp in milliseconds",
+        "format": "int64",
+        "example": 1767225600000
       },
       "Deposit": {
         "required": [
@@ -22831,9 +22717,10 @@
           ]
         }
       },
-      "NotificationItemNotification": {
-        "type": "object",
-        "description": "The notification payload. Fields vary by notification type; see the [Notifications channel](/api-reference/wss/perps-notifications) for the per-type shapes."
+      "Counterparty": {
+        "type": "string",
+        "description": "Counterparty account address in hex format",
+        "example": "0x1234567890abcdef1234567890abcdef12345678"
       },
       "InternalTransfer": {
         "required": [
@@ -23007,148 +22894,40 @@
           }
         }
       },
-      "OpUpdateMarginArgs": {
-        "required": [
-          "iid",
-          "amt"
-        ],
-        "type": "object",
-        "properties": {
-          "iid": {
-            "type": "integer",
-            "description": "Instrument ID"
-          },
-          "amt": {
-            "type": "string",
-            "description": "Signed isolated-margin adjustment in the instrument quote asset. Positive values add allocation; negative values remove it."
-          }
-        }
+      "Volume7D": {
+        "type": "string",
+        "description": "Rolling 7-day perpetual trading volume in USD",
+        "example": "5000000"
       },
-      "OpInternalTransferArgs": {
-        "required": [
-          "account",
-          "token",
-          "amount",
-          "to"
-        ],
-        "type": "object",
-        "properties": {
-          "account": {
-            "type": "string",
-            "description": "Account address in hex format"
-          },
-          "token": {
-            "type": "string",
-            "description": "Token contract address in hex format"
-          },
-          "amount": {
-            "type": "string",
-            "description": "Token amount in decimal units (e.g. \u0022100\u0022 for 100 USDC)."
-          },
-          "to": {
-            "type": "string",
-            "description": "Destination address in hex format"
-          }
-        }
+      "TakerVolume7D": {
+        "type": "string",
+        "description": "Rolling 7-day perpetual taker volume in USD",
+        "example": "3500000"
       },
-      "OpWithdrawArgs": {
-        "required": [
-          "account",
-          "token",
-          "amount",
-          "to"
-        ],
-        "type": "object",
-        "properties": {
-          "account": {
-            "type": "string",
-            "description": "Account address in hex format"
-          },
-          "token": {
-            "type": "string",
-            "description": "Token contract address in hex format"
-          },
-          "amount": {
-            "type": "string",
-            "description": "Raw token amount in base units, matching the uint256 amount in the EIP-712 signature (e.g. \u0022100000000\u0022 for 100 USDC with 6 decimals)."
-          },
-          "to": {
-            "type": "string",
-            "description": "Destination address in hex format"
-          }
-        }
+      "MakerVolume7D": {
+        "type": "string",
+        "description": "Rolling 7-day perpetual maker volume in USD",
+        "example": "1500000"
       },
-      "AccountBackstopsCoverage": {
-        "required": [
-          "notes"
-        ],
-        "type": "object",
-        "properties": {
-          "notes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "description": "Present when backstop history is unavailable because its schema is pending."
+      "AccountMakerShare7D": {
+        "type": "string",
+        "description": "Rolling 7-day account maker volume divided by total exchange volume",
+        "example": "0.35"
       },
-      "OpDeleteProxyArgs": {
-        "required": [
-          "proxy"
-        ],
-        "type": "object",
-        "properties": {
-          "proxy": {
-            "type": "string",
-            "description": "Proxy address in hex format"
-          }
-        }
+      "EntityMakerShare7D": {
+        "type": "string",
+        "description": "Rolling 7-day entity maker volume divided by total exchange volume",
+        "example": "0.35"
       },
-      "OpCreateProxyArgs": {
-        "required": [
-          "owner",
-          "proxy",
-          "expiry"
-        ],
-        "type": "object",
-        "properties": {
-          "owner": {
-            "type": "string",
-            "description": "Owner address in hex format"
-          },
-          "proxy": {
-            "type": "string",
-            "description": "Proxy address in hex format"
-          },
-          "expiry": {
-            "type": "integer",
-            "description": "Expiry timestamp in milliseconds",
-            "format": "int64"
-          }
-        }
+      "EntityId": {
+        "type": "integer",
+        "description": "Liquidity rewards entity ID",
+        "example": 42
       },
-      "OpUpdateLeverageArgs": {
-        "required": [
-          "iid",
-          "lev",
-          "cross"
-        ],
-        "type": "object",
-        "properties": {
-          "iid": {
-            "type": "integer",
-            "description": "Instrument ID"
-          },
-          "lev": {
-            "type": "integer",
-            "description": "Leverage"
-          },
-          "cross": {
-            "type": "boolean",
-            "description": "Whether to use cross margin mode"
-          }
-        }
+      "EntityName": {
+        "type": "string",
+        "description": "Liquidity rewards entity name",
+        "example": "desk"
       },
       "AccountStats": {
         "required": [
@@ -23189,70 +22968,25 @@
           }
         }
       },
-      "OpAutoCancelArgs": {
-        "required": [
-          "time"
-        ],
-        "type": "object",
-        "properties": {
-          "time": {
-            "type": "integer",
-            "description": "Timestamp in milliseconds",
-            "format": "int64"
-          }
-        }
+      "ActionsPerMinute": {
+        "type": "integer",
+        "description": "Order action tokens used by the account in the current minute",
+        "example": 23
       },
-      "OpCancelAllArgs": {
-        "type": "object",
-        "properties": {
-          "iid": {
-            "type": "integer",
-            "description": "Instrument ID"
-          }
-        },
-        "description": "Optional cancel scope. When \u0060iid\u0060 is provided, only open orders for\nthat instrument are canceled. When omitted, all open orders for the\nsigning account are canceled.\n"
+      "ActionsBurst": {
+        "type": "integer",
+        "description": "Additional account action allowance remaining"
       },
-      "CreateOrderTr": {
-        "type": "object",
-        "properties": {
-          "market": {
-            "type": "boolean",
-            "description": "Whether the trigger executes as a market order"
-          },
-          "trp": {
-            "type": "string",
-            "description": "Trigger price"
-          },
-          "tpsl": {
-            "$ref": "#/components/schemas/Tpsl"
-          }
-        },
-        "description": "Optional trigger attached to this order."
+      "OpenOrders": {
+        "type": "integer",
+        "description": "Current number of open orders",
+        "example": 42
       },
-      "DepositResponseAddress": {
-        "type": "object",
-        "properties": {
-          "evm": {
-            "type": "string",
-            "description": "EVM-compatible bridge address (Ethereum, Polygon, Arbitrum, Base, etc.)",
-            "example": "0x23566f8b2E82aDfCf01846E54899d110e97AC053"
-          },
-          "svm": {
-            "type": "string",
-            "description": "Solana Virtual Machine bridge address",
-            "example": "CrvTBvzryYxBHbWu2TiQpcqD5M7Le7iBKzVmEj3f36Jb"
-          },
-          "btc": {
-            "type": "string",
-            "description": "Bitcoin bridge address",
-            "example": "bc1q8eau83qffxcj8ht4hsjdza3lha9r3egfqysj3g"
-          },
-          "tron": {
-            "type": "string",
-            "description": "Tron bridge address"
-          }
-        },
-        "description": "Bridge addresses for different blockchain networks"
+      "RateReset": {
+        "type": "integer",
+        "description": "Timestamp in milliseconds when the current interval resets",
+        "format": "int64",
+        "example": 1767225660000
       },
       "AccountLimits": {
         "required": [
@@ -23302,101 +23036,45 @@
           }
         }
       },
-      "ModifyRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "exp": {
-            "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
-            "format": "int64"
-          }
-        }
+      "Date": {
+        "type": "string",
+        "description": "UTC reward period end date in YYYY-MM-DD format",
+        "example": "2026-05-10"
       },
-      "ModifyRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpModifyOrders"
-          }
-        }
+      "StartDate": {
+        "type": "string",
+        "description": "Inclusive UTC start date in YYYY-MM-DD format",
+        "example": "2026-05-01"
       },
-      "ModifyByCoidRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "exp": {
-            "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
-            "format": "int64"
-          }
-        }
+      "EndDate": {
+        "type": "string",
+        "description": "Inclusive UTC end date in YYYY-MM-DD format",
+        "example": "2026-05-10"
       },
-      "ModifyByCoidRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpModifyOrdersByCoid"
-          }
-        }
+      "Limit": {
+        "type": "integer",
+        "description": "Maximum number of entries to return",
+        "example": 100
       },
-      "NotificationsReadRequestOneOf2": {
-        "required": [
-          "before"
-        ],
-        "type": "object",
-        "properties": {
-          "before": {
-            "type": "string",
-            "description": "Pagination cursor. Marks every notification at or before this point as read."
-          }
-        },
-        "additionalProperties": {
-          "$ref": "#/components/schemas/NotificationsReadRequestOneOf2AdditionalProperties"
-        }
+      "MakerShare7D": {
+        "type": "string",
+        "description": "Rolling 7-day account maker volume divided by total exchange volume",
+        "example": "0.35"
       },
-      "NotificationsReadRequestOneOf1": {
-        "required": [
-          "ids"
-        ],
-        "type": "object",
-        "properties": {
-          "ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "description": "Stable notification id. The same notification always has the same id on the WebSocket feed and in the notifications history, so you can safely deduplicate across the two."
-            },
-            "description": "Notification ids to mark read."
-          }
-        },
-        "additionalProperties": {
-          "$ref": "#/components/schemas/NotificationsReadRequestOneOf1AdditionalProperties"
-        }
+      "RewardDistributed": {
+        "type": "boolean",
+        "description": "Whether rewards for this period have been marked as distributed",
+        "example": true
       },
-      "MarginRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpUpdateMargin"
-          }
-        }
+      "RewardPool": {
+        "type": "string",
+        "description": "Configured reward pool for the instrument",
+        "example": "1000"
       },
-      "InternalTransferRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "label": {
-            "type": "string",
-            "description": "Human-readable label for a proxy key or internal transfer"
-          }
-        }
+      "RewardAmount": {
+        "type": "string",
+        "description": "Reward amount attributed to this reward row",
+        "example": "127.50344"
       },
       "AccountRewardInstrument": {
         "required": [
@@ -23420,16 +23098,10 @@
           }
         }
       },
-      "InternalTransferRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpInternalTransfer"
-          }
-        }
+      "AccountOi": {
+        "type": "string",
+        "description": "Daily average gross open-interest notional for this account across all instruments",
+        "example": "3200000"
       },
       "AccountRewardOi": {
         "required": [
@@ -23522,40 +23194,21 @@
         },
         "description": "Account configuration."
       },
-      "WithdrawRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpWithdraw"
-          }
-        }
+      "AutoCancelTriggered": {
+        "type": "integer",
+        "description": "Number of times auto-cancel has fired for this account during the\ncurrent UTC day. Resets to zero at 00:00 UTC.\n",
+        "example": 0
       },
-      "DeleteProxyRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpDeleteProxy"
-          }
-        }
+      "AutoCancelDailyLimit": {
+        "type": "integer",
+        "description": "Maximum number of auto-cancel triggers allowed per UTC day.\n",
+        "example": 1000
       },
-      "ProxyRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "label": {
-            "type": "string",
-            "description": "Human-readable label for a proxy key or internal transfer"
-          },
-          "code": {
-            "type": "string",
-            "description": "Referral or invite code"
-          }
-        }
+      "AutoCancelNextReset": {
+        "type": "integer",
+        "description": "Unix-ms timestamp of the next UTC midnight when the daily trigger\ncount resets to zero.\n",
+        "format": "int64",
+        "example": 1767052800000
       },
       "AutoCancelStatus": {
         "required": [
@@ -23623,70 +23276,35 @@
           }
         }
       },
-      "ProxyRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCreateProxy"
-          }
-        }
+      "ChildrenCount": {
+        "type": "integer",
+        "description": "Number of directly referred child accounts",
+        "example": 12
       },
-      "LeverageBatchRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpUpdateLeverages"
-          }
-        }
+      "ActiveChildrenCount": {
+        "type": "integer",
+        "description": "Number of directly referred child accounts that have traded at least once since their referral was applied",
+        "example": 8
       },
-      "LeverageRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpUpdateLeverage"
-          }
-        }
+      "ChildrenVolume": {
+        "type": "string",
+        "description": "Total notional volume traded by directly referred child accounts since their referral was applied",
+        "example": "125000.50"
       },
-      "AutoCancelRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpAutoCancel"
-          }
-        }
+      "ChildrenFees": {
+        "type": "string",
+        "description": "Total fees paid by directly referred child accounts since their referral was applied",
+        "example": "312.75"
       },
-      "CancelByCoidRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "exp": {
-            "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
-            "format": "int64"
-          }
-        }
+      "ReferralsLeft": {
+        "type": "integer",
+        "description": "Number of additional referrals remaining for this account\u0027s invite code",
+        "example": 11
       },
-      "CancelByCoidRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCancelOrdersByCoid"
-          }
-        }
+      "FeeShareRate": {
+        "type": "string",
+        "description": "Referral fee share rate. Defaults to 0.2.",
+        "example": "0.2"
       },
       "AccountReferral": {
         "required": [
@@ -23805,15 +23423,10 @@
           }
         }
       },
-      "CancelAllRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "exp": {
-            "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
-            "format": "int64"
-          }
-        }
+      "MarginAmount": {
+        "type": "string",
+        "description": "Signed isolated-margin adjustment in the instrument quote asset. Positive values add allocation; negative values remove it.",
+        "example": "100.00"
       },
       "NotifCursor": {
         "type": [
@@ -23823,16 +23436,10 @@
         "description": "Opaque pagination cursor. Pass the next_cursor value from the previous page to fetch the next, older page. Null when there are no more pages.",
         "example": "eyJ0cyI6MTc2NzIyNTYwMDAwMCwiaWQiOiIwYTVkOGYxZS0zYjJjLTVlNGEtOWY4Yi0xYzJkM2U0ZjVhNmIifQ"
       },
-      "CancelAllRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCancelAll"
-          }
-        }
+      "SinceSeq": {
+        "type": "integer",
+        "description": "Backfill anchor for gap recovery. Pass the sequence number (sq) of the last notifications data frame you processed before the gap, never the sq of a resync frame. The bound is inclusive, so the response repeats the boundary event in full; deduplicate by notification id.",
+        "example": 1043
       },
       "ReadAt": {
         "type": [
@@ -23864,26 +23471,15 @@
           }
         }
       },
-      "CancelRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "exp": {
-            "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
-            "format": "int64"
-          }
-        }
+      "Unread": {
+        "type": "integer",
+        "description": "Count of the authenticated owner\u0027s unread notifications within the retention window.",
+        "example": 3
       },
-      "CancelRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCancelOrders"
-          }
-        }
+      "DurableSourceSeq": {
+        "type": "integer",
+        "description": "Highest notification sequence the store has persisted for your account. If it is still below the sequence you are catching up to, the store is lagging; retry the backfill until it catches up.",
+        "example": 1043
       },
       "NotificationsResponse": {
         "required": [
@@ -23918,15 +23514,10 @@
           }
         }
       },
-      "OrderRequestAllOf3": {
-        "type": "object",
-        "properties": {
-          "exp": {
-            "type": "integer",
-            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
-            "format": "int64"
-          }
-        }
+      "NotifId": {
+        "type": "string",
+        "description": "Stable notification id. The same notification always has the same id on the WebSocket feed and in the notifications history, so you can safely deduplicate across the two.",
+        "example": "0a5d8f1e-3b2c-5e4a-9f8b-1c2d3e4f5a6b"
       },
       "NotificationsReadRequest": {
         "type": "object",
@@ -23953,16 +23544,10 @@
           }
         }
       },
-      "OrderRequestAllOf1": {
-        "required": [
-          "op"
-        ],
-        "type": "object",
-        "properties": {
-          "op": {
-            "$ref": "#/components/schemas/OpCreateOrders"
-          }
-        }
+      "Blp": {
+        "type": "boolean",
+        "description": "True when the account is enrolled in the Backstop Liquidity Provider program.",
+        "example": true
       },
       "BlpInstrument": {
         "required": [
@@ -24001,18 +23586,10 @@
           }
         }
       },
-      "TickerAllOf2": {
-        "required": [
-          "timestamp"
-        ],
-        "type": "object",
-        "properties": {
-          "timestamp": {
-            "type": "integer",
-            "description": "Timestamp in milliseconds",
-            "format": "int64"
-          }
-        }
+      "BlpActive": {
+        "type": "boolean",
+        "description": "True subscribes the account to the instrument, false unsubscribes it.",
+        "example": true
       },
       "BlpEnrollRequest": {
         "required": [
@@ -24031,29 +23608,20 @@
           }
         }
       },
-      "BatchError404ResponseResponse": {
-        "maxItems": 1,
-        "minItems": 1,
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GenericRejected"
-        }
+      "Lid": {
+        "type": "integer",
+        "description": "Liquidation ID. Identifies one absorption of an account\u0027s positions by the insurance fund. Probabilistically unique (same guarantees as trade IDs).",
+        "example": 1234567890
       },
-      "BatchError503ResponseResponse": {
-        "maxItems": 1,
-        "minItems": 1,
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GenericRejected"
-        }
+      "Mgn": {
+        "type": "string",
+        "description": "Net margin transferred to the insurance fund in USD, covering the quote asset only. Negative when the fund returned more isolated margin than the account\u0027s balance covered, i.e. it absorbed bad debt.",
+        "example": "150.00"
       },
-      "BatchError500ResponseResponse": {
-        "maxItems": 1,
-        "minItems": 1,
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GenericRejected"
-        }
+      "BlpCursor": {
+        "type": "integer",
+        "description": "Pagination cursor. Pass the liquidation ID of the last record from the previous page to fetch the next page. Paging follows the \u0060sort\u0060 direction (strictly older records when \u0060sort=desc\u0060, strictly newer when \u0060sort=asc\u0060).",
+        "example": 1234567890
       },
       "BlpSort": {
         "enum": [
@@ -24471,13 +24039,10 @@
           }
         }
       },
-      "BatchError429ResponseResponse": {
-        "maxItems": 1,
-        "minItems": 1,
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GenericRejected"
-        }
+      "FeeTier2": {
+        "type": "integer",
+        "description": "Zero-based effective account fee tier index in the perpetual equity fee schedule returned by /v1/info/fees. Defaults to 0 without a current tier assignment and is capped at the highest configured tier.",
+        "example": 0
       },
       "ClobOrder": {
         "required": [
@@ -30549,13 +30114,11 @@
           }
         }
       },
-      "BatchError400ResponseResponse": {
-        "maxItems": 1,
-        "minItems": 1,
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GenericRejected"
-        }
+      "RelayerAddress": {
+        "pattern": "^0x[a-fA-F0-9]{40}$",
+        "type": "string",
+        "description": "Ethereum address (0x-prefixed, 40 hex chars)",
+        "example": "0x6e0c80c90ea6c15917308F820Eac91Ce2724B5b5"
       },
       "RelayerErrorResponse": {
         "required": [
@@ -30806,6 +30369,1558 @@
             "example": "2026-02-24T18:20:11.237485Z"
           }
         }
+      },
+      "BatchError400ResponseResponse": {
+        "maxItems": 1,
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GenericRejected"
+        }
+      },
+      "BatchError429ResponseResponse": {
+        "maxItems": 1,
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GenericRejected"
+        }
+      },
+      "BatchError500ResponseResponse": {
+        "maxItems": 1,
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GenericRejected"
+        }
+      },
+      "BatchError503ResponseResponse": {
+        "maxItems": 1,
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GenericRejected"
+        }
+      },
+      "BatchError404ResponseResponse": {
+        "maxItems": 1,
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GenericRejected"
+        }
+      },
+      "TickerAllOf2": {
+        "required": [
+          "timestamp"
+        ],
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "integer",
+            "description": "Timestamp in milliseconds",
+            "format": "int64"
+          }
+        }
+      },
+      "OrderRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpCreateOrders"
+          }
+        }
+      },
+      "OrderRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "exp": {
+            "type": "integer",
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
+          }
+        }
+      },
+      "CancelRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpCancelOrders"
+          }
+        }
+      },
+      "CancelRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "exp": {
+            "type": "integer",
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
+          }
+        }
+      },
+      "CancelAllRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpCancelAll"
+          }
+        }
+      },
+      "CancelAllRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "exp": {
+            "type": "integer",
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
+          }
+        }
+      },
+      "CancelByCoidRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpCancelOrdersByCoid"
+          }
+        }
+      },
+      "CancelByCoidRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "exp": {
+            "type": "integer",
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
+          }
+        }
+      },
+      "AutoCancelRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpAutoCancel"
+          }
+        }
+      },
+      "LeverageRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpUpdateLeverage"
+          }
+        }
+      },
+      "LeverageBatchRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpUpdateLeverages"
+          }
+        }
+      },
+      "ProxyRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpCreateProxy"
+          }
+        }
+      },
+      "ProxyRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Human-readable label for a proxy key or internal transfer"
+          },
+          "code": {
+            "type": "string",
+            "description": "Referral or invite code"
+          }
+        }
+      },
+      "DeleteProxyRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpDeleteProxy"
+          }
+        }
+      },
+      "WithdrawRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpWithdraw"
+          }
+        }
+      },
+      "InternalTransferRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpInternalTransfer"
+          }
+        }
+      },
+      "InternalTransferRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Human-readable label for a proxy key or internal transfer"
+          }
+        }
+      },
+      "MarginRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpUpdateMargin"
+          }
+        }
+      },
+      "NotificationsReadRequestOneOf1": {
+        "required": [
+          "ids"
+        ],
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Stable notification id. The same notification always has the same id on the WebSocket feed and in the notifications history, so you can safely deduplicate across the two."
+            },
+            "description": "Notification ids to mark read."
+          }
+        },
+        "additionalProperties": {
+          "$ref": "#/components/schemas/NotificationsReadRequestOneOf1AdditionalProperties"
+        }
+      },
+      "NotificationsReadRequestOneOf2": {
+        "required": [
+          "before"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "description": "Pagination cursor. Marks every notification at or before this point as read."
+          }
+        },
+        "additionalProperties": {
+          "$ref": "#/components/schemas/NotificationsReadRequestOneOf2AdditionalProperties"
+        }
+      },
+      "ModifyByCoidRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpModifyOrdersByCoid"
+          }
+        }
+      },
+      "ModifyByCoidRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "exp": {
+            "type": "integer",
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
+          }
+        }
+      },
+      "ModifyRequestAllOf1": {
+        "required": [
+          "op"
+        ],
+        "type": "object",
+        "properties": {
+          "op": {
+            "$ref": "#/components/schemas/OpModifyOrders"
+          }
+        }
+      },
+      "ModifyRequestAllOf3": {
+        "type": "object",
+        "properties": {
+          "exp": {
+            "type": "integer",
+            "description": "Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway\u0027s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.",
+            "format": "int64"
+          }
+        }
+      },
+      "DepositResponseAddress": {
+        "type": "object",
+        "properties": {
+          "evm": {
+            "type": "string",
+            "description": "EVM-compatible bridge address (Ethereum, Polygon, Arbitrum, Base, etc.)",
+            "example": "0x23566f8b2E82aDfCf01846E54899d110e97AC053"
+          },
+          "svm": {
+            "type": "string",
+            "description": "Solana Virtual Machine bridge address",
+            "example": "CrvTBvzryYxBHbWu2TiQpcqD5M7Le7iBKzVmEj3f36Jb"
+          },
+          "btc": {
+            "type": "string",
+            "description": "Bitcoin bridge address",
+            "example": "bc1q8eau83qffxcj8ht4hsjdza3lha9r3egfqysj3g"
+          },
+          "tron": {
+            "type": "string",
+            "description": "Tron bridge address"
+          }
+        },
+        "description": "Bridge addresses for different blockchain networks"
+      },
+      "CreateOrderTr": {
+        "type": "object",
+        "properties": {
+          "market": {
+            "type": "boolean",
+            "description": "Whether the trigger executes as a market order"
+          },
+          "trp": {
+            "type": "string",
+            "description": "Trigger price"
+          },
+          "tpsl": {
+            "$ref": "#/components/schemas/Tpsl"
+          }
+        },
+        "description": "Optional trigger attached to this order."
+      },
+      "OpCancelAllArgs": {
+        "type": "object",
+        "properties": {
+          "iid": {
+            "type": "integer",
+            "description": "Instrument ID"
+          }
+        },
+        "description": "Optional cancel scope. When \u0060iid\u0060 is provided, only open orders for\nthat instrument are canceled. When omitted, all open orders for the\nsigning account are canceled.\n"
+      },
+      "OpAutoCancelArgs": {
+        "required": [
+          "time"
+        ],
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "integer",
+            "description": "Timestamp in milliseconds",
+            "format": "int64"
+          }
+        }
+      },
+      "OpUpdateLeverageArgs": {
+        "required": [
+          "iid",
+          "lev",
+          "cross"
+        ],
+        "type": "object",
+        "properties": {
+          "iid": {
+            "type": "integer",
+            "description": "Instrument ID"
+          },
+          "lev": {
+            "type": "integer",
+            "description": "Leverage"
+          },
+          "cross": {
+            "type": "boolean",
+            "description": "Whether to use cross margin mode"
+          }
+        }
+      },
+      "OpCreateProxyArgs": {
+        "required": [
+          "owner",
+          "proxy",
+          "expiry"
+        ],
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string",
+            "description": "Owner address in hex format"
+          },
+          "proxy": {
+            "type": "string",
+            "description": "Proxy address in hex format"
+          },
+          "expiry": {
+            "type": "integer",
+            "description": "Expiry timestamp in milliseconds",
+            "format": "int64"
+          }
+        }
+      },
+      "OpDeleteProxyArgs": {
+        "required": [
+          "proxy"
+        ],
+        "type": "object",
+        "properties": {
+          "proxy": {
+            "type": "string",
+            "description": "Proxy address in hex format"
+          }
+        }
+      },
+      "AccountBackstopsCoverage": {
+        "required": [
+          "notes"
+        ],
+        "type": "object",
+        "properties": {
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Present when backstop history is unavailable because its schema is pending."
+      },
+      "OpWithdrawArgs": {
+        "required": [
+          "account",
+          "token",
+          "amount",
+          "to"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "Account address in hex format"
+          },
+          "token": {
+            "type": "string",
+            "description": "Token contract address in hex format"
+          },
+          "amount": {
+            "type": "string",
+            "description": "Raw token amount in base units, matching the uint256 amount in the EIP-712 signature (e.g. \u0022100000000\u0022 for 100 USDC with 6 decimals)."
+          },
+          "to": {
+            "type": "string",
+            "description": "Destination address in hex format"
+          }
+        }
+      },
+      "OpInternalTransferArgs": {
+        "required": [
+          "account",
+          "token",
+          "amount",
+          "to"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "Account address in hex format"
+          },
+          "token": {
+            "type": "string",
+            "description": "Token contract address in hex format"
+          },
+          "amount": {
+            "type": "string",
+            "description": "Token amount in decimal units (e.g. \u0022100\u0022 for 100 USDC)."
+          },
+          "to": {
+            "type": "string",
+            "description": "Destination address in hex format"
+          }
+        }
+      },
+      "OpUpdateMarginArgs": {
+        "required": [
+          "iid",
+          "amt"
+        ],
+        "type": "object",
+        "properties": {
+          "iid": {
+            "type": "integer",
+            "description": "Instrument ID"
+          },
+          "amt": {
+            "type": "string",
+            "description": "Signed isolated-margin adjustment in the instrument quote asset. Positive values add allocation; negative values remove it."
+          }
+        }
+      },
+      "NotificationItemNotification": {
+        "type": "object",
+        "description": "The notification payload. Fields vary by notification type; see the [Notifications channel](/api-reference/wss/perps-notifications) for the per-type shapes."
+      },
+      "CancelOrdersResponseNotCanceled": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of order IDs that could not be canceled with error messages",
+        "example": {
+          "0xabcdef1234567890abcdef1234567890abcdef12": "Order not found or already canceled"
+        }
+      },
+      "RewardsRatesItem": {
+        "type": "object",
+        "properties": {
+          "asset_address": {
+            "type": "string"
+          },
+          "rewards_daily_rate": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "BatchPricesHistoryResponseHistory": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/MarketPrice"
+          }
+        },
+        "description": "Map of market asset id to array of price data points."
+      },
+      "BalanceAllowanceResponseAllowances": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of spender addresses to allowance amounts",
+        "example": {
+          "0x1234567890123456789012345678901234567890": "500000000000000000",
+          "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd": "1000000000000000000"
+        }
+      },
+      "NotificationPayload": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/NotificationPayloadAdditionalProperties"
+        },
+        "description": "Dynamic payload containing notification-specific data"
+      },
+      "ClobTradeMakerOrdersItem": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string",
+            "description": "Order ID (hash)"
+          },
+          "owner": {
+            "type": "string",
+            "description": "Owner UUID"
+          },
+          "maker_address": {
+            "type": "string",
+            "description": "Maker address"
+          },
+          "matched_amount": {
+            "type": "string",
+            "description": "Matched amount"
+          },
+          "price": {
+            "type": "string",
+            "description": "Price"
+          },
+          "fee_rate_bps": {
+            "type": "string",
+            "description": "Fee rate in basis points"
+          },
+          "asset_id": {
+            "type": "string",
+            "description": "Asset ID"
+          },
+          "outcome": {
+            "type": "string",
+            "description": "Outcome"
+          },
+          "side": {
+            "$ref": "#/components/schemas/ClobTradeMakerOrdersItemSide"
+          }
+        }
+      },
+      "DataPaths1V11Accounting1SnapshotGet200ZipResponse": {
+        "type": "string",
+        "format": "binary"
+      },
+      "DataPaths1PositionsGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Position"
+        }
+      },
+      "DataPaths1TradesGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Trade"
+        }
+      },
+      "DataPaths1ActivityGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Activity"
+        }
+      },
+      "DataPaths1HoldersGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/MetaHolder"
+        }
+      },
+      "DataPaths1RevisionsGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RevisionPayload"
+        }
+      },
+      "DataPaths1ValueGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ValueValue"
+        }
+      },
+      "DataPaths1OiGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OpenInterest"
+        }
+      },
+      "DataPaths1LiveVolumeGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LiveVolume"
+        }
+      },
+      "DataPaths1ClosedPositionsGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClosedPosition"
+        }
+      },
+      "DataPaths1OtherGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OtherSize"
+        }
+      },
+      "DataPaths1V11MarketPositionsGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/MetaMarketPositionV1"
+        }
+      },
+      "DataPaths1V11Builders1LeaderboardGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LeaderboardEntry"
+        }
+      },
+      "DataPaths1V11Builders1VolumeGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BuilderVolumeEntry"
+        }
+      },
+      "DataPaths1V11LeaderboardGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/TraderLeaderboardEntry"
+        }
+      },
+      "PerpsGetPing200Response": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok"
+          }
+        }
+      },
+      "PerpsGetAssets200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Asset2"
+        }
+      },
+      "PerpsGetInstruments200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Instrument"
+        }
+      },
+      "PerpsGetTickers200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Ticker"
+        }
+      },
+      "PerpsGetStatistics200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Statistic"
+        }
+      },
+      "PerpsGetBbo200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Bbo"
+        }
+      },
+      "PerpsGetLimitTiers200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LimitTier"
+        }
+      },
+      "PerpsCreateOrders200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderResponse"
+        }
+      },
+      "PerpsCancelOrders200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CancelResponse"
+        }
+      },
+      "PerpsModifyOrders200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ModifyResponse"
+        }
+      },
+      "PerpsCancelOrdersByCoid200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CancelResponse"
+        }
+      },
+      "PerpsModifyOrdersByCoid200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ModifyResponse"
+        }
+      },
+      "PerpsUpdateLeverages200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LeverageBatchResponse"
+        }
+      },
+      "PerpsGetOrders200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderData"
+        }
+      },
+      "PerpsGetOpenOrders200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderData"
+        }
+      },
+      "PerpsGetBalances200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Balance2"
+        }
+      },
+      "PerpsInternalTransfer422Response": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/InternalTransferRejected"
+          },
+          {
+            "$ref": "#/components/schemas/PerpsInternalTransfer422ResponseOneOf2"
+          }
+        ],
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ErrStatus"
+          },
+          "transfer_id": {
+            "type": "integer",
+            "description": "Internal transfer ID"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)"
+          }
+        }
+      },
+      "PerpsGetConfig200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/AccountConfig"
+        }
+      },
+      "ClobPostOrdersRequest": {
+        "maxItems": 15,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SendOrder"
+        }
+      },
+      "ClobPostOrders200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SendOrderResponse"
+        }
+      },
+      "ClobCancelOrdersRequest": {
+        "maxItems": 1000,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "ClobGetTime200Response": {
+        "type": "integer",
+        "description": "Unix timestamp (seconds since epoch)",
+        "format": "int64"
+      },
+      "ClobGetMidpoint200Response": {
+        "required": [
+          "mid_price"
+        ],
+        "type": "object",
+        "properties": {
+          "mid_price": {
+            "type": "string",
+            "description": "Midpoint price as a string",
+            "example": "0.45"
+          }
+        }
+      },
+      "ClobGetMidpointsGet200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to midpoint price"
+      },
+      "ClobGetMidpointsPostRequest": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetMidpointsPost200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to midpoint price"
+      },
+      "ClobGetSpread200Response": {
+        "required": [
+          "spread"
+        ],
+        "type": "object",
+        "properties": {
+          "spread": {
+            "type": "string",
+            "description": "Spread as a string",
+            "example": "0.02"
+          }
+        }
+      },
+      "ClobGetSpreadsRequest": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetSpreads200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to spread"
+      },
+      "ClobGetLastTradePrice200Response": {
+        "required": [
+          "price",
+          "side"
+        ],
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "string",
+            "description": "Last trade price",
+            "example": "0.45"
+          },
+          "side": {
+            "$ref": "#/components/schemas/ClobGetLastTradePrice200ResponseSide"
+          }
+        }
+      },
+      "ClobGetLastTradesPricesGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseItem"
+        }
+      },
+      "ClobGetLastTradesPricesPostRequest": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetLastTradesPricesPost200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseItem"
+        }
+      },
+      "ClobGetPrice200Response": {
+        "required": [
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "number",
+            "description": "Market price as a decimal number",
+            "format": "double",
+            "example": 0.45
+          }
+        }
+      },
+      "ClobGetPricesGet200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesGet200ResponseAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
+      },
+      "ClobGetPricesPostRequest": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetPricesPost200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
+      },
+      "ClobGetBooksGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderBookSummary"
+        }
+      },
+      "ClobGetBooksPostRequest": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetBooksPost200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderBookSummary"
+        }
+      },
+      "ClobGetMarketsLiveActivityRequest": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "ClobGetMarketsLiveActivity200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LiveActivityMarket"
+        }
+      },
+      "ClobDeleteApiKey200Response": {
+        "type": "string"
+      },
+      "ClobUpdateBalanceAllowance200Response": {
+        "type": "object"
+      },
+      "ClobGetBuilderApiKeys200Response": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of builder API key UUIDs"
+      },
+      "ClobRevokeBuilderApiKey200Response": {
+        "type": "string"
+      },
+      "ClobGetNotifications200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Notification"
+        }
+      },
+      "ClobDropNotifications200Response": {
+        "type": "string"
+      },
+      "ClobGetTotalEarningsForUserForDay200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/TotalUserEarning"
+        }
+      },
+      "ClobGetRewardPercentagesForUser200Response": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        },
+        "description": "Map of condition_id to reward percentage"
+      },
+      "ClobGetCurrentRebatedFees200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RebatedFees"
+        }
+      },
+      "ClobPostOrdersScoringRequest": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of order IDs (order hashes) to check scoring status for"
+      },
+      "GammaGetGammaStatus200PlainResponse": {
+        "type": "string",
+        "example": "OK"
+      },
+      "GammaListTeams200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Team"
+        }
+      },
+      "GammaListTags200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Tag"
+        }
+      },
+      "GammaGetRelatedTagsById200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RelatedTag"
+        }
+      },
+      "GammaGetRelatedTagsBySlug200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RelatedTag"
+        }
+      },
+      "GammaGetTagsRelatedToATagById200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Tag"
+        }
+      },
+      "GammaGetTagsRelatedToATagBySlug200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Tag"
+        }
+      },
+      "GammaListEvents200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/EventType"
+        }
+      },
+      "GammaListSportEventsResults200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/EventType"
+        }
+      },
+      "GammaGetEventTags200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Tag"
+        }
+      },
+      "GammaListEventCreators200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/EventCreator"
+        }
+      },
+      "GammaListMarkets200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GammaMarket"
+        }
+      },
+      "GammaGetMarketTags200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Tag"
+        }
+      },
+      "GammaGetMarketsInformation200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GammaMarket"
+        }
+      },
+      "GammaGetAbridgedMarkets200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GammaMarket"
+        }
+      },
+      "GammaListSeries200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Series"
+        }
+      },
+      "GammaListComments200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Comment"
+        }
+      },
+      "GammaGetCommentsById200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Comment"
+        }
+      },
+      "GammaGetCommentsByUserAddress200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Comment"
+        }
+      },
+      "GammaGetSportsMetadata200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SportsMetadata"
+        }
+      },
+      "RelayerPaths1TransactionGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RelayerTransaction"
+        }
+      },
+      "RelayerPaths1TransactionsGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RelayerTransaction"
+        }
+      },
+      "RelayerPaths1Relayer1Api1KeysGet200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RelayerApiKey"
+        }
+      },
+      "ExamplePayload": {
+        "type": "object",
+        "description": "Placeholder schema for path example refs"
+      },
+      "DataPaths1V11Accounting1SnapshotGet200ZipResponseSchema": {
+        "type": "string",
+        "format": "binary"
+      },
+      "DataPaths1PositionsGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Position"
+        }
+      },
+      "DataPaths1TradesGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Trade"
+        }
+      },
+      "DataPaths1ActivityGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Activity"
+        }
+      },
+      "DataPaths1HoldersGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/MetaHolder"
+        }
+      },
+      "DataPaths1RevisionsGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RevisionPayload"
+        }
+      },
+      "DataPaths1ValueGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ValueValue"
+        }
+      },
+      "DataPaths1OiGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OpenInterest"
+        }
+      },
+      "DataPaths1LiveVolumeGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LiveVolume"
+        }
+      },
+      "DataPaths1ClosedPositionsGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClosedPosition"
+        }
+      },
+      "DataPaths1OtherGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OtherSize"
+        }
+      },
+      "DataPaths1V11MarketPositionsGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/MetaMarketPositionV1"
+        }
+      },
+      "DataPaths1V11Builders1LeaderboardGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LeaderboardEntry"
+        }
+      },
+      "DataPaths1V11Builders1VolumeGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BuilderVolumeEntry"
+        }
+      },
+      "DataPaths1V11LeaderboardGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/TraderLeaderboardEntry"
+        }
+      },
+      "PerpsGetAssets200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Asset2"
+        }
+      },
+      "PerpsGetInstruments200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Instrument"
+        }
+      },
+      "PerpsGetTickers200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Ticker"
+        }
+      },
+      "PerpsGetStatistics200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Statistic"
+        }
+      },
+      "PerpsGetBbo200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Bbo"
+        }
+      },
+      "PerpsGetLimitTiers200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LimitTier"
+        }
+      },
+      "PerpsCreateOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderResponse"
+        }
+      },
+      "PerpsCancelOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CancelResponse"
+        }
+      },
+      "PerpsModifyOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ModifyResponse"
+        }
+      },
+      "PerpsCancelOrdersByCoid200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CancelResponse"
+        }
+      },
+      "PerpsModifyOrdersByCoid200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ModifyResponse"
+        }
+      },
+      "PerpsUpdateLeverages200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LeverageBatchResponse"
+        }
+      },
+      "PerpsGetOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderData"
+        }
+      },
+      "PerpsGetOpenOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderData"
+        }
+      },
+      "PerpsGetBalances200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Balance2"
+        }
+      },
+      "PerpsGetConfig200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/AccountConfig"
+        }
+      },
+      "PerpsCreateAccountInviteRequest": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/PerpsCreateAccountInviteRequestAdditionalProperties"
+        }
+      },
+      "ClobPostOrdersRequestRequestBody": {
+        "maxItems": 15,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SendOrder"
+        }
+      },
+      "ClobPostOrders200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SendOrderResponse"
+        }
+      },
+      "ClobCancelOrdersRequestRequestBody": {
+        "maxItems": 1000,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "ClobGetTime200ResponseSchema": {
+        "type": "integer",
+        "description": "Unix timestamp (seconds since epoch)",
+        "format": "int64"
+      },
+      "ClobGetMidpointsGet200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to midpoint price"
+      },
+      "ClobGetMidpointsPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetMidpointsPost200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to midpoint price"
+      },
+      "ClobGetSpreadsRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetSpreads200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Map of token ID to spread"
+      },
+      "ClobGetLastTradesPricesGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseSchemaItem"
+        }
+      },
+      "ClobGetLastTradesPricesPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetLastTradesPricesPost200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseSchemaItem"
+        }
+      },
+      "ClobGetPricesGet200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesGet200ResponseSchemaAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
+      },
+      "ClobGetPricesPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetPricesPost200ResponseSchema": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ClobGetPricesPost200ResponseSchemaAdditionalProperties"
+        },
+        "description": "Map of token ID to map of side to price"
+      },
+      "ClobGetBooksGet200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderBookSummary"
+        }
+      },
+      "ClobGetBooksPostRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookRequest"
+        }
+      },
+      "ClobGetBooksPost200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OrderBookSummary"
+        }
+      },
+      "ClobGetMarketsLiveActivityRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "ClobGetMarketsLiveActivity200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LiveActivityMarket"
+        }
+      },
+      "ClobDeleteApiKey200ResponseSchema": {
+        "type": "string"
+      },
+      "ClobUpdateBalanceAllowance200ResponseSchema": {
+        "type": "object"
+      },
+      "ClobGetBuilderApiKeys200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of builder API key UUIDs"
+      },
+      "ClobRevokeBuilderApiKey200ResponseSchema": {
+        "type": "string"
       },
       "ClobGetNotifications200ResponseSchema": {
         "type": "array",
@@ -31059,141 +32174,6 @@
         },
         "description": "Gateway authorization rejection before a transfer ID is assigned."
       },
-      "ClobGetPricesPost200ResponseSchemaAdditionalProperties": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number",
-          "format": "double"
-        }
-      },
-      "ClobGetPricesGet200ResponseSchemaAdditionalProperties": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number",
-          "format": "double"
-        }
-      },
-      "ClobGetLastTradesPricesPost200ResponseSchemaItem": {
-        "required": [
-          "token_id",
-          "price",
-          "side"
-        ],
-        "type": "object",
-        "properties": {
-          "token_id": {
-            "type": "string",
-            "description": "Token ID (asset ID)",
-            "example": "0xabc123def456..."
-          },
-          "price": {
-            "type": "string",
-            "description": "Last trade price",
-            "example": "0.45"
-          },
-          "side": {
-            "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseSchemaItemSide"
-          }
-        }
-      },
-      "ClobGetLastTradesPricesGet200ResponseSchemaItem": {
-        "required": [
-          "token_id",
-          "price",
-          "side"
-        ],
-        "type": "object",
-        "properties": {
-          "token_id": {
-            "type": "string",
-            "description": "Token ID (asset ID)",
-            "example": "0xabc123def456..."
-          },
-          "price": {
-            "type": "string",
-            "description": "Last trade price",
-            "example": "0.45"
-          },
-          "side": {
-            "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseSchemaItemSide"
-          }
-        }
-      },
-      "PerpsCreateAccountInviteRequestAdditionalProperties": {
-        "type": "object",
-        "not": {}
-      },
-      "ClobGetPricesPost200ResponseAdditionalProperties": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number",
-          "format": "double"
-        }
-      },
-      "ClobGetPricesGet200ResponseAdditionalProperties": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number",
-          "format": "double"
-        }
-      },
-      "ClobGetLastTradesPricesPost200ResponseItem": {
-        "required": [
-          "token_id",
-          "price",
-          "side"
-        ],
-        "type": "object",
-        "properties": {
-          "token_id": {
-            "type": "string",
-            "description": "Token ID (asset ID)",
-            "example": "0xabc123def456..."
-          },
-          "price": {
-            "type": "string",
-            "description": "Last trade price",
-            "example": "0.45"
-          },
-          "side": {
-            "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseSchemaItemSide"
-          }
-        }
-      },
-      "ClobGetLastTradesPricesGet200ResponseItem": {
-        "required": [
-          "token_id",
-          "price",
-          "side"
-        ],
-        "type": "object",
-        "properties": {
-          "token_id": {
-            "type": "string",
-            "description": "Token ID (asset ID)",
-            "example": "0xabc123def456..."
-          },
-          "price": {
-            "type": "string",
-            "description": "Last trade price",
-            "example": "0.45"
-          },
-          "side": {
-            "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseSchemaItemSide"
-          }
-        }
-      },
-      "NotificationPayloadAdditionalProperties": {
-        "type": "object"
-      },
-      "NotificationsReadRequestOneOf2AdditionalProperties": {
-        "type": "object",
-        "not": {}
-      },
-      "NotificationsReadRequestOneOf1AdditionalProperties": {
-        "type": "object",
-        "not": {}
-      },
       "CreateInviteRequestAdditionalProperties": {
         "type": "object",
         "not": {}
@@ -31250,6 +32230,141 @@
           "$ref": "#/components/schemas/NotificationPayloadPropertyAdditionalProperties"
         },
         "description": "Dynamic payload containing notification-specific data"
+      },
+      "NotificationsReadRequestOneOf1AdditionalProperties": {
+        "type": "object",
+        "not": {}
+      },
+      "NotificationsReadRequestOneOf2AdditionalProperties": {
+        "type": "object",
+        "not": {}
+      },
+      "NotificationPayloadAdditionalProperties": {
+        "type": "object"
+      },
+      "ClobGetLastTradesPricesGet200ResponseItem": {
+        "required": [
+          "token_id",
+          "price",
+          "side"
+        ],
+        "type": "object",
+        "properties": {
+          "token_id": {
+            "type": "string",
+            "description": "Token ID (asset ID)",
+            "example": "0xabc123def456..."
+          },
+          "price": {
+            "type": "string",
+            "description": "Last trade price",
+            "example": "0.45"
+          },
+          "side": {
+            "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseItemSide"
+          }
+        }
+      },
+      "ClobGetLastTradesPricesPost200ResponseItem": {
+        "required": [
+          "token_id",
+          "price",
+          "side"
+        ],
+        "type": "object",
+        "properties": {
+          "token_id": {
+            "type": "string",
+            "description": "Token ID (asset ID)",
+            "example": "0xabc123def456..."
+          },
+          "price": {
+            "type": "string",
+            "description": "Last trade price",
+            "example": "0.45"
+          },
+          "side": {
+            "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseItemSide"
+          }
+        }
+      },
+      "ClobGetPricesGet200ResponseAdditionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "ClobGetPricesPost200ResponseAdditionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "PerpsCreateAccountInviteRequestAdditionalProperties": {
+        "type": "object",
+        "not": {}
+      },
+      "ClobGetLastTradesPricesGet200ResponseSchemaItem": {
+        "required": [
+          "token_id",
+          "price",
+          "side"
+        ],
+        "type": "object",
+        "properties": {
+          "token_id": {
+            "type": "string",
+            "description": "Token ID (asset ID)",
+            "example": "0xabc123def456..."
+          },
+          "price": {
+            "type": "string",
+            "description": "Last trade price",
+            "example": "0.45"
+          },
+          "side": {
+            "$ref": "#/components/schemas/ClobGetLastTradesPricesGet200ResponseItemSide"
+          }
+        }
+      },
+      "ClobGetLastTradesPricesPost200ResponseSchemaItem": {
+        "required": [
+          "token_id",
+          "price",
+          "side"
+        ],
+        "type": "object",
+        "properties": {
+          "token_id": {
+            "type": "string",
+            "description": "Token ID (asset ID)",
+            "example": "0xabc123def456..."
+          },
+          "price": {
+            "type": "string",
+            "description": "Last trade price",
+            "example": "0.45"
+          },
+          "side": {
+            "$ref": "#/components/schemas/ClobGetLastTradesPricesPost200ResponseItemSide"
+          }
+        }
+      },
+      "ClobGetPricesGet200ResponseSchemaAdditionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "ClobGetPricesPost200ResponseSchemaAdditionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        }
       },
       "ClobMarketDetailsRAdditionalProperties": {
         "type": "object"
@@ -31690,31 +32805,6 @@
           ]
         }
       },
-      "ClobGetLastTradePrice200ResponseSide": {
-        "enum": [
-          "BUY",
-          "SELL",
-          ""
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Last trade side (BUY or SELL)",
-        "example": "BUY",
-        "x-ms-enum": {
-          "name": "ClobGetLastTradePrice200ResponseSide",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "BUY",
-              "name": "Buy"
-            },
-            {
-              "value": "SELL",
-              "name": "Sell"
-            }
-          ]
-        }
-      },
       "WithdrawType": {
         "enum": [
           "withdraw"
@@ -31745,28 +32835,6 @@
             {
               "value": "internalTransfer",
               "name": "InternalTransfer"
-            }
-          ]
-        }
-      },
-      "ClobTradeMakerOrdersItemSide": {
-        "enum": [
-          "BUY",
-          "SELL"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "ClobTradeMakerOrdersItemSide",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "BUY",
-              "name": "Buy"
-            },
-            {
-              "value": "SELL",
-              "name": "Sell"
             }
           ]
         }
@@ -32383,17 +33451,15 @@
           ]
         }
       },
-      "ClobGetLastTradesPricesPost200ResponseSchemaItemSide": {
+      "ClobTradeMakerOrdersItemSide": {
         "enum": [
           "BUY",
           "SELL"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Last trade side (BUY or SELL)",
-        "example": "BUY",
         "x-ms-enum": {
-          "name": "ClobGetLastTradesPricesPost200ResponseSchemaItemSide",
+          "name": "ClobTradeMakerOrdersItemSide",
           "modelAsString": false,
           "values": [
             {
@@ -32407,7 +33473,32 @@
           ]
         }
       },
-      "ClobGetLastTradesPricesGet200ResponseSchemaItemSide": {
+      "ClobGetLastTradePrice200ResponseSide": {
+        "enum": [
+          "BUY",
+          "SELL",
+          ""
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Last trade side (BUY or SELL)",
+        "example": "BUY",
+        "x-ms-enum": {
+          "name": "ClobGetLastTradePrice200ResponseSide",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "BUY",
+              "name": "Buy"
+            },
+            {
+              "value": "SELL",
+              "name": "Sell"
+            }
+          ]
+        }
+      },
+      "ClobGetLastTradesPricesGet200ResponseItemSide": {
         "enum": [
           "BUY",
           "SELL"
@@ -32417,7 +33508,31 @@
         "description": "Last trade side (BUY or SELL)",
         "example": "BUY",
         "x-ms-enum": {
-          "name": "ClobGetLastTradesPricesGet200ResponseSchemaItemSide",
+          "name": "ClobGetLastTradesPricesGet200ResponseItemSide",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "BUY",
+              "name": "Buy"
+            },
+            {
+              "value": "SELL",
+              "name": "Sell"
+            }
+          ]
+        }
+      },
+      "ClobGetLastTradesPricesPost200ResponseItemSide": {
+        "enum": [
+          "BUY",
+          "SELL"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Last trade side (BUY or SELL)",
+        "example": "BUY",
+        "x-ms-enum": {
+          "name": "ClobGetLastTradesPricesPost200ResponseItemSide",
           "modelAsString": false,
           "values": [
             {

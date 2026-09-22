@@ -5,7 +5,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     /// <summary>Last trade side (BUY or SELL)</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ClobGetLastTradesPricesPost200ResponseSchemaItemSide
+    public enum ClobGetLastTradesPricesPost200ResponseItemSide
     {
         [EnumMember(Value = "BUY")]
         #pragma warning disable CS1591
