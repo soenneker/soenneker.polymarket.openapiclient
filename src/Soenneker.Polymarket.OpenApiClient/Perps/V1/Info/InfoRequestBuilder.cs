@@ -13,6 +13,7 @@ using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.IndexNamespace;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Instruments;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Invite;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Klines;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Leaderboard;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.LimitTiers;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.MarkHistory;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Ping;
@@ -88,6 +89,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Klines.KlinesRequestBuilder Klines
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Klines.KlinesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The leaderboard property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Leaderboard.LeaderboardRequestBuilder Leaderboard
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Leaderboard.LeaderboardRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The limitTiers property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.LimitTiers.LimitTiersRequestBuilder LimitTiers
