@@ -366,6 +366,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>The pendingDeployment property</summary>
         public bool? PendingDeployment { get; set; }
+        /// <summary>The positionIds property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? PositionIds { get; set; }
+#nullable restore
+#else
+        public List<string> PositionIds { get; set; }
+#endif
         /// <summary>The question property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -584,6 +592,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string UpperBoundDate { get; set; }
 #endif
+        /// <summary>The version property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Version { get; set; }
+#nullable restore
+#else
+        public string Version { get; set; }
+#endif
         /// <summary>The volume property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -732,6 +748,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "outcomes", n => { Outcomes = n.GetStringValue(); } },
                 { "pastSlugs", n => { PastSlugs = n.GetStringValue(); } },
                 { "pendingDeployment", n => { PendingDeployment = n.GetBoolValue(); } },
+                { "positionIds", n => { PositionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "question", n => { Question = n.GetStringValue(); } },
                 { "questionID", n => { QuestionID = n.GetStringValue(); } },
                 { "ready", n => { Ready = n.GetBoolValue(); } },
@@ -772,6 +789,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "updatedBy", n => { UpdatedBy = n.GetIntValue(); } },
                 { "upperBound", n => { UpperBound = n.GetStringValue(); } },
                 { "upperBoundDate", n => { UpperBoundDate = n.GetStringValue(); } },
+                { "version", n => { Version = n.GetStringValue(); } },
                 { "volume", n => { Volume = n.GetStringValue(); } },
                 { "volume1mo", n => { Volume1mo = n.GetDoubleValue(); } },
                 { "volume1moClob", n => { Volume1moClob = n.GetDoubleValue(); } },
@@ -872,6 +890,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("outcomes", Outcomes);
             writer.WriteStringValue("pastSlugs", PastSlugs);
             writer.WriteBoolValue("pendingDeployment", PendingDeployment);
+            writer.WriteCollectionOfPrimitiveValues<string>("positionIds", PositionIds);
             writer.WriteStringValue("question", Question);
             writer.WriteStringValue("questionID", QuestionID);
             writer.WriteBoolValue("ready", Ready);
@@ -912,6 +931,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("updatedBy", UpdatedBy);
             writer.WriteStringValue("upperBound", UpperBound);
             writer.WriteStringValue("upperBoundDate", UpperBoundDate);
+            writer.WriteStringValue("version", Version);
             writer.WriteStringValue("volume", Volume);
             writer.WriteDoubleValue("volume1mo", Volume1mo);
             writer.WriteDoubleValue("volume1moClob", Volume1moClob);

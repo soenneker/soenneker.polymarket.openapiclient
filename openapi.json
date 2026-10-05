@@ -27640,11 +27640,26 @@
               "integer"
             ]
           },
+          "version": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
           "clobTokenIds": {
             "type": [
               "null",
               "string"
             ]
+          },
+          "positionIds": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
           },
           "disqusThread": {
             "type": [
