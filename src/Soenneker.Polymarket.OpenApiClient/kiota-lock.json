@@ -2,7 +2,7 @@
   "descriptionHash": "51C61504E4D5F22D565C76722B31BAD746141B726748C122A7C23C10A4C0394C014575812829A340DBD8D40F51BD9D63A6E978E5C3FEC724772D1DA9ECCED3FA",
   "descriptionLocation": "../../openapi.fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.35.0",
+  "kiotaVersion": "1.36.0",
   "clientClassName": "PolymarketOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Polymarket.OpenApiClient",
