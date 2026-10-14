@@ -14,7 +14,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Command expiry timestamp in Unix milliseconds. If provided, it must be in the future and within the gateway&apos;s default command timeout. It can shorten request validity but cannot extend it. This is not an order auto-cancel time.</summary>
+        /// <summary>Command-processing deadline in Unix milliseconds, not an order auto-cancel time; the server caps it at now + 5 s, clamps larger values to that cap, and uses that 5 s default when omitted. Values at or before the server&apos;s clock are rejected with HTTP 400 (command expired).</summary>
         public long? Exp { get; set; }
         /// <summary>The op property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

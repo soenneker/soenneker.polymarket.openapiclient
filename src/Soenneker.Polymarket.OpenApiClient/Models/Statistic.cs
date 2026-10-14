@@ -24,7 +24,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public UntypedNode Klines { get; set; }
 #endif
-        /// <summary>Opening price from 24 hours ago</summary>
+        /// <summary>Opening price of the earliest populated candle in the rolling 24-hour window, whose start is rounded down to the minute. Returns &quot;0&quot; when the window has no candles.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OpenPrice { get; set; }
@@ -40,7 +40,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string Symbol { get; set; }
 #endif
-        /// <summary>24-hour trading volume in contracts</summary>
+        /// <summary>24-hour trading volume in quote-asset notional (sum of price times quantity), as a numeric string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Volume { get; set; }

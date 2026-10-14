@@ -49,6 +49,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>Leaderboard rank under the requested ranking metric, starting at 1</summary>
         public int? Rank { get; set; }
+        /// <summary>Return on investment over the window as a fraction, not a percentage (&quot;0.4527&quot; is 45.27%): `pnl / max(100, starting_equity + max_net_deposits)`. `pnl` is this row&apos;s `pnl`. `starting_equity` is the account equity sampled last before the window start (0 for `all`, and 0 for accounts with no earlier sample). `max_net_deposits` is the running maximum, over the window, of cumulative credited deposits minus withdrawals plus transfers in minus transfers out, starting from 0 at the window start; it is never negative. The 100 USD floor keeps tiny accounts from producing extreme ratios. Rounded half-even to 6 decimal places with trailing zeros removed; &quot;0&quot; when `pnl` is 0.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Roi { get; set; }
+#nullable restore
+#else
+        public string Roi { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.LeaderboardAccount"/> and sets the default values.
         /// </summary>
@@ -79,6 +87,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "notional", n => { Notional = n.GetStringValue(); } },
                 { "pnl", n => { Pnl = n.GetStringValue(); } },
                 { "rank", n => { Rank = n.GetIntValue(); } },
+                { "roi", n => { Roi = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -93,6 +102,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("notional", Notional);
             writer.WriteStringValue("pnl", Pnl);
             writer.WriteIntValue("rank", Rank);
+            writer.WriteStringValue("roi", Roi);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

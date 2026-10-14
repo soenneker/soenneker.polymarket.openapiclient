@@ -5,6 +5,8 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Assets;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Bbo;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Book;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competitions;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Exchange;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.ExchangeStats;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fees;
@@ -19,6 +21,8 @@ using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.MarkHistory;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Ping;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Portfolio;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionFills;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionSnapshots;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Registered;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Statistics;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Tickers;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Time;
@@ -49,6 +53,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Book.BookRequestBuilder Book
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Book.BookRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The competition property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.CompetitionRequestBuilder Competition
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.CompetitionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The competitions property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competitions.CompetitionsRequestBuilder Competitions
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competitions.CompetitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The exchange property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Exchange.ExchangeRequestBuilder Exchange
@@ -119,6 +133,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionFills.PositionFillsRequestBuilder PositionFills
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionFills.PositionFillsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The positionSnapshots property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionSnapshots.PositionSnapshotsRequestBuilder PositionSnapshots
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionSnapshots.PositionSnapshotsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The registered property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Registered.RegisteredRequestBuilder Registered
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Registered.RegisteredRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The statistics property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Statistics.StatisticsRequestBuilder Statistics

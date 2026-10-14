@@ -86,6 +86,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string Quantity { get; set; }
 #endif
+        /// <summary>Whether this fill closes a position during permanent instrument settlement. Settlement fills use the final settlement price and have no fees or liquidation penalties; they are not normal market trades or ADL.</summary>
+        public bool? Settlement { get; set; }
         /// <summary>Combinatorial position side. Currently only `YES` is supported.</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.Side2? Side { get; set; }
         /// <summary>Whether this side was the taker</summary>
@@ -131,6 +133,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "previous_size", n => { PreviousSize = n.GetStringValue(); } },
                 { "price", n => { Price = n.GetStringValue(); } },
                 { "quantity", n => { Quantity = n.GetStringValue(); } },
+                { "settlement", n => { Settlement = n.GetBoolValue(); } },
                 { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>(); } },
                 { "taker", n => { Taker = n.GetBoolValue(); } },
                 { "timestamp", n => { Timestamp = n.GetLongValue(); } },
@@ -156,6 +159,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("previous_size", PreviousSize);
             writer.WriteStringValue("price", Price);
             writer.WriteStringValue("quantity", Quantity);
+            writer.WriteBoolValue("settlement", Settlement);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>("side", Side);
             writer.WriteBoolValue("taker", Taker);
             writer.WriteLongValue("timestamp", Timestamp);

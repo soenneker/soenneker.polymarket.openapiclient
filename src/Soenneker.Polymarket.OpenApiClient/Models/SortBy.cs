@@ -19,5 +19,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         #pragma warning disable CS1591
         AccountValue,
         #pragma warning restore CS1591
+        [EnumMember(Value = "roi")]
+        #pragma warning disable CS1591
+        Roi,
+        #pragma warning restore CS1591
     }
 }

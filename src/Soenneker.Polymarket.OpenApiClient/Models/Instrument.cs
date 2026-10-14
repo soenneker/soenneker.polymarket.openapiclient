@@ -30,6 +30,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public global::Soenneker.Polymarket.OpenApiClient.Models.Category2 Category { get; set; }
 #endif
+        /// <summary>Whether user orders must be reduce-only. Pricing, funding, and risk management continue until settlement.</summary>
+        public bool? CloseOnly { get; set; }
+        /// <summary>Optional presentation override for the full instrument symbol, such as USA500-USD. Use display_symbol when present and fall back to symbol otherwise. This is a label, not an identifier; use instrument_id for trading and storage. Canonical symbol, base_asset, and price-feed identifiers are unchanged. Metadata normally refreshes once per minute; HTTP caching can add delay.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplaySymbol { get; set; }
+#nullable restore
+#else
+        public string DisplaySymbol { get; set; }
+#endif
         /// <summary>Funding interval</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -108,6 +118,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public List<global::Soenneker.Polymarket.OpenApiClient.Models.RiskTier> RiskTiers { get; set; }
 #endif
+        /// <summary>Permanent settlement record. Its sequence and timestamp are the cutoff after which all unapplied funding is waived. Previously applied funding is preserved. An instrument with this record is delisted and cannot resume trading.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentSettlement? Settlement { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentSettlement Settlement { get; set; }
+#endif
         /// <summary>Instrument symbol</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -145,6 +163,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "base_asset", n => { BaseAsset = n.GetStringValue(); } },
                 { "category", n => { Category = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Category2>(global::Soenneker.Polymarket.OpenApiClient.Models.Category2.CreateFromDiscriminatorValue); } },
+                { "close_only", n => { CloseOnly = n.GetBoolValue(); } },
+                { "display_symbol", n => { DisplaySymbol = n.GetStringValue(); } },
                 { "funding_interval", n => { FundingInterval = n.GetStringValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
                 { "instrument_type", n => { InstrumentType = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType>(); } },
@@ -160,6 +180,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "quantity_decimals", n => { QuantityDecimals = n.GetIntValue(); } },
                 { "quote_asset", n => { QuoteAsset = n.GetStringValue(); } },
                 { "risk_tiers", n => { RiskTiers = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.RiskTier>(global::Soenneker.Polymarket.OpenApiClient.Models.RiskTier.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "settlement", n => { Settlement = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentSettlement>(global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentSettlement.CreateFromDiscriminatorValue); } },
                 { "symbol", n => { Symbol = n.GetStringValue(); } },
                 { "ui_live_time", n => { UiLiveTime = n.GetLongValue(); } },
             };
@@ -173,6 +194,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_asset", BaseAsset);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Category2>("category", Category);
+            writer.WriteBoolValue("close_only", CloseOnly);
+            writer.WriteStringValue("display_symbol", DisplaySymbol);
             writer.WriteStringValue("funding_interval", FundingInterval);
             writer.WriteIntValue("instrument_id", InstrumentId);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType>("instrument_type", InstrumentType);
@@ -188,6 +211,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("quantity_decimals", QuantityDecimals);
             writer.WriteStringValue("quote_asset", QuoteAsset);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.RiskTier>("risk_tiers", RiskTiers);
+            writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentSettlement>("settlement", Settlement);
             writer.WriteStringValue("symbol", Symbol);
             writer.WriteLongValue("ui_live_time", UiLiveTime);
             writer.WriteAdditionalData(AdditionalData);

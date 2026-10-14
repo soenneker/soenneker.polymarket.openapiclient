@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Instruments
         {
         }
         /// <summary>
-        /// Get all instruments.
+        /// Get enabled instruments. When instrument_id is supplied, a permanently settled instrument is also returned, including its final settlement record. Other disabled instruments remain excluded. The presence of settlement means the instrument is delisted and cannot trade.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.Polymarket.OpenApiClient.Models.Instrument&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -62,7 +62,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Instruments
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Get all instruments.
+        /// Get enabled instruments. When instrument_id is supplied, a permanently settled instrument is also returned, including its final settlement record. Other disabled instruments remain excluded. The presence of settlement means the instrument is delisted and cannot trade.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -90,7 +90,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Instruments
             return new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Instruments.InstrumentsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get all instruments.
+        /// Get enabled instruments. When instrument_id is supplied, a permanently settled instrument is also returned, including its final settlement record. Other disabled instruments remain excluded. The presence of settlement means the instrument is delisted and cannot trade.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class InstrumentsRequestBuilderGetQueryParameters 
