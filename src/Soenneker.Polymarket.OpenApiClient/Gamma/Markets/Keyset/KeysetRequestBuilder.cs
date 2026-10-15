@@ -120,10 +120,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Markets.Keyset
             public string[] ClobTokenIds { get; set; }
             #pragma warning restore CS1591
 #endif
-            #pragma warning disable CS1591
+            /// <summary>Filter by closed state. Omitted or false returns open markets; true returns closed markets. Use any (case-insensitive) to include both states in an identifier lookup. Requires at least one of id, slug, clob_token_ids, position_ids, condition_ids, request_ids, onchain_event_ids, or question_ids when any is used. Each identifier filter accepts at most 100 values. Missing an identifier with any, or an invalid closed value, returns 422.</summary>
             [QueryParameter("closed")]
             public bool? Closed { get; set; }
-            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             #pragma warning disable CS1591

@@ -141,10 +141,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Events
             [QueryParameter("ascending")]
             public bool? Ascending { get; set; }
             #pragma warning restore CS1591
-            #pragma warning disable CS1591
+            /// <summary>Filter by closed state. Omitted includes open and closed events. Use true for closed events, false for open events, or any (case-insensitive) for both states. Unlike markets, any does not require an identifier filter. Invalid closed values return 422.</summary>
             [QueryParameter("closed")]
             public bool? Closed { get; set; }
-            #pragma warning restore CS1591
             #pragma warning disable CS1591
             [QueryParameter("cyom")]
             public bool? Cyom { get; set; }

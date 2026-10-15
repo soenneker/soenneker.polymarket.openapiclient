@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Polymarket.OpenApiClient.Clob.V1.Heartbeats;
+using Soenneker.Polymarket.OpenApiClient.Clob.V1.User;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.V1
         public global::Soenneker.Polymarket.OpenApiClient.Clob.V1.Heartbeats.HeartbeatsRequestBuilder Heartbeats
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Clob.V1.Heartbeats.HeartbeatsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The user property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Clob.V1.User.UserRequestBuilder User
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Clob.V1.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Clob.V1.V1RequestBuilder"/> and sets the default values.

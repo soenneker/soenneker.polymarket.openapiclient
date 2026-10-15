@@ -14120,6 +14120,88 @@
         ]
       }
     },
+    "/clob/v1/user/rate-limit-tier": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get rate limit tier",
+        "description": "Returns the [trading rate limit tier](/api-reference/trading-rate-limits) currently assigned to your signer.\nThe tier returned is the one for the signer address of the API credentials used.\n\nThe response reflects the most recent tier refresh, so a change in volume can\ntake up to three hours to appear.\n",
+        "operationId": "clob_getRateLimitTier",
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved rate limit tier",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitTierResponse"
+                },
+                "example": {
+                  "tier": "gold",
+                  "usdc_volume": "612345.67",
+                  "next_tier_threshold": 2500000,
+                  "period": 30,
+                  "tier_details": {
+                    "name": "gold",
+                    "volume_threshold": 500000,
+                    "cancel_rate_per_sec": 800,
+                    "order_rate_per_sec": 400,
+                    "order_burst": 600,
+                    "cancel_burst": 1200,
+                    "allow_negative": true
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid L2 credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                },
+                "example": {
+                  "error": "Unauthorized/Invalid api key"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service unavailable - Rate limit tiers could not be loaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                },
+                "example": {
+                  "error": "rate limit tiers unavailable"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "polyApiKey": [ ],
+            "polyAddress": [ ],
+            "polySignature": [ ],
+            "polyPassphrase": [ ],
+            "polyTimestamp": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://clob.polymarket.com",
+            "description": "Production CLOB API"
+          },
+          {
+            "url": "https://clob-staging.polymarket.com",
+            "description": "Staging CLOB API"
+          }
+        ]
+      }
+    },
     "/combos-rfq/v1/rfq/combo-markets": {
       "get": {
         "tags": [
@@ -14989,8 +15071,19 @@
           {
             "name": "closed",
             "in": "query",
+            "description": "Filter by closed state. Omitted includes open and closed events. Use true for closed events, false for open events, or any (case-insensitive) for both states. Unlike markets, any does not require an identifier filter. Invalid closed values return 422.\n",
             "schema": {
-              "type": "boolean"
+              "oneOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "enum": [
+                    "any"
+                  ],
+                  "type": "string"
+                }
+              ]
             }
           },
           {
@@ -15620,8 +15713,19 @@
           {
             "name": "closed",
             "in": "query",
+            "description": "Filter by closed state. Omitted or false returns open markets; true returns closed markets. Use any (case-insensitive) to include both states in an identifier lookup. Requires at least one of id, slug, clob_token_ids, position_ids, condition_ids, request_ids, onchain_event_ids, or question_ids when any is used. Each identifier filter accepts at most 100 values. Missing an identifier with any, or an invalid closed value, returns 422.\n",
             "schema": {
-              "type": "boolean",
+              "oneOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "enum": [
+                    "any"
+                  ],
+                  "type": "string"
+                }
+              ],
               "default": false
             }
           },
@@ -15807,6 +15911,9 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Invalid closed value, closed=any without an identifier filter, or other filter validation failure."
           }
         },
         "security": [ ],
@@ -16110,8 +16217,19 @@
           {
             "name": "closed",
             "in": "query",
+            "description": "Filter by closed state. Omitted or false returns open markets; true returns closed markets. Use any (case-insensitive) to include both states in an identifier lookup. Requires at least one of id, slug, clob_token_ids, position_ids, condition_ids, request_ids, onchain_event_ids, or question_ids when any is used. Each identifier filter accepts at most 100 values. Missing an identifier with any, or an invalid closed value, returns 422.\n",
             "schema": {
-              "type": "boolean",
+              "oneOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "enum": [
+                    "any"
+                  ],
+                  "type": "string"
+                }
+              ],
               "default": false
             }
           },
@@ -16339,7 +16457,7 @@
             }
           },
           "422": {
-            "description": "Validation error. Returned when offset is provided, cursor is invalid, order fields are not valid, or other filter validation fails.\n",
+            "description": "Validation error. Returned when offset is provided, cursor is invalid, order fields are not valid, closed is invalid, closed=any has no identifier filter, or other filter validation fails.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -16407,8 +16525,19 @@
           {
             "name": "closed",
             "in": "query",
+            "description": "Filter by closed state. Omitted includes open and closed events. Use true for closed events, false for open events, or any (case-insensitive) for both states. Unlike markets, any does not require an identifier filter. Invalid closed values return 422.\n",
             "schema": {
-              "type": "boolean"
+              "oneOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "enum": [
+                    "any"
+                  ],
+                  "type": "string"
+                }
+              ]
             }
           },
           {
@@ -27733,6 +27862,81 @@
           }
         },
         "description": "Rebated fees for a maker on a specific market and date"
+      },
+      "RateLimitTierResponse": {
+        "required": [
+          "tier",
+          "period",
+          "tier_details"
+        ],
+        "type": "object",
+        "properties": {
+          "tier": {
+            "type": "string",
+            "description": "Tier currently applied to your signer",
+            "example": "gold"
+          },
+          "usdc_volume": {
+            "type": "string",
+            "description": "Trailing-window volume, in USDC, of the maker wallet that set your tier. Omitted below the lowest paid tier",
+            "example": "612345.67"
+          },
+          "next_tier_threshold": {
+            "type": "integer",
+            "description": "30-day volume needed for the next tier. Omitted at the top tier and for manually assigned tiers",
+            "example": 2500000
+          },
+          "period": {
+            "type": "integer",
+            "description": "Length of the volume window, in days",
+            "example": 30
+          },
+          "tier_details": {
+            "$ref": "#/components/schemas/RateLimitTierDetails"
+          }
+        },
+        "description": "Trading rate limit tier currently applied to the signer"
+      },
+      "RateLimitTierDetails": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Tier name",
+            "example": "gold"
+          },
+          "volume_threshold": {
+            "type": "integer",
+            "description": "30-day volume required for the tier",
+            "example": 500000
+          },
+          "cancel_rate_per_sec": {
+            "type": "integer",
+            "description": "Cancel bucket refill rate, in tokens per second",
+            "example": 800
+          },
+          "order_rate_per_sec": {
+            "type": "integer",
+            "description": "Order bucket refill rate, in tokens per second",
+            "example": 400
+          },
+          "order_burst": {
+            "type": "integer",
+            "description": "Order bucket burst capacity, in tokens",
+            "example": 600
+          },
+          "cancel_burst": {
+            "type": "integer",
+            "description": "Cancel bucket burst capacity, in tokens",
+            "example": 1200
+          },
+          "allow_negative": {
+            "type": "boolean",
+            "description": "Whether the cancel bucket can carry a negative balance",
+            "example": true
+          }
+        },
+        "description": "Rate, burst and negative-balance settings for the tier"
       },
       "combos_rfq_ErrorResponse": {
         "required": [
