@@ -34,13 +34,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.V1.Heartbeats
         {
         }
         /// <summary>
-        /// Sends a heartbeat signal with session tracking via heartbeat ID.The first request should include an empty or initial heartbeat_id. The response will containa new heartbeat_id that must be used in subsequent requests. If the provided heartbeat_iddoesn&apos;t match the expected value, the request will fail.If heartbeats are not sent regularly, all open orders for the user will be automatically canceled.This is useful for automated trading systems that need to ensure orders are canceledif the system becomes unresponsive.
+        /// Sends one order heartbeat with a rotating ID for the authenticated API key.The first accepted send enables timeout cancellation for all open ordersowned by that API key, across markets and processes. Keep sending acceptedheartbeats every 5 seconds. No scheduler or disarm operation is provided;stopping sends or closing a client leaves the deadline active.Start with an empty heartbeat_id and retain each new ID returned by asuccessful response. Serialize sends per key. A mismatch returns HTTP 400with error_msg &quot;Invalid Heartbeat ID&quot; and the currently expectedheartbeat_id, which may be empty after a legacy send. Retry explicitly withthat ID. Rejected requests do not refresh the deadline. A lost response mayfollow an accepted send, so failure does not prove registration is inactive.After 10 seconds without an accepted send, a five-second scan removes theregistration and queues a best-effort cancel-all attempt. Cancellationtiming and success are not guaranteed. Later accepted sends register again.WebSocket keepalive does not refresh this deadline. Stop placing orders andexplicitly cancel/verify orders you intend to remove before shutdown.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatV1Response"/></returns>
         /// <param name="body">Request body for heartbeat v1 endpoint</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatErrorResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,14 +55,13 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.V1.Heartbeats
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatErrorResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatV1Response>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatV1Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Sends a heartbeat signal with session tracking via heartbeat ID.The first request should include an empty or initial heartbeat_id. The response will containa new heartbeat_id that must be used in subsequent requests. If the provided heartbeat_iddoesn&apos;t match the expected value, the request will fail.If heartbeats are not sent regularly, all open orders for the user will be automatically canceled.This is useful for automated trading systems that need to ensure orders are canceledif the system becomes unresponsive.
+        /// Sends one order heartbeat with a rotating ID for the authenticated API key.The first accepted send enables timeout cancellation for all open ordersowned by that API key, across markets and processes. Keep sending acceptedheartbeats every 5 seconds. No scheduler or disarm operation is provided;stopping sends or closing a client leaves the deadline active.Start with an empty heartbeat_id and retain each new ID returned by asuccessful response. Serialize sends per key. A mismatch returns HTTP 400with error_msg &quot;Invalid Heartbeat ID&quot; and the currently expectedheartbeat_id, which may be empty after a legacy send. Retry explicitly withthat ID. Rejected requests do not refresh the deadline. A lost response mayfollow an accepted send, so failure does not prove registration is inactive.After 10 seconds without an accepted send, a five-second scan removes theregistration and queues a best-effort cancel-all attempt. Cancellationtiming and success are not guaranteed. Later accepted sends register again.WebSocket keepalive does not refresh this deadline. Stop placing orders andexplicitly cancel/verify orders you intend to remove before shutdown.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for heartbeat v1 endpoint</param>

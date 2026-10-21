@@ -40,6 +40,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string Fees { get; set; }
 #endif
+        /// <summary>Time of the account&apos;s first counted fill in this competition, in Unix milliseconds; absent when unavailable or the account has no counted fills. Ranked ties use the configured tie-breaks, normally boosted volume then first fill order. Fill order can distinguish fills within the same millisecond.</summary>
+        public long? FirstFillAt { get; set; }
         /// <summary>Funding received net of funding paid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -187,6 +189,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "boosted_volume", n => { BoostedVolume = n.GetStringValue(); } },
                 { "competition_id", n => { CompetitionId = n.GetIntValue(); } },
                 { "fees", n => { Fees = n.GetStringValue(); } },
+                { "first_fill_at", n => { FirstFillAt = n.GetLongValue(); } },
                 { "funding", n => { Funding = n.GetStringValue(); } },
                 { "locked_positions", n => { LockedPositions = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionLockedPosition>(global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionLockedPosition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "min_volume", n => { MinVolume = n.GetStringValue(); } },
@@ -220,6 +223,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("boosted_volume", BoostedVolume);
             writer.WriteIntValue("competition_id", CompetitionId);
             writer.WriteStringValue("fees", Fees);
+            writer.WriteLongValue("first_fill_at", FirstFillAt);
             writer.WriteStringValue("funding", Funding);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionLockedPosition>("locked_positions", LockedPositions);
             writer.WriteStringValue("min_volume", MinVolume);

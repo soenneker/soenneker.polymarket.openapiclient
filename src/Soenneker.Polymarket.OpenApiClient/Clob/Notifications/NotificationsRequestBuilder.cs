@@ -61,7 +61,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Notifications
             return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves all unread notifications for the authenticated user.Notification types include:- Order cancellation- Order fill (taker or maker)- Market registered- Market resolved- Reward payout- Child comment created
+        /// Retrieves all unread notifications for the authenticated user.Notification types include:- Order cancellation- Order fill (taker or maker)- Market registered- Market resolved- Reward payout- Child comment created- Taker tier upgraded (type 11)
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.Polymarket.OpenApiClient.Models.Notification&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -108,7 +108,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Notifications
             return requestInfo;
         }
         /// <summary>
-        /// Retrieves all unread notifications for the authenticated user.Notification types include:- Order cancellation- Order fill (taker or maker)- Market registered- Market resolved- Reward payout- Child comment created
+        /// Retrieves all unread notifications for the authenticated user.Notification types include:- Order cancellation- Order fill (taker or maker)- Market registered- Market resolved- Reward payout- Child comment created- Taker tier upgraded (type 11)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -153,7 +153,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Notifications
 #endif
         }
         /// <summary>
-        /// Retrieves all unread notifications for the authenticated user.Notification types include:- Order cancellation- Order fill (taker or maker)- Market registered- Market resolved- Reward payout- Child comment created
+        /// Retrieves all unread notifications for the authenticated user.Notification types include:- Order cancellation- Order fill (taker or maker)- Market registered- Market resolved- Reward payout- Child comment created- Taker tier upgraded (type 11)
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class NotificationsRequestBuilderGetQueryParameters 

@@ -14,7 +14,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Maker fee rate</summary>
+        /// <summary>Exchange maker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MakerFeeRate { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string MinVolume30d { get; set; }
 #endif
-        /// <summary>Taker fee rate</summary>
+        /// <summary>Exchange taker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TakerFeeRate { get; set; }

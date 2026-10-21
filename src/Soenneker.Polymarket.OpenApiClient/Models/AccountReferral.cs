@@ -18,7 +18,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of directly referred child accounts</summary>
         public int? ChildrenCount { get; set; }
-        /// <summary>Total fees paid by directly referred child accounts since their referral was applied</summary>
+        /// <summary>Exchange fees paid by directly referred child accounts since their referral was applied. This excludes additional builder fees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ChildrenFees { get; set; }

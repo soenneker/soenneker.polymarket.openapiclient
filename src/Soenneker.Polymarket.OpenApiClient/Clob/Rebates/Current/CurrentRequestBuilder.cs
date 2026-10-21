@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Rebates.Current
         {
         }
         /// <summary>
-        /// Returns the current rebated fees for a maker address on a given date.Each entry includes the condition ID, asset address, and the USDC amount rebated.This endpoint does not require authentication.
+        /// Returns the current rebated fees for a maker address on a given date.Returns null when the maker has no rebated-fee rows.Each entry includes the condition ID, asset address, and the USDC amount rebated.This endpoint does not require authentication.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.Polymarket.OpenApiClient.Models.RebatedFees&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -60,7 +60,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Rebates.Current
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Returns the current rebated fees for a maker address on a given date.Each entry includes the condition ID, asset address, and the USDC amount rebated.This endpoint does not require authentication.
+        /// Returns the current rebated fees for a maker address on a given date.Returns null when the maker has no rebated-fee rows.Each entry includes the condition ID, asset address, and the USDC amount rebated.This endpoint does not require authentication.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -88,7 +88,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Rebates.Current
             return new global::Soenneker.Polymarket.OpenApiClient.Clob.Rebates.Current.CurrentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns the current rebated fees for a maker address on a given date.Each entry includes the condition ID, asset address, and the USDC amount rebated.This endpoint does not require authentication.
+        /// Returns the current rebated fees for a maker address on a given date.Returns null when the maker has no rebated-fee rows.Each entry includes the condition ID, asset address, and the USDC amount rebated.This endpoint does not require authentication.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CurrentRequestBuilderGetQueryParameters 

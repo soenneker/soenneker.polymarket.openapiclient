@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Polymarket.OpenApiClient.Models
 {
     /// <summary>
-    /// Dynamic payload containing notification-specific data
+    /// Notification-specific data. For type 11 (taker tier upgraded),previous_tier, tier, and rebate_bps are integers, and snapshot_dateis the UTC snapshot day as a YYYY-MM-DD string.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NotificationPayloadProperty : IAdditionalDataHolder, IParsable

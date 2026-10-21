@@ -16,7 +16,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>End timestamp in milliseconds</summary>
         public long? EndTimestamp { get; set; }
-        /// <summary>Gross positive maker and taker trading fees in USD for the requested window, as an unformatted numeric string. Rebates, incentives, and referral payments are excluded.</summary>
+        /// <summary>Gross positive maker and taker trading fees in USD for the requested window, as an unformatted numeric string. Rebates, incentives, referral payments, and additional builder fees are excluded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Fees { get; set; }

@@ -14,7 +14,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Zero-based index into `tiers` of the single perpetual fee schedule returned by `/v1/info/fees`, which applies to every perpetual regardless of category. Defaults to 0 without a current tier assignment and is capped at the highest configured tier. WebSocket tier changes appear on the next portfolio update, published every 5 seconds.</summary>
+        /// <summary>Zero-based index into `tiers` of the single perpetual fee schedule returned by `/v1/info/fees`, which applies to every perpetual regardless of category. Builder fees are additional and are not part of this tier. Defaults to 0 without a current tier assignment and is capped at the highest configured tier. WebSocket tier changes appear on the next portfolio update, published every 5 seconds.</summary>
         public int? FeeTier { get; set; }
         /// <summary>Whether the account is currently under liquidation</summary>
         public bool? InLiquidation { get; set; }

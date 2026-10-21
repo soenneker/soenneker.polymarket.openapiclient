@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Heartbeats
         {
         }
         /// <summary>
-        /// Sends a heartbeat signal to maintain active session status.If heartbeats are not sent regularly, all open orders for the user will be automatically canceled.This is useful for automated trading systems that need to ensure orders are canceledif the system becomes unresponsive.
+        /// Sends one legacy order heartbeat for the authenticated API key.The first accepted send enables timeout cancellation for all open ordersowned by that API key, across markets and processes. Keep sending acceptedheartbeats every 5 seconds. No scheduler or disarm operation is provided;stopping sends or closing a client leaves the deadline active.It shares the key&apos;s registration with POST /v1/heartbeats and resets theexpected modern heartbeat ID to an empty string.After 10 seconds without an accepted send, a five-second scan removes theregistration and queues a best-effort cancel-all attempt. Cancellationtiming and success are not guaranteed. Later accepted sends register again.A lost response may follow an accepted send. WebSocket keepalive does notrefresh this deadline. Stop placing orders and explicitly cancel/verifyorders you intend to remove before shutdown.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Heartbeats
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Sends a heartbeat signal to maintain active session status.If heartbeats are not sent regularly, all open orders for the user will be automatically canceled.This is useful for automated trading systems that need to ensure orders are canceledif the system becomes unresponsive.
+        /// Sends one legacy order heartbeat for the authenticated API key.The first accepted send enables timeout cancellation for all open ordersowned by that API key, across markets and processes. Keep sending acceptedheartbeats every 5 seconds. No scheduler or disarm operation is provided;stopping sends or closing a client leaves the deadline active.It shares the key&apos;s registration with POST /v1/heartbeats and resets theexpected modern heartbeat ID to an empty string.After 10 seconds without an accepted send, a five-second scan removes theregistration and queues a best-effort cancel-all attempt. Cancellationtiming and success are not guaranteed. Later accepted sends register again.A lost response may follow an accepted send. WebSocket keepalive does notrefresh this deadline. Stop placing orders and explicitly cancel/verifyorders you intend to remove before shutdown.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

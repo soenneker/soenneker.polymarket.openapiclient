@@ -16,7 +16,23 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the fill came from auto-deleveraging</summary>
         public bool? Adl { get; set; }
-        /// <summary>Fee amount for this trade side</summary>
+        /// <summary>Saved builder terms. Address is the registered Perps account, and fee_rate is an additional fraction of executed notional. Terms survive approval revocation for existing orders.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Builder? Builder { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Builder Builder { get; set; }
+#endif
+        /// <summary>Actual additional builder fee in the same asset as fee, floored independently for each execution to that asset&apos;s token decimals (six for pUSD), with discarded dust and no carry. The fee is non-negative and is zero for older or untagged fills and excluded forced liquidation legs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BuilderFee { get; set; }
+#nullable restore
+#else
+        public string BuilderFee { get; set; }
+#endif
+        /// <summary>Signed exchange fee for this trade side, excluding builder_fee. Negative values are rebates</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Fee { get; set; }
@@ -94,6 +110,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public bool? Taker { get; set; }
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
         public long? Timestamp { get; set; }
+        /// <summary>Exact signed sum of exchange fee and builder_fee in the same asset. May be negative when exchange rebates exceed the builder charge.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TotalFee { get; set; }
+#nullable restore
+#else
+        public string TotalFee { get; set; }
+#endif
         /// <summary>Trade ID</summary>
         public int? TradeId { get; set; }
         /// <summary>
@@ -122,6 +146,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "adl", n => { Adl = n.GetBoolValue(); } },
+                { "builder", n => { Builder = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Builder>(global::Soenneker.Polymarket.OpenApiClient.Models.Builder.CreateFromDiscriminatorValue); } },
+                { "builder_fee", n => { BuilderFee = n.GetStringValue(); } },
                 { "fee", n => { Fee = n.GetStringValue(); } },
                 { "fee_asset", n => { FeeAsset = n.GetStringValue(); } },
                 { "hash", n => { Hash = n.GetStringValue(); } },
@@ -137,6 +163,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>(); } },
                 { "taker", n => { Taker = n.GetBoolValue(); } },
                 { "timestamp", n => { Timestamp = n.GetLongValue(); } },
+                { "total_fee", n => { TotalFee = n.GetStringValue(); } },
                 { "trade_id", n => { TradeId = n.GetIntValue(); } },
             };
         }
@@ -148,6 +175,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("adl", Adl);
+            writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Builder>("builder", Builder);
+            writer.WriteStringValue("builder_fee", BuilderFee);
             writer.WriteStringValue("fee", Fee);
             writer.WriteStringValue("fee_asset", FeeAsset);
             writer.WriteStringValue("hash", Hash);
@@ -163,6 +192,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>("side", Side);
             writer.WriteBoolValue("taker", Taker);
             writer.WriteLongValue("timestamp", Timestamp);
+            writer.WriteStringValue("total_fee", TotalFee);
             writer.WriteIntValue("trade_id", TradeId);
             writer.WriteAdditionalData(AdditionalData);
         }

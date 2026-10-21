@@ -25,7 +25,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string Owner { get; set; }
 #endif
-        /// <summary>Dynamic payload containing notification-specific data</summary>
+        /// <summary>Notification-specific data. For type 11 (taker tier upgraded),previous_tier, tier, and rebate_bps are integers, and snapshot_dateis the UTC snapshot day as a YYYY-MM-DD string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Polymarket.OpenApiClient.Models.NotificationPayloadProperty? Payload { get; set; }
@@ -35,7 +35,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>Unix timestamp when the notification was created</summary>
         public int? Timestamp { get; set; }
-        /// <summary>Type of notification:- 1: Order cancellation- 2: Order fill- 3: Market registered- 4: Market resolved- 5: Reward payout- 6: Child comment created</summary>
+        /// <summary>Type of notification:- 1: Order cancellation- 2: Order fill- 3: Market registered- 4: Market resolved- 5: Reward payout- 6: Child comment created- 11: Taker tier upgraded</summary>
         public int? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Notification"/> and sets the default values.

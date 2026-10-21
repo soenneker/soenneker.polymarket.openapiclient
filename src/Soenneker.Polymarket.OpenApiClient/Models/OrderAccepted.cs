@@ -14,6 +14,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Saved builder terms. Address is the registered Perps account, and fee_rate is an additional fraction of executed notional. Terms survive approval revocation for existing orders.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Builder? Builder { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Builder Builder { get; set; }
+#endif
         /// <summary>Client order ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,6 +59,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "builder", n => { Builder = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Builder>(global::Soenneker.Polymarket.OpenApiClient.Models.Builder.CreateFromDiscriminatorValue); } },
                 { "coid", n => { Coid = n.GetStringValue(); } },
                 { "oid", n => { Oid = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>(); } },
@@ -63,6 +72,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Builder>("builder", Builder);
             writer.WriteStringValue("coid", Coid);
             writer.WriteIntValue("oid", Oid);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.OkStatus>("status", Status);

@@ -24,7 +24,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #endif
         /// <summary>Instrument type</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType? InstrumentType { get; set; }
-        /// <summary>Maker fee rate</summary>
+        /// <summary>Exchange maker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MakerFeeRate { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string MakerFeeRate { get; set; }
 #endif
-        /// <summary>Taker fee rate</summary>
+        /// <summary>Exchange taker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TakerFeeRate { get; set; }

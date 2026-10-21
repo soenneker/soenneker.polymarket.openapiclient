@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Assets;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Bbo;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Book;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Builder;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competitions;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Exchange;
@@ -53,6 +54,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Book.BookRequestBuilder Book
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Book.BookRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The builder property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Builder.BuilderRequestBuilder Builder
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Builder.BuilderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The competition property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.CompetitionRequestBuilder Competition

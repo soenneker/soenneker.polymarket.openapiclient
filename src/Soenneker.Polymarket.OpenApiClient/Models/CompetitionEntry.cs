@@ -30,6 +30,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string BoostedVolume { get; set; }
 #endif
+        /// <summary>Time of the account&apos;s first counted fill in this competition, in Unix milliseconds; absent when unavailable or the account has no counted fills. Ranked ties use the configured tie-breaks, normally boosted volume then first fill order. Fill order can distinguish fills within the same millisecond.</summary>
+        public long? FirstFillAt { get; set; }
         /// <summary>Payment time in Unix milliseconds once paid</summary>
         public int? PaidAt { get; set; }
         /// <summary>Payment transaction hash once paid</summary>
@@ -119,6 +121,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "account", n => { Account = n.GetStringValue(); } },
                 { "boosted_volume", n => { BoostedVolume = n.GetStringValue(); } },
+                { "first_fill_at", n => { FirstFillAt = n.GetLongValue(); } },
                 { "paid_at", n => { PaidAt = n.GetIntValue(); } },
                 { "payout_tx_hash", n => { PayoutTxHash = n.GetStringValue(); } },
                 { "pnl", n => { Pnl = n.GetStringValue(); } },
@@ -140,6 +143,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteStringValue("boosted_volume", BoostedVolume);
+            writer.WriteLongValue("first_fill_at", FirstFillAt);
             writer.WriteIntValue("paid_at", PaidAt);
             writer.WriteStringValue("payout_tx_hash", PayoutTxHash);
             writer.WriteStringValue("pnl", Pnl);

@@ -14,7 +14,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>- `1767225600000` - Timestamp- `&quot;100.50&quot;` - PnL</summary>
+        /// <summary>- `1767225600000` - Timestamp- `&quot;100.50&quot;` - Net PnL after exchange and builder fees, including funding. Do not subtract fill fees again.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? Data { get; set; }

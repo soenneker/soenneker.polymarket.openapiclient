@@ -5,6 +5,10 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.AutoCancel;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Backstops;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Balances;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Builder;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderApprovals;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderEarnings;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderEarningsSummary;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Config;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Credentials;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Deposits;
@@ -52,6 +56,26 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Balances.BalancesRequestBuilder Balances
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Balances.BalancesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The builder property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Builder.BuilderRequestBuilder Builder
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Builder.BuilderRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The builderApprovals property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderApprovals.BuilderApprovalsRequestBuilder BuilderApprovals
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderApprovals.BuilderApprovalsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The builderEarnings property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderEarnings.BuilderEarningsRequestBuilder BuilderEarnings
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderEarnings.BuilderEarningsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The builderEarningsSummary property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderEarningsSummary.BuilderEarningsSummaryRequestBuilder BuilderEarningsSummary
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.BuilderEarningsSummary.BuilderEarningsSummaryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The config property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Config.ConfigRequestBuilder Config

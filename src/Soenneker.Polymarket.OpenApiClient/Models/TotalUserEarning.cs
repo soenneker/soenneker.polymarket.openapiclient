@@ -37,6 +37,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 #else
         public string MakerAddress { get; set; }
 #endif
+        /// <summary>Native rewards included in the total, when the breakdown is returned</summary>
+        public double? NativeEarnings { get; set; }
+        /// <summary>Sponsored rewards included in the total, when the breakdown is returned</summary>
+        public double? SponsoredEarnings { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.TotalUserEarning"/> and sets the default values.
         /// </summary>
@@ -67,6 +71,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "date", n => { Date = n.GetDateTimeOffsetValue(); } },
                 { "earnings", n => { Earnings = n.GetDoubleValue(); } },
                 { "maker_address", n => { MakerAddress = n.GetStringValue(); } },
+                { "native_earnings", n => { NativeEarnings = n.GetDoubleValue(); } },
+                { "sponsored_earnings", n => { SponsoredEarnings = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -81,6 +87,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("date", Date);
             writer.WriteDoubleValue("earnings", Earnings);
             writer.WriteStringValue("maker_address", MakerAddress);
+            writer.WriteDoubleValue("native_earnings", NativeEarnings);
+            writer.WriteDoubleValue("sponsored_earnings", SponsoredEarnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

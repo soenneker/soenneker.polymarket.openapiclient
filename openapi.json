@@ -3594,54 +3594,6 @@
         }
       }
     },
-    "/perps/v1/info/registered": {
-      "get": {
-        "summary": "Get Registration",
-        "description": "Check whether an address has a Perps account. Registration is permanent,\nso a `true` answer never changes; a `false` answer flips as soon as the\naddress registers.\n",
-        "operationId": "perps_getRegistered",
-        "parameters": [
-          {
-            "name": "address",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/address"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Registration status for the address.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegisteredResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/Error400Response"
-          },
-          "429": {
-            "$ref": "#/components/responses/Error429Response"
-          },
-          "500": {
-            "$ref": "#/components/responses/Error500Response"
-          }
-        },
-        "security": [ ],
-        "servers": [
-          {
-            "url": "https://api.perpetuals.polymarket.com",
-            "description": "Production Perps HTTP API"
-          }
-        ],
-        "x-mint": {
-          "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **1**</Badge>\n<br/>\n<Badge color=\"gray\" size=\"md\">Cached — `true` up to 1 day at the edge, `false` up to 10s</Badge>\n"
-        }
-      }
-    },
     "/perps/v1/trade/orders": {
       "post": {
         "summary": "Create Orders",
@@ -6365,6 +6317,605 @@
         }
       }
     },
+    "/perps/v1/account/builder-earnings": {
+      "get": {
+        "summary": "Get authenticated builder receipts",
+        "description": "Returns this account's builder credits only. The time window is inclusive,\ndefaults to the last seven days, and is bounded to 90 days. Supply the same\nstart_timestamp, end_timestamp and as_of_sequence to compare list and summary.\nOlder receipts remain queryable by selecting a past window. Zero-fee eligible\nfills count toward volume. Each receipt identifies only the attributed trader's\nmain wallet and own order details, including its signed platform fee and total_fee.\nclient_order_id is omitted when the order did not supply one. Credits are ordinary\ncollateral, not a claim balance. Recover a disconnected builder fill feed through\nthis endpoint using overlapping windows and earning_id deduplication. The live\nfeed can precede indexing. Retry REST until as_of_sequence covers the event.\n",
+        "operationId": "perps_getBuilderEarnings",
+        "parameters": [
+          {
+            "name": "as_of_sequence",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/sequence"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/cursor"
+            }
+          },
+          {
+            "name": "end_timestamp",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/timestamp"
+            }
+          },
+          {
+            "name": "start_timestamp",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/timestamp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Complete-prefix builder accounting response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuilderEarnings"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503Response"
+          }
+        },
+        "security": [
+          {
+            "polymarket_proxy": [ ],
+            "polymarket_secret": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.perpetuals.polymarket.com",
+            "description": "Production Perps HTTP API"
+          }
+        ]
+      }
+    },
+    "/perps/v1/account/builder-earnings-summary": {
+      "get": {
+        "summary": "Get authenticated builder settled earnings summary",
+        "description": "Returns this account's builder credits only. The time window is inclusive,\ndefaults to the last seven days, and is bounded to 90 days. Supply the same\nstart_timestamp, end_timestamp and as_of_sequence to compare list and summary.\nOlder receipts remain queryable by selecting a past window. Zero-fee eligible\nfills count toward volume and trader_count. trader_count deduplicates trading\naccounts across assets, markets and maker/taker roles within this window/cutoff.\nactive_approval_count instead reflects current positive grants to this builder,\nexcluding revocations, independent of this window/cutoff and builder enablement.\nCredits are ordinary collateral, not a claim balance.\n",
+        "operationId": "perps_getBuilderEarningsSummary",
+        "parameters": [
+          {
+            "name": "as_of_sequence",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/sequence"
+            }
+          },
+          {
+            "name": "end_timestamp",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/timestamp"
+            }
+          },
+          {
+            "name": "start_timestamp",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/timestamp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Complete-prefix builder accounting response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuilderEarningsSummary"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503Response"
+          }
+        },
+        "security": [
+          {
+            "polymarket_proxy": [ ],
+            "polymarket_secret": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.perpetuals.polymarket.com",
+            "description": "Production Perps HTTP API"
+          }
+        ]
+      }
+    },
+    "/perps/v1/info/builder": {
+      "get": {
+        "summary": "Get builder profile and eligibility",
+        "description": "Public builder profile for an address. Returns the saved display name and\ncurrent registration, enablement, platform admission and fee-cap fields.\nThe name is null for unregistered addresses or builders without a saved name.\n",
+        "operationId": "perps_getBuilder",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Address",
+              "example": "0x1234567890abcdef1234567890abcdef12345678"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Builder profile and current eligibility.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "required": [
+                        "address",
+                        "registered",
+                        "enabled",
+                        "admission_enabled",
+                        "max_fee_rate"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "address": {
+                          "type": "string",
+                          "description": "Address",
+                          "example": "0x1234567890abcdef1234567890abcdef12345678"
+                        },
+                        "registered": {
+                          "type": "boolean"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Builder is enabled for new requests. Existing saved terms remain valid when disabled."
+                        },
+                        "admission_enabled": {
+                          "type": "boolean",
+                          "description": "Platform builder code admission switch. Initially false."
+                        },
+                        "max_fee_rate": {
+                          "type": "string",
+                          "description": "Additional builder fee as a decimal fraction of executed notional, from 0 through 0.001 (10 basis points). Zero approval revokes future admission. Never a percentage string.",
+                          "example": "0.001"
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "name"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "description": "Saved builder display name, or null when this address is not a registered builder or has no saved name."
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request — the request was malformed or failed validation (bad query\nparameters, unparseable body, invalid signature, or a domain pre-check).\nThe `error` field is a human-readable validation detail. Rejections also\ncarry the server `ts` in Unix milliseconds and a `ref` that support can\nuse to locate the matching structured trace.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error400",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    },
+                    "arts": {
+                      "type": "integer",
+                      "description": "Gateway arrival timestamp captured at handler entry, in Unix milliseconds.",
+                      "example": 1767225600000,
+                      "x-js-safe-integer": true
+                    },
+                    "ts": {
+                      "type": "integer",
+                      "description": "Server rejection timestamp in Unix milliseconds.",
+                      "example": 1767225600000,
+                      "x-js-safe-integer": true
+                    },
+                    "ref": {
+                      "type": "string",
+                      "description": "Unique server-generated rejection reference. Include this value when asking support to locate the corresponding structured rejection trace.",
+                      "example": "g-0011223344556"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing or invalid `POLYMARKET-PROXY` / `POLYMARKET-SECRET`\ncredentials. `error` is `unauthorized`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error401",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout — the request body was not delivered within the\ngateway's read deadline. Protects against slow uploads holding\nconnections open; send the complete body promptly and retry.\n`error` is `request_body_timeout`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error408",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests. `error` distinguishes the limit that was hit:\n`ip_rate_limited` (per-IP token bucket), `action_rate_limited` (per-account\naction rate), or `open_orders_limit` (resting open-order cap).\n",
+            "headers": {
+              "Retry-After": {
+                "description": "Whole seconds to wait before retrying. Present only on token-bucket\nrate-limit rejections (`ip_rate_limited` and `action_rate_limited`); a\nconservative estimate of when enough capacity will have refilled to\nadmit the request. Absent on `open_orders_limit`, which is a capacity\nlimit, not a rate limit — waiting does not free order slots; cancel\nresting orders or wait for fills instead.\n",
+                "schema": {
+                  "type": "integer",
+                  "example": 2,
+                  "x-js-safe-integer": true
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error429",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error. `error` is `internal_error`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error500",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service unavailable — safe to retry with backoff, honoring\n`Retry-After` when present. `error` is `service_unavailable`.\n\nMost causes are a request deliberately shed before it reached the\nengine, so the request definitely did not execute: the replica's\npod-level in-flight cap (shed before dispatch, with `Retry-After`), a\ndatabase read shed as backpressure under overload (by the local read\ngate or by the database server's concurrency cap — the query never\nexecuted), a required internal cache that is stale or not yet primed\nand would return wrong data, or a full bounded deferred-write queue.\n\nOn a subset of order/state-mutating routes, this status is also\nreturned when the engine round-trip itself times out with zero\nresponses observed. That is retryable engine backpressure, but —\nunlike the sheds above — it does not prove non-execution: the command\nmay already have been admitted, with its response simply not reaching\nthe gateway before the deadline. This status is only used for that\ncase on routes that are safe to retry regardless (idempotent\nstate-setting, or an engine-side replay guard); routes where a bare\nretry cannot safely resolve the ambiguity keep the outcome a\nnon-retryable 500 instead.\n",
+            "headers": {
+              "Retry-After": {
+                "description": "Whole seconds to wait before retrying. Present on pre-dispatch\nin-flight-cap sheds — a transient overload signal, so the hint is\nshort and constant.\n",
+                "schema": {
+                  "type": "integer",
+                  "example": 1,
+                  "x-js-safe-integer": true
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error503",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [ ],
+        "servers": [
+          {
+            "url": "https://api.perpetuals.polymarket.com",
+            "description": "Production Perps HTTP API"
+          }
+        ]
+      }
+    },
+    "/perps/v1/account/builder-approvals": {
+      "get": {
+        "summary": "Read builder approvals, including retained revoked versions",
+        "operationId": "perps_getBuilderApprovals",
+        "parameters": [
+          {
+            "name": "builder",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/address"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Read builder approvals, including retained revoked versions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuilderApprovals"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503Response"
+          }
+        },
+        "security": [
+          {
+            "polymarket_proxy": [ ],
+            "polymarket_secret": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.perpetuals.polymarket.com",
+            "description": "Production Perps HTTP API"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Approve or revoke builder fees with an account owner signature",
+        "operationId": "perps_approveBuilder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BuilderApprovalRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Approve or revoke builder fees with an account owner signature",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuilderApproval"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503Response"
+          }
+        },
+        "security": [ ],
+        "servers": [
+          {
+            "url": "https://api.perpetuals.polymarket.com",
+            "description": "Production Perps HTTP API"
+          }
+        ]
+      }
+    },
+    "/perps/v1/info/registered": {
+      "get": {
+        "summary": "Get Registration",
+        "description": "Check whether an address has a Perps account. Registration is permanent,\nso a `true` answer never changes; a `false` answer flips as soon as the\naddress registers.\n",
+        "operationId": "perps_getRegistered",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/address"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registration status for the address.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisteredResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          }
+        },
+        "security": [ ],
+        "servers": [
+          {
+            "url": "https://api.perpetuals.polymarket.com",
+            "description": "Production Perps HTTP API"
+          }
+        ],
+        "x-mint": {
+          "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **1**</Badge>\n<br/>\n<Badge color=\"gray\" size=\"md\">Cached — `true` up to 1 day at the edge, `false` up to 10s</Badge>\n"
+        }
+      }
+    },
     "/perps/v1/info/competitions": {
       "get": {
         "summary": "Get Trading Competitions",
@@ -6713,6 +7264,337 @@
         "x-mint": {
           "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **max(10, active + 7 × history)**</Badge>\n"
         }
+      }
+    },
+    "/perps/v1/account/builder": {
+      "patch": {
+        "summary": "Update your builder display name",
+        "description": "Sign with the owner wallet of an existing registered Perps builder using\nthe standard signed-operation format: op.type is updateBuilder and\nop.args contains only name. No Admin credentials or trading proxy are needed.\nThe signer determines the account; no address or version parameter is accepted.\nNames are trimmed and must contain 1 to 100 Unicode characters without control characters.\n\nName edits use last-write-wins. Repeating the saved name succeeds.\nDisabled builders can edit their name. This operation does not change\nregistration, enablement, the platform admission switch, approvals or fees.\n",
+        "operationId": "perps_updateBuilder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "required": [
+                      "op"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "required": [
+                          "type",
+                          "args"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "enum": [
+                              "updateBuilder"
+                            ],
+                            "type": "string"
+                          },
+                          "args": {
+                            "required": [
+                              "name"
+                            ],
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "Builder display name. Trimmed before saving; must contain 1 to 100 Unicode characters and no control characters."
+                              }
+                            },
+                            "additionalProperties": {
+                              "not": { }
+                            }
+                          }
+                        },
+                        "additionalProperties": {
+                          "not": { }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "sig",
+                      "salt",
+                      "ts"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "sig": {
+                        "type": "string",
+                        "description": "Signature in hex format",
+                        "example": "0x1234567890..."
+                      },
+                      "salt": {
+                        "type": "integer",
+                        "description": "Salt",
+                        "example": 1234567890,
+                        "x-js-safe-integer": false
+                      },
+                      "ts": {
+                        "type": "integer",
+                        "description": "Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).",
+                        "example": 1767225600000,
+                        "x-js-safe-integer": true
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Saved, trimmed name and current builder status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "required": [
+                        "address",
+                        "registered",
+                        "enabled",
+                        "admission_enabled",
+                        "max_fee_rate"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "address": {
+                          "type": "string",
+                          "description": "Address",
+                          "example": "0x1234567890abcdef1234567890abcdef12345678"
+                        },
+                        "registered": {
+                          "type": "boolean"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Builder is enabled for new requests. Existing saved terms remain valid when disabled."
+                        },
+                        "admission_enabled": {
+                          "type": "boolean",
+                          "description": "Platform builder code admission switch. Initially false."
+                        },
+                        "max_fee_rate": {
+                          "type": "string",
+                          "description": "Additional builder fee as a decimal fraction of executed notional, from 0 through 0.001 (10 basis points). Zero approval revokes future admission. Never a percentage string.",
+                          "example": "0.001"
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "name"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "description": "Saved builder display name, or null when this address is not a registered builder or has no saved name."
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request — the request was malformed or failed validation (bad query\nparameters, unparseable body, invalid signature, or a domain pre-check).\nThe `error` field is a human-readable validation detail. Rejections also\ncarry the server `ts` in Unix milliseconds and a `ref` that support can\nuse to locate the matching structured trace.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error400",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    },
+                    "arts": {
+                      "type": "integer",
+                      "description": "Gateway arrival timestamp captured at handler entry, in Unix milliseconds.",
+                      "example": 1767225600000,
+                      "x-js-safe-integer": true
+                    },
+                    "ts": {
+                      "type": "integer",
+                      "description": "Server rejection timestamp in Unix milliseconds.",
+                      "example": 1767225600000,
+                      "x-js-safe-integer": true
+                    },
+                    "ref": {
+                      "type": "string",
+                      "description": "Unique server-generated rejection reference. Include this value when asking support to locate the corresponding structured rejection trace.",
+                      "example": "g-0011223344556"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing or invalid `POLYMARKET-PROXY` / `POLYMARKET-SECRET`\ncredentials. `error` is `unauthorized`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error401",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests. `error` distinguishes the limit that was hit:\n`ip_rate_limited` (per-IP token bucket), `action_rate_limited` (per-account\naction rate), or `open_orders_limit` (resting open-order cap).\n",
+            "headers": {
+              "Retry-After": {
+                "description": "Whole seconds to wait before retrying. Present only on token-bucket\nrate-limit rejections (`ip_rate_limited` and `action_rate_limited`); a\nconservative estimate of when enough capacity will have refilled to\nadmit the request. Absent on `open_orders_limit`, which is a capacity\nlimit, not a rate limit — waiting does not free order slots; cancel\nresting orders or wait for fills instead.\n",
+                "schema": {
+                  "type": "integer",
+                  "example": 2,
+                  "x-js-safe-integer": true
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error429",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error. `error` is `internal_error`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error500",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service unavailable — safe to retry with backoff, honoring\n`Retry-After` when present. `error` is `service_unavailable`.\n\nMost causes are a request deliberately shed before it reached the\nengine, so the request definitely did not execute: the replica's\npod-level in-flight cap (shed before dispatch, with `Retry-After`), a\ndatabase read shed as backpressure under overload (by the local read\ngate or by the database server's concurrency cap — the query never\nexecuted), a required internal cache that is stale or not yet primed\nand would return wrong data, or a full bounded deferred-write queue.\n\nOn a subset of order/state-mutating routes, this status is also\nreturned when the engine round-trip itself times out with zero\nresponses observed. That is retryable engine backpressure, but —\nunlike the sheds above — it does not prove non-execution: the command\nmay already have been admitted, with its response simply not reaching\nthe gateway before the deadline. This status is only used for that\ncase on routes that are safe to retry regardless (idempotent\nstate-setting, or an engine-side replay guard); routes where a bare\nretry cannot safely resolve the ambiguity keep the outcome a\nnon-retryable 500 instead.\n",
+            "headers": {
+              "Retry-After": {
+                "description": "Whole seconds to wait before retrying. Present on pre-dispatch\nin-flight-cap sheds — a transient overload signal, so the hint is\nshort and constant.\n",
+                "schema": {
+                  "type": "integer",
+                  "example": 1,
+                  "x-js-safe-integer": true
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Error503",
+                  "required": [
+                    "status",
+                    "error"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "err"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error identifier. For domain rejections and transport errors (`401`/`404`/`429`/`500`) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. `insufficient_margin`, `insufficient_balance`, `order_not_found`, `reduce_only_invalid`, `price_outside_bounds`, `position_not_found`, `position_exists`, `open_orders_exist`, `invalid_margin_mode`, `invalid_margin_amount`, `margin_below_required_initial`, `account_liquidating`, `instrument_close_only`, `instrument_settled`, `settlement_price_unavailable`, `settlement_insurance_insufficient`, `settlement_invalid_state`, `settlement_close_only_required`, `unauthorized`, `not_found`. `instrument_close_only` means user orders must reduce an existing position; `instrument_settled` is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For `400` it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as `post_only_rejected`, not rejections.)",
+                      "example": "insufficient_margin"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [ ],
+        "servers": [
+          {
+            "url": "https://api.perpetuals.polymarket.com",
+            "description": "Production Perps HTTP API"
+          }
+        ]
       }
     },
     "/clob/order": {
@@ -11625,7 +12507,7 @@
           "Notifications"
         ],
         "summary": "Get notifications",
-        "description": "Retrieves all unread notifications for the authenticated user.\n\nNotification types include:\n- Order cancellation\n- Order fill (taker or maker)\n- Market registered\n- Market resolved\n- Reward payout\n- Child comment created\n",
+        "description": "Retrieves all unread notifications for the authenticated user.\n\nNotification types include:\n- Order cancellation\n- Order fill (taker or maker)\n- Market registered\n- Market resolved\n- Reward payout\n- Child comment created\n- Taker tier upgraded (type 11)\n",
         "operationId": "clob_getNotifications",
         "parameters": [
           {
@@ -13114,7 +13996,7 @@
           "Rebates"
         ],
         "summary": "Get current rebated fees for a maker",
-        "description": "Returns the current rebated fees for a maker address on a given date.\n\nEach entry includes the condition ID, asset address, and the USDC amount rebated.\n\nThis endpoint does not require authentication.\n",
+        "description": "Returns the current rebated fees for a maker address on a given date.\nReturns null when the maker has no rebated-fee rows.\n\nEach entry includes the condition ID, asset address, and the USDC amount rebated.\n\nThis endpoint does not require authentication.\n",
         "operationId": "clob_getCurrentRebatedFees",
         "parameters": [
           {
@@ -13148,7 +14030,8 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/RebatedFees"
-                  }
+                  },
+                  "nullable": true
                 },
                 "example": [
                   {
@@ -13219,7 +14102,7 @@
           "Trade"
         ],
         "summary": "Send heartbeat",
-        "description": "Sends a heartbeat signal to maintain active session status.\nIf heartbeats are not sent regularly, all open orders for the user will be automatically canceled.\nThis is useful for automated trading systems that need to ensure orders are canceled\nif the system becomes unresponsive.\n",
+        "description": "Sends one legacy order heartbeat for the authenticated API key.\nThe first accepted send enables timeout cancellation for all open orders\nowned by that API key, across markets and processes. Keep sending accepted\nheartbeats every 5 seconds. No scheduler or disarm operation is provided;\nstopping sends or closing a client leaves the deadline active.\nIt shares the key's registration with POST /v1/heartbeats and resets the\nexpected modern heartbeat ID to an empty string.\nAfter 10 seconds without an accepted send, a five-second scan removes the\nregistration and queues a best-effort cancel-all attempt. Cancellation\ntiming and success are not guaranteed. Later accepted sends register again.\nA lost response may follow an accepted send. WebSocket keepalive does not\nrefresh this deadline. Stop placing orders and explicitly cancel/verify\norders you intend to remove before shutdown.\n",
         "operationId": "clob_sendHeartbeat",
         "responses": {
           "200": {
@@ -13289,7 +14172,7 @@
           "Trade"
         ],
         "summary": "Send heartbeat (v1)",
-        "description": "Sends a heartbeat signal with session tracking via heartbeat ID.\n\nThe first request should include an empty or initial heartbeat_id. The response will contain\na new heartbeat_id that must be used in subsequent requests. If the provided heartbeat_id\ndoesn't match the expected value, the request will fail.\n\nIf heartbeats are not sent regularly, all open orders for the user will be automatically canceled.\nThis is useful for automated trading systems that need to ensure orders are canceled\nif the system becomes unresponsive.\n",
+        "description": "Sends one order heartbeat with a rotating ID for the authenticated API key.\nThe first accepted send enables timeout cancellation for all open orders\nowned by that API key, across markets and processes. Keep sending accepted\nheartbeats every 5 seconds. No scheduler or disarm operation is provided;\nstopping sends or closing a client leaves the deadline active.\n\nStart with an empty heartbeat_id and retain each new ID returned by a\nsuccessful response. Serialize sends per key. A mismatch returns HTTP 400\nwith error_msg \"Invalid Heartbeat ID\" and the currently expected\nheartbeat_id, which may be empty after a legacy send. Retry explicitly with\nthat ID. Rejected requests do not refresh the deadline. A lost response may\nfollow an accepted send, so failure does not prove registration is inactive.\n\nAfter 10 seconds without an accepted send, a five-second scan removes the\nregistration and queues a best-effort cancel-all attempt. Cancellation\ntiming and success are not guaranteed. Later accepted sends register again.\nWebSocket keepalive does not refresh this deadline. Stop placing orders and\nexplicitly cancel/verify orders you intend to remove before shutdown.\n",
         "operationId": "clob_sendHeartbeatV1",
         "requestBody": {
           "content": {
@@ -13330,15 +14213,33 @@
             }
           },
           "400": {
-            "description": "Invalid heartbeat ID - ID doesn't match expected value",
+            "description": "Invalid payload, or heartbeat ID does not match the registered ID",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeartbeatErrorResponse"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/HeartbeatErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/clob_ErrorResponse"
+                    }
+                  ]
                 },
-                "example": {
-                  "error": "Invalid Heartbeat ID",
-                  "heartbeat_id": "550e8400-e29b-41d4-a716-446655440000"
+                "examples": {
+                  "id_mismatch": {
+                    "summary": "Registered ID mismatch (does not refresh deadline)",
+                    "value": {
+                      "error_msg": "Invalid Heartbeat ID",
+                      "heartbeat_id": "550e8400-e29b-41d4-a716-446655440000"
+                    }
+                  },
+                  "invalid_payload": {
+                    "summary": "Body could not be decoded",
+                    "value": {
+                      "error": "Invalid payload"
+                    }
+                  }
                 }
               }
             }
@@ -19997,11 +20898,6 @@
         "description": "Instrument symbol",
         "example": "NVDA-USDC"
       },
-      "display_symbol": {
-        "type": "string",
-        "description": "Optional presentation override for the full instrument symbol, such as USA500-USD. Use display_symbol when present and fall back to symbol otherwise. This is a label, not an identifier; use instrument_id for trading and storage. Canonical symbol, base_asset, and price-feed identifiers are unchanged. Metadata normally refreshes once per minute; HTTP caching can add delay.",
-        "example": "USA500-USD"
-      },
       "base_asset": {
         "type": "string",
         "description": "Base asset name",
@@ -20341,7 +21237,7 @@
       },
       "exchange_fees": {
         "type": "string",
-        "description": "Gross positive maker and taker trading fees in USD for the requested window, as an unformatted numeric string. Rebates, incentives, and referral payments are excluded.",
+        "description": "Gross positive maker and taker trading fees in USD for the requested window, as an unformatted numeric string. Rebates, incentives, referral payments, and additional builder fees are excluded.",
         "example": "1245.67"
       },
       "open_price": {
@@ -20903,12 +21799,12 @@
       },
       "taker_fee_rate": {
         "type": "string",
-        "description": "Taker fee rate",
+        "description": "Exchange taker fee rate as a decimal fraction, excluding any per-order builder fee",
         "example": "0.0002"
       },
       "maker_fee_rate": {
         "type": "string",
-        "description": "Maker fee rate",
+        "description": "Exchange maker fee rate as a decimal fraction, excluding any per-order builder fee",
         "example": "-0.00005"
       },
       "min_volume_30d": {
@@ -21068,18 +21964,6 @@
           }
         }
       },
-      "RegisteredResponse": {
-        "required": [
-          "registered"
-        ],
-        "type": "object",
-        "properties": {
-          "registered": {
-            "type": "boolean",
-            "description": "Whether the address has a Perps account."
-          }
-        }
-      },
       "buy": {
         "type": "boolean",
         "description": "Is buy",
@@ -21177,6 +22061,9 @@
               }
             },
             "description": "Optional trigger attached to this order."
+          },
+          "builder": {
+            "$ref": "#/components/schemas/Builder"
           }
         }
       },
@@ -21295,6 +22182,9 @@
           },
           "coid": {
             "$ref": "#/components/schemas/coid"
+          },
+          "builder": {
+            "$ref": "#/components/schemas/Builder"
           }
         }
       },
@@ -22231,6 +23121,9 @@
           },
           "tpsl": {
             "$ref": "#/components/schemas/TpSlOrderFields"
+          },
+          "builder": {
+            "$ref": "#/components/schemas/Builder"
           }
         }
       },
@@ -22415,7 +23308,7 @@
       },
       "fee_tier": {
         "type": "integer",
-        "description": "Zero-based index into `tiers` of the single perpetual fee schedule returned by `/v1/info/fees`, which applies to every perpetual regardless of category. Defaults to 0 without a current tier assignment and is capped at the highest configured tier. WebSocket tier changes appear on the next portfolio update, published every 5 seconds.",
+        "description": "Zero-based index into `tiers` of the single perpetual fee schedule returned by `/v1/info/fees`, which applies to every perpetual regardless of category. Builder fees are additional and are not part of this tier. Defaults to 0 without a current tier assignment and is capped at the highest configured tier. WebSocket tier changes appear on the next portfolio update, published every 5 seconds.",
         "example": 0
       },
       "Portfolio": {
@@ -22481,7 +23374,7 @@
       },
       "fee": {
         "type": "string",
-        "description": "Fee amount for this trade side",
+        "description": "Signed exchange fee for this trade side, excluding builder_fee. Negative values are rebates",
         "example": "1.25"
       },
       "fea": {
@@ -22522,15 +23415,17 @@
           "quantity",
           "taker",
           "fee",
+          "builder_fee",
+          "total_fee",
           "fee_asset",
           "previous_size",
           "previous_entry_price",
           "pnl",
           "timestamp",
-          "settlement",
           "liquidation",
           "adl",
-          "hash"
+          "hash",
+          "settlement"
         ],
         "type": "object",
         "properties": {
@@ -22581,6 +23476,15 @@
           },
           "hash": {
             "$ref": "#/components/schemas/hash"
+          },
+          "builder_fee": {
+            "$ref": "#/components/schemas/builder_fee"
+          },
+          "total_fee": {
+            "$ref": "#/components/schemas/total_fee"
+          },
+          "builder": {
+            "$ref": "#/components/schemas/Builder"
           },
           "settlement": {
             "$ref": "#/components/schemas/settlement_fill"
@@ -22660,7 +23564,7 @@
                 "100.50"
               ]
             },
-            "description": "- `1767225600000` - Timestamp\n- `\"100.50\"` - PnL\n"
+            "description": "- `1767225600000` - Timestamp\n- `\"100.50\"` - Net PnL after exchange and builder fees, including funding. Do not subtract fill fees again.\n"
           },
           "more": {
             "$ref": "#/components/schemas/more"
@@ -23675,7 +24579,7 @@
       },
       "children_fees": {
         "type": "string",
-        "description": "Total fees paid by directly referred child accounts since their referral was applied",
+        "description": "Exchange fees paid by directly referred child accounts since their referral was applied. This excludes additional builder fees.",
         "example": "312.75"
       },
       "referrals_left": {
@@ -24337,6 +25241,9 @@
           },
           "coid": {
             "$ref": "#/components/schemas/coid"
+          },
+          "builder": {
+            "$ref": "#/components/schemas/Builder"
           }
         }
       },
@@ -24453,11 +25360,6 @@
         "description": "Current account equity in USD as an unformatted numeric string",
         "example": "9238345.12"
       },
-      "roi": {
-        "type": "string",
-        "description": "Return on investment over the window as a fraction, not a percentage (\"0.4527\" is 45.27%): `pnl / max(100, starting_equity + max_net_deposits)`. `pnl` is this row's `pnl`. `starting_equity` is the account equity sampled last before the window start (0 for `all`, and 0 for accounts with no earlier sample). `max_net_deposits` is the running maximum, over the window, of cumulative credited deposits minus withdrawals plus transfers in minus transfers out, starting from 0 at the window start; it is never negative. The 100 USD floor keeps tiny accounts from producing extreme ratios. Rounded half-even to 6 decimal places with trailing zeros removed; \"0\" when `pnl` is 0.",
-        "example": "0.4527"
-      },
       "LeaderboardAccount": {
         "required": [
           "account",
@@ -24488,6 +25390,386 @@
           }
         },
         "description": "Leaderboard row for the requested address. `rank` is absent when the account has no activity in the window, or when sorting by account value and that account has no computed equity in the published census. A collateral-only display fallback does not establish an equity rank."
+      },
+      "builder_fee": {
+        "type": "string",
+        "description": "Actual additional builder fee in the same asset as fee, floored independently for each execution to that asset's token decimals (six for pUSD), with discarded dust and no carry. The fee is non-negative and is zero for older or untagged fills and excluded forced liquidation legs.",
+        "example": "20.00"
+      },
+      "builder_fee_rate": {
+        "type": "string",
+        "description": "Additional builder fee as a decimal fraction of executed notional, from 0 through 0.001 (10 basis points). Zero approval revokes future admission. Never a percentage string.",
+        "example": "0.001"
+      },
+      "BuilderEarning": {
+        "required": [
+          "earning_id",
+          "trade_id",
+          "order_id",
+          "instrument_id",
+          "trader",
+          "buy",
+          "price",
+          "quantity",
+          "side",
+          "timestamp",
+          "sequence",
+          "notional",
+          "fee_asset",
+          "fee",
+          "builder_fee",
+          "total_fee",
+          "fee_rate"
+        ],
+        "type": "object",
+        "properties": {
+          "earning_id": {
+            "type": "string",
+            "description": "Stable side-specific receipt identity, unique for this builder. Use this to deduplicate, not sequence or trade_id alone."
+          },
+          "trade_id": {
+            "$ref": "#/components/schemas/tid"
+          },
+          "order_id": {
+            "$ref": "#/components/schemas/oid"
+          },
+          "instrument_id": {
+            "$ref": "#/components/schemas/iid"
+          },
+          "side": {
+            "enum": [
+              "maker",
+              "taker"
+            ],
+            "type": "string"
+          },
+          "timestamp": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "sequence": {
+            "type": "integer"
+          },
+          "notional": {
+            "type": "string"
+          },
+          "fee_asset": {
+            "$ref": "#/components/schemas/fea"
+          },
+          "builder_fee": {
+            "$ref": "#/components/schemas/builder_fee"
+          },
+          "fee_rate": {
+            "$ref": "#/components/schemas/builder_fee_rate"
+          },
+          "trader": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/address"
+              }
+            ],
+            "description": "Main address of the attributed trading account, not its signing proxy or the counterparty."
+          },
+          "buy": {
+            "$ref": "#/components/schemas/buy"
+          },
+          "price": {
+            "$ref": "#/components/schemas/price"
+          },
+          "quantity": {
+            "$ref": "#/components/schemas/quantity"
+          },
+          "client_order_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/coid"
+              }
+            ],
+            "description": "Included only when the attributed order supplied a client_order_id."
+          },
+          "fee": {
+            "$ref": "#/components/schemas/fee"
+          },
+          "total_fee": {
+            "$ref": "#/components/schemas/total_fee"
+          }
+        }
+      },
+      "BuilderEarnings": {
+        "required": [
+          "data",
+          "more",
+          "start_timestamp",
+          "end_timestamp",
+          "as_of_sequence"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BuilderEarning"
+            }
+          },
+          "more": {
+            "type": "boolean"
+          },
+          "cursor": {
+            "type": "string",
+            "description": "Opaque continuation preserving account, time window and fully indexed cutoff. Reuse unchanged."
+          },
+          "start_timestamp": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "end_timestamp": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "as_of_sequence": {
+            "type": "integer",
+            "description": "Complete indexed event prefix shared with the summary. Never the largest row seen."
+          }
+        }
+      },
+      "BuilderEarningsAsset": {
+        "required": [
+          "fee_asset",
+          "fill_count",
+          "notional",
+          "builder_fee"
+        ],
+        "type": "object",
+        "properties": {
+          "fee_asset": {
+            "$ref": "#/components/schemas/fea"
+          },
+          "fill_count": {
+            "type": "integer"
+          },
+          "notional": {
+            "type": "string",
+            "description": "Eligible executed notional including zero-fee fills."
+          },
+          "builder_fee": {
+            "$ref": "#/components/schemas/builder_fee"
+          }
+        }
+      },
+      "BuilderEarningsSummary": {
+        "required": [
+          "data",
+          "start_timestamp",
+          "end_timestamp",
+          "as_of_sequence",
+          "trader_count",
+          "active_approval_count"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BuilderEarningsAsset"
+            }
+          },
+          "start_timestamp": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "end_timestamp": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "as_of_sequence": {
+            "type": "integer"
+          },
+          "trader_count": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "Distinct trading accounts with at least one attributed fill in this window and indexed cutoff, including zero-fee fills and counting once across markets, assets and maker/taker roles."
+          },
+          "active_approval_count": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "Current positive, unrevoked approvals to this builder. This count is independent of the historical window and cutoff. Disabling a builder or platform admission does not erase grants."
+          }
+        },
+        "description": "Settled earnings in the requested window, not available funds or a claim balance. Normal account balances describe spendable collateral."
+      },
+      "BuilderStatus": {
+        "required": [
+          "address",
+          "registered",
+          "enabled",
+          "admission_enabled",
+          "max_fee_rate"
+        ],
+        "type": "object",
+        "properties": {
+          "address": {
+            "$ref": "#/components/schemas/address"
+          },
+          "registered": {
+            "type": "boolean"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Builder is enabled for new requests. Existing saved terms remain valid when disabled."
+          },
+          "admission_enabled": {
+            "type": "boolean",
+            "description": "Platform builder code admission switch. Initially false."
+          },
+          "max_fee_rate": {
+            "$ref": "#/components/schemas/builder_fee_rate"
+          }
+        }
+      },
+      "builder_approval_version": {
+        "minimum": 1,
+        "type": "integer",
+        "description": "Exactly the previous version plus one, starting at 1. Revocation retains the version and prevents signed approval replay."
+      },
+      "BuilderApproval": {
+        "required": [
+          "trader",
+          "builder",
+          "max_fee_rate",
+          "approval_version",
+          "timestamp",
+          "sequence"
+        ],
+        "type": "object",
+        "properties": {
+          "trader": {
+            "$ref": "#/components/schemas/address"
+          },
+          "builder": {
+            "$ref": "#/components/schemas/address"
+          },
+          "max_fee_rate": {
+            "$ref": "#/components/schemas/builder_fee_rate"
+          },
+          "approval_version": {
+            "$ref": "#/components/schemas/builder_approval_version"
+          },
+          "timestamp": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "sequence": {
+            "type": "integer"
+          }
+        }
+      },
+      "BuilderApprovals": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BuilderApproval"
+            }
+          }
+        }
+      },
+      "OpApproveBuilder": {
+        "required": [
+          "type",
+          "args"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "approveBuilder"
+            ],
+            "type": "string"
+          },
+          "args": {
+            "required": [
+              "builder",
+              "max_fee_rate",
+              "approval_version"
+            ],
+            "type": "object",
+            "properties": {
+              "builder": {
+                "$ref": "#/components/schemas/address"
+              },
+              "max_fee_rate": {
+                "$ref": "#/components/schemas/builder_fee_rate"
+              },
+              "approval_version": {
+                "$ref": "#/components/schemas/builder_approval_version"
+              }
+            }
+          }
+        }
+      },
+      "BuilderApprovalRequest": {
+        "allOf": [
+          {
+            "required": [
+              "op"
+            ],
+            "type": "object",
+            "properties": {
+              "op": {
+                "$ref": "#/components/schemas/OpApproveBuilder"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/BaseOp"
+          }
+        ]
+      },
+      "total_fee": {
+        "type": "string",
+        "description": "Exact signed sum of exchange fee and builder_fee in the same asset. May be negative when exchange rebates exceed the builder charge.",
+        "example": "24.00"
+      },
+      "Builder": {
+        "required": [
+          "address",
+          "fee_rate"
+        ],
+        "type": "object",
+        "properties": {
+          "address": {
+            "$ref": "#/components/schemas/address"
+          },
+          "fee_rate": {
+            "$ref": "#/components/schemas/builder_fee_rate"
+          }
+        },
+        "description": "Saved builder terms. Address is the registered Perps account, and fee_rate is an additional fraction of executed notional. Terms survive approval revocation for existing orders."
+      },
+      "quantity": {
+        "type": "string",
+        "description": "Quantity in number of contracts",
+        "example": "10.00"
+      },
+      "display_symbol": {
+        "type": "string",
+        "description": "Optional presentation override for the full instrument symbol, such as USA500-USD. Use display_symbol when present and fall back to symbol otherwise. This is a label, not an identifier; use instrument_id for trading and storage. Canonical symbol, base_asset, and price-feed identifiers are unchanged. Metadata normally refreshes once per minute; HTTP caching can add delay.",
+        "example": "USA500-USD"
+      },
+      "RegisteredResponse": {
+        "required": [
+          "registered"
+        ],
+        "type": "object",
+        "properties": {
+          "registered": {
+            "type": "boolean",
+            "description": "Whether the address has a Perps account."
+          }
+        }
+      },
+      "roi": {
+        "type": "string",
+        "description": "Return on investment over the window as a fraction, not a percentage (\"0.4527\" is 45.27%): `pnl / max(100, starting_equity + max_net_deposits)`. `pnl` is this row's `pnl`. `starting_equity` is the account equity sampled last before the window start (0 for `all`, and 0 for accounts with no earlier sample). `max_net_deposits` is the running maximum, over the window, of cumulative credited deposits minus withdrawals plus transfers in minus transfers out, starting from 0 at the window start; it is never negative. The 100 USD floor keeps tiny accounts from producing extreme ratios. Rounded half-even to 6 decimal places with trailing zeros removed; \"0\" when `pnl` is 0.",
+        "example": "0.4527"
       },
       "CompetitionAccount": {
         "required": [
@@ -24555,6 +25837,9 @@
           },
           "boosted_volume": {
             "type": "string"
+          },
+          "first_fill_at": {
+            "$ref": "#/components/schemas/competition_first_fill_at"
           },
           "min_volume": {
             "type": "string"
@@ -24749,6 +26034,9 @@
           },
           "boosted_volume": {
             "type": "string"
+          },
+          "first_fill_at": {
+            "$ref": "#/components/schemas/competition_first_fill_at"
           },
           "prize": {
             "type": "string",
@@ -25468,6 +26756,12 @@
             "type": "string"
           }
         }
+      },
+      "competition_first_fill_at": {
+        "type": "integer",
+        "description": "Time of the account's first counted fill in this competition, in Unix milliseconds; absent when unavailable or the account has no counted fills. Ranked ties use the configured tie-breaks, normally boosted volume then first fill order. Fill order can distinguish fills within the same millisecond.",
+        "example": 1793001234567,
+        "x-js-safe-integer": true
       },
       "clob_Order": {
         "required": [
@@ -26658,15 +27952,16 @@
               3,
               4,
               5,
-              6
+              6,
+              11
             ],
             "type": "integer",
-            "description": "Type of notification:\n- 1: Order cancellation\n- 2: Order fill\n- 3: Market registered\n- 4: Market resolved\n- 5: Reward payout\n- 6: Child comment created\n"
+            "description": "Type of notification:\n- 1: Order cancellation\n- 2: Order fill\n- 3: Market registered\n- 4: Market resolved\n- 5: Reward payout\n- 6: Child comment created\n- 11: Taker tier upgraded\n"
           },
           "payload": {
             "type": "object",
             "additionalProperties": { },
-            "description": "Dynamic payload containing notification-specific data"
+            "description": "Notification-specific data. For type 11 (taker tier upgraded),\nprevious_tier, tier, and rebate_bps are integers, and snapshot_date\nis the UTC snapshot day as a YYYY-MM-DD string.\n"
           },
           "timestamp": {
             "type": "integer",
@@ -26771,6 +28066,16 @@
           "earnings": {
             "type": "number",
             "description": "Total amount of earnings in the asset",
+            "format": "double"
+          },
+          "native_earnings": {
+            "type": "number",
+            "description": "Native rewards included in the total, when the breakdown is returned",
+            "format": "double"
+          },
+          "sponsored_earnings": {
+            "type": "number",
+            "description": "Sponsored rewards included in the total, when the breakdown is returned",
             "format": "double"
           },
           "asset_rate": {
@@ -27346,7 +28651,7 @@
         "properties": {
           "heartbeat_id": {
             "type": "string",
-            "description": "The heartbeat ID from the previous response. For the first request,\nthis should be empty or a new UUID. Subsequent requests must use\nthe heartbeat_id returned from the previous response.\n",
+            "description": "The heartbeat ID from the previous response. For the first request,\nthis should be empty. Subsequent requests must use\nthe heartbeat_id returned from the previous response.\n",
             "example": "550e8400-e29b-41d4-a716-446655440000"
           }
         },
@@ -27369,20 +28674,19 @@
       },
       "HeartbeatErrorResponse": {
         "required": [
-          "error",
+          "error_msg",
           "heartbeat_id"
         ],
         "type": "object",
         "properties": {
-          "error": {
+          "error_msg": {
             "type": "string",
             "description": "Error message",
             "example": "Invalid Heartbeat ID"
           },
           "heartbeat_id": {
             "type": "string",
-            "description": "The expected heartbeat ID that should have been used",
-            "format": "uuid",
+            "description": "The expected heartbeat ID; can be empty after a legacy send",
             "example": "550e8400-e29b-41d4-a716-446655440000"
           }
         },
