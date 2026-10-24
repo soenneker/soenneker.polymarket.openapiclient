@@ -70,6 +70,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public CreateOrder()
         {
             AdditionalData = new Dictionary<string, object>();
+            Po = false;
+            Ro = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

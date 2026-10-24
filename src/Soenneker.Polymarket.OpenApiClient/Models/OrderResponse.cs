@@ -37,13 +37,13 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.OrderResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("status")?.GetStringValue();
             var result = new global::Soenneker.Polymarket.OpenApiClient.Models.OrderResponse();
-            if("OrderAccepted".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ok".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.OrderAccepted = new global::Soenneker.Polymarket.OpenApiClient.Models.OrderAccepted();
             }
-            else if("OrderRejected".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("err".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.OrderRejected = new global::Soenneker.Polymarket.OpenApiClient.Models.OrderRejected();
             }

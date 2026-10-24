@@ -17,10 +17,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Data { get; set; }
+        public List<UntypedNode>? Data { get; set; }
 #nullable restore
 #else
-        public UntypedNode Data { get; set; }
+        public List<UntypedNode> Data { get; set; }
 #endif
         /// <summary>More data available</summary>
         public bool? More { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
                 { "more", n => { More = n.GetBoolValue(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("data", Data);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("data", Data);
             writer.WriteBoolValue("more", More);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -19,10 +19,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Last 24-hour kline data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Klines { get; set; }
+        public List<UntypedNode>? Klines { get; set; }
 #nullable restore
 #else
-        public UntypedNode Klines { get; set; }
+        public List<UntypedNode> Klines { get; set; }
 #endif
         /// <summary>Opening price of the earliest populated candle in the rolling 24-hour window, whose start is rounded down to the minute. Returns &quot;0&quot; when the window has no candles.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,7 +74,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
-                { "klines", n => { Klines = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "klines", n => { Klines = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
                 { "open_price", n => { OpenPrice = n.GetStringValue(); } },
                 { "symbol", n => { Symbol = n.GetStringValue(); } },
                 { "volume", n => { Volume = n.GetStringValue(); } },
@@ -88,7 +88,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("instrument_id", InstrumentId);
-            writer.WriteObjectValue<UntypedNode>("klines", Klines);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("klines", Klines);
             writer.WriteStringValue("open_price", OpenPrice);
             writer.WriteStringValue("symbol", Symbol);
             writer.WriteStringValue("volume", Volume);

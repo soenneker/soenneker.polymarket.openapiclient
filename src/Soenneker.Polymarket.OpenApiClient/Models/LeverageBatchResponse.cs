@@ -37,13 +37,13 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.LeverageBatchResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("status")?.GetStringValue();
             var result = new global::Soenneker.Polymarket.OpenApiClient.Models.LeverageBatchResponse();
-            if("LeverageRejected".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("err".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.LeverageRejected = new global::Soenneker.Polymarket.OpenApiClient.Models.LeverageRejected();
             }
-            else if("LeverageResponse".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ok".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.LeverageResponse = new global::Soenneker.Polymarket.OpenApiClient.Models.LeverageResponse();
             }

@@ -72,6 +72,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public Withdrawal()
         {
             AdditionalData = new Dictionary<string, object>();
+            Hash = "0x";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

@@ -37,13 +37,13 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.CancelResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("status")?.GetStringValue();
             var result = new global::Soenneker.Polymarket.OpenApiClient.Models.CancelResponse();
-            if("CancelAccepted".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ok".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CancelAccepted = new global::Soenneker.Polymarket.OpenApiClient.Models.CancelAccepted();
             }
-            else if("CancelRejected".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("err".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CancelRejected = new global::Soenneker.Polymarket.OpenApiClient.Models.CancelRejected();
             }
