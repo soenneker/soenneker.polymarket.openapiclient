@@ -36287,15 +36287,6 @@
           "error"
         ],
         "type": "object",
-        "allOf": [
-          {
-            "not": {
-              "required": [
-                "transfer_id"
-              ]
-            }
-          }
-        ],
         "properties": {
           "status": {
             "$ref": "#/components/schemas/ErrStatus"
@@ -36306,7 +36297,12 @@
             "example": "insufficient_margin"
           }
         },
-        "description": "Gateway authorization rejection before a transfer ID is assigned."
+        "description": "Gateway authorization rejection before a transfer ID is assigned.",
+        "not": {
+          "required": [
+            "transfer_id"
+          ]
+        }
       },
       "NotificationItemNotificationProperty": {
         "type": "object",
