@@ -17,12 +17,18 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("entry_price") is { } nullNodeEntryPrice && nullNodeEntryPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryPrice = null;
-            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
-            if (parseNode.GetChildNode("return_on_equity") is { } nullNodeReturnOnEquity && nullNodeReturnOnEquity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnOnEquity = null;
-            if (parseNode.GetChildNode("size") is { } nullNodeSize && nullNodeSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Size = null;
-            if (parseNode.GetChildNode("symbol") is { } nullNodeSymbol && nullNodeSymbol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Symbol = null;
-            if (parseNode.GetChildNode("unrealized_pnl") is { } nullNodeUnrealizedPnl && nullNodeUnrealizedPnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnrealizedPnl = null;
+            if (parseNode.GetChildNode("entry_price") is null) { _explicitNullValueEntryPrice = default!; _explicitNullProperties?.Remove("entry_price"); }
+            else if (parseNode.GetChildNode("entry_price") is { } nullNodeEntryPrice && nullNodeEntryPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryPrice = null;
+            if (parseNode.GetChildNode("instrument_id") is null) { _explicitNullValueInstrumentId = default!; _explicitNullProperties?.Remove("instrument_id"); }
+            else if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("return_on_equity") is null) { _explicitNullValueReturnOnEquity = default!; _explicitNullProperties?.Remove("return_on_equity"); }
+            else if (parseNode.GetChildNode("return_on_equity") is { } nullNodeReturnOnEquity && nullNodeReturnOnEquity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnOnEquity = null;
+            if (parseNode.GetChildNode("size") is null) { _explicitNullValueSize = default!; _explicitNullProperties?.Remove("size"); }
+            else if (parseNode.GetChildNode("size") is { } nullNodeSize && nullNodeSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Size = null;
+            if (parseNode.GetChildNode("symbol") is null) { _explicitNullValueSymbol = default!; _explicitNullProperties?.Remove("symbol"); }
+            else if (parseNode.GetChildNode("symbol") is { } nullNodeSymbol && nullNodeSymbol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Symbol = null;
+            if (parseNode.GetChildNode("unrealized_pnl") is null) { _explicitNullValueUnrealizedPnl = default!; _explicitNullProperties?.Remove("unrealized_pnl"); }
+            else if (parseNode.GetChildNode("unrealized_pnl") is { } nullNodeUnrealizedPnl && nullNodeUnrealizedPnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnrealizedPnl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,54 +36,54 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Average entry price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EntryPrice { get => _explicitNullValueEntryPrice; set { _explicitNullValueEntryPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_price"); else _explicitNullProperties?.Remove("entry_price"); } }
+        public string? EntryPrice { get => _explicitNullValueEntryPrice; set { _explicitNullValueEntryPrice = value; AdditionalData?.Remove("entry_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_price"); else _explicitNullProperties?.Remove("entry_price"); } }
         private string? _explicitNullValueEntryPrice = default!;
 #nullable restore
 #else
-        public string EntryPrice { get => _explicitNullValueEntryPrice; set { _explicitNullValueEntryPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_price"); else _explicitNullProperties?.Remove("entry_price"); } }
+        public string EntryPrice { get => _explicitNullValueEntryPrice; set { _explicitNullValueEntryPrice = value; AdditionalData?.Remove("entry_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_price"); else _explicitNullProperties?.Remove("entry_price"); } }
         private string _explicitNullValueEntryPrice = default!;
 #endif
         /// <summary>Instrument ID</summary>
-        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; AdditionalData?.Remove("instrument_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
         private int? _explicitNullValueInstrumentId = default!;
         /// <summary>Unrealized PnL divided by the position&apos;s current required initial margin, as a decimal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReturnOnEquity { get => _explicitNullValueReturnOnEquity; set { _explicitNullValueReturnOnEquity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_on_equity"); else _explicitNullProperties?.Remove("return_on_equity"); } }
+        public string? ReturnOnEquity { get => _explicitNullValueReturnOnEquity; set { _explicitNullValueReturnOnEquity = value; AdditionalData?.Remove("return_on_equity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_on_equity"); else _explicitNullProperties?.Remove("return_on_equity"); } }
         private string? _explicitNullValueReturnOnEquity = default!;
 #nullable restore
 #else
-        public string ReturnOnEquity { get => _explicitNullValueReturnOnEquity; set { _explicitNullValueReturnOnEquity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_on_equity"); else _explicitNullProperties?.Remove("return_on_equity"); } }
+        public string ReturnOnEquity { get => _explicitNullValueReturnOnEquity; set { _explicitNullValueReturnOnEquity = value; AdditionalData?.Remove("return_on_equity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_on_equity"); else _explicitNullProperties?.Remove("return_on_equity"); } }
         private string _explicitNullValueReturnOnEquity = default!;
 #endif
         /// <summary>Signed position size in no. of contracts (positive = long, negative = short)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
+        public string? Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; AdditionalData?.Remove("size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
         private string? _explicitNullValueSize = default!;
 #nullable restore
 #else
-        public string Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
+        public string Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; AdditionalData?.Remove("size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
         private string _explicitNullValueSize = default!;
 #endif
         /// <summary>Instrument symbol</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Symbol { get => _explicitNullValueSymbol; set { _explicitNullValueSymbol = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol"); else _explicitNullProperties?.Remove("symbol"); } }
+        public string? Symbol { get => _explicitNullValueSymbol; set { _explicitNullValueSymbol = value; AdditionalData?.Remove("symbol"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol"); else _explicitNullProperties?.Remove("symbol"); } }
         private string? _explicitNullValueSymbol = default!;
 #nullable restore
 #else
-        public string Symbol { get => _explicitNullValueSymbol; set { _explicitNullValueSymbol = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol"); else _explicitNullProperties?.Remove("symbol"); } }
+        public string Symbol { get => _explicitNullValueSymbol; set { _explicitNullValueSymbol = value; AdditionalData?.Remove("symbol"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol"); else _explicitNullProperties?.Remove("symbol"); } }
         private string _explicitNullValueSymbol = default!;
 #endif
         /// <summary>Unrealized PnL in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UnrealizedPnl { get => _explicitNullValueUnrealizedPnl; set { _explicitNullValueUnrealizedPnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unrealized_pnl"); else _explicitNullProperties?.Remove("unrealized_pnl"); } }
+        public string? UnrealizedPnl { get => _explicitNullValueUnrealizedPnl; set { _explicitNullValueUnrealizedPnl = value; AdditionalData?.Remove("unrealized_pnl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unrealized_pnl"); else _explicitNullProperties?.Remove("unrealized_pnl"); } }
         private string? _explicitNullValueUnrealizedPnl = default!;
 #nullable restore
 #else
-        public string UnrealizedPnl { get => _explicitNullValueUnrealizedPnl; set { _explicitNullValueUnrealizedPnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unrealized_pnl"); else _explicitNullProperties?.Remove("unrealized_pnl"); } }
+        public string UnrealizedPnl { get => _explicitNullValueUnrealizedPnl; set { _explicitNullValueUnrealizedPnl = value; AdditionalData?.Remove("unrealized_pnl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unrealized_pnl"); else _explicitNullProperties?.Remove("unrealized_pnl"); } }
         private string _explicitNullValueUnrealizedPnl = default!;
 #endif
         /// <summary>

@@ -17,76 +17,84 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("active_children_count") is { } nullNodeActiveChildrenCount && nullNodeActiveChildrenCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveChildrenCount = null;
-            if (parseNode.GetChildNode("children_count") is { } nullNodeChildrenCount && nullNodeChildrenCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChildrenCount = null;
-            if (parseNode.GetChildNode("children_fees") is { } nullNodeChildrenFees && nullNodeChildrenFees.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChildrenFees = null;
-            if (parseNode.GetChildNode("children_volume") is { } nullNodeChildrenVolume && nullNodeChildrenVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChildrenVolume = null;
-            if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
-            if (parseNode.GetChildNode("fee_share_rate") is { } nullNodeFeeShareRate && nullNodeFeeShareRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeShareRate = null;
-            if (parseNode.GetChildNode("parent") is { } nullNodeParent && nullNodeParent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parent = null;
-            if (parseNode.GetChildNode("referrals_left") is { } nullNodeReferralsLeft && nullNodeReferralsLeft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferralsLeft = null;
+            if (parseNode.GetChildNode("active_children_count") is null) { _explicitNullValueActiveChildrenCount = default!; _explicitNullProperties?.Remove("active_children_count"); }
+            else if (parseNode.GetChildNode("active_children_count") is { } nullNodeActiveChildrenCount && nullNodeActiveChildrenCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveChildrenCount = null;
+            if (parseNode.GetChildNode("children_count") is null) { _explicitNullValueChildrenCount = default!; _explicitNullProperties?.Remove("children_count"); }
+            else if (parseNode.GetChildNode("children_count") is { } nullNodeChildrenCount && nullNodeChildrenCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChildrenCount = null;
+            if (parseNode.GetChildNode("children_fees") is null) { _explicitNullValueChildrenFees = default!; _explicitNullProperties?.Remove("children_fees"); }
+            else if (parseNode.GetChildNode("children_fees") is { } nullNodeChildrenFees && nullNodeChildrenFees.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChildrenFees = null;
+            if (parseNode.GetChildNode("children_volume") is null) { _explicitNullValueChildrenVolume = default!; _explicitNullProperties?.Remove("children_volume"); }
+            else if (parseNode.GetChildNode("children_volume") is { } nullNodeChildrenVolume && nullNodeChildrenVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChildrenVolume = null;
+            if (parseNode.GetChildNode("code") is null) { _explicitNullValueCode = default!; _explicitNullProperties?.Remove("code"); }
+            else if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
+            if (parseNode.GetChildNode("fee_share_rate") is null) { _explicitNullValueFeeShareRate = default!; _explicitNullProperties?.Remove("fee_share_rate"); }
+            else if (parseNode.GetChildNode("fee_share_rate") is { } nullNodeFeeShareRate && nullNodeFeeShareRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeShareRate = null;
+            if (parseNode.GetChildNode("parent") is null) { _explicitNullValueParent = default!; _explicitNullProperties?.Remove("parent"); }
+            else if (parseNode.GetChildNode("parent") is { } nullNodeParent && nullNodeParent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parent = null;
+            if (parseNode.GetChildNode("referrals_left") is null) { _explicitNullValueReferralsLeft = default!; _explicitNullProperties?.Remove("referrals_left"); }
+            else if (parseNode.GetChildNode("referrals_left") is { } nullNodeReferralsLeft && nullNodeReferralsLeft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferralsLeft = null;
         }
 
         /// <summary>Number of directly referred child accounts that have traded at least once since their referral was applied</summary>
-        public int? ActiveChildrenCount { get => _explicitNullValueActiveChildrenCount; set { _explicitNullValueActiveChildrenCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_children_count"); else _explicitNullProperties?.Remove("active_children_count"); } }
+        public int? ActiveChildrenCount { get => _explicitNullValueActiveChildrenCount; set { _explicitNullValueActiveChildrenCount = value; AdditionalData?.Remove("active_children_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_children_count"); else _explicitNullProperties?.Remove("active_children_count"); } }
         private int? _explicitNullValueActiveChildrenCount = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of directly referred child accounts</summary>
-        public int? ChildrenCount { get => _explicitNullValueChildrenCount; set { _explicitNullValueChildrenCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_count"); else _explicitNullProperties?.Remove("children_count"); } }
+        public int? ChildrenCount { get => _explicitNullValueChildrenCount; set { _explicitNullValueChildrenCount = value; AdditionalData?.Remove("children_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_count"); else _explicitNullProperties?.Remove("children_count"); } }
         private int? _explicitNullValueChildrenCount = default!;
         /// <summary>Exchange fees paid by directly referred child accounts since their referral was applied. This excludes additional builder fees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChildrenFees { get => _explicitNullValueChildrenFees; set { _explicitNullValueChildrenFees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_fees"); else _explicitNullProperties?.Remove("children_fees"); } }
+        public string? ChildrenFees { get => _explicitNullValueChildrenFees; set { _explicitNullValueChildrenFees = value; AdditionalData?.Remove("children_fees"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_fees"); else _explicitNullProperties?.Remove("children_fees"); } }
         private string? _explicitNullValueChildrenFees = default!;
 #nullable restore
 #else
-        public string ChildrenFees { get => _explicitNullValueChildrenFees; set { _explicitNullValueChildrenFees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_fees"); else _explicitNullProperties?.Remove("children_fees"); } }
+        public string ChildrenFees { get => _explicitNullValueChildrenFees; set { _explicitNullValueChildrenFees = value; AdditionalData?.Remove("children_fees"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_fees"); else _explicitNullProperties?.Remove("children_fees"); } }
         private string _explicitNullValueChildrenFees = default!;
 #endif
         /// <summary>Total notional volume traded by directly referred child accounts since their referral was applied</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChildrenVolume { get => _explicitNullValueChildrenVolume; set { _explicitNullValueChildrenVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_volume"); else _explicitNullProperties?.Remove("children_volume"); } }
+        public string? ChildrenVolume { get => _explicitNullValueChildrenVolume; set { _explicitNullValueChildrenVolume = value; AdditionalData?.Remove("children_volume"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_volume"); else _explicitNullProperties?.Remove("children_volume"); } }
         private string? _explicitNullValueChildrenVolume = default!;
 #nullable restore
 #else
-        public string ChildrenVolume { get => _explicitNullValueChildrenVolume; set { _explicitNullValueChildrenVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_volume"); else _explicitNullProperties?.Remove("children_volume"); } }
+        public string ChildrenVolume { get => _explicitNullValueChildrenVolume; set { _explicitNullValueChildrenVolume = value; AdditionalData?.Remove("children_volume"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("children_volume"); else _explicitNullProperties?.Remove("children_volume"); } }
         private string _explicitNullValueChildrenVolume = default!;
 #endif
         /// <summary>Referral or invite code</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
         private string? _explicitNullValueCode = default!;
 #nullable restore
 #else
-        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
         private string _explicitNullValueCode = default!;
 #endif
         /// <summary>Referral fee share rate. Defaults to 0.2.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeeShareRate { get => _explicitNullValueFeeShareRate; set { _explicitNullValueFeeShareRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_share_rate"); else _explicitNullProperties?.Remove("fee_share_rate"); } }
+        public string? FeeShareRate { get => _explicitNullValueFeeShareRate; set { _explicitNullValueFeeShareRate = value; AdditionalData?.Remove("fee_share_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_share_rate"); else _explicitNullProperties?.Remove("fee_share_rate"); } }
         private string? _explicitNullValueFeeShareRate = default!;
 #nullable restore
 #else
-        public string FeeShareRate { get => _explicitNullValueFeeShareRate; set { _explicitNullValueFeeShareRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_share_rate"); else _explicitNullProperties?.Remove("fee_share_rate"); } }
+        public string FeeShareRate { get => _explicitNullValueFeeShareRate; set { _explicitNullValueFeeShareRate = value; AdditionalData?.Remove("fee_share_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_share_rate"); else _explicitNullProperties?.Remove("fee_share_rate"); } }
         private string _explicitNullValueFeeShareRate = default!;
 #endif
         /// <summary>Referral or invite code</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Parent { get => _explicitNullValueParent; set { _explicitNullValueParent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent"); else _explicitNullProperties?.Remove("parent"); } }
+        public string? Parent { get => _explicitNullValueParent; set { _explicitNullValueParent = value; AdditionalData?.Remove("parent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent"); else _explicitNullProperties?.Remove("parent"); } }
         private string? _explicitNullValueParent = default!;
 #nullable restore
 #else
-        public string Parent { get => _explicitNullValueParent; set { _explicitNullValueParent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent"); else _explicitNullProperties?.Remove("parent"); } }
+        public string Parent { get => _explicitNullValueParent; set { _explicitNullValueParent = value; AdditionalData?.Remove("parent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent"); else _explicitNullProperties?.Remove("parent"); } }
         private string _explicitNullValueParent = default!;
 #endif
         /// <summary>Number of additional referrals remaining for this account&apos;s invite code</summary>
-        public int? ReferralsLeft { get => _explicitNullValueReferralsLeft; set { _explicitNullValueReferralsLeft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referrals_left"); else _explicitNullProperties?.Remove("referrals_left"); } }
+        public int? ReferralsLeft { get => _explicitNullValueReferralsLeft; set { _explicitNullValueReferralsLeft = value; AdditionalData?.Remove("referrals_left"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referrals_left"); else _explicitNullProperties?.Remove("referrals_left"); } }
         private int? _explicitNullValueReferralsLeft = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountReferral"/> and sets the default values.

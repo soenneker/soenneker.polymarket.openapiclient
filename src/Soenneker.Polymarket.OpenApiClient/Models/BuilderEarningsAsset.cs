@@ -17,10 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("builder_fee") is { } nullNodeBuilderFee && nullNodeBuilderFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuilderFee = null;
-            if (parseNode.GetChildNode("fee_asset") is { } nullNodeFeeAsset && nullNodeFeeAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeAsset = null;
-            if (parseNode.GetChildNode("fill_count") is { } nullNodeFillCount && nullNodeFillCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FillCount = null;
-            if (parseNode.GetChildNode("notional") is { } nullNodeNotional && nullNodeNotional.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notional = null;
+            if (parseNode.GetChildNode("builder_fee") is null) { _explicitNullValueBuilderFee = default!; _explicitNullProperties?.Remove("builder_fee"); }
+            else if (parseNode.GetChildNode("builder_fee") is { } nullNodeBuilderFee && nullNodeBuilderFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuilderFee = null;
+            if (parseNode.GetChildNode("fee_asset") is null) { _explicitNullValueFeeAsset = default!; _explicitNullProperties?.Remove("fee_asset"); }
+            else if (parseNode.GetChildNode("fee_asset") is { } nullNodeFeeAsset && nullNodeFeeAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeAsset = null;
+            if (parseNode.GetChildNode("fill_count") is null) { _explicitNullValueFillCount = default!; _explicitNullProperties?.Remove("fill_count"); }
+            else if (parseNode.GetChildNode("fill_count") is { } nullNodeFillCount && nullNodeFillCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FillCount = null;
+            if (parseNode.GetChildNode("notional") is null) { _explicitNullValueNotional = default!; _explicitNullProperties?.Remove("notional"); }
+            else if (parseNode.GetChildNode("notional") is { } nullNodeNotional && nullNodeNotional.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notional = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,34 +32,34 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Actual additional builder fee in the same asset as fee, floored independently for each execution to that asset&apos;s token decimals (six for pUSD), with discarded dust and no carry. The fee is non-negative and is zero for older or untagged fills and excluded forced liquidation legs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BuilderFee { get => _explicitNullValueBuilderFee; set { _explicitNullValueBuilderFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder_fee"); else _explicitNullProperties?.Remove("builder_fee"); } }
+        public string? BuilderFee { get => _explicitNullValueBuilderFee; set { _explicitNullValueBuilderFee = value; AdditionalData?.Remove("builder_fee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder_fee"); else _explicitNullProperties?.Remove("builder_fee"); } }
         private string? _explicitNullValueBuilderFee = default!;
 #nullable restore
 #else
-        public string BuilderFee { get => _explicitNullValueBuilderFee; set { _explicitNullValueBuilderFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder_fee"); else _explicitNullProperties?.Remove("builder_fee"); } }
+        public string BuilderFee { get => _explicitNullValueBuilderFee; set { _explicitNullValueBuilderFee = value; AdditionalData?.Remove("builder_fee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder_fee"); else _explicitNullProperties?.Remove("builder_fee"); } }
         private string _explicitNullValueBuilderFee = default!;
 #endif
         /// <summary>Fee asset name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeeAsset { get => _explicitNullValueFeeAsset; set { _explicitNullValueFeeAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_asset"); else _explicitNullProperties?.Remove("fee_asset"); } }
+        public string? FeeAsset { get => _explicitNullValueFeeAsset; set { _explicitNullValueFeeAsset = value; AdditionalData?.Remove("fee_asset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_asset"); else _explicitNullProperties?.Remove("fee_asset"); } }
         private string? _explicitNullValueFeeAsset = default!;
 #nullable restore
 #else
-        public string FeeAsset { get => _explicitNullValueFeeAsset; set { _explicitNullValueFeeAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_asset"); else _explicitNullProperties?.Remove("fee_asset"); } }
+        public string FeeAsset { get => _explicitNullValueFeeAsset; set { _explicitNullValueFeeAsset = value; AdditionalData?.Remove("fee_asset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_asset"); else _explicitNullProperties?.Remove("fee_asset"); } }
         private string _explicitNullValueFeeAsset = default!;
 #endif
         /// <summary>The fill_count property</summary>
-        public int? FillCount { get => _explicitNullValueFillCount; set { _explicitNullValueFillCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fill_count"); else _explicitNullProperties?.Remove("fill_count"); } }
+        public int? FillCount { get => _explicitNullValueFillCount; set { _explicitNullValueFillCount = value; AdditionalData?.Remove("fill_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fill_count"); else _explicitNullProperties?.Remove("fill_count"); } }
         private int? _explicitNullValueFillCount = default!;
         /// <summary>Eligible executed notional including zero-fee fills.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Notional { get => _explicitNullValueNotional; set { _explicitNullValueNotional = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notional"); else _explicitNullProperties?.Remove("notional"); } }
+        public string? Notional { get => _explicitNullValueNotional; set { _explicitNullValueNotional = value; AdditionalData?.Remove("notional"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notional"); else _explicitNullProperties?.Remove("notional"); } }
         private string? _explicitNullValueNotional = default!;
 #nullable restore
 #else
-        public string Notional { get => _explicitNullValueNotional; set { _explicitNullValueNotional = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notional"); else _explicitNullProperties?.Remove("notional"); } }
+        public string Notional { get => _explicitNullValueNotional; set { _explicitNullValueNotional = value; AdditionalData?.Remove("notional"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notional"); else _explicitNullProperties?.Remove("notional"); } }
         private string _explicitNullValueNotional = default!;
 #endif
         /// <summary>

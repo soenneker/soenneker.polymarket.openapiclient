@@ -17,11 +17,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
-            if (parseNode.GetChildNode("asset") is { } nullNodeAsset && nullNodeAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Asset = null;
-            if (parseNode.GetChildNode("collateral_ratio") is { } nullNodeCollateralRatio && nullNodeCollateralRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CollateralRatio = null;
-            if (parseNode.GetChildNode("decimals") is { } nullNodeDecimals && nullNodeDecimals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decimals = null;
-            if (parseNode.GetChildNode("withdrawal_fee") is { } nullNodeWithdrawalFee && nullNodeWithdrawalFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithdrawalFee = null;
+            if (parseNode.GetChildNode("address") is null) { _explicitNullValueAddress = default!; _explicitNullProperties?.Remove("address"); }
+            else if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
+            if (parseNode.GetChildNode("asset") is null) { _explicitNullValueAsset = default!; _explicitNullProperties?.Remove("asset"); }
+            else if (parseNode.GetChildNode("asset") is { } nullNodeAsset && nullNodeAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Asset = null;
+            if (parseNode.GetChildNode("collateral_ratio") is null) { _explicitNullValueCollateralRatio = default!; _explicitNullProperties?.Remove("collateral_ratio"); }
+            else if (parseNode.GetChildNode("collateral_ratio") is { } nullNodeCollateralRatio && nullNodeCollateralRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CollateralRatio = null;
+            if (parseNode.GetChildNode("decimals") is null) { _explicitNullValueDecimals = default!; _explicitNullProperties?.Remove("decimals"); }
+            else if (parseNode.GetChildNode("decimals") is { } nullNodeDecimals && nullNodeDecimals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decimals = null;
+            if (parseNode.GetChildNode("withdrawal_fee") is null) { _explicitNullValueWithdrawalFee = default!; _explicitNullProperties?.Remove("withdrawal_fee"); }
+            else if (parseNode.GetChildNode("withdrawal_fee") is { } nullNodeWithdrawalFee && nullNodeWithdrawalFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithdrawalFee = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,44 +34,44 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        public string? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; AdditionalData?.Remove("address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
         private string? _explicitNullValueAddress = default!;
 #nullable restore
 #else
-        public string Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        public string Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; AdditionalData?.Remove("address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
         private string _explicitNullValueAddress = default!;
 #endif
         /// <summary>Asset name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
+        public string? Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; AdditionalData?.Remove("asset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
         private string? _explicitNullValueAsset = default!;
 #nullable restore
 #else
-        public string Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
+        public string Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; AdditionalData?.Remove("asset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
         private string _explicitNullValueAsset = default!;
 #endif
         /// <summary>Collateral ratio</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CollateralRatio { get => _explicitNullValueCollateralRatio; set { _explicitNullValueCollateralRatio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collateral_ratio"); else _explicitNullProperties?.Remove("collateral_ratio"); } }
+        public string? CollateralRatio { get => _explicitNullValueCollateralRatio; set { _explicitNullValueCollateralRatio = value; AdditionalData?.Remove("collateral_ratio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collateral_ratio"); else _explicitNullProperties?.Remove("collateral_ratio"); } }
         private string? _explicitNullValueCollateralRatio = default!;
 #nullable restore
 #else
-        public string CollateralRatio { get => _explicitNullValueCollateralRatio; set { _explicitNullValueCollateralRatio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collateral_ratio"); else _explicitNullProperties?.Remove("collateral_ratio"); } }
+        public string CollateralRatio { get => _explicitNullValueCollateralRatio; set { _explicitNullValueCollateralRatio = value; AdditionalData?.Remove("collateral_ratio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collateral_ratio"); else _explicitNullProperties?.Remove("collateral_ratio"); } }
         private string _explicitNullValueCollateralRatio = default!;
 #endif
         /// <summary>Asset decimals</summary>
-        public int? Decimals { get => _explicitNullValueDecimals; set { _explicitNullValueDecimals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decimals"); else _explicitNullProperties?.Remove("decimals"); } }
+        public int? Decimals { get => _explicitNullValueDecimals; set { _explicitNullValueDecimals = value; AdditionalData?.Remove("decimals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decimals"); else _explicitNullProperties?.Remove("decimals"); } }
         private int? _explicitNullValueDecimals = default!;
         /// <summary>Withdrawal transaction fee in decimalized asset units</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WithdrawalFee { get => _explicitNullValueWithdrawalFee; set { _explicitNullValueWithdrawalFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawal_fee"); else _explicitNullProperties?.Remove("withdrawal_fee"); } }
+        public string? WithdrawalFee { get => _explicitNullValueWithdrawalFee; set { _explicitNullValueWithdrawalFee = value; AdditionalData?.Remove("withdrawal_fee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawal_fee"); else _explicitNullProperties?.Remove("withdrawal_fee"); } }
         private string? _explicitNullValueWithdrawalFee = default!;
 #nullable restore
 #else
-        public string WithdrawalFee { get => _explicitNullValueWithdrawalFee; set { _explicitNullValueWithdrawalFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawal_fee"); else _explicitNullProperties?.Remove("withdrawal_fee"); } }
+        public string WithdrawalFee { get => _explicitNullValueWithdrawalFee; set { _explicitNullValueWithdrawalFee = value; AdditionalData?.Remove("withdrawal_fee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawal_fee"); else _explicitNullProperties?.Remove("withdrawal_fee"); } }
         private string _explicitNullValueWithdrawalFee = default!;
 #endif
         /// <summary>

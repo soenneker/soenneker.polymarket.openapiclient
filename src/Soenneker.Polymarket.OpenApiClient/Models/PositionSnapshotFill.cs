@@ -17,27 +17,30 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
-            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
-            if (parseNode.GetChildNode("trade_id") is { } nullNodeTradeId && nullNodeTradeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TradeId = null;
+            if (parseNode.GetChildNode("instrument_id") is null) { _explicitNullValueInstrumentId = default!; _explicitNullProperties?.Remove("instrument_id"); }
+            else if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("timestamp") is null) { _explicitNullValueTimestamp = default!; _explicitNullProperties?.Remove("timestamp"); }
+            else if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+            if (parseNode.GetChildNode("trade_id") is null) { _explicitNullValueTradeId = default!; _explicitNullProperties?.Remove("trade_id"); }
+            else if (parseNode.GetChildNode("trade_id") is { } nullNodeTradeId && nullNodeTradeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TradeId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The instrument_id property</summary>
-        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; AdditionalData?.Remove("instrument_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
         private int? _explicitNullValueInstrumentId = default!;
         /// <summary>Public fill timestamp in Unix milliseconds.</summary>
-        public int? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        public int? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; AdditionalData?.Remove("timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
         private int? _explicitNullValueTimestamp = default!;
         /// <summary>Decimal UInt64 trade ID from the public fills API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
+        public string? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
         private string? _explicitNullValueTradeId = default!;
 #nullable restore
 #else
-        public string TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
+        public string TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
         private string _explicitNullValueTradeId = default!;
 #endif
         /// <summary>

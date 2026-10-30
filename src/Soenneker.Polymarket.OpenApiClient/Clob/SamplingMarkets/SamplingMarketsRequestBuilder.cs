@@ -65,7 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.SamplingMarkets
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Clob.SamplingMarkets.SamplingMarketsRequestBuilder.SamplingMarketsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://clob.polymarket.com", "/clob/sampling-markets", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

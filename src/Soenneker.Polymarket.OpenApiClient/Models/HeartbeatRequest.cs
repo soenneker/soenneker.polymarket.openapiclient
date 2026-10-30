@@ -18,7 +18,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("heartbeat_id") is { } nullNodeHeartbeatId && nullNodeHeartbeatId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeartbeatId = null;
+            if (parseNode.GetChildNode("heartbeat_id") is null) { _explicitNullValueHeartbeatId = default!; _explicitNullProperties?.Remove("heartbeat_id"); }
+            else if (parseNode.GetChildNode("heartbeat_id") is { } nullNodeHeartbeatId && nullNodeHeartbeatId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeartbeatId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The heartbeat ID from the previous response. For the first request,this should be empty. Subsequent requests must usethe heartbeat_id returned from the previous response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HeartbeatId { get => _explicitNullValueHeartbeatId; set { _explicitNullValueHeartbeatId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heartbeat_id"); else _explicitNullProperties?.Remove("heartbeat_id"); } }
+        public string? HeartbeatId { get => _explicitNullValueHeartbeatId; set { _explicitNullValueHeartbeatId = value; AdditionalData?.Remove("heartbeat_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heartbeat_id"); else _explicitNullProperties?.Remove("heartbeat_id"); } }
         private string? _explicitNullValueHeartbeatId = default!;
 #nullable restore
 #else
-        public string HeartbeatId { get => _explicitNullValueHeartbeatId; set { _explicitNullValueHeartbeatId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heartbeat_id"); else _explicitNullProperties?.Remove("heartbeat_id"); } }
+        public string HeartbeatId { get => _explicitNullValueHeartbeatId; set { _explicitNullValueHeartbeatId = value; AdditionalData?.Remove("heartbeat_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heartbeat_id"); else _explicitNullProperties?.Remove("heartbeat_id"); } }
         private string _explicitNullValueHeartbeatId = default!;
 #endif
         /// <summary>

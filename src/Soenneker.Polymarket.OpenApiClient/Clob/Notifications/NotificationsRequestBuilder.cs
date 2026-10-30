@@ -106,7 +106,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Notifications
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Clob.Notifications.NotificationsRequestBuilder.NotificationsRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/clob/notifications?ids={ids}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve("{+baseurl}/clob/notifications?ids={ids}", RequestAdapter.BaseUrl, "https://clob.polymarket.com", "/clob/notifications", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -125,7 +125,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Notifications
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Clob.Notifications.NotificationsRequestBuilder.NotificationsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/clob/notifications?signature_type={signature_type}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve("{+baseurl}/clob/notifications?signature_type={signature_type}", RequestAdapter.BaseUrl, "https://clob.polymarket.com", "/clob/notifications", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

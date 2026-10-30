@@ -17,8 +17,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("candles") is { } nullNodeCandles && nullNodeCandles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Candles = null;
-            if (parseNode.GetChildNode("markers") is { } nullNodeMarkers && nullNodeMarkers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Markers = null;
+            if (parseNode.GetChildNode("candles") is null) { _explicitNullValueCandles = default!; _explicitNullProperties?.Remove("candles"); }
+            else if (parseNode.GetChildNode("candles") is { } nullNodeCandles && nullNodeCandles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Candles = null;
+            if (parseNode.GetChildNode("markers") is null) { _explicitNullValueMarkers = default!; _explicitNullProperties?.Remove("markers"); }
+            else if (parseNode.GetChildNode("markers") is { } nullNodeMarkers && nullNodeMarkers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Markers = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The candles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotCandle>? Candles { get => _explicitNullValueCandles; set { _explicitNullValueCandles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candles"); else _explicitNullProperties?.Remove("candles"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotCandle>? Candles { get => _explicitNullValueCandles; set { _explicitNullValueCandles = value; AdditionalData?.Remove("candles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candles"); else _explicitNullProperties?.Remove("candles"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotCandle>? _explicitNullValueCandles = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotCandle> Candles { get => _explicitNullValueCandles; set { _explicitNullValueCandles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candles"); else _explicitNullProperties?.Remove("candles"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotCandle> Candles { get => _explicitNullValueCandles; set { _explicitNullValueCandles = value; AdditionalData?.Remove("candles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candles"); else _explicitNullProperties?.Remove("candles"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotCandle> _explicitNullValueCandles = default!;
 #endif
         /// <summary>The markers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotMarker>? Markers { get => _explicitNullValueMarkers; set { _explicitNullValueMarkers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markers"); else _explicitNullProperties?.Remove("markers"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotMarker>? Markers { get => _explicitNullValueMarkers; set { _explicitNullValueMarkers = value; AdditionalData?.Remove("markers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markers"); else _explicitNullProperties?.Remove("markers"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotMarker>? _explicitNullValueMarkers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotMarker> Markers { get => _explicitNullValueMarkers; set { _explicitNullValueMarkers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markers"); else _explicitNullProperties?.Remove("markers"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotMarker> Markers { get => _explicitNullValueMarkers; set { _explicitNullValueMarkers = value; AdditionalData?.Remove("markers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markers"); else _explicitNullProperties?.Remove("markers"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotMarker> _explicitNullValueMarkers = default!;
 #endif
         /// <summary>

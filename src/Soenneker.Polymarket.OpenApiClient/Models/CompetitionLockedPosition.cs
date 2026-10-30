@@ -18,27 +18,30 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
-            if (parseNode.GetChildNode("released_at") is { } nullNodeReleasedAt && nullNodeReleasedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleasedAt = null;
-            if (parseNode.GetChildNode("size_at_start") is { } nullNodeSizeAtStart && nullNodeSizeAtStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeAtStart = null;
+            if (parseNode.GetChildNode("instrument_id") is null) { _explicitNullValueInstrumentId = default!; _explicitNullProperties?.Remove("instrument_id"); }
+            else if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("released_at") is null) { _explicitNullValueReleasedAt = default!; _explicitNullProperties?.Remove("released_at"); }
+            else if (parseNode.GetChildNode("released_at") is { } nullNodeReleasedAt && nullNodeReleasedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleasedAt = null;
+            if (parseNode.GetChildNode("size_at_start") is null) { _explicitNullValueSizeAtStart = default!; _explicitNullProperties?.Remove("size_at_start"); }
+            else if (parseNode.GetChildNode("size_at_start") is { } nullNodeSizeAtStart && nullNodeSizeAtStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeAtStart = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Instrument ID</summary>
-        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; AdditionalData?.Remove("instrument_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
         private int? _explicitNullValueInstrumentId = default!;
         /// <summary>When it was fully closed and the market started counting, in Unix milliseconds; absent while still locked</summary>
-        public int? ReleasedAt { get => _explicitNullValueReleasedAt; set { _explicitNullValueReleasedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("released_at"); else _explicitNullProperties?.Remove("released_at"); } }
+        public int? ReleasedAt { get => _explicitNullValueReleasedAt; set { _explicitNullValueReleasedAt = value; AdditionalData?.Remove("released_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("released_at"); else _explicitNullProperties?.Remove("released_at"); } }
         private int? _explicitNullValueReleasedAt = default!;
         /// <summary>Signed position size at the start (positive long, negative short)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SizeAtStart { get => _explicitNullValueSizeAtStart; set { _explicitNullValueSizeAtStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_at_start"); else _explicitNullProperties?.Remove("size_at_start"); } }
+        public string? SizeAtStart { get => _explicitNullValueSizeAtStart; set { _explicitNullValueSizeAtStart = value; AdditionalData?.Remove("size_at_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_at_start"); else _explicitNullProperties?.Remove("size_at_start"); } }
         private string? _explicitNullValueSizeAtStart = default!;
 #nullable restore
 #else
-        public string SizeAtStart { get => _explicitNullValueSizeAtStart; set { _explicitNullValueSizeAtStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_at_start"); else _explicitNullProperties?.Remove("size_at_start"); } }
+        public string SizeAtStart { get => _explicitNullValueSizeAtStart; set { _explicitNullValueSizeAtStart = value; AdditionalData?.Remove("size_at_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_at_start"); else _explicitNullProperties?.Remove("size_at_start"); } }
         private string _explicitNullValueSizeAtStart = default!;
 #endif
         /// <summary>

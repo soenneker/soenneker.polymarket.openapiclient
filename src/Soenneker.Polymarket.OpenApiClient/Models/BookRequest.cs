@@ -17,23 +17,25 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("side") is { } nullNodeSide && nullNodeSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Side = null;
-            if (parseNode.GetChildNode("token_id") is { } nullNodeTokenId && nullNodeTokenId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenId = null;
+            if (parseNode.GetChildNode("side") is null) { _explicitNullValueSide = default!; _explicitNullProperties?.Remove("side"); }
+            else if (parseNode.GetChildNode("side") is { } nullNodeSide && nullNodeSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Side = null;
+            if (parseNode.GetChildNode("token_id") is null) { _explicitNullValueTokenId = default!; _explicitNullProperties?.Remove("token_id"); }
+            else if (parseNode.GetChildNode("token_id") is { } nullNodeTokenId && nullNodeTokenId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Order side (optional, not used for midpoint calculation)</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.BookRequestSide? Side { get => _explicitNullValueSide; set { _explicitNullValueSide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side"); else _explicitNullProperties?.Remove("side"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.BookRequestSide? Side { get => _explicitNullValueSide; set { _explicitNullValueSide = value; AdditionalData?.Remove("side"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side"); else _explicitNullProperties?.Remove("side"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.BookRequestSide? _explicitNullValueSide = default!;
         /// <summary>Token ID (asset ID)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_id"); else _explicitNullProperties?.Remove("token_id"); } }
+        public string? TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; AdditionalData?.Remove("token_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_id"); else _explicitNullProperties?.Remove("token_id"); } }
         private string? _explicitNullValueTokenId = default!;
 #nullable restore
 #else
-        public string TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_id"); else _explicitNullProperties?.Remove("token_id"); } }
+        public string TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; AdditionalData?.Remove("token_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_id"); else _explicitNullProperties?.Remove("token_id"); } }
         private string _explicitNullValueTokenId = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.BookRequestSide>(); } },
+                { "side", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.BookRequestSide>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSide = default; _explicitNullProperties?.Remove("side"); AdditionalData["side"] = unknown; } else { Side = parsed; AdditionalData.Remove("side"); } } },
                 { "token_id", n => { TokenId = n.GetStringValue(); } },
             };
         }

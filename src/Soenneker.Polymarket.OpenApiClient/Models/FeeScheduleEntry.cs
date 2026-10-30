@@ -17,11 +17,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
-            if (parseNode.GetChildNode("instrument_type") is { } nullNodeInstrumentType && nullNodeInstrumentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentType = null;
-            if (parseNode.GetChildNode("maker_fee_rate") is { } nullNodeMakerFeeRate && nullNodeMakerFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerFeeRate = null;
-            if (parseNode.GetChildNode("taker_fee_rate") is { } nullNodeTakerFeeRate && nullNodeTakerFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerFeeRate = null;
-            if (parseNode.GetChildNode("tiers") is { } nullNodeTiers && nullNodeTiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tiers = null;
+            if (parseNode.GetChildNode("category") is null) { _explicitNullValueCategory = default!; _explicitNullProperties?.Remove("category"); }
+            else if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("instrument_type") is null) { _explicitNullValueInstrumentType = default!; _explicitNullProperties?.Remove("instrument_type"); }
+            else if (parseNode.GetChildNode("instrument_type") is { } nullNodeInstrumentType && nullNodeInstrumentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentType = null;
+            if (parseNode.GetChildNode("maker_fee_rate") is null) { _explicitNullValueMakerFeeRate = default!; _explicitNullProperties?.Remove("maker_fee_rate"); }
+            else if (parseNode.GetChildNode("maker_fee_rate") is { } nullNodeMakerFeeRate && nullNodeMakerFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerFeeRate = null;
+            if (parseNode.GetChildNode("taker_fee_rate") is null) { _explicitNullValueTakerFeeRate = default!; _explicitNullProperties?.Remove("taker_fee_rate"); }
+            else if (parseNode.GetChildNode("taker_fee_rate") is { } nullNodeTakerFeeRate && nullNodeTakerFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerFeeRate = null;
+            if (parseNode.GetChildNode("tiers") is null) { _explicitNullValueTiers = default!; _explicitNullProperties?.Remove("tiers"); }
+            else if (parseNode.GetChildNode("tiers") is { } nullNodeTiers && nullNodeTiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tiers = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,44 +34,44 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The category property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Category2? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Category2? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Category2? _explicitNullValueCategory = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Category2 Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Category2 Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Category2 _explicitNullValueCategory = default!;
 #endif
         /// <summary>Instrument type</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType? InstrumentType { get => _explicitNullValueInstrumentType; set { _explicitNullValueInstrumentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_type"); else _explicitNullProperties?.Remove("instrument_type"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType? InstrumentType { get => _explicitNullValueInstrumentType; set { _explicitNullValueInstrumentType = value; AdditionalData?.Remove("instrument_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_type"); else _explicitNullProperties?.Remove("instrument_type"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType? _explicitNullValueInstrumentType = default!;
         /// <summary>Exchange maker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerFeeRate { get => _explicitNullValueMakerFeeRate; set { _explicitNullValueMakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_fee_rate"); else _explicitNullProperties?.Remove("maker_fee_rate"); } }
+        public string? MakerFeeRate { get => _explicitNullValueMakerFeeRate; set { _explicitNullValueMakerFeeRate = value; AdditionalData?.Remove("maker_fee_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_fee_rate"); else _explicitNullProperties?.Remove("maker_fee_rate"); } }
         private string? _explicitNullValueMakerFeeRate = default!;
 #nullable restore
 #else
-        public string MakerFeeRate { get => _explicitNullValueMakerFeeRate; set { _explicitNullValueMakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_fee_rate"); else _explicitNullProperties?.Remove("maker_fee_rate"); } }
+        public string MakerFeeRate { get => _explicitNullValueMakerFeeRate; set { _explicitNullValueMakerFeeRate = value; AdditionalData?.Remove("maker_fee_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_fee_rate"); else _explicitNullProperties?.Remove("maker_fee_rate"); } }
         private string _explicitNullValueMakerFeeRate = default!;
 #endif
         /// <summary>Exchange taker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TakerFeeRate { get => _explicitNullValueTakerFeeRate; set { _explicitNullValueTakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_fee_rate"); else _explicitNullProperties?.Remove("taker_fee_rate"); } }
+        public string? TakerFeeRate { get => _explicitNullValueTakerFeeRate; set { _explicitNullValueTakerFeeRate = value; AdditionalData?.Remove("taker_fee_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_fee_rate"); else _explicitNullProperties?.Remove("taker_fee_rate"); } }
         private string? _explicitNullValueTakerFeeRate = default!;
 #nullable restore
 #else
-        public string TakerFeeRate { get => _explicitNullValueTakerFeeRate; set { _explicitNullValueTakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_fee_rate"); else _explicitNullProperties?.Remove("taker_fee_rate"); } }
+        public string TakerFeeRate { get => _explicitNullValueTakerFeeRate; set { _explicitNullValueTakerFeeRate = value; AdditionalData?.Remove("taker_fee_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_fee_rate"); else _explicitNullProperties?.Remove("taker_fee_rate"); } }
         private string _explicitNullValueTakerFeeRate = default!;
 #endif
         /// <summary>The tiers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier>? Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier>? Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; AdditionalData?.Remove("tiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier>? _explicitNullValueTiers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier> Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier> Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; AdditionalData?.Remove("tiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier> _explicitNullValueTiers = default!;
 #endif
         /// <summary>
@@ -95,7 +100,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "category", n => { Category = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.Category2>(global::Soenneker.Polymarket.OpenApiClient.Models.Category2.CreateFromDiscriminatorValue); } },
-                { "instrument_type", n => { InstrumentType = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType>(); } },
+                { "instrument_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInstrumentType = default; _explicitNullProperties?.Remove("instrument_type"); AdditionalData["instrument_type"] = unknown; } else { InstrumentType = parsed; AdditionalData.Remove("instrument_type"); } } },
                 { "maker_fee_rate", n => { MakerFeeRate = n.GetStringValue(); } },
                 { "taker_fee_rate", n => { TakerFeeRate = n.GetStringValue(); } },
                 { "tiers", n => { Tiers = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier>(global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier.CreateFromDiscriminatorValue)?.AsList(); } },

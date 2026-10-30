@@ -76,7 +76,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Trades
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Trades.TradesRequestBuilder.TradesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.perpetuals.polymarket.com", "/perps/v1/info/trades", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

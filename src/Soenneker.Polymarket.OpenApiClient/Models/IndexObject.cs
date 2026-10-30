@@ -17,10 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("asset") is { } nullNodeAsset && nullNodeAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Asset = null;
-            if (parseNode.GetChildNode("constituents") is { } nullNodeConstituents && nullNodeConstituents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Constituents = null;
-            if (parseNode.GetChildNode("index_price") is { } nullNodeIndexPrice && nullNodeIndexPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IndexPrice = null;
-            if (parseNode.GetChildNode("ts") is { } nullNodeTs && nullNodeTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ts = null;
+            if (parseNode.GetChildNode("asset") is null) { _explicitNullValueAsset = default!; _explicitNullProperties?.Remove("asset"); }
+            else if (parseNode.GetChildNode("asset") is { } nullNodeAsset && nullNodeAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Asset = null;
+            if (parseNode.GetChildNode("constituents") is null) { _explicitNullValueConstituents = default!; _explicitNullProperties?.Remove("constituents"); }
+            else if (parseNode.GetChildNode("constituents") is { } nullNodeConstituents && nullNodeConstituents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Constituents = null;
+            if (parseNode.GetChildNode("index_price") is null) { _explicitNullValueIndexPrice = default!; _explicitNullProperties?.Remove("index_price"); }
+            else if (parseNode.GetChildNode("index_price") is { } nullNodeIndexPrice && nullNodeIndexPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IndexPrice = null;
+            if (parseNode.GetChildNode("ts") is null) { _explicitNullValueTs = default!; _explicitNullProperties?.Remove("ts"); }
+            else if (parseNode.GetChildNode("ts") is { } nullNodeTs && nullNodeTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ts = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,35 +32,35 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The asset property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Asset2? Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Asset2? Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; AdditionalData?.Remove("asset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Asset2? _explicitNullValueAsset = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Asset2 Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Asset2 Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; AdditionalData?.Remove("asset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Asset2 _explicitNullValueAsset = default!;
 #endif
         /// <summary>The constituents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent>? Constituents { get => _explicitNullValueConstituents; set { _explicitNullValueConstituents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constituents"); else _explicitNullProperties?.Remove("constituents"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent>? Constituents { get => _explicitNullValueConstituents; set { _explicitNullValueConstituents = value; AdditionalData?.Remove("constituents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constituents"); else _explicitNullProperties?.Remove("constituents"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent>? _explicitNullValueConstituents = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent> Constituents { get => _explicitNullValueConstituents; set { _explicitNullValueConstituents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constituents"); else _explicitNullProperties?.Remove("constituents"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent> Constituents { get => _explicitNullValueConstituents; set { _explicitNullValueConstituents = value; AdditionalData?.Remove("constituents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constituents"); else _explicitNullProperties?.Remove("constituents"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.IndexConstituent> _explicitNullValueConstituents = default!;
 #endif
         /// <summary>Index price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IndexPrice { get => _explicitNullValueIndexPrice; set { _explicitNullValueIndexPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_price"); else _explicitNullProperties?.Remove("index_price"); } }
+        public string? IndexPrice { get => _explicitNullValueIndexPrice; set { _explicitNullValueIndexPrice = value; AdditionalData?.Remove("index_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_price"); else _explicitNullProperties?.Remove("index_price"); } }
         private string? _explicitNullValueIndexPrice = default!;
 #nullable restore
 #else
-        public string IndexPrice { get => _explicitNullValueIndexPrice; set { _explicitNullValueIndexPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_price"); else _explicitNullProperties?.Remove("index_price"); } }
+        public string IndexPrice { get => _explicitNullValueIndexPrice; set { _explicitNullValueIndexPrice = value; AdditionalData?.Remove("index_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_price"); else _explicitNullProperties?.Remove("index_price"); } }
         private string _explicitNullValueIndexPrice = default!;
 #endif
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public long? Ts { get => _explicitNullValueTs; set { _explicitNullValueTs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ts"); else _explicitNullProperties?.Remove("ts"); } }
+        public long? Ts { get => _explicitNullValueTs; set { _explicitNullValueTs = value; AdditionalData?.Remove("ts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ts"); else _explicitNullProperties?.Remove("ts"); } }
         private long? _explicitNullValueTs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.IndexObject"/> and sets the default values.

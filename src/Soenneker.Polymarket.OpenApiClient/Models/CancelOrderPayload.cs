@@ -17,7 +17,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("orderID") is { } nullNodeOrderID && nullNodeOrderID.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderID = null;
+            if (parseNode.GetChildNode("orderID") is null) { _explicitNullValueOrderID = default!; _explicitNullProperties?.Remove("orderID"); }
+            else if (parseNode.GetChildNode("orderID") is { } nullNodeOrderID && nullNodeOrderID.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderID = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Order ID (order hash) to cancel</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrderID { get => _explicitNullValueOrderID; set { _explicitNullValueOrderID = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderID"); else _explicitNullProperties?.Remove("orderID"); } }
+        public string? OrderID { get => _explicitNullValueOrderID; set { _explicitNullValueOrderID = value; AdditionalData?.Remove("orderID"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderID"); else _explicitNullProperties?.Remove("orderID"); } }
         private string? _explicitNullValueOrderID = default!;
 #nullable restore
 #else
-        public string OrderID { get => _explicitNullValueOrderID; set { _explicitNullValueOrderID = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderID"); else _explicitNullProperties?.Remove("orderID"); } }
+        public string OrderID { get => _explicitNullValueOrderID; set { _explicitNullValueOrderID = value; AdditionalData?.Remove("orderID"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderID"); else _explicitNullProperties?.Remove("orderID"); } }
         private string _explicitNullValueOrderID = default!;
 #endif
         /// <summary>

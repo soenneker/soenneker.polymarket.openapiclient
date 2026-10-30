@@ -78,10 +78,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Orders
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="List<global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected>">When receiving a 400 status code</exception>
-        /// <exception cref="List<global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected>">When receiving a 404 status code</exception>
-        /// <exception cref="List<global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected>">When receiving a 429 status code</exception>
-        /// <exception cref="List<global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected>">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.OpenApi.Generated.OpenApiRawError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.OpenApi.Generated.OpenApiRawError">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.OpenApi.Generated.OpenApiRawError">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.OpenApi.Generated.OpenApiRawError">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<global::Soenneker.Polymarket.OpenApiClient.Models.ModifyResponse>?> PatchAsync(global::Soenneker.Polymarket.OpenApiClient.Models.ModifyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -95,10 +95,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Orders
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
@@ -153,7 +153,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Orders
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.perpetuals.polymarket.com", "/perps/v1/trade/orders", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -175,7 +175,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Orders
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PATCH, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.perpetuals.polymarket.com", "/perps/v1/trade/orders", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -197,7 +197,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Orders
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.perpetuals.polymarket.com", "/perps/v1/trade/orders", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

@@ -17,7 +17,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("supportedAssets") is { } nullNodeSupportedAssets && nullNodeSupportedAssets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedAssets = null;
+            if (parseNode.GetChildNode("supportedAssets") is null) { _explicitNullValueSupportedAssets = default!; _explicitNullProperties?.Remove("supportedAssets"); }
+            else if (parseNode.GetChildNode("supportedAssets") is { } nullNodeSupportedAssets && nullNodeSupportedAssets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedAssets = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>List of supported assets with minimum amounts for deposits and withdrawals</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.SupportedAsset>? SupportedAssets { get => _explicitNullValueSupportedAssets; set { _explicitNullValueSupportedAssets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedAssets"); else _explicitNullProperties?.Remove("supportedAssets"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.SupportedAsset>? SupportedAssets { get => _explicitNullValueSupportedAssets; set { _explicitNullValueSupportedAssets = value; AdditionalData?.Remove("supportedAssets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedAssets"); else _explicitNullProperties?.Remove("supportedAssets"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.SupportedAsset>? _explicitNullValueSupportedAssets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.SupportedAsset> SupportedAssets { get => _explicitNullValueSupportedAssets; set { _explicitNullValueSupportedAssets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedAssets"); else _explicitNullProperties?.Remove("supportedAssets"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.SupportedAsset> SupportedAssets { get => _explicitNullValueSupportedAssets; set { _explicitNullValueSupportedAssets = value; AdditionalData?.Remove("supportedAssets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedAssets"); else _explicitNullProperties?.Remove("supportedAssets"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.SupportedAsset> _explicitNullValueSupportedAssets = default!;
 #endif
         /// <summary>

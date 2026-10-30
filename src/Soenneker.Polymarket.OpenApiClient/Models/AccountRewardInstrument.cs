@@ -17,34 +17,37 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
-            if (parseNode.GetChildNode("reward_amount") is { } nullNodeRewardAmount && nullNodeRewardAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardAmount = null;
-            if (parseNode.GetChildNode("reward_pool") is { } nullNodeRewardPool && nullNodeRewardPool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardPool = null;
+            if (parseNode.GetChildNode("instrument_id") is null) { _explicitNullValueInstrumentId = default!; _explicitNullProperties?.Remove("instrument_id"); }
+            else if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("reward_amount") is null) { _explicitNullValueRewardAmount = default!; _explicitNullProperties?.Remove("reward_amount"); }
+            else if (parseNode.GetChildNode("reward_amount") is { } nullNodeRewardAmount && nullNodeRewardAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardAmount = null;
+            if (parseNode.GetChildNode("reward_pool") is null) { _explicitNullValueRewardPool = default!; _explicitNullProperties?.Remove("reward_pool"); }
+            else if (parseNode.GetChildNode("reward_pool") is { } nullNodeRewardPool && nullNodeRewardPool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardPool = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Instrument ID</summary>
-        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; AdditionalData?.Remove("instrument_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
         private int? _explicitNullValueInstrumentId = default!;
         /// <summary>Reward amount attributed to this reward row</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RewardAmount { get => _explicitNullValueRewardAmount; set { _explicitNullValueRewardAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_amount"); else _explicitNullProperties?.Remove("reward_amount"); } }
+        public string? RewardAmount { get => _explicitNullValueRewardAmount; set { _explicitNullValueRewardAmount = value; AdditionalData?.Remove("reward_amount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_amount"); else _explicitNullProperties?.Remove("reward_amount"); } }
         private string? _explicitNullValueRewardAmount = default!;
 #nullable restore
 #else
-        public string RewardAmount { get => _explicitNullValueRewardAmount; set { _explicitNullValueRewardAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_amount"); else _explicitNullProperties?.Remove("reward_amount"); } }
+        public string RewardAmount { get => _explicitNullValueRewardAmount; set { _explicitNullValueRewardAmount = value; AdditionalData?.Remove("reward_amount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_amount"); else _explicitNullProperties?.Remove("reward_amount"); } }
         private string _explicitNullValueRewardAmount = default!;
 #endif
         /// <summary>Configured reward pool for the instrument</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RewardPool { get => _explicitNullValueRewardPool; set { _explicitNullValueRewardPool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_pool"); else _explicitNullProperties?.Remove("reward_pool"); } }
+        public string? RewardPool { get => _explicitNullValueRewardPool; set { _explicitNullValueRewardPool = value; AdditionalData?.Remove("reward_pool"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_pool"); else _explicitNullProperties?.Remove("reward_pool"); } }
         private string? _explicitNullValueRewardPool = default!;
 #nullable restore
 #else
-        public string RewardPool { get => _explicitNullValueRewardPool; set { _explicitNullValueRewardPool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_pool"); else _explicitNullProperties?.Remove("reward_pool"); } }
+        public string RewardPool { get => _explicitNullValueRewardPool; set { _explicitNullValueRewardPool = value; AdditionalData?.Remove("reward_pool"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_pool"); else _explicitNullProperties?.Remove("reward_pool"); } }
         private string _explicitNullValueRewardPool = default!;
 #endif
         /// <summary>

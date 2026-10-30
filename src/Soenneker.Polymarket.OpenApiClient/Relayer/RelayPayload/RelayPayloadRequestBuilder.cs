@@ -74,7 +74,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Relayer.RelayPayload
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Relayer.RelayPayload.RelayPayloadRequestBuilder.RelayPayloadRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://relayer-v2.polymarket.com", "/relayer/relay-payload", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

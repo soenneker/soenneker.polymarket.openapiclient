@@ -17,8 +17,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("questionID") is { } nullNodeQuestionID && nullNodeQuestionID.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionID = null;
-            if (parseNode.GetChildNode("revisions") is { } nullNodeRevisions && nullNodeRevisions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Revisions = null;
+            if (parseNode.GetChildNode("questionID") is null) { _explicitNullValueQuestionID = default!; _explicitNullProperties?.Remove("questionID"); }
+            else if (parseNode.GetChildNode("questionID") is { } nullNodeQuestionID && nullNodeQuestionID.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionID = null;
+            if (parseNode.GetChildNode("revisions") is null) { _explicitNullValueRevisions = default!; _explicitNullProperties?.Remove("revisions"); }
+            else if (parseNode.GetChildNode("revisions") is { } nullNodeRevisions && nullNodeRevisions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Revisions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>0x-prefixed 64-hex string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuestionID { get => _explicitNullValueQuestionID; set { _explicitNullValueQuestionID = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questionID"); else _explicitNullProperties?.Remove("questionID"); } }
+        public string? QuestionID { get => _explicitNullValueQuestionID; set { _explicitNullValueQuestionID = value; AdditionalData?.Remove("questionID"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questionID"); else _explicitNullProperties?.Remove("questionID"); } }
         private string? _explicitNullValueQuestionID = default!;
 #nullable restore
 #else
-        public string QuestionID { get => _explicitNullValueQuestionID; set { _explicitNullValueQuestionID = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questionID"); else _explicitNullProperties?.Remove("questionID"); } }
+        public string QuestionID { get => _explicitNullValueQuestionID; set { _explicitNullValueQuestionID = value; AdditionalData?.Remove("questionID"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questionID"); else _explicitNullProperties?.Remove("questionID"); } }
         private string _explicitNullValueQuestionID = default!;
 #endif
         /// <summary>The revisions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry>? Revisions { get => _explicitNullValueRevisions; set { _explicitNullValueRevisions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisions"); else _explicitNullProperties?.Remove("revisions"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry>? Revisions { get => _explicitNullValueRevisions; set { _explicitNullValueRevisions = value; AdditionalData?.Remove("revisions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisions"); else _explicitNullProperties?.Remove("revisions"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry>? _explicitNullValueRevisions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry> Revisions { get => _explicitNullValueRevisions; set { _explicitNullValueRevisions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisions"); else _explicitNullProperties?.Remove("revisions"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry> Revisions { get => _explicitNullValueRevisions; set { _explicitNullValueRevisions = value; AdditionalData?.Remove("revisions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisions"); else _explicitNullProperties?.Remove("revisions"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry> _explicitNullValueRevisions = default!;
 #endif
         /// <summary>

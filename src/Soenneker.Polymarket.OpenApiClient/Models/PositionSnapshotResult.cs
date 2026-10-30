@@ -17,38 +17,42 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
-            if (parseNode.GetChildNode("snapshot") is { } nullNodeSnapshot && nullNodeSnapshot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snapshot = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("trade_id") is { } nullNodeTradeId && nullNodeTradeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TradeId = null;
+            if (parseNode.GetChildNode("instrument_id") is null) { _explicitNullValueInstrumentId = default!; _explicitNullProperties?.Remove("instrument_id"); }
+            else if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("snapshot") is null) { _explicitNullValueSnapshot = default!; _explicitNullProperties?.Remove("snapshot"); }
+            else if (parseNode.GetChildNode("snapshot") is { } nullNodeSnapshot && nullNodeSnapshot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snapshot = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("trade_id") is null) { _explicitNullValueTradeId = default!; _explicitNullProperties?.Remove("trade_id"); }
+            else if (parseNode.GetChildNode("trade_id") is { } nullNodeTradeId && nullNodeTradeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TradeId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Instrument ID</summary>
-        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; AdditionalData?.Remove("instrument_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
         private int? _explicitNullValueInstrumentId = default!;
         /// <summary>The snapshot property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.PositionCardSnapshot? Snapshot { get => _explicitNullValueSnapshot; set { _explicitNullValueSnapshot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshot"); else _explicitNullProperties?.Remove("snapshot"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.PositionCardSnapshot? Snapshot { get => _explicitNullValueSnapshot; set { _explicitNullValueSnapshot = value; AdditionalData?.Remove("snapshot"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshot"); else _explicitNullProperties?.Remove("snapshot"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.PositionCardSnapshot? _explicitNullValueSnapshot = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.PositionCardSnapshot Snapshot { get => _explicitNullValueSnapshot; set { _explicitNullValueSnapshot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshot"); else _explicitNullProperties?.Remove("snapshot"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.PositionCardSnapshot Snapshot { get => _explicitNullValueSnapshot; set { _explicitNullValueSnapshot = value; AdditionalData?.Remove("snapshot"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshot"); else _explicitNullProperties?.Remove("snapshot"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.PositionCardSnapshot _explicitNullValueSnapshot = default!;
 #endif
         /// <summary>The status property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotStatus? _explicitNullValueStatus = default!;
         /// <summary>The trade_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
+        public string? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
         private string? _explicitNullValueTradeId = default!;
 #nullable restore
 #else
-        public string TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
+        public string TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
         private string _explicitNullValueTradeId = default!;
 #endif
         /// <summary>
@@ -78,7 +82,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
                 { "snapshot", n => { Snapshot = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.PositionCardSnapshot>(global::Soenneker.Polymarket.OpenApiClient.Models.PositionCardSnapshot.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotStatus>(); } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "trade_id", n => { TradeId = n.GetStringValue(); } },
             };
         }

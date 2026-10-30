@@ -17,11 +17,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("breakdown") is { } nullNodeBreakdown && nullNodeBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breakdown = null;
-            if (parseNode.GetChildNode("date") is { } nullNodeDate && nullNodeDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Date = null;
-            if (parseNode.GetChildNode("maker_share_7d") is { } nullNodeMakerShare7d && nullNodeMakerShare7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerShare7d = null;
-            if (parseNode.GetChildNode("oi_rewards") is { } nullNodeOiRewards && nullNodeOiRewards.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OiRewards = null;
-            if (parseNode.GetChildNode("reward_distributed") is { } nullNodeRewardDistributed && nullNodeRewardDistributed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardDistributed = null;
+            if (parseNode.GetChildNode("breakdown") is null) { _explicitNullValueBreakdown = default!; _explicitNullProperties?.Remove("breakdown"); }
+            else if (parseNode.GetChildNode("breakdown") is { } nullNodeBreakdown && nullNodeBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breakdown = null;
+            if (parseNode.GetChildNode("date") is null) { _explicitNullValueDate = default!; _explicitNullProperties?.Remove("date"); }
+            else if (parseNode.GetChildNode("date") is { } nullNodeDate && nullNodeDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Date = null;
+            if (parseNode.GetChildNode("maker_share_7d") is null) { _explicitNullValueMakerShare7d = default!; _explicitNullProperties?.Remove("maker_share_7d"); }
+            else if (parseNode.GetChildNode("maker_share_7d") is { } nullNodeMakerShare7d && nullNodeMakerShare7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerShare7d = null;
+            if (parseNode.GetChildNode("oi_rewards") is null) { _explicitNullValueOiRewards = default!; _explicitNullProperties?.Remove("oi_rewards"); }
+            else if (parseNode.GetChildNode("oi_rewards") is { } nullNodeOiRewards && nullNodeOiRewards.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OiRewards = null;
+            if (parseNode.GetChildNode("reward_distributed") is null) { _explicitNullValueRewardDistributed = default!; _explicitNullProperties?.Remove("reward_distributed"); }
+            else if (parseNode.GetChildNode("reward_distributed") is { } nullNodeRewardDistributed && nullNodeRewardDistributed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardDistributed = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,45 +34,45 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The breakdown property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardInstrument>? Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardInstrument>? Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; AdditionalData?.Remove("breakdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardInstrument>? _explicitNullValueBreakdown = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardInstrument> Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardInstrument> Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; AdditionalData?.Remove("breakdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardInstrument> _explicitNullValueBreakdown = default!;
 #endif
         /// <summary>UTC reward period end date in YYYY-MM-DD format</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
+        public string? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
         private string? _explicitNullValueDate = default!;
 #nullable restore
 #else
-        public string Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
+        public string Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
         private string _explicitNullValueDate = default!;
 #endif
         /// <summary>Rolling 7-day account maker volume divided by total exchange volume</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerShare7d { get => _explicitNullValueMakerShare7d; set { _explicitNullValueMakerShare7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_share_7d"); else _explicitNullProperties?.Remove("maker_share_7d"); } }
+        public string? MakerShare7d { get => _explicitNullValueMakerShare7d; set { _explicitNullValueMakerShare7d = value; AdditionalData?.Remove("maker_share_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_share_7d"); else _explicitNullProperties?.Remove("maker_share_7d"); } }
         private string? _explicitNullValueMakerShare7d = default!;
 #nullable restore
 #else
-        public string MakerShare7d { get => _explicitNullValueMakerShare7d; set { _explicitNullValueMakerShare7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_share_7d"); else _explicitNullProperties?.Remove("maker_share_7d"); } }
+        public string MakerShare7d { get => _explicitNullValueMakerShare7d; set { _explicitNullValueMakerShare7d = value; AdditionalData?.Remove("maker_share_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_share_7d"); else _explicitNullProperties?.Remove("maker_share_7d"); } }
         private string _explicitNullValueMakerShare7d = default!;
 #endif
         /// <summary>The oi_rewards property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardOi? OiRewards { get => _explicitNullValueOiRewards; set { _explicitNullValueOiRewards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oi_rewards"); else _explicitNullProperties?.Remove("oi_rewards"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardOi? OiRewards { get => _explicitNullValueOiRewards; set { _explicitNullValueOiRewards = value; AdditionalData?.Remove("oi_rewards"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oi_rewards"); else _explicitNullProperties?.Remove("oi_rewards"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardOi? _explicitNullValueOiRewards = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardOi OiRewards { get => _explicitNullValueOiRewards; set { _explicitNullValueOiRewards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oi_rewards"); else _explicitNullProperties?.Remove("oi_rewards"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardOi OiRewards { get => _explicitNullValueOiRewards; set { _explicitNullValueOiRewards = value; AdditionalData?.Remove("oi_rewards"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oi_rewards"); else _explicitNullProperties?.Remove("oi_rewards"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.AccountRewardOi _explicitNullValueOiRewards = default!;
 #endif
         /// <summary>Whether rewards for this period have been marked as distributed</summary>
-        public bool? RewardDistributed { get => _explicitNullValueRewardDistributed; set { _explicitNullValueRewardDistributed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_distributed"); else _explicitNullProperties?.Remove("reward_distributed"); } }
+        public bool? RewardDistributed { get => _explicitNullValueRewardDistributed; set { _explicitNullValueRewardDistributed = value; AdditionalData?.Remove("reward_distributed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_distributed"); else _explicitNullProperties?.Remove("reward_distributed"); } }
         private bool? _explicitNullValueRewardDistributed = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountReward"/> and sets the default values.

@@ -17,12 +17,18 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("baseGas") is { } nullNodeBaseGas && nullNodeBaseGas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseGas = null;
-            if (parseNode.GetChildNode("gasPrice") is { } nullNodeGasPrice && nullNodeGasPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GasPrice = null;
-            if (parseNode.GetChildNode("gasToken") is { } nullNodeGasToken && nullNodeGasToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GasToken = null;
-            if (parseNode.GetChildNode("operation") is { } nullNodeOperation && nullNodeOperation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Operation = null;
-            if (parseNode.GetChildNode("refundReceiver") is { } nullNodeRefundReceiver && nullNodeRefundReceiver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefundReceiver = null;
-            if (parseNode.GetChildNode("safeTxnGas") is { } nullNodeSafeTxnGas && nullNodeSafeTxnGas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SafeTxnGas = null;
+            if (parseNode.GetChildNode("baseGas") is null) { _explicitNullValueBaseGas = default!; _explicitNullProperties?.Remove("baseGas"); }
+            else if (parseNode.GetChildNode("baseGas") is { } nullNodeBaseGas && nullNodeBaseGas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseGas = null;
+            if (parseNode.GetChildNode("gasPrice") is null) { _explicitNullValueGasPrice = default!; _explicitNullProperties?.Remove("gasPrice"); }
+            else if (parseNode.GetChildNode("gasPrice") is { } nullNodeGasPrice && nullNodeGasPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GasPrice = null;
+            if (parseNode.GetChildNode("gasToken") is null) { _explicitNullValueGasToken = default!; _explicitNullProperties?.Remove("gasToken"); }
+            else if (parseNode.GetChildNode("gasToken") is { } nullNodeGasToken && nullNodeGasToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GasToken = null;
+            if (parseNode.GetChildNode("operation") is null) { _explicitNullValueOperation = default!; _explicitNullProperties?.Remove("operation"); }
+            else if (parseNode.GetChildNode("operation") is { } nullNodeOperation && nullNodeOperation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Operation = null;
+            if (parseNode.GetChildNode("refundReceiver") is null) { _explicitNullValueRefundReceiver = default!; _explicitNullProperties?.Remove("refundReceiver"); }
+            else if (parseNode.GetChildNode("refundReceiver") is { } nullNodeRefundReceiver && nullNodeRefundReceiver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefundReceiver = null;
+            if (parseNode.GetChildNode("safeTxnGas") is null) { _explicitNullValueSafeTxnGas = default!; _explicitNullProperties?.Remove("safeTxnGas"); }
+            else if (parseNode.GetChildNode("safeTxnGas") is { } nullNodeSafeTxnGas && nullNodeSafeTxnGas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SafeTxnGas = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,61 +36,61 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Base gas</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseGas { get => _explicitNullValueBaseGas; set { _explicitNullValueBaseGas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseGas"); else _explicitNullProperties?.Remove("baseGas"); } }
+        public string? BaseGas { get => _explicitNullValueBaseGas; set { _explicitNullValueBaseGas = value; AdditionalData?.Remove("baseGas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseGas"); else _explicitNullProperties?.Remove("baseGas"); } }
         private string? _explicitNullValueBaseGas = default!;
 #nullable restore
 #else
-        public string BaseGas { get => _explicitNullValueBaseGas; set { _explicitNullValueBaseGas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseGas"); else _explicitNullProperties?.Remove("baseGas"); } }
+        public string BaseGas { get => _explicitNullValueBaseGas; set { _explicitNullValueBaseGas = value; AdditionalData?.Remove("baseGas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseGas"); else _explicitNullProperties?.Remove("baseGas"); } }
         private string _explicitNullValueBaseGas = default!;
 #endif
         /// <summary>Gas price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GasPrice { get => _explicitNullValueGasPrice; set { _explicitNullValueGasPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasPrice"); else _explicitNullProperties?.Remove("gasPrice"); } }
+        public string? GasPrice { get => _explicitNullValueGasPrice; set { _explicitNullValueGasPrice = value; AdditionalData?.Remove("gasPrice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasPrice"); else _explicitNullProperties?.Remove("gasPrice"); } }
         private string? _explicitNullValueGasPrice = default!;
 #nullable restore
 #else
-        public string GasPrice { get => _explicitNullValueGasPrice; set { _explicitNullValueGasPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasPrice"); else _explicitNullProperties?.Remove("gasPrice"); } }
+        public string GasPrice { get => _explicitNullValueGasPrice; set { _explicitNullValueGasPrice = value; AdditionalData?.Remove("gasPrice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasPrice"); else _explicitNullProperties?.Remove("gasPrice"); } }
         private string _explicitNullValueGasPrice = default!;
 #endif
         /// <summary>Ethereum address (0x-prefixed, 40 hex chars)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GasToken { get => _explicitNullValueGasToken; set { _explicitNullValueGasToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasToken"); else _explicitNullProperties?.Remove("gasToken"); } }
+        public string? GasToken { get => _explicitNullValueGasToken; set { _explicitNullValueGasToken = value; AdditionalData?.Remove("gasToken"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasToken"); else _explicitNullProperties?.Remove("gasToken"); } }
         private string? _explicitNullValueGasToken = default!;
 #nullable restore
 #else
-        public string GasToken { get => _explicitNullValueGasToken; set { _explicitNullValueGasToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasToken"); else _explicitNullProperties?.Remove("gasToken"); } }
+        public string GasToken { get => _explicitNullValueGasToken; set { _explicitNullValueGasToken = value; AdditionalData?.Remove("gasToken"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasToken"); else _explicitNullProperties?.Remove("gasToken"); } }
         private string _explicitNullValueGasToken = default!;
 #endif
         /// <summary>Operation type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Operation { get => _explicitNullValueOperation; set { _explicitNullValueOperation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operation"); else _explicitNullProperties?.Remove("operation"); } }
+        public string? Operation { get => _explicitNullValueOperation; set { _explicitNullValueOperation = value; AdditionalData?.Remove("operation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operation"); else _explicitNullProperties?.Remove("operation"); } }
         private string? _explicitNullValueOperation = default!;
 #nullable restore
 #else
-        public string Operation { get => _explicitNullValueOperation; set { _explicitNullValueOperation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operation"); else _explicitNullProperties?.Remove("operation"); } }
+        public string Operation { get => _explicitNullValueOperation; set { _explicitNullValueOperation = value; AdditionalData?.Remove("operation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operation"); else _explicitNullProperties?.Remove("operation"); } }
         private string _explicitNullValueOperation = default!;
 #endif
         /// <summary>Ethereum address (0x-prefixed, 40 hex chars)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RefundReceiver { get => _explicitNullValueRefundReceiver; set { _explicitNullValueRefundReceiver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refundReceiver"); else _explicitNullProperties?.Remove("refundReceiver"); } }
+        public string? RefundReceiver { get => _explicitNullValueRefundReceiver; set { _explicitNullValueRefundReceiver = value; AdditionalData?.Remove("refundReceiver"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refundReceiver"); else _explicitNullProperties?.Remove("refundReceiver"); } }
         private string? _explicitNullValueRefundReceiver = default!;
 #nullable restore
 #else
-        public string RefundReceiver { get => _explicitNullValueRefundReceiver; set { _explicitNullValueRefundReceiver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refundReceiver"); else _explicitNullProperties?.Remove("refundReceiver"); } }
+        public string RefundReceiver { get => _explicitNullValueRefundReceiver; set { _explicitNullValueRefundReceiver = value; AdditionalData?.Remove("refundReceiver"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refundReceiver"); else _explicitNullProperties?.Remove("refundReceiver"); } }
         private string _explicitNullValueRefundReceiver = default!;
 #endif
         /// <summary>Safe transaction gas</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SafeTxnGas { get => _explicitNullValueSafeTxnGas; set { _explicitNullValueSafeTxnGas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safeTxnGas"); else _explicitNullProperties?.Remove("safeTxnGas"); } }
+        public string? SafeTxnGas { get => _explicitNullValueSafeTxnGas; set { _explicitNullValueSafeTxnGas = value; AdditionalData?.Remove("safeTxnGas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safeTxnGas"); else _explicitNullProperties?.Remove("safeTxnGas"); } }
         private string? _explicitNullValueSafeTxnGas = default!;
 #nullable restore
 #else
-        public string SafeTxnGas { get => _explicitNullValueSafeTxnGas; set { _explicitNullValueSafeTxnGas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safeTxnGas"); else _explicitNullProperties?.Remove("safeTxnGas"); } }
+        public string SafeTxnGas { get => _explicitNullValueSafeTxnGas; set { _explicitNullValueSafeTxnGas = value; AdditionalData?.Remove("safeTxnGas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safeTxnGas"); else _explicitNullProperties?.Remove("safeTxnGas"); } }
         private string _explicitNullValueSafeTxnGas = default!;
 #endif
         /// <summary>

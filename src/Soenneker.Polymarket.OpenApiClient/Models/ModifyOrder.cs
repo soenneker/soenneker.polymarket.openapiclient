@@ -17,34 +17,37 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("oid") is { } nullNodeOid && nullNodeOid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Oid = null;
-            if (parseNode.GetChildNode("p") is { } nullNodeP && nullNodeP.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P = null;
-            if (parseNode.GetChildNode("qty") is { } nullNodeQty && nullNodeQty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Qty = null;
+            if (parseNode.GetChildNode("oid") is null) { _explicitNullValueOid = default!; _explicitNullProperties?.Remove("oid"); }
+            else if (parseNode.GetChildNode("oid") is { } nullNodeOid && nullNodeOid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Oid = null;
+            if (parseNode.GetChildNode("p") is null) { _explicitNullValueP = default!; _explicitNullProperties?.Remove("p"); }
+            else if (parseNode.GetChildNode("p") is { } nullNodeP && nullNodeP.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P = null;
+            if (parseNode.GetChildNode("qty") is null) { _explicitNullValueQty = default!; _explicitNullProperties?.Remove("qty"); }
+            else if (parseNode.GetChildNode("qty") is { } nullNodeQty && nullNodeQty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Qty = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Order ID</summary>
-        public int? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
+        public int? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; AdditionalData?.Remove("oid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
         private int? _explicitNullValueOid = default!;
         /// <summary>Price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? P { get => _explicitNullValueP; set { _explicitNullValueP = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p"); else _explicitNullProperties?.Remove("p"); } }
+        public string? P { get => _explicitNullValueP; set { _explicitNullValueP = value; AdditionalData?.Remove("p"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p"); else _explicitNullProperties?.Remove("p"); } }
         private string? _explicitNullValueP = default!;
 #nullable restore
 #else
-        public string P { get => _explicitNullValueP; set { _explicitNullValueP = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p"); else _explicitNullProperties?.Remove("p"); } }
+        public string P { get => _explicitNullValueP; set { _explicitNullValueP = value; AdditionalData?.Remove("p"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p"); else _explicitNullProperties?.Remove("p"); } }
         private string _explicitNullValueP = default!;
 #endif
         /// <summary>Quantity in no. of contracts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Qty { get => _explicitNullValueQty; set { _explicitNullValueQty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("qty"); else _explicitNullProperties?.Remove("qty"); } }
+        public string? Qty { get => _explicitNullValueQty; set { _explicitNullValueQty = value; AdditionalData?.Remove("qty"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("qty"); else _explicitNullProperties?.Remove("qty"); } }
         private string? _explicitNullValueQty = default!;
 #nullable restore
 #else
-        public string Qty { get => _explicitNullValueQty; set { _explicitNullValueQty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("qty"); else _explicitNullProperties?.Remove("qty"); } }
+        public string Qty { get => _explicitNullValueQty; set { _explicitNullValueQty = value; AdditionalData?.Remove("qty"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("qty"); else _explicitNullProperties?.Remove("qty"); } }
         private string _explicitNullValueQty = default!;
 #endif
         /// <summary>

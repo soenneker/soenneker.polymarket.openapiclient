@@ -17,10 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
-            if (parseNode.GetChildNode("recipientAddr") is { } nullNodeRecipientAddr && nullNodeRecipientAddr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecipientAddr = null;
-            if (parseNode.GetChildNode("toChainId") is { } nullNodeToChainId && nullNodeToChainId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToChainId = null;
-            if (parseNode.GetChildNode("toTokenAddress") is { } nullNodeToTokenAddress && nullNodeToTokenAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToTokenAddress = null;
+            if (parseNode.GetChildNode("address") is null) { _explicitNullValueAddress = default!; _explicitNullProperties?.Remove("address"); }
+            else if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
+            if (parseNode.GetChildNode("recipientAddr") is null) { _explicitNullValueRecipientAddr = default!; _explicitNullProperties?.Remove("recipientAddr"); }
+            else if (parseNode.GetChildNode("recipientAddr") is { } nullNodeRecipientAddr && nullNodeRecipientAddr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecipientAddr = null;
+            if (parseNode.GetChildNode("toChainId") is null) { _explicitNullValueToChainId = default!; _explicitNullProperties?.Remove("toChainId"); }
+            else if (parseNode.GetChildNode("toChainId") is { } nullNodeToChainId && nullNodeToChainId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToChainId = null;
+            if (parseNode.GetChildNode("toTokenAddress") is null) { _explicitNullValueToTokenAddress = default!; _explicitNullProperties?.Remove("toTokenAddress"); }
+            else if (parseNode.GetChildNode("toTokenAddress") is { } nullNodeToTokenAddress && nullNodeToTokenAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToTokenAddress = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,41 +32,41 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Ethereum address (0x-prefixed, 40 hex chars)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        public string? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; AdditionalData?.Remove("address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
         private string? _explicitNullValueAddress = default!;
 #nullable restore
 #else
-        public string Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        public string Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; AdditionalData?.Remove("address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
         private string _explicitNullValueAddress = default!;
 #endif
         /// <summary>Destination wallet address where funds will be sent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RecipientAddr { get => _explicitNullValueRecipientAddr; set { _explicitNullValueRecipientAddr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipientAddr"); else _explicitNullProperties?.Remove("recipientAddr"); } }
+        public string? RecipientAddr { get => _explicitNullValueRecipientAddr; set { _explicitNullValueRecipientAddr = value; AdditionalData?.Remove("recipientAddr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipientAddr"); else _explicitNullProperties?.Remove("recipientAddr"); } }
         private string? _explicitNullValueRecipientAddr = default!;
 #nullable restore
 #else
-        public string RecipientAddr { get => _explicitNullValueRecipientAddr; set { _explicitNullValueRecipientAddr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipientAddr"); else _explicitNullProperties?.Remove("recipientAddr"); } }
+        public string RecipientAddr { get => _explicitNullValueRecipientAddr; set { _explicitNullValueRecipientAddr = value; AdditionalData?.Remove("recipientAddr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipientAddr"); else _explicitNullProperties?.Remove("recipientAddr"); } }
         private string _explicitNullValueRecipientAddr = default!;
 #endif
         /// <summary>Destination chain ID (e.g., &quot;1&quot; for Ethereum, &quot;8453&quot; for Base, &quot;1151111081099710&quot; for Solana)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToChainId { get => _explicitNullValueToChainId; set { _explicitNullValueToChainId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toChainId"); else _explicitNullProperties?.Remove("toChainId"); } }
+        public string? ToChainId { get => _explicitNullValueToChainId; set { _explicitNullValueToChainId = value; AdditionalData?.Remove("toChainId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toChainId"); else _explicitNullProperties?.Remove("toChainId"); } }
         private string? _explicitNullValueToChainId = default!;
 #nullable restore
 #else
-        public string ToChainId { get => _explicitNullValueToChainId; set { _explicitNullValueToChainId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toChainId"); else _explicitNullProperties?.Remove("toChainId"); } }
+        public string ToChainId { get => _explicitNullValueToChainId; set { _explicitNullValueToChainId = value; AdditionalData?.Remove("toChainId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toChainId"); else _explicitNullProperties?.Remove("toChainId"); } }
         private string _explicitNullValueToChainId = default!;
 #endif
         /// <summary>Destination token contract address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToTokenAddress { get => _explicitNullValueToTokenAddress; set { _explicitNullValueToTokenAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toTokenAddress"); else _explicitNullProperties?.Remove("toTokenAddress"); } }
+        public string? ToTokenAddress { get => _explicitNullValueToTokenAddress; set { _explicitNullValueToTokenAddress = value; AdditionalData?.Remove("toTokenAddress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toTokenAddress"); else _explicitNullProperties?.Remove("toTokenAddress"); } }
         private string? _explicitNullValueToTokenAddress = default!;
 #nullable restore
 #else
-        public string ToTokenAddress { get => _explicitNullValueToTokenAddress; set { _explicitNullValueToTokenAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toTokenAddress"); else _explicitNullProperties?.Remove("toTokenAddress"); } }
+        public string ToTokenAddress { get => _explicitNullValueToTokenAddress; set { _explicitNullValueToTokenAddress = value; AdditionalData?.Remove("toTokenAddress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toTokenAddress"); else _explicitNullProperties?.Remove("toTokenAddress"); } }
         private string _explicitNullValueToTokenAddress = default!;
 #endif
         /// <summary>

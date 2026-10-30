@@ -18,13 +18,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("scoring") is { } nullNodeScoring && nullNodeScoring.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scoring = null;
+            if (parseNode.GetChildNode("scoring") is null) { _explicitNullValueScoring = default!; _explicitNullProperties?.Remove("scoring"); }
+            else if (parseNode.GetChildNode("scoring") is { } nullNodeScoring && nullNodeScoring.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scoring = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the order is currently scoring for maker rewards</summary>
-        public bool? Scoring { get => _explicitNullValueScoring; set { _explicitNullValueScoring = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scoring"); else _explicitNullProperties?.Remove("scoring"); } }
+        public bool? Scoring { get => _explicitNullValueScoring; set { _explicitNullValueScoring = value; AdditionalData?.Remove("scoring"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scoring"); else _explicitNullProperties?.Remove("scoring"); } }
         private bool? _explicitNullValueScoring = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.OrderScoringResponse"/> and sets the default values.

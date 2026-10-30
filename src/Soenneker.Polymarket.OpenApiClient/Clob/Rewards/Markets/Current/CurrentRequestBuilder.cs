@@ -74,7 +74,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Rewards.Markets.Current
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Clob.Rewards.Markets.Current.CurrentRequestBuilder.CurrentRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://clob.polymarket.com", "/clob/rewards/markets/current", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

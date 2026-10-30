@@ -18,23 +18,25 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
-            if (parseNode.GetChildNode("value_e6") is { } nullNodeValueE6 && nullNodeValueE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueE6 = null;
+            if (parseNode.GetChildNode("unit") is null) { _explicitNullValueUnit = default!; _explicitNullProperties?.Remove("unit"); }
+            else if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
+            if (parseNode.GetChildNode("value_e6") is null) { _explicitNullValueValueE6 = default!; _explicitNullProperties?.Remove("value_e6"); }
+            else if (parseNode.GetChildNode("value_e6") is { } nullNodeValueE6 && nullNodeValueE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueE6 = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>`notional` for requester BUY RFQs and `shares` for requester SELL RFQs.</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSizeUnit? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSizeUnit? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; AdditionalData?.Remove("unit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSizeUnit? _explicitNullValueUnit = default!;
         /// <summary>Six-decimal fixed-point value encoded as a string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ValueE6 { get => _explicitNullValueValueE6; set { _explicitNullValueValueE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_e6"); else _explicitNullProperties?.Remove("value_e6"); } }
+        public string? ValueE6 { get => _explicitNullValueValueE6; set { _explicitNullValueValueE6 = value; AdditionalData?.Remove("value_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_e6"); else _explicitNullProperties?.Remove("value_e6"); } }
         private string? _explicitNullValueValueE6 = default!;
 #nullable restore
 #else
-        public string ValueE6 { get => _explicitNullValueValueE6; set { _explicitNullValueValueE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_e6"); else _explicitNullProperties?.Remove("value_e6"); } }
+        public string ValueE6 { get => _explicitNullValueValueE6; set { _explicitNullValueValueE6 = value; AdditionalData?.Remove("value_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_e6"); else _explicitNullProperties?.Remove("value_e6"); } }
         private string _explicitNullValueValueE6 = default!;
 #endif
         /// <summary>
@@ -62,7 +64,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "unit", n => { Unit = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSizeUnit>(); } },
+                { "unit", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSizeUnit>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueUnit = default; _explicitNullProperties?.Remove("unit"); AdditionalData["unit"] = unknown; } else { Unit = parsed; AdditionalData.Remove("unit"); } } },
                 { "value_e6", n => { ValueE6 = n.GetStringValue(); } },
             };
         }

@@ -17,53 +17,59 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("end_timestamp") is { } nullNodeEndTimestamp && nullNodeEndTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndTimestamp = null;
-            if (parseNode.GetChildNode("fees") is { } nullNodeFees && nullNodeFees.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fees = null;
-            if (parseNode.GetChildNode("open_interest") is { } nullNodeOpenInterest && nullNodeOpenInterest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenInterest = null;
-            if (parseNode.GetChildNode("open_interest_timestamp") is { } nullNodeOpenInterestTimestamp && nullNodeOpenInterestTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenInterestTimestamp = null;
-            if (parseNode.GetChildNode("start_timestamp") is { } nullNodeStartTimestamp && nullNodeStartTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartTimestamp = null;
-            if (parseNode.GetChildNode("volume") is { } nullNodeVolume && nullNodeVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Volume = null;
+            if (parseNode.GetChildNode("end_timestamp") is null) { _explicitNullValueEndTimestamp = default!; _explicitNullProperties?.Remove("end_timestamp"); }
+            else if (parseNode.GetChildNode("end_timestamp") is { } nullNodeEndTimestamp && nullNodeEndTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndTimestamp = null;
+            if (parseNode.GetChildNode("fees") is null) { _explicitNullValueFees = default!; _explicitNullProperties?.Remove("fees"); }
+            else if (parseNode.GetChildNode("fees") is { } nullNodeFees && nullNodeFees.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fees = null;
+            if (parseNode.GetChildNode("open_interest") is null) { _explicitNullValueOpenInterest = default!; _explicitNullProperties?.Remove("open_interest"); }
+            else if (parseNode.GetChildNode("open_interest") is { } nullNodeOpenInterest && nullNodeOpenInterest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenInterest = null;
+            if (parseNode.GetChildNode("open_interest_timestamp") is null) { _explicitNullValueOpenInterestTimestamp = default!; _explicitNullProperties?.Remove("open_interest_timestamp"); }
+            else if (parseNode.GetChildNode("open_interest_timestamp") is { } nullNodeOpenInterestTimestamp && nullNodeOpenInterestTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenInterestTimestamp = null;
+            if (parseNode.GetChildNode("start_timestamp") is null) { _explicitNullValueStartTimestamp = default!; _explicitNullProperties?.Remove("start_timestamp"); }
+            else if (parseNode.GetChildNode("start_timestamp") is { } nullNodeStartTimestamp && nullNodeStartTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartTimestamp = null;
+            if (parseNode.GetChildNode("volume") is null) { _explicitNullValueVolume = default!; _explicitNullProperties?.Remove("volume"); }
+            else if (parseNode.GetChildNode("volume") is { } nullNodeVolume && nullNodeVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Volume = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>End timestamp in milliseconds</summary>
-        public long? EndTimestamp { get => _explicitNullValueEndTimestamp; set { _explicitNullValueEndTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_timestamp"); else _explicitNullProperties?.Remove("end_timestamp"); } }
+        public long? EndTimestamp { get => _explicitNullValueEndTimestamp; set { _explicitNullValueEndTimestamp = value; AdditionalData?.Remove("end_timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_timestamp"); else _explicitNullProperties?.Remove("end_timestamp"); } }
         private long? _explicitNullValueEndTimestamp = default!;
         /// <summary>Gross positive maker and taker trading fees in USD for the requested window, as an unformatted numeric string. Rebates, incentives, referral payments, and additional builder fees are excluded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Fees { get => _explicitNullValueFees; set { _explicitNullValueFees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fees"); else _explicitNullProperties?.Remove("fees"); } }
+        public string? Fees { get => _explicitNullValueFees; set { _explicitNullValueFees = value; AdditionalData?.Remove("fees"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fees"); else _explicitNullProperties?.Remove("fees"); } }
         private string? _explicitNullValueFees = default!;
 #nullable restore
 #else
-        public string Fees { get => _explicitNullValueFees; set { _explicitNullValueFees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fees"); else _explicitNullProperties?.Remove("fees"); } }
+        public string Fees { get => _explicitNullValueFees; set { _explicitNullValueFees = value; AdditionalData?.Remove("fees"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fees"); else _explicitNullProperties?.Remove("fees"); } }
         private string _explicitNullValueFees = default!;
 #endif
         /// <summary>One-sided open interest in USD notional at the latest complete sample before the requested window end, as an unformatted numeric string. Null when no complete sample is available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OpenInterest { get => _explicitNullValueOpenInterest; set { _explicitNullValueOpenInterest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest"); else _explicitNullProperties?.Remove("open_interest"); } }
+        public string? OpenInterest { get => _explicitNullValueOpenInterest; set { _explicitNullValueOpenInterest = value; AdditionalData?.Remove("open_interest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest"); else _explicitNullProperties?.Remove("open_interest"); } }
         private string? _explicitNullValueOpenInterest = default!;
 #nullable restore
 #else
-        public string OpenInterest { get => _explicitNullValueOpenInterest; set { _explicitNullValueOpenInterest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest"); else _explicitNullProperties?.Remove("open_interest"); } }
+        public string OpenInterest { get => _explicitNullValueOpenInterest; set { _explicitNullValueOpenInterest = value; AdditionalData?.Remove("open_interest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest"); else _explicitNullProperties?.Remove("open_interest"); } }
         private string _explicitNullValueOpenInterest = default!;
 #endif
         /// <summary>Timestamp of the open-interest sample in Unix milliseconds. Null when no complete sample is available.</summary>
-        public long? OpenInterestTimestamp { get => _explicitNullValueOpenInterestTimestamp; set { _explicitNullValueOpenInterestTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest_timestamp"); else _explicitNullProperties?.Remove("open_interest_timestamp"); } }
+        public long? OpenInterestTimestamp { get => _explicitNullValueOpenInterestTimestamp; set { _explicitNullValueOpenInterestTimestamp = value; AdditionalData?.Remove("open_interest_timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest_timestamp"); else _explicitNullProperties?.Remove("open_interest_timestamp"); } }
         private long? _explicitNullValueOpenInterestTimestamp = default!;
         /// <summary>Start timestamp in milliseconds</summary>
-        public long? StartTimestamp { get => _explicitNullValueStartTimestamp; set { _explicitNullValueStartTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_timestamp"); else _explicitNullProperties?.Remove("start_timestamp"); } }
+        public long? StartTimestamp { get => _explicitNullValueStartTimestamp; set { _explicitNullValueStartTimestamp = value; AdditionalData?.Remove("start_timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_timestamp"); else _explicitNullProperties?.Remove("start_timestamp"); } }
         private long? _explicitNullValueStartTimestamp = default!;
         /// <summary>Matched trading volume in USD notional for the requested window, as an unformatted numeric string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Volume { get => _explicitNullValueVolume; set { _explicitNullValueVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume"); else _explicitNullProperties?.Remove("volume"); } }
+        public string? Volume { get => _explicitNullValueVolume; set { _explicitNullValueVolume = value; AdditionalData?.Remove("volume"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume"); else _explicitNullProperties?.Remove("volume"); } }
         private string? _explicitNullValueVolume = default!;
 #nullable restore
 #else
-        public string Volume { get => _explicitNullValueVolume; set { _explicitNullValueVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume"); else _explicitNullProperties?.Remove("volume"); } }
+        public string Volume { get => _explicitNullValueVolume; set { _explicitNullValueVolume = value; AdditionalData?.Remove("volume"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume"); else _explicitNullProperties?.Remove("volume"); } }
         private string _explicitNullValueVolume = default!;
 #endif
         /// <summary>

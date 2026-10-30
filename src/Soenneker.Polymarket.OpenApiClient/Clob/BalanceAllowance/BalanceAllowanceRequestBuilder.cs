@@ -111,7 +111,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.BalanceAllowance
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Clob.BalanceAllowance.BalanceAllowanceRequestBuilder.BalanceAllowanceRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://clob.polymarket.com", "/clob/balance-allowance", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -130,7 +130,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.BalanceAllowance
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.Clob.BalanceAllowance.BalanceAllowanceRequestBuilder.BalanceAllowanceRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://clob.polymarket.com", "/clob/balance-allowance", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

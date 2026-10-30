@@ -17,23 +17,25 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("blp") is { } nullNodeBlp && nullNodeBlp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Blp = null;
-            if (parseNode.GetChildNode("instruments") is { } nullNodeInstruments && nullNodeInstruments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instruments = null;
+            if (parseNode.GetChildNode("blp") is null) { _explicitNullValueBlp = default!; _explicitNullProperties?.Remove("blp"); }
+            else if (parseNode.GetChildNode("blp") is { } nullNodeBlp && nullNodeBlp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Blp = null;
+            if (parseNode.GetChildNode("instruments") is null) { _explicitNullValueInstruments = default!; _explicitNullProperties?.Remove("instruments"); }
+            else if (parseNode.GetChildNode("instruments") is { } nullNodeInstruments && nullNodeInstruments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instruments = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True when the account is enrolled in the Backstop Liquidity Provider program.</summary>
-        public bool? Blp { get => _explicitNullValueBlp; set { _explicitNullValueBlp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blp"); else _explicitNullProperties?.Remove("blp"); } }
+        public bool? Blp { get => _explicitNullValueBlp; set { _explicitNullValueBlp = value; AdditionalData?.Remove("blp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blp"); else _explicitNullProperties?.Remove("blp"); } }
         private bool? _explicitNullValueBlp = default!;
         /// <summary>Instruments the account is subscribed to, in ascending instrument-idorder. Empty when the account is enrolled but not yet subscribed toany instrument.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpInstrument>? Instruments { get => _explicitNullValueInstruments; set { _explicitNullValueInstruments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruments"); else _explicitNullProperties?.Remove("instruments"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpInstrument>? Instruments { get => _explicitNullValueInstruments; set { _explicitNullValueInstruments = value; AdditionalData?.Remove("instruments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruments"); else _explicitNullProperties?.Remove("instruments"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpInstrument>? _explicitNullValueInstruments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpInstrument> Instruments { get => _explicitNullValueInstruments; set { _explicitNullValueInstruments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruments"); else _explicitNullProperties?.Remove("instruments"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpInstrument> Instruments { get => _explicitNullValueInstruments; set { _explicitNullValueInstruments = value; AdditionalData?.Remove("instruments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruments"); else _explicitNullProperties?.Remove("instruments"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpInstrument> _explicitNullValueInstruments = default!;
 #endif
         /// <summary>

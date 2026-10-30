@@ -17,16 +17,26 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("field") is { } nullNodeField && nullNodeField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Field = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("imageOptimizedComplete") is { } nullNodeImageOptimizedComplete && nullNodeImageOptimizedComplete.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageOptimizedComplete = null;
-            if (parseNode.GetChildNode("imageOptimizedLastUpdated") is { } nullNodeImageOptimizedLastUpdated && nullNodeImageOptimizedLastUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageOptimizedLastUpdated = null;
-            if (parseNode.GetChildNode("imageSizeKbOptimized") is { } nullNodeImageSizeKbOptimized && nullNodeImageSizeKbOptimized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageSizeKbOptimized = null;
-            if (parseNode.GetChildNode("imageSizeKbSource") is { } nullNodeImageSizeKbSource && nullNodeImageSizeKbSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageSizeKbSource = null;
-            if (parseNode.GetChildNode("imageUrlOptimized") is { } nullNodeImageUrlOptimized && nullNodeImageUrlOptimized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageUrlOptimized = null;
-            if (parseNode.GetChildNode("imageUrlSource") is { } nullNodeImageUrlSource && nullNodeImageUrlSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageUrlSource = null;
-            if (parseNode.GetChildNode("relID") is { } nullNodeRelID && nullNodeRelID.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RelID = null;
-            if (parseNode.GetChildNode("relname") is { } nullNodeRelname && nullNodeRelname.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Relname = null;
+            if (parseNode.GetChildNode("field") is null) { _explicitNullValueField = default!; _explicitNullProperties?.Remove("field"); }
+            else if (parseNode.GetChildNode("field") is { } nullNodeField && nullNodeField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Field = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("imageOptimizedComplete") is null) { _explicitNullValueImageOptimizedComplete = default!; _explicitNullProperties?.Remove("imageOptimizedComplete"); }
+            else if (parseNode.GetChildNode("imageOptimizedComplete") is { } nullNodeImageOptimizedComplete && nullNodeImageOptimizedComplete.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageOptimizedComplete = null;
+            if (parseNode.GetChildNode("imageOptimizedLastUpdated") is null) { _explicitNullValueImageOptimizedLastUpdated = default!; _explicitNullProperties?.Remove("imageOptimizedLastUpdated"); }
+            else if (parseNode.GetChildNode("imageOptimizedLastUpdated") is { } nullNodeImageOptimizedLastUpdated && nullNodeImageOptimizedLastUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageOptimizedLastUpdated = null;
+            if (parseNode.GetChildNode("imageSizeKbOptimized") is null) { _explicitNullValueImageSizeKbOptimized = default!; _explicitNullProperties?.Remove("imageSizeKbOptimized"); }
+            else if (parseNode.GetChildNode("imageSizeKbOptimized") is { } nullNodeImageSizeKbOptimized && nullNodeImageSizeKbOptimized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageSizeKbOptimized = null;
+            if (parseNode.GetChildNode("imageSizeKbSource") is null) { _explicitNullValueImageSizeKbSource = default!; _explicitNullProperties?.Remove("imageSizeKbSource"); }
+            else if (parseNode.GetChildNode("imageSizeKbSource") is { } nullNodeImageSizeKbSource && nullNodeImageSizeKbSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageSizeKbSource = null;
+            if (parseNode.GetChildNode("imageUrlOptimized") is null) { _explicitNullValueImageUrlOptimized = default!; _explicitNullProperties?.Remove("imageUrlOptimized"); }
+            else if (parseNode.GetChildNode("imageUrlOptimized") is { } nullNodeImageUrlOptimized && nullNodeImageUrlOptimized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageUrlOptimized = null;
+            if (parseNode.GetChildNode("imageUrlSource") is null) { _explicitNullValueImageUrlSource = default!; _explicitNullProperties?.Remove("imageUrlSource"); }
+            else if (parseNode.GetChildNode("imageUrlSource") is { } nullNodeImageUrlSource && nullNodeImageUrlSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageUrlSource = null;
+            if (parseNode.GetChildNode("relID") is null) { _explicitNullValueRelID = default!; _explicitNullProperties?.Remove("relID"); }
+            else if (parseNode.GetChildNode("relID") is { } nullNodeRelID && nullNodeRelID.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RelID = null;
+            if (parseNode.GetChildNode("relname") is null) { _explicitNullValueRelname = default!; _explicitNullProperties?.Remove("relname"); }
+            else if (parseNode.GetChildNode("relname") is { } nullNodeRelname && nullNodeRelname.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Relname = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,73 +44,73 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The field property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Field { get => _explicitNullValueField; set { _explicitNullValueField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field"); else _explicitNullProperties?.Remove("field"); } }
+        public string? Field { get => _explicitNullValueField; set { _explicitNullValueField = value; AdditionalData?.Remove("field"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field"); else _explicitNullProperties?.Remove("field"); } }
         private string? _explicitNullValueField = default!;
 #nullable restore
 #else
-        public string Field { get => _explicitNullValueField; set { _explicitNullValueField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field"); else _explicitNullProperties?.Remove("field"); } }
+        public string Field { get => _explicitNullValueField; set { _explicitNullValueField = value; AdditionalData?.Remove("field"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field"); else _explicitNullProperties?.Remove("field"); } }
         private string _explicitNullValueField = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>The imageOptimizedComplete property</summary>
-        public bool? ImageOptimizedComplete { get => _explicitNullValueImageOptimizedComplete; set { _explicitNullValueImageOptimizedComplete = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageOptimizedComplete"); else _explicitNullProperties?.Remove("imageOptimizedComplete"); } }
+        public bool? ImageOptimizedComplete { get => _explicitNullValueImageOptimizedComplete; set { _explicitNullValueImageOptimizedComplete = value; AdditionalData?.Remove("imageOptimizedComplete"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageOptimizedComplete"); else _explicitNullProperties?.Remove("imageOptimizedComplete"); } }
         private bool? _explicitNullValueImageOptimizedComplete = default!;
         /// <summary>The imageOptimizedLastUpdated property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageOptimizedLastUpdated { get => _explicitNullValueImageOptimizedLastUpdated; set { _explicitNullValueImageOptimizedLastUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageOptimizedLastUpdated"); else _explicitNullProperties?.Remove("imageOptimizedLastUpdated"); } }
+        public string? ImageOptimizedLastUpdated { get => _explicitNullValueImageOptimizedLastUpdated; set { _explicitNullValueImageOptimizedLastUpdated = value; AdditionalData?.Remove("imageOptimizedLastUpdated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageOptimizedLastUpdated"); else _explicitNullProperties?.Remove("imageOptimizedLastUpdated"); } }
         private string? _explicitNullValueImageOptimizedLastUpdated = default!;
 #nullable restore
 #else
-        public string ImageOptimizedLastUpdated { get => _explicitNullValueImageOptimizedLastUpdated; set { _explicitNullValueImageOptimizedLastUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageOptimizedLastUpdated"); else _explicitNullProperties?.Remove("imageOptimizedLastUpdated"); } }
+        public string ImageOptimizedLastUpdated { get => _explicitNullValueImageOptimizedLastUpdated; set { _explicitNullValueImageOptimizedLastUpdated = value; AdditionalData?.Remove("imageOptimizedLastUpdated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageOptimizedLastUpdated"); else _explicitNullProperties?.Remove("imageOptimizedLastUpdated"); } }
         private string _explicitNullValueImageOptimizedLastUpdated = default!;
 #endif
         /// <summary>The imageSizeKbOptimized property</summary>
-        public double? ImageSizeKbOptimized { get => _explicitNullValueImageSizeKbOptimized; set { _explicitNullValueImageSizeKbOptimized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageSizeKbOptimized"); else _explicitNullProperties?.Remove("imageSizeKbOptimized"); } }
+        public double? ImageSizeKbOptimized { get => _explicitNullValueImageSizeKbOptimized; set { _explicitNullValueImageSizeKbOptimized = value; AdditionalData?.Remove("imageSizeKbOptimized"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageSizeKbOptimized"); else _explicitNullProperties?.Remove("imageSizeKbOptimized"); } }
         private double? _explicitNullValueImageSizeKbOptimized = default!;
         /// <summary>The imageSizeKbSource property</summary>
-        public double? ImageSizeKbSource { get => _explicitNullValueImageSizeKbSource; set { _explicitNullValueImageSizeKbSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageSizeKbSource"); else _explicitNullProperties?.Remove("imageSizeKbSource"); } }
+        public double? ImageSizeKbSource { get => _explicitNullValueImageSizeKbSource; set { _explicitNullValueImageSizeKbSource = value; AdditionalData?.Remove("imageSizeKbSource"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageSizeKbSource"); else _explicitNullProperties?.Remove("imageSizeKbSource"); } }
         private double? _explicitNullValueImageSizeKbSource = default!;
         /// <summary>The imageUrlOptimized property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageUrlOptimized { get => _explicitNullValueImageUrlOptimized; set { _explicitNullValueImageUrlOptimized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageUrlOptimized"); else _explicitNullProperties?.Remove("imageUrlOptimized"); } }
+        public string? ImageUrlOptimized { get => _explicitNullValueImageUrlOptimized; set { _explicitNullValueImageUrlOptimized = value; AdditionalData?.Remove("imageUrlOptimized"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageUrlOptimized"); else _explicitNullProperties?.Remove("imageUrlOptimized"); } }
         private string? _explicitNullValueImageUrlOptimized = default!;
 #nullable restore
 #else
-        public string ImageUrlOptimized { get => _explicitNullValueImageUrlOptimized; set { _explicitNullValueImageUrlOptimized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageUrlOptimized"); else _explicitNullProperties?.Remove("imageUrlOptimized"); } }
+        public string ImageUrlOptimized { get => _explicitNullValueImageUrlOptimized; set { _explicitNullValueImageUrlOptimized = value; AdditionalData?.Remove("imageUrlOptimized"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageUrlOptimized"); else _explicitNullProperties?.Remove("imageUrlOptimized"); } }
         private string _explicitNullValueImageUrlOptimized = default!;
 #endif
         /// <summary>The imageUrlSource property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageUrlSource { get => _explicitNullValueImageUrlSource; set { _explicitNullValueImageUrlSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageUrlSource"); else _explicitNullProperties?.Remove("imageUrlSource"); } }
+        public string? ImageUrlSource { get => _explicitNullValueImageUrlSource; set { _explicitNullValueImageUrlSource = value; AdditionalData?.Remove("imageUrlSource"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageUrlSource"); else _explicitNullProperties?.Remove("imageUrlSource"); } }
         private string? _explicitNullValueImageUrlSource = default!;
 #nullable restore
 #else
-        public string ImageUrlSource { get => _explicitNullValueImageUrlSource; set { _explicitNullValueImageUrlSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageUrlSource"); else _explicitNullProperties?.Remove("imageUrlSource"); } }
+        public string ImageUrlSource { get => _explicitNullValueImageUrlSource; set { _explicitNullValueImageUrlSource = value; AdditionalData?.Remove("imageUrlSource"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imageUrlSource"); else _explicitNullProperties?.Remove("imageUrlSource"); } }
         private string _explicitNullValueImageUrlSource = default!;
 #endif
         /// <summary>The relID property</summary>
-        public int? RelID { get => _explicitNullValueRelID; set { _explicitNullValueRelID = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relID"); else _explicitNullProperties?.Remove("relID"); } }
+        public int? RelID { get => _explicitNullValueRelID; set { _explicitNullValueRelID = value; AdditionalData?.Remove("relID"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relID"); else _explicitNullProperties?.Remove("relID"); } }
         private int? _explicitNullValueRelID = default!;
         /// <summary>The relname property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Relname { get => _explicitNullValueRelname; set { _explicitNullValueRelname = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relname"); else _explicitNullProperties?.Remove("relname"); } }
+        public string? Relname { get => _explicitNullValueRelname; set { _explicitNullValueRelname = value; AdditionalData?.Remove("relname"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relname"); else _explicitNullProperties?.Remove("relname"); } }
         private string? _explicitNullValueRelname = default!;
 #nullable restore
 #else
-        public string Relname { get => _explicitNullValueRelname; set { _explicitNullValueRelname = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relname"); else _explicitNullProperties?.Remove("relname"); } }
+        public string Relname { get => _explicitNullValueRelname; set { _explicitNullValueRelname = value; AdditionalData?.Remove("relname"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relname"); else _explicitNullProperties?.Remove("relname"); } }
         private string _explicitNullValueRelname = default!;
 #endif
         /// <summary>

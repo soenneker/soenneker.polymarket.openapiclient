@@ -17,8 +17,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("asset_id") is { } nullNodeAssetId && nullNodeAssetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetId = null;
-            if (parseNode.GetChildNode("market") is { } nullNodeMarket && nullNodeMarket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Market = null;
+            if (parseNode.GetChildNode("asset_id") is null) { _explicitNullValueAssetId = default!; _explicitNullProperties?.Remove("asset_id"); }
+            else if (parseNode.GetChildNode("asset_id") is { } nullNodeAssetId && nullNodeAssetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetId = null;
+            if (parseNode.GetChildNode("market") is null) { _explicitNullValueMarket = default!; _explicitNullProperties?.Remove("market"); }
+            else if (parseNode.GetChildNode("market") is { } nullNodeMarket && nullNodeMarket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Market = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Asset ID (token ID)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssetId { get => _explicitNullValueAssetId; set { _explicitNullValueAssetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_id"); else _explicitNullProperties?.Remove("asset_id"); } }
+        public string? AssetId { get => _explicitNullValueAssetId; set { _explicitNullValueAssetId = value; AdditionalData?.Remove("asset_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_id"); else _explicitNullProperties?.Remove("asset_id"); } }
         private string? _explicitNullValueAssetId = default!;
 #nullable restore
 #else
-        public string AssetId { get => _explicitNullValueAssetId; set { _explicitNullValueAssetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_id"); else _explicitNullProperties?.Remove("asset_id"); } }
+        public string AssetId { get => _explicitNullValueAssetId; set { _explicitNullValueAssetId = value; AdditionalData?.Remove("asset_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_id"); else _explicitNullProperties?.Remove("asset_id"); } }
         private string _explicitNullValueAssetId = default!;
 #endif
         /// <summary>Market (condition ID)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
+        public string? Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; AdditionalData?.Remove("market"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
         private string? _explicitNullValueMarket = default!;
 #nullable restore
 #else
-        public string Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
+        public string Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; AdditionalData?.Remove("market"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
         private string _explicitNullValueMarket = default!;
 #endif
         /// <summary>

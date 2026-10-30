@@ -17,7 +17,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("spread") is { } nullNodeSpread && nullNodeSpread.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Spread = null;
+            if (parseNode.GetChildNode("spread") is null) { _explicitNullValueSpread = default!; _explicitNullProperties?.Remove("spread"); }
+            else if (parseNode.GetChildNode("spread") is { } nullNodeSpread && nullNodeSpread.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Spread = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Spread as a string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Spread { get => _explicitNullValueSpread; set { _explicitNullValueSpread = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spread"); else _explicitNullProperties?.Remove("spread"); } }
+        public string? Spread { get => _explicitNullValueSpread; set { _explicitNullValueSpread = value; AdditionalData?.Remove("spread"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spread"); else _explicitNullProperties?.Remove("spread"); } }
         private string? _explicitNullValueSpread = default!;
 #nullable restore
 #else
-        public string Spread { get => _explicitNullValueSpread; set { _explicitNullValueSpread = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spread"); else _explicitNullProperties?.Remove("spread"); } }
+        public string Spread { get => _explicitNullValueSpread; set { _explicitNullValueSpread = value; AdditionalData?.Remove("spread"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spread"); else _explicitNullProperties?.Remove("spread"); } }
         private string _explicitNullValueSpread = default!;
 #endif
         /// <summary>

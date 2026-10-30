@@ -17,13 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("deployed") is { } nullNodeDeployed && nullNodeDeployed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deployed = null;
+            if (parseNode.GetChildNode("deployed") is null) { _explicitNullValueDeployed = default!; _explicitNullProperties?.Remove("deployed"); }
+            else if (parseNode.GetChildNode("deployed") is { } nullNodeDeployed && nullNodeDeployed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deployed = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the wallet is deployed</summary>
-        public bool? Deployed { get => _explicitNullValueDeployed; set { _explicitNullValueDeployed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployed"); else _explicitNullProperties?.Remove("deployed"); } }
+        public bool? Deployed { get => _explicitNullValueDeployed; set { _explicitNullValueDeployed = value; AdditionalData?.Remove("deployed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployed"); else _explicitNullProperties?.Remove("deployed"); } }
         private bool? _explicitNullValueDeployed = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.DeployedResponse"/> and sets the default values.

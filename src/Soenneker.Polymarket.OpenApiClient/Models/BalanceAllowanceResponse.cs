@@ -17,8 +17,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allowances") is { } nullNodeAllowances && nullNodeAllowances.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Allowances = null;
-            if (parseNode.GetChildNode("balance") is { } nullNodeBalance && nullNodeBalance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Balance = null;
+            if (parseNode.GetChildNode("allowances") is null) { _explicitNullValueAllowances = default!; _explicitNullProperties?.Remove("allowances"); }
+            else if (parseNode.GetChildNode("allowances") is { } nullNodeAllowances && nullNodeAllowances.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Allowances = null;
+            if (parseNode.GetChildNode("balance") is null) { _explicitNullValueBalance = default!; _explicitNullProperties?.Remove("balance"); }
+            else if (parseNode.GetChildNode("balance") is { } nullNodeBalance && nullNodeBalance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Balance = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Map of spender addresses to allowance amounts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.BalanceAllowanceResponseAllowancesProperty? Allowances { get => _explicitNullValueAllowances; set { _explicitNullValueAllowances = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowances"); else _explicitNullProperties?.Remove("allowances"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.BalanceAllowanceResponseAllowancesProperty? Allowances { get => _explicitNullValueAllowances; set { _explicitNullValueAllowances = value; AdditionalData?.Remove("allowances"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowances"); else _explicitNullProperties?.Remove("allowances"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.BalanceAllowanceResponseAllowancesProperty? _explicitNullValueAllowances = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.BalanceAllowanceResponseAllowancesProperty Allowances { get => _explicitNullValueAllowances; set { _explicitNullValueAllowances = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowances"); else _explicitNullProperties?.Remove("allowances"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.BalanceAllowanceResponseAllowancesProperty Allowances { get => _explicitNullValueAllowances; set { _explicitNullValueAllowances = value; AdditionalData?.Remove("allowances"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowances"); else _explicitNullProperties?.Remove("allowances"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.BalanceAllowanceResponseAllowancesProperty _explicitNullValueAllowances = default!;
 #endif
         /// <summary>Balance amount in fixed-math with 6 decimals</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Balance { get => _explicitNullValueBalance; set { _explicitNullValueBalance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("balance"); else _explicitNullProperties?.Remove("balance"); } }
+        public string? Balance { get => _explicitNullValueBalance; set { _explicitNullValueBalance = value; AdditionalData?.Remove("balance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("balance"); else _explicitNullProperties?.Remove("balance"); } }
         private string? _explicitNullValueBalance = default!;
 #nullable restore
 #else
-        public string Balance { get => _explicitNullValueBalance; set { _explicitNullValueBalance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("balance"); else _explicitNullProperties?.Remove("balance"); } }
+        public string Balance { get => _explicitNullValueBalance; set { _explicitNullValueBalance = value; AdditionalData?.Remove("balance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("balance"); else _explicitNullProperties?.Remove("balance"); } }
         private string _explicitNullValueBalance = default!;
 #endif
         /// <summary>

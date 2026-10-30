@@ -17,13 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("base_fee") is { } nullNodeBaseFee && nullNodeBaseFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseFee = null;
+            if (parseNode.GetChildNode("base_fee") is null) { _explicitNullValueBaseFee = default!; _explicitNullProperties?.Remove("base_fee"); }
+            else if (parseNode.GetChildNode("base_fee") is { } nullNodeBaseFee && nullNodeBaseFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseFee = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Base fee in basis points</summary>
-        public long? BaseFee { get => _explicitNullValueBaseFee; set { _explicitNullValueBaseFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_fee"); else _explicitNullProperties?.Remove("base_fee"); } }
+        public long? BaseFee { get => _explicitNullValueBaseFee; set { _explicitNullValueBaseFee = value; AdditionalData?.Remove("base_fee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_fee"); else _explicitNullProperties?.Remove("base_fee"); } }
         private long? _explicitNullValueBaseFee = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.FeeRate"/> and sets the default values.

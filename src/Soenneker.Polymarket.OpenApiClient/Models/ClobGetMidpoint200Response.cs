@@ -17,7 +17,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("mid_price") is { } nullNodeMidPrice && nullNodeMidPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MidPrice = null;
+            if (parseNode.GetChildNode("mid_price") is null) { _explicitNullValueMidPrice = default!; _explicitNullProperties?.Remove("mid_price"); }
+            else if (parseNode.GetChildNode("mid_price") is { } nullNodeMidPrice && nullNodeMidPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MidPrice = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Midpoint price as a string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MidPrice { get => _explicitNullValueMidPrice; set { _explicitNullValueMidPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mid_price"); else _explicitNullProperties?.Remove("mid_price"); } }
+        public string? MidPrice { get => _explicitNullValueMidPrice; set { _explicitNullValueMidPrice = value; AdditionalData?.Remove("mid_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mid_price"); else _explicitNullProperties?.Remove("mid_price"); } }
         private string? _explicitNullValueMidPrice = default!;
 #nullable restore
 #else
-        public string MidPrice { get => _explicitNullValueMidPrice; set { _explicitNullValueMidPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mid_price"); else _explicitNullProperties?.Remove("mid_price"); } }
+        public string MidPrice { get => _explicitNullValueMidPrice; set { _explicitNullValueMidPrice = value; AdditionalData?.Remove("mid_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mid_price"); else _explicitNullProperties?.Remove("mid_price"); } }
         private string _explicitNullValueMidPrice = default!;
 #endif
         /// <summary>

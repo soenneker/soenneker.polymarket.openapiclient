@@ -17,9 +17,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("notification") is { } nullNodeNotification && nullNodeNotification.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notification = null;
-            if (parseNode.GetChildNode("read_at") is { } nullNodeReadAt && nullNodeReadAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadAt = null;
-            if (parseNode.GetChildNode("ts") is { } nullNodeTs && nullNodeTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ts = null;
+            if (parseNode.GetChildNode("notification") is null) { _explicitNullValueNotification = default!; _explicitNullProperties?.Remove("notification"); }
+            else if (parseNode.GetChildNode("notification") is { } nullNodeNotification && nullNodeNotification.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notification = null;
+            if (parseNode.GetChildNode("read_at") is null) { _explicitNullValueReadAt = default!; _explicitNullProperties?.Remove("read_at"); }
+            else if (parseNode.GetChildNode("read_at") is { } nullNodeReadAt && nullNodeReadAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadAt = null;
+            if (parseNode.GetChildNode("ts") is null) { _explicitNullValueTs = default!; _explicitNullProperties?.Remove("ts"); }
+            else if (parseNode.GetChildNode("ts") is { } nullNodeTs && nullNodeTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ts = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,18 +30,18 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The notification payload. Fields vary by notification type; see the [Notifications channel](/api-reference/wss/perps-notifications) for the per-type shapes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty? Notification { get => _explicitNullValueNotification; set { _explicitNullValueNotification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notification"); else _explicitNullProperties?.Remove("notification"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty? Notification { get => _explicitNullValueNotification; set { _explicitNullValueNotification = value; AdditionalData?.Remove("notification"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notification"); else _explicitNullProperties?.Remove("notification"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty? _explicitNullValueNotification = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty Notification { get => _explicitNullValueNotification; set { _explicitNullValueNotification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notification"); else _explicitNullProperties?.Remove("notification"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty Notification { get => _explicitNullValueNotification; set { _explicitNullValueNotification = value; AdditionalData?.Remove("notification"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notification"); else _explicitNullProperties?.Remove("notification"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItemNotificationProperty _explicitNullValueNotification = default!;
 #endif
         /// <summary>When the recipient marked this notification read, Unix milliseconds; null if unread.</summary>
-        public long? ReadAt { get => _explicitNullValueReadAt; set { _explicitNullValueReadAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_at"); else _explicitNullProperties?.Remove("read_at"); } }
+        public long? ReadAt { get => _explicitNullValueReadAt; set { _explicitNullValueReadAt = value; AdditionalData?.Remove("read_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_at"); else _explicitNullProperties?.Remove("read_at"); } }
         private long? _explicitNullValueReadAt = default!;
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public long? Ts { get => _explicitNullValueTs; set { _explicitNullValueTs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ts"); else _explicitNullProperties?.Remove("ts"); } }
+        public long? Ts { get => _explicitNullValueTs; set { _explicitNullValueTs = value; AdditionalData?.Remove("ts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ts"); else _explicitNullProperties?.Remove("ts"); } }
         private long? _explicitNullValueTs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.NotificationItem"/> and sets the default values.

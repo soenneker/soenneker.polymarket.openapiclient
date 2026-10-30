@@ -17,10 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("event_id") is { } nullNodeEventId && nullNodeEventId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventId = null;
-            if (parseNode.GetChildNode("event_image") is { } nullNodeEventImage && nullNodeEventImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventImage = null;
-            if (parseNode.GetChildNode("event_slug") is { } nullNodeEventSlug && nullNodeEventSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventSlug = null;
-            if (parseNode.GetChildNode("event_title") is { } nullNodeEventTitle && nullNodeEventTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventTitle = null;
+            if (parseNode.GetChildNode("event_id") is null) { _explicitNullValueEventId = default!; _explicitNullProperties?.Remove("event_id"); }
+            else if (parseNode.GetChildNode("event_id") is { } nullNodeEventId && nullNodeEventId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventId = null;
+            if (parseNode.GetChildNode("event_image") is null) { _explicitNullValueEventImage = default!; _explicitNullProperties?.Remove("event_image"); }
+            else if (parseNode.GetChildNode("event_image") is { } nullNodeEventImage && nullNodeEventImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventImage = null;
+            if (parseNode.GetChildNode("event_slug") is null) { _explicitNullValueEventSlug = default!; _explicitNullProperties?.Remove("event_slug"); }
+            else if (parseNode.GetChildNode("event_slug") is { } nullNodeEventSlug && nullNodeEventSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventSlug = null;
+            if (parseNode.GetChildNode("event_title") is null) { _explicitNullValueEventTitle = default!; _explicitNullProperties?.Remove("event_title"); }
+            else if (parseNode.GetChildNode("event_title") is { } nullNodeEventTitle && nullNodeEventTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventTitle = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,41 +32,41 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The event_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventId { get => _explicitNullValueEventId; set { _explicitNullValueEventId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_id"); else _explicitNullProperties?.Remove("event_id"); } }
+        public string? EventId { get => _explicitNullValueEventId; set { _explicitNullValueEventId = value; AdditionalData?.Remove("event_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_id"); else _explicitNullProperties?.Remove("event_id"); } }
         private string? _explicitNullValueEventId = default!;
 #nullable restore
 #else
-        public string EventId { get => _explicitNullValueEventId; set { _explicitNullValueEventId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_id"); else _explicitNullProperties?.Remove("event_id"); } }
+        public string EventId { get => _explicitNullValueEventId; set { _explicitNullValueEventId = value; AdditionalData?.Remove("event_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_id"); else _explicitNullProperties?.Remove("event_id"); } }
         private string _explicitNullValueEventId = default!;
 #endif
         /// <summary>The event_image property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventImage { get => _explicitNullValueEventImage; set { _explicitNullValueEventImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_image"); else _explicitNullProperties?.Remove("event_image"); } }
+        public string? EventImage { get => _explicitNullValueEventImage; set { _explicitNullValueEventImage = value; AdditionalData?.Remove("event_image"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_image"); else _explicitNullProperties?.Remove("event_image"); } }
         private string? _explicitNullValueEventImage = default!;
 #nullable restore
 #else
-        public string EventImage { get => _explicitNullValueEventImage; set { _explicitNullValueEventImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_image"); else _explicitNullProperties?.Remove("event_image"); } }
+        public string EventImage { get => _explicitNullValueEventImage; set { _explicitNullValueEventImage = value; AdditionalData?.Remove("event_image"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_image"); else _explicitNullProperties?.Remove("event_image"); } }
         private string _explicitNullValueEventImage = default!;
 #endif
         /// <summary>The event_slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventSlug { get => _explicitNullValueEventSlug; set { _explicitNullValueEventSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_slug"); else _explicitNullProperties?.Remove("event_slug"); } }
+        public string? EventSlug { get => _explicitNullValueEventSlug; set { _explicitNullValueEventSlug = value; AdditionalData?.Remove("event_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_slug"); else _explicitNullProperties?.Remove("event_slug"); } }
         private string? _explicitNullValueEventSlug = default!;
 #nullable restore
 #else
-        public string EventSlug { get => _explicitNullValueEventSlug; set { _explicitNullValueEventSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_slug"); else _explicitNullProperties?.Remove("event_slug"); } }
+        public string EventSlug { get => _explicitNullValueEventSlug; set { _explicitNullValueEventSlug = value; AdditionalData?.Remove("event_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_slug"); else _explicitNullProperties?.Remove("event_slug"); } }
         private string _explicitNullValueEventSlug = default!;
 #endif
         /// <summary>The event_title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventTitle { get => _explicitNullValueEventTitle; set { _explicitNullValueEventTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_title"); else _explicitNullProperties?.Remove("event_title"); } }
+        public string? EventTitle { get => _explicitNullValueEventTitle; set { _explicitNullValueEventTitle = value; AdditionalData?.Remove("event_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_title"); else _explicitNullProperties?.Remove("event_title"); } }
         private string? _explicitNullValueEventTitle = default!;
 #nullable restore
 #else
-        public string EventTitle { get => _explicitNullValueEventTitle; set { _explicitNullValueEventTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_title"); else _explicitNullProperties?.Remove("event_title"); } }
+        public string EventTitle { get => _explicitNullValueEventTitle; set { _explicitNullValueEventTitle = value; AdditionalData?.Remove("event_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_title"); else _explicitNullProperties?.Remove("event_title"); } }
         private string _explicitNullValueEventTitle = default!;
 #endif
         /// <summary>

@@ -18,19 +18,32 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("builder") is { } nullNodeBuilder && nullNodeBuilder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Builder = null;
-            if (parseNode.GetChildNode("expiration") is { } nullNodeExpiration && nullNodeExpiration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Expiration = null;
-            if (parseNode.GetChildNode("maker") is { } nullNodeMaker && nullNodeMaker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Maker = null;
-            if (parseNode.GetChildNode("makerAmount") is { } nullNodeMakerAmount && nullNodeMakerAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAmount = null;
-            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
-            if (parseNode.GetChildNode("salt") is { } nullNodeSalt && nullNodeSalt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Salt = null;
-            if (parseNode.GetChildNode("side") is { } nullNodeSide && nullNodeSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Side = null;
-            if (parseNode.GetChildNode("signature") is { } nullNodeSignature && nullNodeSignature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Signature = null;
-            if (parseNode.GetChildNode("signatureType") is { } nullNodeSignatureType && nullNodeSignatureType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignatureType = null;
-            if (parseNode.GetChildNode("signer") is { } nullNodeSigner && nullNodeSigner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Signer = null;
-            if (parseNode.GetChildNode("takerAmount") is { } nullNodeTakerAmount && nullNodeTakerAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerAmount = null;
-            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
-            if (parseNode.GetChildNode("tokenId") is { } nullNodeTokenId && nullNodeTokenId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenId = null;
+            if (parseNode.GetChildNode("builder") is null) { _explicitNullValueBuilder = default!; _explicitNullProperties?.Remove("builder"); }
+            else if (parseNode.GetChildNode("builder") is { } nullNodeBuilder && nullNodeBuilder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Builder = null;
+            if (parseNode.GetChildNode("expiration") is null) { _explicitNullValueExpiration = default!; _explicitNullProperties?.Remove("expiration"); }
+            else if (parseNode.GetChildNode("expiration") is { } nullNodeExpiration && nullNodeExpiration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Expiration = null;
+            if (parseNode.GetChildNode("maker") is null) { _explicitNullValueMaker = default!; _explicitNullProperties?.Remove("maker"); }
+            else if (parseNode.GetChildNode("maker") is { } nullNodeMaker && nullNodeMaker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Maker = null;
+            if (parseNode.GetChildNode("makerAmount") is null) { _explicitNullValueMakerAmount = default!; _explicitNullProperties?.Remove("makerAmount"); }
+            else if (parseNode.GetChildNode("makerAmount") is { } nullNodeMakerAmount && nullNodeMakerAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAmount = null;
+            if (parseNode.GetChildNode("metadata") is null) { _explicitNullValueMetadata = default!; _explicitNullProperties?.Remove("metadata"); }
+            else if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("salt") is null) { _explicitNullValueSalt = default!; _explicitNullProperties?.Remove("salt"); }
+            else if (parseNode.GetChildNode("salt") is { } nullNodeSalt && nullNodeSalt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Salt = null;
+            if (parseNode.GetChildNode("side") is null) { _explicitNullValueSide = default!; _explicitNullProperties?.Remove("side"); }
+            else if (parseNode.GetChildNode("side") is { } nullNodeSide && nullNodeSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Side = null;
+            if (parseNode.GetChildNode("signature") is null) { _explicitNullValueSignature = default!; _explicitNullProperties?.Remove("signature"); }
+            else if (parseNode.GetChildNode("signature") is { } nullNodeSignature && nullNodeSignature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Signature = null;
+            if (parseNode.GetChildNode("signatureType") is null) { _explicitNullValueSignatureType = default!; _explicitNullProperties?.Remove("signatureType"); }
+            else if (parseNode.GetChildNode("signatureType") is { } nullNodeSignatureType && nullNodeSignatureType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignatureType = null;
+            if (parseNode.GetChildNode("signer") is null) { _explicitNullValueSigner = default!; _explicitNullProperties?.Remove("signer"); }
+            else if (parseNode.GetChildNode("signer") is { } nullNodeSigner && nullNodeSigner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Signer = null;
+            if (parseNode.GetChildNode("takerAmount") is null) { _explicitNullValueTakerAmount = default!; _explicitNullProperties?.Remove("takerAmount"); }
+            else if (parseNode.GetChildNode("takerAmount") is { } nullNodeTakerAmount && nullNodeTakerAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerAmount = null;
+            if (parseNode.GetChildNode("timestamp") is null) { _explicitNullValueTimestamp = default!; _explicitNullProperties?.Remove("timestamp"); }
+            else if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+            if (parseNode.GetChildNode("tokenId") is null) { _explicitNullValueTokenId = default!; _explicitNullProperties?.Remove("tokenId"); }
+            else if (parseNode.GetChildNode("tokenId") is { } nullNodeTokenId && nullNodeTokenId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -38,110 +51,110 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Builder code (bytes32) for integrator attribution. `0x` + 64 hex chars or empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
+        public string? Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
         private string? _explicitNullValueBuilder = default!;
 #nullable restore
 #else
-        public string Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
+        public string Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
         private string _explicitNullValueBuilder = default!;
 #endif
         /// <summary>Unix timestamp when the order expires. Present in the API wire body; not part of the CLOB V2 EIP-712 signed order struct.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Expiration { get => _explicitNullValueExpiration; set { _explicitNullValueExpiration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expiration"); else _explicitNullProperties?.Remove("expiration"); } }
+        public string? Expiration { get => _explicitNullValueExpiration; set { _explicitNullValueExpiration = value; AdditionalData?.Remove("expiration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expiration"); else _explicitNullProperties?.Remove("expiration"); } }
         private string? _explicitNullValueExpiration = default!;
 #nullable restore
 #else
-        public string Expiration { get => _explicitNullValueExpiration; set { _explicitNullValueExpiration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expiration"); else _explicitNullProperties?.Remove("expiration"); } }
+        public string Expiration { get => _explicitNullValueExpiration; set { _explicitNullValueExpiration = value; AdditionalData?.Remove("expiration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expiration"); else _explicitNullProperties?.Remove("expiration"); } }
         private string _explicitNullValueExpiration = default!;
 #endif
         /// <summary>Ethereum address of the maker (In the default case, this is your proxy address)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Maker { get => _explicitNullValueMaker; set { _explicitNullValueMaker = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker"); else _explicitNullProperties?.Remove("maker"); } }
+        public string? Maker { get => _explicitNullValueMaker; set { _explicitNullValueMaker = value; AdditionalData?.Remove("maker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker"); else _explicitNullProperties?.Remove("maker"); } }
         private string? _explicitNullValueMaker = default!;
 #nullable restore
 #else
-        public string Maker { get => _explicitNullValueMaker; set { _explicitNullValueMaker = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker"); else _explicitNullProperties?.Remove("maker"); } }
+        public string Maker { get => _explicitNullValueMaker; set { _explicitNullValueMaker = value; AdditionalData?.Remove("maker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker"); else _explicitNullProperties?.Remove("maker"); } }
         private string _explicitNullValueMaker = default!;
 #endif
         /// <summary>Amount the maker is providing in fixed-math with 6 decimals</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerAmount { get => _explicitNullValueMakerAmount; set { _explicitNullValueMakerAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makerAmount"); else _explicitNullProperties?.Remove("makerAmount"); } }
+        public string? MakerAmount { get => _explicitNullValueMakerAmount; set { _explicitNullValueMakerAmount = value; AdditionalData?.Remove("makerAmount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makerAmount"); else _explicitNullProperties?.Remove("makerAmount"); } }
         private string? _explicitNullValueMakerAmount = default!;
 #nullable restore
 #else
-        public string MakerAmount { get => _explicitNullValueMakerAmount; set { _explicitNullValueMakerAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makerAmount"); else _explicitNullProperties?.Remove("makerAmount"); } }
+        public string MakerAmount { get => _explicitNullValueMakerAmount; set { _explicitNullValueMakerAmount = value; AdditionalData?.Remove("makerAmount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makerAmount"); else _explicitNullProperties?.Remove("makerAmount"); } }
         private string _explicitNullValueMakerAmount = default!;
 #endif
         /// <summary>Reserved for future use</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        public string? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
         private string? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public string Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        public string Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
         private string _explicitNullValueMetadata = default!;
 #endif
         /// <summary>Random salt for order uniqueness</summary>
-        public int? Salt { get => _explicitNullValueSalt; set { _explicitNullValueSalt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("salt"); else _explicitNullProperties?.Remove("salt"); } }
+        public int? Salt { get => _explicitNullValueSalt; set { _explicitNullValueSalt = value; AdditionalData?.Remove("salt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("salt"); else _explicitNullProperties?.Remove("salt"); } }
         private int? _explicitNullValueSalt = default!;
         /// <summary>Order side</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrderSide? Side { get => _explicitNullValueSide; set { _explicitNullValueSide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side"); else _explicitNullProperties?.Remove("side"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrderSide? Side { get => _explicitNullValueSide; set { _explicitNullValueSide = value; AdditionalData?.Remove("side"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side"); else _explicitNullProperties?.Remove("side"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrderSide? _explicitNullValueSide = default!;
         /// <summary>Cryptographic signature of the order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Signature { get => _explicitNullValueSignature; set { _explicitNullValueSignature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signature"); else _explicitNullProperties?.Remove("signature"); } }
+        public string? Signature { get => _explicitNullValueSignature; set { _explicitNullValueSignature = value; AdditionalData?.Remove("signature"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signature"); else _explicitNullProperties?.Remove("signature"); } }
         private string? _explicitNullValueSignature = default!;
 #nullable restore
 #else
-        public string Signature { get => _explicitNullValueSignature; set { _explicitNullValueSignature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signature"); else _explicitNullProperties?.Remove("signature"); } }
+        public string Signature { get => _explicitNullValueSignature; set { _explicitNullValueSignature = value; AdditionalData?.Remove("signature"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signature"); else _explicitNullProperties?.Remove("signature"); } }
         private string _explicitNullValueSignature = default!;
 #endif
         /// <summary>Type of signature (0 = EOA, 1 = POLY_PROXY, 2 = POLY_GNOSIS_SAFE)</summary>
-        public int? SignatureType { get => _explicitNullValueSignatureType; set { _explicitNullValueSignatureType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signatureType"); else _explicitNullProperties?.Remove("signatureType"); } }
+        public int? SignatureType { get => _explicitNullValueSignatureType; set { _explicitNullValueSignatureType = value; AdditionalData?.Remove("signatureType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signatureType"); else _explicitNullProperties?.Remove("signatureType"); } }
         private int? _explicitNullValueSignatureType = default!;
         /// <summary>Ethereum address of the signer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Signer { get => _explicitNullValueSigner; set { _explicitNullValueSigner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer"); else _explicitNullProperties?.Remove("signer"); } }
+        public string? Signer { get => _explicitNullValueSigner; set { _explicitNullValueSigner = value; AdditionalData?.Remove("signer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer"); else _explicitNullProperties?.Remove("signer"); } }
         private string? _explicitNullValueSigner = default!;
 #nullable restore
 #else
-        public string Signer { get => _explicitNullValueSigner; set { _explicitNullValueSigner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer"); else _explicitNullProperties?.Remove("signer"); } }
+        public string Signer { get => _explicitNullValueSigner; set { _explicitNullValueSigner = value; AdditionalData?.Remove("signer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer"); else _explicitNullProperties?.Remove("signer"); } }
         private string _explicitNullValueSigner = default!;
 #endif
         /// <summary>Amount the taker is providing in fixed-math with 6 decimals</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TakerAmount { get => _explicitNullValueTakerAmount; set { _explicitNullValueTakerAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("takerAmount"); else _explicitNullProperties?.Remove("takerAmount"); } }
+        public string? TakerAmount { get => _explicitNullValueTakerAmount; set { _explicitNullValueTakerAmount = value; AdditionalData?.Remove("takerAmount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("takerAmount"); else _explicitNullProperties?.Remove("takerAmount"); } }
         private string? _explicitNullValueTakerAmount = default!;
 #nullable restore
 #else
-        public string TakerAmount { get => _explicitNullValueTakerAmount; set { _explicitNullValueTakerAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("takerAmount"); else _explicitNullProperties?.Remove("takerAmount"); } }
+        public string TakerAmount { get => _explicitNullValueTakerAmount; set { _explicitNullValueTakerAmount = value; AdditionalData?.Remove("takerAmount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("takerAmount"); else _explicitNullProperties?.Remove("takerAmount"); } }
         private string _explicitNullValueTakerAmount = default!;
 #endif
         /// <summary>Unix timestamp in milliseconds when the order was created (used for order uniqueness)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        public string? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; AdditionalData?.Remove("timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
         private string? _explicitNullValueTimestamp = default!;
 #nullable restore
 #else
-        public string Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        public string Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; AdditionalData?.Remove("timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
         private string _explicitNullValueTimestamp = default!;
 #endif
         /// <summary>Token ID (asset ID) for the order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenId"); else _explicitNullProperties?.Remove("tokenId"); } }
+        public string? TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; AdditionalData?.Remove("tokenId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenId"); else _explicitNullProperties?.Remove("tokenId"); } }
         private string? _explicitNullValueTokenId = default!;
 #nullable restore
 #else
-        public string TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenId"); else _explicitNullProperties?.Remove("tokenId"); } }
+        public string TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; AdditionalData?.Remove("tokenId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenId"); else _explicitNullProperties?.Remove("tokenId"); } }
         private string _explicitNullValueTokenId = default!;
 #endif
         /// <summary>
@@ -175,7 +188,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "makerAmount", n => { MakerAmount = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetStringValue(); } },
                 { "salt", n => { Salt = n.GetIntValue(); } },
-                { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrderSide>(); } },
+                { "side", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrderSide>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSide = default; _explicitNullProperties?.Remove("side"); AdditionalData["side"] = unknown; } else { Side = parsed; AdditionalData.Remove("side"); } } },
                 { "signature", n => { Signature = n.GetStringValue(); } },
                 { "signatureType", n => { SignatureType = n.GetIntValue(); } },
                 { "signer", n => { Signer = n.GetStringValue(); } },

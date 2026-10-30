@@ -7,6 +7,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ClobGetLastTradePrice200ResponseSide
     {
+        [EnumMember(Value = "")]
+        EmptyString,
+
         [EnumMember(Value = "BUY")]
         #pragma warning disable CS1591
         Buy,

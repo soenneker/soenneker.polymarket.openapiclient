@@ -18,27 +18,30 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("market") is { } nullNodeMarket && nullNodeMarket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Market = null;
-            if (parseNode.GetChildNode("tpsl") is { } nullNodeTpsl && nullNodeTpsl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tpsl = null;
-            if (parseNode.GetChildNode("trp") is { } nullNodeTrp && nullNodeTrp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trp = null;
+            if (parseNode.GetChildNode("market") is null) { _explicitNullValueMarket = default!; _explicitNullProperties?.Remove("market"); }
+            else if (parseNode.GetChildNode("market") is { } nullNodeMarket && nullNodeMarket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Market = null;
+            if (parseNode.GetChildNode("tpsl") is null) { _explicitNullValueTpsl = default!; _explicitNullProperties?.Remove("tpsl"); }
+            else if (parseNode.GetChildNode("tpsl") is { } nullNodeTpsl && nullNodeTpsl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tpsl = null;
+            if (parseNode.GetChildNode("trp") is null) { _explicitNullValueTrp = default!; _explicitNullProperties?.Remove("trp"); }
+            else if (parseNode.GetChildNode("trp") is { } nullNodeTrp && nullNodeTrp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trp = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the trigger executes as a market order</summary>
-        public bool? Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
+        public bool? Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; AdditionalData?.Remove("market"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
         private bool? _explicitNullValueMarket = default!;
         /// <summary>Trigger type</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl? Tpsl { get => _explicitNullValueTpsl; set { _explicitNullValueTpsl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tpsl"); else _explicitNullProperties?.Remove("tpsl"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl? Tpsl { get => _explicitNullValueTpsl; set { _explicitNullValueTpsl = value; AdditionalData?.Remove("tpsl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tpsl"); else _explicitNullProperties?.Remove("tpsl"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl? _explicitNullValueTpsl = default!;
         /// <summary>Trigger price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Trp { get => _explicitNullValueTrp; set { _explicitNullValueTrp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trp"); else _explicitNullProperties?.Remove("trp"); } }
+        public string? Trp { get => _explicitNullValueTrp; set { _explicitNullValueTrp = value; AdditionalData?.Remove("trp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trp"); else _explicitNullProperties?.Remove("trp"); } }
         private string? _explicitNullValueTrp = default!;
 #nullable restore
 #else
-        public string Trp { get => _explicitNullValueTrp; set { _explicitNullValueTrp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trp"); else _explicitNullProperties?.Remove("trp"); } }
+        public string Trp { get => _explicitNullValueTrp; set { _explicitNullValueTrp = value; AdditionalData?.Remove("trp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trp"); else _explicitNullProperties?.Remove("trp"); } }
         private string _explicitNullValueTrp = default!;
 #endif
         /// <summary>
@@ -67,7 +70,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "market", n => { Market = n.GetBoolValue(); } },
-                { "tpsl", n => { Tpsl = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl>(); } },
+                { "tpsl", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTpsl = default; _explicitNullProperties?.Remove("tpsl"); AdditionalData["tpsl"] = unknown; } else { Tpsl = parsed; AdditionalData.Remove("tpsl"); } } },
                 { "trp", n => { Trp = n.GetStringValue(); } },
             };
         }

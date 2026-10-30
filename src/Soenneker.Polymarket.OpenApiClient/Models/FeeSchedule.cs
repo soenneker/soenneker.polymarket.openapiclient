@@ -17,25 +17,29 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("exponent") is { } nullNodeExponent && nullNodeExponent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Exponent = null;
-            if (parseNode.GetChildNode("rate") is { } nullNodeRate && nullNodeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rate = null;
-            if (parseNode.GetChildNode("rebateRate") is { } nullNodeRebateRate && nullNodeRebateRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RebateRate = null;
-            if (parseNode.GetChildNode("takerOnly") is { } nullNodeTakerOnly && nullNodeTakerOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerOnly = null;
+            if (parseNode.GetChildNode("exponent") is null) { _explicitNullValueExponent = default!; _explicitNullProperties?.Remove("exponent"); }
+            else if (parseNode.GetChildNode("exponent") is { } nullNodeExponent && nullNodeExponent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Exponent = null;
+            if (parseNode.GetChildNode("rate") is null) { _explicitNullValueRate = default!; _explicitNullProperties?.Remove("rate"); }
+            else if (parseNode.GetChildNode("rate") is { } nullNodeRate && nullNodeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rate = null;
+            if (parseNode.GetChildNode("rebateRate") is null) { _explicitNullValueRebateRate = default!; _explicitNullProperties?.Remove("rebateRate"); }
+            else if (parseNode.GetChildNode("rebateRate") is { } nullNodeRebateRate && nullNodeRebateRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RebateRate = null;
+            if (parseNode.GetChildNode("takerOnly") is null) { _explicitNullValueTakerOnly = default!; _explicitNullProperties?.Remove("takerOnly"); }
+            else if (parseNode.GetChildNode("takerOnly") is { } nullNodeTakerOnly && nullNodeTakerOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerOnly = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The exponent property</summary>
-        public double? Exponent { get => _explicitNullValueExponent; set { _explicitNullValueExponent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exponent"); else _explicitNullProperties?.Remove("exponent"); } }
+        public double? Exponent { get => _explicitNullValueExponent; set { _explicitNullValueExponent = value; AdditionalData?.Remove("exponent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exponent"); else _explicitNullProperties?.Remove("exponent"); } }
         private double? _explicitNullValueExponent = default!;
         /// <summary>The rate property</summary>
-        public double? Rate { get => _explicitNullValueRate; set { _explicitNullValueRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate"); else _explicitNullProperties?.Remove("rate"); } }
+        public double? Rate { get => _explicitNullValueRate; set { _explicitNullValueRate = value; AdditionalData?.Remove("rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate"); else _explicitNullProperties?.Remove("rate"); } }
         private double? _explicitNullValueRate = default!;
         /// <summary>The rebateRate property</summary>
-        public double? RebateRate { get => _explicitNullValueRebateRate; set { _explicitNullValueRebateRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rebateRate"); else _explicitNullProperties?.Remove("rebateRate"); } }
+        public double? RebateRate { get => _explicitNullValueRebateRate; set { _explicitNullValueRebateRate = value; AdditionalData?.Remove("rebateRate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rebateRate"); else _explicitNullProperties?.Remove("rebateRate"); } }
         private double? _explicitNullValueRebateRate = default!;
         /// <summary>The takerOnly property</summary>
-        public bool? TakerOnly { get => _explicitNullValueTakerOnly; set { _explicitNullValueTakerOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("takerOnly"); else _explicitNullProperties?.Remove("takerOnly"); } }
+        public bool? TakerOnly { get => _explicitNullValueTakerOnly; set { _explicitNullValueTakerOnly = value; AdditionalData?.Remove("takerOnly"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("takerOnly"); else _explicitNullProperties?.Remove("takerOnly"); } }
         private bool? _explicitNullValueTakerOnly = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.FeeSchedule"/> and sets the default values.

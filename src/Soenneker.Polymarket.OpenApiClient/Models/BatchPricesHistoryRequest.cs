@@ -17,36 +17,41 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("end_ts") is { } nullNodeEndTs && nullNodeEndTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndTs = null;
-            if (parseNode.GetChildNode("fidelity") is { } nullNodeFidelity && nullNodeFidelity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fidelity = null;
-            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
-            if (parseNode.GetChildNode("markets") is { } nullNodeMarkets && nullNodeMarkets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Markets = null;
-            if (parseNode.GetChildNode("start_ts") is { } nullNodeStartTs && nullNodeStartTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartTs = null;
+            if (parseNode.GetChildNode("end_ts") is null) { _explicitNullValueEndTs = default!; _explicitNullProperties?.Remove("end_ts"); }
+            else if (parseNode.GetChildNode("end_ts") is { } nullNodeEndTs && nullNodeEndTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndTs = null;
+            if (parseNode.GetChildNode("fidelity") is null) { _explicitNullValueFidelity = default!; _explicitNullProperties?.Remove("fidelity"); }
+            else if (parseNode.GetChildNode("fidelity") is { } nullNodeFidelity && nullNodeFidelity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fidelity = null;
+            if (parseNode.GetChildNode("interval") is null) { _explicitNullValueInterval = default!; _explicitNullProperties?.Remove("interval"); }
+            else if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("markets") is null) { _explicitNullValueMarkets = default!; _explicitNullProperties?.Remove("markets"); }
+            else if (parseNode.GetChildNode("markets") is { } nullNodeMarkets && nullNodeMarkets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Markets = null;
+            if (parseNode.GetChildNode("start_ts") is null) { _explicitNullValueStartTs = default!; _explicitNullProperties?.Remove("start_ts"); }
+            else if (parseNode.GetChildNode("start_ts") is { } nullNodeStartTs && nullNodeStartTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartTs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Filter by items before this unix timestamp (seconds).</summary>
-        public double? EndTs { get => _explicitNullValueEndTs; set { _explicitNullValueEndTs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_ts"); else _explicitNullProperties?.Remove("end_ts"); } }
+        public double? EndTs { get => _explicitNullValueEndTs; set { _explicitNullValueEndTs = value; AdditionalData?.Remove("end_ts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_ts"); else _explicitNullProperties?.Remove("end_ts"); } }
         private double? _explicitNullValueEndTs = default!;
         /// <summary>Accuracy of the data expressed in minutes. Default is 1 minute.</summary>
-        public int? Fidelity { get => _explicitNullValueFidelity; set { _explicitNullValueFidelity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fidelity"); else _explicitNullProperties?.Remove("fidelity"); } }
+        public int? Fidelity { get => _explicitNullValueFidelity; set { _explicitNullValueFidelity = value; AdditionalData?.Remove("fidelity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fidelity"); else _explicitNullProperties?.Remove("fidelity"); } }
         private int? _explicitNullValueFidelity = default!;
         /// <summary>Time interval for data aggregation.</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.BatchPricesHistoryRequestInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.BatchPricesHistoryRequestInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; AdditionalData?.Remove("interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.BatchPricesHistoryRequestInterval? _explicitNullValueInterval = default!;
         /// <summary>List of market asset ids to query. Maximum 20.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Markets { get => _explicitNullValueMarkets; set { _explicitNullValueMarkets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markets"); else _explicitNullProperties?.Remove("markets"); } }
+        public List<string>? Markets { get => _explicitNullValueMarkets; set { _explicitNullValueMarkets = value; AdditionalData?.Remove("markets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markets"); else _explicitNullProperties?.Remove("markets"); } }
         private List<string>? _explicitNullValueMarkets = default!;
 #nullable restore
 #else
-        public List<string> Markets { get => _explicitNullValueMarkets; set { _explicitNullValueMarkets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markets"); else _explicitNullProperties?.Remove("markets"); } }
+        public List<string> Markets { get => _explicitNullValueMarkets; set { _explicitNullValueMarkets = value; AdditionalData?.Remove("markets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markets"); else _explicitNullProperties?.Remove("markets"); } }
         private List<string> _explicitNullValueMarkets = default!;
 #endif
         /// <summary>Filter by items after this unix timestamp (seconds).</summary>
-        public double? StartTs { get => _explicitNullValueStartTs; set { _explicitNullValueStartTs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_ts"); else _explicitNullProperties?.Remove("start_ts"); } }
+        public double? StartTs { get => _explicitNullValueStartTs; set { _explicitNullValueStartTs = value; AdditionalData?.Remove("start_ts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_ts"); else _explicitNullProperties?.Remove("start_ts"); } }
         private double? _explicitNullValueStartTs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.BatchPricesHistoryRequest"/> and sets the default values.
@@ -75,7 +80,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "end_ts", n => { EndTs = n.GetDoubleValue(); } },
                 { "fidelity", n => { Fidelity = n.GetIntValue(); } },
-                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.BatchPricesHistoryRequestInterval>(); } },
+                { "interval", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.BatchPricesHistoryRequestInterval>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInterval = default; _explicitNullProperties?.Remove("interval"); AdditionalData["interval"] = unknown; } else { Interval = parsed; AdditionalData.Remove("interval"); } } },
                 { "markets", n => { Markets = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "start_ts", n => { StartTs = n.GetDoubleValue(); } },
             };

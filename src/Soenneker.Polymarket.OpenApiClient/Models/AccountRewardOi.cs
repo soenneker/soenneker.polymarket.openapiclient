@@ -17,18 +17,20 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("account_oi") is { } nullNodeAccountOi && nullNodeAccountOi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountOi = null;
-            if (parseNode.GetChildNode("reward_amount") is { } nullNodeRewardAmount && nullNodeRewardAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardAmount = null;
+            if (parseNode.GetChildNode("account_oi") is null) { _explicitNullValueAccountOi = default!; _explicitNullProperties?.Remove("account_oi"); }
+            else if (parseNode.GetChildNode("account_oi") is { } nullNodeAccountOi && nullNodeAccountOi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountOi = null;
+            if (parseNode.GetChildNode("reward_amount") is null) { _explicitNullValueRewardAmount = default!; _explicitNullProperties?.Remove("reward_amount"); }
+            else if (parseNode.GetChildNode("reward_amount") is { } nullNodeRewardAmount && nullNodeRewardAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardAmount = null;
         }
 
         /// <summary>Daily average gross open-interest notional for this account across all instruments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccountOi { get => _explicitNullValueAccountOi; set { _explicitNullValueAccountOi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_oi"); else _explicitNullProperties?.Remove("account_oi"); } }
+        public string? AccountOi { get => _explicitNullValueAccountOi; set { _explicitNullValueAccountOi = value; AdditionalData?.Remove("account_oi"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_oi"); else _explicitNullProperties?.Remove("account_oi"); } }
         private string? _explicitNullValueAccountOi = default!;
 #nullable restore
 #else
-        public string AccountOi { get => _explicitNullValueAccountOi; set { _explicitNullValueAccountOi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_oi"); else _explicitNullProperties?.Remove("account_oi"); } }
+        public string AccountOi { get => _explicitNullValueAccountOi; set { _explicitNullValueAccountOi = value; AdditionalData?.Remove("account_oi"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_oi"); else _explicitNullProperties?.Remove("account_oi"); } }
         private string _explicitNullValueAccountOi = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -36,11 +38,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Reward amount attributed to this reward row</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RewardAmount { get => _explicitNullValueRewardAmount; set { _explicitNullValueRewardAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_amount"); else _explicitNullProperties?.Remove("reward_amount"); } }
+        public string? RewardAmount { get => _explicitNullValueRewardAmount; set { _explicitNullValueRewardAmount = value; AdditionalData?.Remove("reward_amount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_amount"); else _explicitNullProperties?.Remove("reward_amount"); } }
         private string? _explicitNullValueRewardAmount = default!;
 #nullable restore
 #else
-        public string RewardAmount { get => _explicitNullValueRewardAmount; set { _explicitNullValueRewardAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_amount"); else _explicitNullProperties?.Remove("reward_amount"); } }
+        public string RewardAmount { get => _explicitNullValueRewardAmount; set { _explicitNullValueRewardAmount = value; AdditionalData?.Remove("reward_amount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reward_amount"); else _explicitNullProperties?.Remove("reward_amount"); } }
         private string _explicitNullValueRewardAmount = default!;
 #endif
         /// <summary>

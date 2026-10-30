@@ -17,7 +17,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("marketTypes") is { } nullNodeMarketTypes && nullNodeMarketTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarketTypes = null;
+            if (parseNode.GetChildNode("marketTypes") is null) { _explicitNullValueMarketTypes = default!; _explicitNullProperties?.Remove("marketTypes"); }
+            else if (parseNode.GetChildNode("marketTypes") is { } nullNodeMarketTypes && nullNodeMarketTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarketTypes = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>List of all valid sports market types</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MarketTypes { get => _explicitNullValueMarketTypes; set { _explicitNullValueMarketTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketTypes"); else _explicitNullProperties?.Remove("marketTypes"); } }
+        public List<string>? MarketTypes { get => _explicitNullValueMarketTypes; set { _explicitNullValueMarketTypes = value; AdditionalData?.Remove("marketTypes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketTypes"); else _explicitNullProperties?.Remove("marketTypes"); } }
         private List<string>? _explicitNullValueMarketTypes = default!;
 #nullable restore
 #else
-        public List<string> MarketTypes { get => _explicitNullValueMarketTypes; set { _explicitNullValueMarketTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketTypes"); else _explicitNullProperties?.Remove("marketTypes"); } }
+        public List<string> MarketTypes { get => _explicitNullValueMarketTypes; set { _explicitNullValueMarketTypes = value; AdditionalData?.Remove("marketTypes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketTypes"); else _explicitNullProperties?.Remove("marketTypes"); } }
         private List<string> _explicitNullValueMarketTypes = default!;
 #endif
         /// <summary>

@@ -17,13 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("registered") is { } nullNodeRegistered && nullNodeRegistered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Registered = null;
+            if (parseNode.GetChildNode("registered") is null) { _explicitNullValueRegistered = default!; _explicitNullProperties?.Remove("registered"); }
+            else if (parseNode.GetChildNode("registered") is { } nullNodeRegistered && nullNodeRegistered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Registered = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the address has a Perps account.</summary>
-        public bool? Registered { get => _explicitNullValueRegistered; set { _explicitNullValueRegistered = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("registered"); else _explicitNullProperties?.Remove("registered"); } }
+        public bool? Registered { get => _explicitNullValueRegistered; set { _explicitNullValueRegistered = value; AdditionalData?.Remove("registered"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("registered"); else _explicitNullProperties?.Remove("registered"); } }
         private bool? _explicitNullValueRegistered = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.RegisteredResponse"/> and sets the default values.

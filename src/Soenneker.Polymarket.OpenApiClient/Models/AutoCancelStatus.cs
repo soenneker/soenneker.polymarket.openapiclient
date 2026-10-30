@@ -17,25 +17,29 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("daily_limit") is { } nullNodeDailyLimit && nullNodeDailyLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyLimit = null;
-            if (parseNode.GetChildNode("deadline") is { } nullNodeDeadline && nullNodeDeadline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deadline = null;
-            if (parseNode.GetChildNode("next_reset") is { } nullNodeNextReset && nullNodeNextReset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextReset = null;
-            if (parseNode.GetChildNode("triggered") is { } nullNodeTriggered && nullNodeTriggered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Triggered = null;
+            if (parseNode.GetChildNode("daily_limit") is null) { _explicitNullValueDailyLimit = default!; _explicitNullProperties?.Remove("daily_limit"); }
+            else if (parseNode.GetChildNode("daily_limit") is { } nullNodeDailyLimit && nullNodeDailyLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyLimit = null;
+            if (parseNode.GetChildNode("deadline") is null) { _explicitNullValueDeadline = default!; _explicitNullProperties?.Remove("deadline"); }
+            else if (parseNode.GetChildNode("deadline") is { } nullNodeDeadline && nullNodeDeadline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deadline = null;
+            if (parseNode.GetChildNode("next_reset") is null) { _explicitNullValueNextReset = default!; _explicitNullProperties?.Remove("next_reset"); }
+            else if (parseNode.GetChildNode("next_reset") is { } nullNodeNextReset && nullNodeNextReset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextReset = null;
+            if (parseNode.GetChildNode("triggered") is null) { _explicitNullValueTriggered = default!; _explicitNullProperties?.Remove("triggered"); }
+            else if (parseNode.GetChildNode("triggered") is { } nullNodeTriggered && nullNodeTriggered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Triggered = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of auto-cancel triggers allowed per UTC day.</summary>
-        public int? DailyLimit { get => _explicitNullValueDailyLimit; set { _explicitNullValueDailyLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_limit"); else _explicitNullProperties?.Remove("daily_limit"); } }
+        public int? DailyLimit { get => _explicitNullValueDailyLimit; set { _explicitNullValueDailyLimit = value; AdditionalData?.Remove("daily_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_limit"); else _explicitNullProperties?.Remove("daily_limit"); } }
         private int? _explicitNullValueDailyLimit = default!;
         /// <summary>Deadline of the armed auto-cancel schedule, in Unix milliseconds. Zeromeans no schedule is armed. When the deadline passes, the exchange cancelsevery open order on the account and the schedule clears.</summary>
-        public long? Deadline { get => _explicitNullValueDeadline; set { _explicitNullValueDeadline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deadline"); else _explicitNullProperties?.Remove("deadline"); } }
+        public long? Deadline { get => _explicitNullValueDeadline; set { _explicitNullValueDeadline = value; AdditionalData?.Remove("deadline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deadline"); else _explicitNullProperties?.Remove("deadline"); } }
         private long? _explicitNullValueDeadline = default!;
         /// <summary>Unix-ms timestamp of the next UTC midnight when the daily triggercount resets to zero.</summary>
-        public long? NextReset { get => _explicitNullValueNextReset; set { _explicitNullValueNextReset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_reset"); else _explicitNullProperties?.Remove("next_reset"); } }
+        public long? NextReset { get => _explicitNullValueNextReset; set { _explicitNullValueNextReset = value; AdditionalData?.Remove("next_reset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_reset"); else _explicitNullProperties?.Remove("next_reset"); } }
         private long? _explicitNullValueNextReset = default!;
         /// <summary>Number of times auto-cancel has fired for this account during thecurrent UTC day. Resets to zero at 00:00 UTC.</summary>
-        public int? Triggered { get => _explicitNullValueTriggered; set { _explicitNullValueTriggered = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggered"); else _explicitNullProperties?.Remove("triggered"); } }
+        public int? Triggered { get => _explicitNullValueTriggered; set { _explicitNullValueTriggered = value; AdditionalData?.Remove("triggered"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggered"); else _explicitNullProperties?.Remove("triggered"); } }
         private int? _explicitNullValueTriggered = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AutoCancelStatus"/> and sets the default values.

@@ -18,10 +18,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("btc") is { } nullNodeBtc && nullNodeBtc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Btc = null;
-            if (parseNode.GetChildNode("evm") is { } nullNodeEvm && nullNodeEvm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evm = null;
-            if (parseNode.GetChildNode("svm") is { } nullNodeSvm && nullNodeSvm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Svm = null;
-            if (parseNode.GetChildNode("tron") is { } nullNodeTron && nullNodeTron.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tron = null;
+            if (parseNode.GetChildNode("btc") is null) { _explicitNullValueBtc = default!; _explicitNullProperties?.Remove("btc"); }
+            else if (parseNode.GetChildNode("btc") is { } nullNodeBtc && nullNodeBtc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Btc = null;
+            if (parseNode.GetChildNode("evm") is null) { _explicitNullValueEvm = default!; _explicitNullProperties?.Remove("evm"); }
+            else if (parseNode.GetChildNode("evm") is { } nullNodeEvm && nullNodeEvm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evm = null;
+            if (parseNode.GetChildNode("svm") is null) { _explicitNullValueSvm = default!; _explicitNullProperties?.Remove("svm"); }
+            else if (parseNode.GetChildNode("svm") is { } nullNodeSvm && nullNodeSvm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Svm = null;
+            if (parseNode.GetChildNode("tron") is null) { _explicitNullValueTron = default!; _explicitNullProperties?.Remove("tron"); }
+            else if (parseNode.GetChildNode("tron") is { } nullNodeTron && nullNodeTron.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tron = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,41 +33,41 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Bitcoin bridge address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Btc { get => _explicitNullValueBtc; set { _explicitNullValueBtc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("btc"); else _explicitNullProperties?.Remove("btc"); } }
+        public string? Btc { get => _explicitNullValueBtc; set { _explicitNullValueBtc = value; AdditionalData?.Remove("btc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("btc"); else _explicitNullProperties?.Remove("btc"); } }
         private string? _explicitNullValueBtc = default!;
 #nullable restore
 #else
-        public string Btc { get => _explicitNullValueBtc; set { _explicitNullValueBtc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("btc"); else _explicitNullProperties?.Remove("btc"); } }
+        public string Btc { get => _explicitNullValueBtc; set { _explicitNullValueBtc = value; AdditionalData?.Remove("btc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("btc"); else _explicitNullProperties?.Remove("btc"); } }
         private string _explicitNullValueBtc = default!;
 #endif
         /// <summary>EVM-compatible bridge address (Ethereum, Polygon, Arbitrum, Base, etc.)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Evm { get => _explicitNullValueEvm; set { _explicitNullValueEvm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evm"); else _explicitNullProperties?.Remove("evm"); } }
+        public string? Evm { get => _explicitNullValueEvm; set { _explicitNullValueEvm = value; AdditionalData?.Remove("evm"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evm"); else _explicitNullProperties?.Remove("evm"); } }
         private string? _explicitNullValueEvm = default!;
 #nullable restore
 #else
-        public string Evm { get => _explicitNullValueEvm; set { _explicitNullValueEvm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evm"); else _explicitNullProperties?.Remove("evm"); } }
+        public string Evm { get => _explicitNullValueEvm; set { _explicitNullValueEvm = value; AdditionalData?.Remove("evm"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evm"); else _explicitNullProperties?.Remove("evm"); } }
         private string _explicitNullValueEvm = default!;
 #endif
         /// <summary>Solana Virtual Machine bridge address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Svm { get => _explicitNullValueSvm; set { _explicitNullValueSvm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svm"); else _explicitNullProperties?.Remove("svm"); } }
+        public string? Svm { get => _explicitNullValueSvm; set { _explicitNullValueSvm = value; AdditionalData?.Remove("svm"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svm"); else _explicitNullProperties?.Remove("svm"); } }
         private string? _explicitNullValueSvm = default!;
 #nullable restore
 #else
-        public string Svm { get => _explicitNullValueSvm; set { _explicitNullValueSvm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svm"); else _explicitNullProperties?.Remove("svm"); } }
+        public string Svm { get => _explicitNullValueSvm; set { _explicitNullValueSvm = value; AdditionalData?.Remove("svm"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svm"); else _explicitNullProperties?.Remove("svm"); } }
         private string _explicitNullValueSvm = default!;
 #endif
         /// <summary>Tron bridge address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tron { get => _explicitNullValueTron; set { _explicitNullValueTron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tron"); else _explicitNullProperties?.Remove("tron"); } }
+        public string? Tron { get => _explicitNullValueTron; set { _explicitNullValueTron = value; AdditionalData?.Remove("tron"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tron"); else _explicitNullProperties?.Remove("tron"); } }
         private string? _explicitNullValueTron = default!;
 #nullable restore
 #else
-        public string Tron { get => _explicitNullValueTron; set { _explicitNullValueTron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tron"); else _explicitNullProperties?.Remove("tron"); } }
+        public string Tron { get => _explicitNullValueTron; set { _explicitNullValueTron = value; AdditionalData?.Remove("tron"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tron"); else _explicitNullProperties?.Remove("tron"); } }
         private string _explicitNullValueTron = default!;
 #endif
         /// <summary>

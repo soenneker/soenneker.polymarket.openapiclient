@@ -17,60 +17,66 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cancel_only") is { } nullNodeCancelOnly && nullNodeCancelOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CancelOnly = null;
-            if (parseNode.GetChildNode("chain_id") is { } nullNodeChainId && nullNodeChainId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChainId = null;
-            if (parseNode.GetChildNode("contract") is { } nullNodeContract && nullNodeContract.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Contract = null;
-            if (parseNode.GetChildNode("engine_version") is { } nullNodeEngineVersion && nullNodeEngineVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineVersion = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("cancel_only") is null) { _explicitNullValueCancelOnly = default!; _explicitNullProperties?.Remove("cancel_only"); }
+            else if (parseNode.GetChildNode("cancel_only") is { } nullNodeCancelOnly && nullNodeCancelOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CancelOnly = null;
+            if (parseNode.GetChildNode("chain_id") is null) { _explicitNullValueChainId = default!; _explicitNullProperties?.Remove("chain_id"); }
+            else if (parseNode.GetChildNode("chain_id") is { } nullNodeChainId && nullNodeChainId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChainId = null;
+            if (parseNode.GetChildNode("contract") is null) { _explicitNullValueContract = default!; _explicitNullProperties?.Remove("contract"); }
+            else if (parseNode.GetChildNode("contract") is { } nullNodeContract && nullNodeContract.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Contract = null;
+            if (parseNode.GetChildNode("engine_version") is null) { _explicitNullValueEngineVersion = default!; _explicitNullProperties?.Remove("engine_version"); }
+            else if (parseNode.GetChildNode("engine_version") is { } nullNodeEngineVersion && nullNodeEngineVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineVersion = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
+            else if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True while the exchange is in cancel-only (maintenance) mode — only order cancellation is accepted.</summary>
-        public bool? CancelOnly { get => _explicitNullValueCancelOnly; set { _explicitNullValueCancelOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cancel_only"); else _explicitNullProperties?.Remove("cancel_only"); } }
+        public bool? CancelOnly { get => _explicitNullValueCancelOnly; set { _explicitNullValueCancelOnly = value; AdditionalData?.Remove("cancel_only"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cancel_only"); else _explicitNullProperties?.Remove("cancel_only"); } }
         private bool? _explicitNullValueCancelOnly = default!;
         /// <summary>Chain ID of the network the exchange is deployed on.</summary>
-        public int? ChainId { get => _explicitNullValueChainId; set { _explicitNullValueChainId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chain_id"); else _explicitNullProperties?.Remove("chain_id"); } }
+        public int? ChainId { get => _explicitNullValueChainId; set { _explicitNullValueChainId = value; AdditionalData?.Remove("chain_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chain_id"); else _explicitNullProperties?.Remove("chain_id"); } }
         private int? _explicitNullValueChainId = default!;
         /// <summary>Verifying contract address or the EIP-712 domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Contract { get => _explicitNullValueContract; set { _explicitNullValueContract = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contract"); else _explicitNullProperties?.Remove("contract"); } }
+        public string? Contract { get => _explicitNullValueContract; set { _explicitNullValueContract = value; AdditionalData?.Remove("contract"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contract"); else _explicitNullProperties?.Remove("contract"); } }
         private string? _explicitNullValueContract = default!;
 #nullable restore
 #else
-        public string Contract { get => _explicitNullValueContract; set { _explicitNullValueContract = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contract"); else _explicitNullProperties?.Remove("contract"); } }
+        public string Contract { get => _explicitNullValueContract; set { _explicitNullValueContract = value; AdditionalData?.Remove("contract"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contract"); else _explicitNullProperties?.Remove("contract"); } }
         private string _explicitNullValueContract = default!;
 #endif
         /// <summary>Engine release version of the build serving this response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_version"); else _explicitNullProperties?.Remove("engine_version"); } }
+        public string? EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; AdditionalData?.Remove("engine_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_version"); else _explicitNullProperties?.Remove("engine_version"); } }
         private string? _explicitNullValueEngineVersion = default!;
 #nullable restore
 #else
-        public string EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_version"); else _explicitNullProperties?.Remove("engine_version"); } }
+        public string EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; AdditionalData?.Remove("engine_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_version"); else _explicitNullProperties?.Remove("engine_version"); } }
         private string _explicitNullValueEngineVersion = default!;
 #endif
         /// <summary>Exchange name used in the EIP-712 domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Exchange version used in the EIP-712 domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private string? _explicitNullValueVersion = default!;
 #nullable restore
 #else
-        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private string _explicitNullValueVersion = default!;
 #endif
         /// <summary>

@@ -17,8 +17,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("positionSize") is { } nullNodePositionSize && nullNodePositionSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PositionSize = null;
-            if (parseNode.GetChildNode("tokenId") is { } nullNodeTokenId && nullNodeTokenId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenId = null;
+            if (parseNode.GetChildNode("positionSize") is null) { _explicitNullValuePositionSize = default!; _explicitNullProperties?.Remove("positionSize"); }
+            else if (parseNode.GetChildNode("positionSize") is { } nullNodePositionSize && nullNodePositionSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PositionSize = null;
+            if (parseNode.GetChildNode("tokenId") is null) { _explicitNullValueTokenId = default!; _explicitNullProperties?.Remove("tokenId"); }
+            else if (parseNode.GetChildNode("tokenId") is { } nullNodeTokenId && nullNodeTokenId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The positionSize property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PositionSize { get => _explicitNullValuePositionSize; set { _explicitNullValuePositionSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positionSize"); else _explicitNullProperties?.Remove("positionSize"); } }
+        public string? PositionSize { get => _explicitNullValuePositionSize; set { _explicitNullValuePositionSize = value; AdditionalData?.Remove("positionSize"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positionSize"); else _explicitNullProperties?.Remove("positionSize"); } }
         private string? _explicitNullValuePositionSize = default!;
 #nullable restore
 #else
-        public string PositionSize { get => _explicitNullValuePositionSize; set { _explicitNullValuePositionSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positionSize"); else _explicitNullProperties?.Remove("positionSize"); } }
+        public string PositionSize { get => _explicitNullValuePositionSize; set { _explicitNullValuePositionSize = value; AdditionalData?.Remove("positionSize"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positionSize"); else _explicitNullProperties?.Remove("positionSize"); } }
         private string _explicitNullValuePositionSize = default!;
 #endif
         /// <summary>The tokenId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenId"); else _explicitNullProperties?.Remove("tokenId"); } }
+        public string? TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; AdditionalData?.Remove("tokenId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenId"); else _explicitNullProperties?.Remove("tokenId"); } }
         private string? _explicitNullValueTokenId = default!;
 #nullable restore
 #else
-        public string TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenId"); else _explicitNullProperties?.Remove("tokenId"); } }
+        public string TokenId { get => _explicitNullValueTokenId; set { _explicitNullValueTokenId = value; AdditionalData?.Remove("tokenId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenId"); else _explicitNullProperties?.Remove("tokenId"); } }
         private string _explicitNullValueTokenId = default!;
 #endif
         /// <summary>

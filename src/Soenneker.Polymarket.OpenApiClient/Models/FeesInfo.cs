@@ -17,7 +17,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("fee_schedule") is { } nullNodeFeeSchedule && nullNodeFeeSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeSchedule = null;
+            if (parseNode.GetChildNode("fee_schedule") is null) { _explicitNullValueFeeSchedule = default!; _explicitNullProperties?.Remove("fee_schedule"); }
+            else if (parseNode.GetChildNode("fee_schedule") is { } nullNodeFeeSchedule && nullNodeFeeSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeSchedule = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The fee_schedule property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry>? FeeSchedule { get => _explicitNullValueFeeSchedule; set { _explicitNullValueFeeSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_schedule"); else _explicitNullProperties?.Remove("fee_schedule"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry>? FeeSchedule { get => _explicitNullValueFeeSchedule; set { _explicitNullValueFeeSchedule = value; AdditionalData?.Remove("fee_schedule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_schedule"); else _explicitNullProperties?.Remove("fee_schedule"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry>? _explicitNullValueFeeSchedule = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry> FeeSchedule { get => _explicitNullValueFeeSchedule; set { _explicitNullValueFeeSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_schedule"); else _explicitNullProperties?.Remove("fee_schedule"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry> FeeSchedule { get => _explicitNullValueFeeSchedule; set { _explicitNullValueFeeSchedule = value; AdditionalData?.Remove("fee_schedule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_schedule"); else _explicitNullProperties?.Remove("fee_schedule"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry> _explicitNullValueFeeSchedule = default!;
 #endif
         /// <summary>

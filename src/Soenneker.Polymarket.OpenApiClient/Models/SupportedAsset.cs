@@ -17,10 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("chainId") is { } nullNodeChainId && nullNodeChainId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChainId = null;
-            if (parseNode.GetChildNode("chainName") is { } nullNodeChainName && nullNodeChainName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChainName = null;
-            if (parseNode.GetChildNode("minCheckoutUsd") is { } nullNodeMinCheckoutUsd && nullNodeMinCheckoutUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinCheckoutUsd = null;
-            if (parseNode.GetChildNode("token") is { } nullNodeToken && nullNodeToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Token = null;
+            if (parseNode.GetChildNode("chainId") is null) { _explicitNullValueChainId = default!; _explicitNullProperties?.Remove("chainId"); }
+            else if (parseNode.GetChildNode("chainId") is { } nullNodeChainId && nullNodeChainId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChainId = null;
+            if (parseNode.GetChildNode("chainName") is null) { _explicitNullValueChainName = default!; _explicitNullProperties?.Remove("chainName"); }
+            else if (parseNode.GetChildNode("chainName") is { } nullNodeChainName && nullNodeChainName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChainName = null;
+            if (parseNode.GetChildNode("minCheckoutUsd") is null) { _explicitNullValueMinCheckoutUsd = default!; _explicitNullProperties?.Remove("minCheckoutUsd"); }
+            else if (parseNode.GetChildNode("minCheckoutUsd") is { } nullNodeMinCheckoutUsd && nullNodeMinCheckoutUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinCheckoutUsd = null;
+            if (parseNode.GetChildNode("token") is null) { _explicitNullValueToken = default!; _explicitNullProperties?.Remove("token"); }
+            else if (parseNode.GetChildNode("token") is { } nullNodeToken && nullNodeToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Token = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,34 +32,34 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Chain ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChainId { get => _explicitNullValueChainId; set { _explicitNullValueChainId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chainId"); else _explicitNullProperties?.Remove("chainId"); } }
+        public string? ChainId { get => _explicitNullValueChainId; set { _explicitNullValueChainId = value; AdditionalData?.Remove("chainId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chainId"); else _explicitNullProperties?.Remove("chainId"); } }
         private string? _explicitNullValueChainId = default!;
 #nullable restore
 #else
-        public string ChainId { get => _explicitNullValueChainId; set { _explicitNullValueChainId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chainId"); else _explicitNullProperties?.Remove("chainId"); } }
+        public string ChainId { get => _explicitNullValueChainId; set { _explicitNullValueChainId = value; AdditionalData?.Remove("chainId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chainId"); else _explicitNullProperties?.Remove("chainId"); } }
         private string _explicitNullValueChainId = default!;
 #endif
         /// <summary>Human-readable chain name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChainName { get => _explicitNullValueChainName; set { _explicitNullValueChainName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chainName"); else _explicitNullProperties?.Remove("chainName"); } }
+        public string? ChainName { get => _explicitNullValueChainName; set { _explicitNullValueChainName = value; AdditionalData?.Remove("chainName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chainName"); else _explicitNullProperties?.Remove("chainName"); } }
         private string? _explicitNullValueChainName = default!;
 #nullable restore
 #else
-        public string ChainName { get => _explicitNullValueChainName; set { _explicitNullValueChainName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chainName"); else _explicitNullProperties?.Remove("chainName"); } }
+        public string ChainName { get => _explicitNullValueChainName; set { _explicitNullValueChainName = value; AdditionalData?.Remove("chainName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chainName"); else _explicitNullProperties?.Remove("chainName"); } }
         private string _explicitNullValueChainName = default!;
 #endif
         /// <summary>Minimum amount in USD for deposits and withdrawals</summary>
-        public double? MinCheckoutUsd { get => _explicitNullValueMinCheckoutUsd; set { _explicitNullValueMinCheckoutUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minCheckoutUsd"); else _explicitNullProperties?.Remove("minCheckoutUsd"); } }
+        public double? MinCheckoutUsd { get => _explicitNullValueMinCheckoutUsd; set { _explicitNullValueMinCheckoutUsd = value; AdditionalData?.Remove("minCheckoutUsd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minCheckoutUsd"); else _explicitNullProperties?.Remove("minCheckoutUsd"); } }
         private double? _explicitNullValueMinCheckoutUsd = default!;
         /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Token? Token { get => _explicitNullValueToken; set { _explicitNullValueToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token"); else _explicitNullProperties?.Remove("token"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Token? Token { get => _explicitNullValueToken; set { _explicitNullValueToken = value; AdditionalData?.Remove("token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token"); else _explicitNullProperties?.Remove("token"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Token? _explicitNullValueToken = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Token Token { get => _explicitNullValueToken; set { _explicitNullValueToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token"); else _explicitNullProperties?.Remove("token"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Token Token { get => _explicitNullValueToken; set { _explicitNullValueToken = value; AdditionalData?.Remove("token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token"); else _explicitNullProperties?.Remove("token"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Token _explicitNullValueToken = default!;
 #endif
         /// <summary>

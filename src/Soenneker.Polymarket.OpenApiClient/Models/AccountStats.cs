@@ -17,78 +17,85 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("account_maker_share_7d") is { } nullNodeAccountMakerShare7d && nullNodeAccountMakerShare7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountMakerShare7d = null;
-            if (parseNode.GetChildNode("entity_id") is { } nullNodeEntityId && nullNodeEntityId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntityId = null;
-            if (parseNode.GetChildNode("entity_maker_share_7d") is { } nullNodeEntityMakerShare7d && nullNodeEntityMakerShare7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntityMakerShare7d = null;
-            if (parseNode.GetChildNode("entity_name") is { } nullNodeEntityName && nullNodeEntityName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntityName = null;
-            if (parseNode.GetChildNode("maker_volume_7d") is { } nullNodeMakerVolume7d && nullNodeMakerVolume7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerVolume7d = null;
-            if (parseNode.GetChildNode("taker_volume_7d") is { } nullNodeTakerVolume7d && nullNodeTakerVolume7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerVolume7d = null;
-            if (parseNode.GetChildNode("volume_7d") is { } nullNodeVolume7d && nullNodeVolume7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Volume7d = null;
+            if (parseNode.GetChildNode("account_maker_share_7d") is null) { _explicitNullValueAccountMakerShare7d = default!; _explicitNullProperties?.Remove("account_maker_share_7d"); }
+            else if (parseNode.GetChildNode("account_maker_share_7d") is { } nullNodeAccountMakerShare7d && nullNodeAccountMakerShare7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountMakerShare7d = null;
+            if (parseNode.GetChildNode("entity_id") is null) { _explicitNullValueEntityId = default!; _explicitNullProperties?.Remove("entity_id"); }
+            else if (parseNode.GetChildNode("entity_id") is { } nullNodeEntityId && nullNodeEntityId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntityId = null;
+            if (parseNode.GetChildNode("entity_maker_share_7d") is null) { _explicitNullValueEntityMakerShare7d = default!; _explicitNullProperties?.Remove("entity_maker_share_7d"); }
+            else if (parseNode.GetChildNode("entity_maker_share_7d") is { } nullNodeEntityMakerShare7d && nullNodeEntityMakerShare7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntityMakerShare7d = null;
+            if (parseNode.GetChildNode("entity_name") is null) { _explicitNullValueEntityName = default!; _explicitNullProperties?.Remove("entity_name"); }
+            else if (parseNode.GetChildNode("entity_name") is { } nullNodeEntityName && nullNodeEntityName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntityName = null;
+            if (parseNode.GetChildNode("maker_volume_7d") is null) { _explicitNullValueMakerVolume7d = default!; _explicitNullProperties?.Remove("maker_volume_7d"); }
+            else if (parseNode.GetChildNode("maker_volume_7d") is { } nullNodeMakerVolume7d && nullNodeMakerVolume7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerVolume7d = null;
+            if (parseNode.GetChildNode("taker_volume_7d") is null) { _explicitNullValueTakerVolume7d = default!; _explicitNullProperties?.Remove("taker_volume_7d"); }
+            else if (parseNode.GetChildNode("taker_volume_7d") is { } nullNodeTakerVolume7d && nullNodeTakerVolume7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerVolume7d = null;
+            if (parseNode.GetChildNode("volume_7d") is null) { _explicitNullValueVolume7d = default!; _explicitNullProperties?.Remove("volume_7d"); }
+            else if (parseNode.GetChildNode("volume_7d") is { } nullNodeVolume7d && nullNodeVolume7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Volume7d = null;
         }
 
         /// <summary>Rolling 7-day account maker volume divided by total exchange volume</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccountMakerShare7d { get => _explicitNullValueAccountMakerShare7d; set { _explicitNullValueAccountMakerShare7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_maker_share_7d"); else _explicitNullProperties?.Remove("account_maker_share_7d"); } }
+        public string? AccountMakerShare7d { get => _explicitNullValueAccountMakerShare7d; set { _explicitNullValueAccountMakerShare7d = value; AdditionalData?.Remove("account_maker_share_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_maker_share_7d"); else _explicitNullProperties?.Remove("account_maker_share_7d"); } }
         private string? _explicitNullValueAccountMakerShare7d = default!;
 #nullable restore
 #else
-        public string AccountMakerShare7d { get => _explicitNullValueAccountMakerShare7d; set { _explicitNullValueAccountMakerShare7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_maker_share_7d"); else _explicitNullProperties?.Remove("account_maker_share_7d"); } }
+        public string AccountMakerShare7d { get => _explicitNullValueAccountMakerShare7d; set { _explicitNullValueAccountMakerShare7d = value; AdditionalData?.Remove("account_maker_share_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_maker_share_7d"); else _explicitNullProperties?.Remove("account_maker_share_7d"); } }
         private string _explicitNullValueAccountMakerShare7d = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Liquidity rewards entity ID</summary>
-        public int? EntityId { get => _explicitNullValueEntityId; set { _explicitNullValueEntityId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_id"); else _explicitNullProperties?.Remove("entity_id"); } }
+        public int? EntityId { get => _explicitNullValueEntityId; set { _explicitNullValueEntityId = value; AdditionalData?.Remove("entity_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_id"); else _explicitNullProperties?.Remove("entity_id"); } }
         private int? _explicitNullValueEntityId = default!;
         /// <summary>Rolling 7-day entity maker volume divided by total exchange volume</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EntityMakerShare7d { get => _explicitNullValueEntityMakerShare7d; set { _explicitNullValueEntityMakerShare7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_maker_share_7d"); else _explicitNullProperties?.Remove("entity_maker_share_7d"); } }
+        public string? EntityMakerShare7d { get => _explicitNullValueEntityMakerShare7d; set { _explicitNullValueEntityMakerShare7d = value; AdditionalData?.Remove("entity_maker_share_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_maker_share_7d"); else _explicitNullProperties?.Remove("entity_maker_share_7d"); } }
         private string? _explicitNullValueEntityMakerShare7d = default!;
 #nullable restore
 #else
-        public string EntityMakerShare7d { get => _explicitNullValueEntityMakerShare7d; set { _explicitNullValueEntityMakerShare7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_maker_share_7d"); else _explicitNullProperties?.Remove("entity_maker_share_7d"); } }
+        public string EntityMakerShare7d { get => _explicitNullValueEntityMakerShare7d; set { _explicitNullValueEntityMakerShare7d = value; AdditionalData?.Remove("entity_maker_share_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_maker_share_7d"); else _explicitNullProperties?.Remove("entity_maker_share_7d"); } }
         private string _explicitNullValueEntityMakerShare7d = default!;
 #endif
         /// <summary>Liquidity rewards entity name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EntityName { get => _explicitNullValueEntityName; set { _explicitNullValueEntityName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_name"); else _explicitNullProperties?.Remove("entity_name"); } }
+        public string? EntityName { get => _explicitNullValueEntityName; set { _explicitNullValueEntityName = value; AdditionalData?.Remove("entity_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_name"); else _explicitNullProperties?.Remove("entity_name"); } }
         private string? _explicitNullValueEntityName = default!;
 #nullable restore
 #else
-        public string EntityName { get => _explicitNullValueEntityName; set { _explicitNullValueEntityName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_name"); else _explicitNullProperties?.Remove("entity_name"); } }
+        public string EntityName { get => _explicitNullValueEntityName; set { _explicitNullValueEntityName = value; AdditionalData?.Remove("entity_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entity_name"); else _explicitNullProperties?.Remove("entity_name"); } }
         private string _explicitNullValueEntityName = default!;
 #endif
         /// <summary>Rolling 7-day perpetual maker volume in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerVolume7d { get => _explicitNullValueMakerVolume7d; set { _explicitNullValueMakerVolume7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_volume_7d"); else _explicitNullProperties?.Remove("maker_volume_7d"); } }
+        public string? MakerVolume7d { get => _explicitNullValueMakerVolume7d; set { _explicitNullValueMakerVolume7d = value; AdditionalData?.Remove("maker_volume_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_volume_7d"); else _explicitNullProperties?.Remove("maker_volume_7d"); } }
         private string? _explicitNullValueMakerVolume7d = default!;
 #nullable restore
 #else
-        public string MakerVolume7d { get => _explicitNullValueMakerVolume7d; set { _explicitNullValueMakerVolume7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_volume_7d"); else _explicitNullProperties?.Remove("maker_volume_7d"); } }
+        public string MakerVolume7d { get => _explicitNullValueMakerVolume7d; set { _explicitNullValueMakerVolume7d = value; AdditionalData?.Remove("maker_volume_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_volume_7d"); else _explicitNullProperties?.Remove("maker_volume_7d"); } }
         private string _explicitNullValueMakerVolume7d = default!;
 #endif
         /// <summary>Rolling 7-day perpetual taker volume in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TakerVolume7d { get => _explicitNullValueTakerVolume7d; set { _explicitNullValueTakerVolume7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_volume_7d"); else _explicitNullProperties?.Remove("taker_volume_7d"); } }
+        public string? TakerVolume7d { get => _explicitNullValueTakerVolume7d; set { _explicitNullValueTakerVolume7d = value; AdditionalData?.Remove("taker_volume_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_volume_7d"); else _explicitNullProperties?.Remove("taker_volume_7d"); } }
         private string? _explicitNullValueTakerVolume7d = default!;
 #nullable restore
 #else
-        public string TakerVolume7d { get => _explicitNullValueTakerVolume7d; set { _explicitNullValueTakerVolume7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_volume_7d"); else _explicitNullProperties?.Remove("taker_volume_7d"); } }
+        public string TakerVolume7d { get => _explicitNullValueTakerVolume7d; set { _explicitNullValueTakerVolume7d = value; AdditionalData?.Remove("taker_volume_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_volume_7d"); else _explicitNullProperties?.Remove("taker_volume_7d"); } }
         private string _explicitNullValueTakerVolume7d = default!;
 #endif
         /// <summary>Rolling 7-day perpetual trading volume in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Volume7d { get => _explicitNullValueVolume7d; set { _explicitNullValueVolume7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_7d"); else _explicitNullProperties?.Remove("volume_7d"); } }
+        public string? Volume7d { get => _explicitNullValueVolume7d; set { _explicitNullValueVolume7d = value; AdditionalData?.Remove("volume_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_7d"); else _explicitNullProperties?.Remove("volume_7d"); } }
         private string? _explicitNullValueVolume7d = default!;
 #nullable restore
 #else
-        public string Volume7d { get => _explicitNullValueVolume7d; set { _explicitNullValueVolume7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_7d"); else _explicitNullProperties?.Remove("volume_7d"); } }
+        public string Volume7d { get => _explicitNullValueVolume7d; set { _explicitNullValueVolume7d = value; AdditionalData?.Remove("volume_7d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_7d"); else _explicitNullProperties?.Remove("volume_7d"); } }
         private string _explicitNullValueVolume7d = default!;
 #endif
         /// <summary>

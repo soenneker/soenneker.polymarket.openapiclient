@@ -17,8 +17,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("lower_bound") is { } nullNodeLowerBound && nullNodeLowerBound.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LowerBound = null;
-            if (parseNode.GetChildNode("max_leverage") is { } nullNodeMaxLeverage && nullNodeMaxLeverage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxLeverage = null;
+            if (parseNode.GetChildNode("lower_bound") is null) { _explicitNullValueLowerBound = default!; _explicitNullProperties?.Remove("lower_bound"); }
+            else if (parseNode.GetChildNode("lower_bound") is { } nullNodeLowerBound && nullNodeLowerBound.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LowerBound = null;
+            if (parseNode.GetChildNode("max_leverage") is null) { _explicitNullValueMaxLeverage = default!; _explicitNullProperties?.Remove("max_leverage"); }
+            else if (parseNode.GetChildNode("max_leverage") is { } nullNodeMaxLeverage && nullNodeMaxLeverage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxLeverage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Position size lower bound</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LowerBound { get => _explicitNullValueLowerBound; set { _explicitNullValueLowerBound = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lower_bound"); else _explicitNullProperties?.Remove("lower_bound"); } }
+        public string? LowerBound { get => _explicitNullValueLowerBound; set { _explicitNullValueLowerBound = value; AdditionalData?.Remove("lower_bound"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lower_bound"); else _explicitNullProperties?.Remove("lower_bound"); } }
         private string? _explicitNullValueLowerBound = default!;
 #nullable restore
 #else
-        public string LowerBound { get => _explicitNullValueLowerBound; set { _explicitNullValueLowerBound = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lower_bound"); else _explicitNullProperties?.Remove("lower_bound"); } }
+        public string LowerBound { get => _explicitNullValueLowerBound; set { _explicitNullValueLowerBound = value; AdditionalData?.Remove("lower_bound"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lower_bound"); else _explicitNullProperties?.Remove("lower_bound"); } }
         private string _explicitNullValueLowerBound = default!;
 #endif
         /// <summary>Maximum leverage</summary>
-        public int? MaxLeverage { get => _explicitNullValueMaxLeverage; set { _explicitNullValueMaxLeverage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_leverage"); else _explicitNullProperties?.Remove("max_leverage"); } }
+        public int? MaxLeverage { get => _explicitNullValueMaxLeverage; set { _explicitNullValueMaxLeverage = value; AdditionalData?.Remove("max_leverage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_leverage"); else _explicitNullProperties?.Remove("max_leverage"); } }
         private int? _explicitNullValueMaxLeverage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.RiskTier"/> and sets the default values.

@@ -17,27 +17,30 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("max_spread") is { } nullNodeMaxSpread && nullNodeMaxSpread.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSpread = null;
-            if (parseNode.GetChildNode("min_size") is { } nullNodeMinSize && nullNodeMinSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinSize = null;
-            if (parseNode.GetChildNode("rates") is { } nullNodeRates && nullNodeRates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rates = null;
+            if (parseNode.GetChildNode("max_spread") is null) { _explicitNullValueMaxSpread = default!; _explicitNullProperties?.Remove("max_spread"); }
+            else if (parseNode.GetChildNode("max_spread") is { } nullNodeMaxSpread && nullNodeMaxSpread.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSpread = null;
+            if (parseNode.GetChildNode("min_size") is null) { _explicitNullValueMinSize = default!; _explicitNullProperties?.Remove("min_size"); }
+            else if (parseNode.GetChildNode("min_size") is { } nullNodeMinSize && nullNodeMinSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinSize = null;
+            if (parseNode.GetChildNode("rates") is null) { _explicitNullValueRates = default!; _explicitNullProperties?.Remove("rates"); }
+            else if (parseNode.GetChildNode("rates") is { } nullNodeRates && nullNodeRates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rates = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The max_spread property</summary>
-        public double? MaxSpread { get => _explicitNullValueMaxSpread; set { _explicitNullValueMaxSpread = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_spread"); else _explicitNullProperties?.Remove("max_spread"); } }
+        public double? MaxSpread { get => _explicitNullValueMaxSpread; set { _explicitNullValueMaxSpread = value; AdditionalData?.Remove("max_spread"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_spread"); else _explicitNullProperties?.Remove("max_spread"); } }
         private double? _explicitNullValueMaxSpread = default!;
         /// <summary>The min_size property</summary>
-        public double? MinSize { get => _explicitNullValueMinSize; set { _explicitNullValueMinSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_size"); else _explicitNullProperties?.Remove("min_size"); } }
+        public double? MinSize { get => _explicitNullValueMinSize; set { _explicitNullValueMinSize = value; AdditionalData?.Remove("min_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_size"); else _explicitNullProperties?.Remove("min_size"); } }
         private double? _explicitNullValueMinSize = default!;
         /// <summary>The rates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RewardsRatesItem>? Rates { get => _explicitNullValueRates; set { _explicitNullValueRates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rates"); else _explicitNullProperties?.Remove("rates"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RewardsRatesItem>? Rates { get => _explicitNullValueRates; set { _explicitNullValueRates = value; AdditionalData?.Remove("rates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rates"); else _explicitNullProperties?.Remove("rates"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.RewardsRatesItem>? _explicitNullValueRates = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RewardsRatesItem> Rates { get => _explicitNullValueRates; set { _explicitNullValueRates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rates"); else _explicitNullProperties?.Remove("rates"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RewardsRatesItem> Rates { get => _explicitNullValueRates; set { _explicitNullValueRates = value; AdditionalData?.Remove("rates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rates"); else _explicitNullProperties?.Remove("rates"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.RewardsRatesItem> _explicitNullValueRates = default!;
 #endif
         /// <summary>

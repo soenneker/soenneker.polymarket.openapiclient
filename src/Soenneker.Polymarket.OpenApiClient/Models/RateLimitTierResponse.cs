@@ -18,49 +18,54 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("next_tier_threshold") is { } nullNodeNextTierThreshold && nullNodeNextTierThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextTierThreshold = null;
-            if (parseNode.GetChildNode("period") is { } nullNodePeriod && nullNodePeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Period = null;
-            if (parseNode.GetChildNode("tier") is { } nullNodeTier && nullNodeTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tier = null;
-            if (parseNode.GetChildNode("tier_details") is { } nullNodeTierDetails && nullNodeTierDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierDetails = null;
-            if (parseNode.GetChildNode("usdc_volume") is { } nullNodeUsdcVolume && nullNodeUsdcVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsdcVolume = null;
+            if (parseNode.GetChildNode("next_tier_threshold") is null) { _explicitNullValueNextTierThreshold = default!; _explicitNullProperties?.Remove("next_tier_threshold"); }
+            else if (parseNode.GetChildNode("next_tier_threshold") is { } nullNodeNextTierThreshold && nullNodeNextTierThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextTierThreshold = null;
+            if (parseNode.GetChildNode("period") is null) { _explicitNullValuePeriod = default!; _explicitNullProperties?.Remove("period"); }
+            else if (parseNode.GetChildNode("period") is { } nullNodePeriod && nullNodePeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Period = null;
+            if (parseNode.GetChildNode("tier") is null) { _explicitNullValueTier = default!; _explicitNullProperties?.Remove("tier"); }
+            else if (parseNode.GetChildNode("tier") is { } nullNodeTier && nullNodeTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tier = null;
+            if (parseNode.GetChildNode("tier_details") is null) { _explicitNullValueTierDetails = default!; _explicitNullProperties?.Remove("tier_details"); }
+            else if (parseNode.GetChildNode("tier_details") is { } nullNodeTierDetails && nullNodeTierDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierDetails = null;
+            if (parseNode.GetChildNode("usdc_volume") is null) { _explicitNullValueUsdcVolume = default!; _explicitNullProperties?.Remove("usdc_volume"); }
+            else if (parseNode.GetChildNode("usdc_volume") is { } nullNodeUsdcVolume && nullNodeUsdcVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsdcVolume = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>30-day volume needed for the next tier. Omitted at the top tier and for manually assigned tiers</summary>
-        public int? NextTierThreshold { get => _explicitNullValueNextTierThreshold; set { _explicitNullValueNextTierThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_tier_threshold"); else _explicitNullProperties?.Remove("next_tier_threshold"); } }
+        public int? NextTierThreshold { get => _explicitNullValueNextTierThreshold; set { _explicitNullValueNextTierThreshold = value; AdditionalData?.Remove("next_tier_threshold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_tier_threshold"); else _explicitNullProperties?.Remove("next_tier_threshold"); } }
         private int? _explicitNullValueNextTierThreshold = default!;
         /// <summary>Length of the volume window, in days</summary>
-        public int? Period { get => _explicitNullValuePeriod; set { _explicitNullValuePeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period"); else _explicitNullProperties?.Remove("period"); } }
+        public int? Period { get => _explicitNullValuePeriod; set { _explicitNullValuePeriod = value; AdditionalData?.Remove("period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period"); else _explicitNullProperties?.Remove("period"); } }
         private int? _explicitNullValuePeriod = default!;
         /// <summary>Tier currently applied to your signer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tier { get => _explicitNullValueTier; set { _explicitNullValueTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier"); else _explicitNullProperties?.Remove("tier"); } }
+        public string? Tier { get => _explicitNullValueTier; set { _explicitNullValueTier = value; AdditionalData?.Remove("tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier"); else _explicitNullProperties?.Remove("tier"); } }
         private string? _explicitNullValueTier = default!;
 #nullable restore
 #else
-        public string Tier { get => _explicitNullValueTier; set { _explicitNullValueTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier"); else _explicitNullProperties?.Remove("tier"); } }
+        public string Tier { get => _explicitNullValueTier; set { _explicitNullValueTier = value; AdditionalData?.Remove("tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier"); else _explicitNullProperties?.Remove("tier"); } }
         private string _explicitNullValueTier = default!;
 #endif
         /// <summary>Rate, burst and negative-balance settings for the tier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails? TierDetails { get => _explicitNullValueTierDetails; set { _explicitNullValueTierDetails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_details"); else _explicitNullProperties?.Remove("tier_details"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails? TierDetails { get => _explicitNullValueTierDetails; set { _explicitNullValueTierDetails = value; AdditionalData?.Remove("tier_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_details"); else _explicitNullProperties?.Remove("tier_details"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails? _explicitNullValueTierDetails = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails TierDetails { get => _explicitNullValueTierDetails; set { _explicitNullValueTierDetails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_details"); else _explicitNullProperties?.Remove("tier_details"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails TierDetails { get => _explicitNullValueTierDetails; set { _explicitNullValueTierDetails = value; AdditionalData?.Remove("tier_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_details"); else _explicitNullProperties?.Remove("tier_details"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails _explicitNullValueTierDetails = default!;
 #endif
         /// <summary>Trailing-window volume, in USDC, of the maker wallet that set your tier. Omitted below the lowest paid tier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsdcVolume { get => _explicitNullValueUsdcVolume; set { _explicitNullValueUsdcVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usdc_volume"); else _explicitNullProperties?.Remove("usdc_volume"); } }
+        public string? UsdcVolume { get => _explicitNullValueUsdcVolume; set { _explicitNullValueUsdcVolume = value; AdditionalData?.Remove("usdc_volume"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usdc_volume"); else _explicitNullProperties?.Remove("usdc_volume"); } }
         private string? _explicitNullValueUsdcVolume = default!;
 #nullable restore
 #else
-        public string UsdcVolume { get => _explicitNullValueUsdcVolume; set { _explicitNullValueUsdcVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usdc_volume"); else _explicitNullProperties?.Remove("usdc_volume"); } }
+        public string UsdcVolume { get => _explicitNullValueUsdcVolume; set { _explicitNullValueUsdcVolume = value; AdditionalData?.Remove("usdc_volume"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usdc_volume"); else _explicitNullProperties?.Remove("usdc_volume"); } }
         private string _explicitNullValueUsdcVolume = default!;
 #endif
         /// <summary>

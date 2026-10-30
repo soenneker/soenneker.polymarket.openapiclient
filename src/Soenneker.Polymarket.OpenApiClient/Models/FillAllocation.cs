@@ -17,12 +17,18 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("maker_address") is { } nullNodeMakerAddress && nullNodeMakerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAddress = null;
-            if (parseNode.GetChildNode("maker_quote_id") is { } nullNodeMakerQuoteId && nullNodeMakerQuoteId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerQuoteId = null;
-            if (parseNode.GetChildNode("price_e6") is { } nullNodePriceE6 && nullNodePriceE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PriceE6 = null;
-            if (parseNode.GetChildNode("received_at") is { } nullNodeReceivedAt && nullNodeReceivedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReceivedAt = null;
-            if (parseNode.GetChildNode("signer_address") is { } nullNodeSignerAddress && nullNodeSignerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignerAddress = null;
-            if (parseNode.GetChildNode("size_e6") is { } nullNodeSizeE6 && nullNodeSizeE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeE6 = null;
+            if (parseNode.GetChildNode("maker_address") is null) { _explicitNullValueMakerAddress = default!; _explicitNullProperties?.Remove("maker_address"); }
+            else if (parseNode.GetChildNode("maker_address") is { } nullNodeMakerAddress && nullNodeMakerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAddress = null;
+            if (parseNode.GetChildNode("maker_quote_id") is null) { _explicitNullValueMakerQuoteId = default!; _explicitNullProperties?.Remove("maker_quote_id"); }
+            else if (parseNode.GetChildNode("maker_quote_id") is { } nullNodeMakerQuoteId && nullNodeMakerQuoteId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerQuoteId = null;
+            if (parseNode.GetChildNode("price_e6") is null) { _explicitNullValuePriceE6 = default!; _explicitNullProperties?.Remove("price_e6"); }
+            else if (parseNode.GetChildNode("price_e6") is { } nullNodePriceE6 && nullNodePriceE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PriceE6 = null;
+            if (parseNode.GetChildNode("received_at") is null) { _explicitNullValueReceivedAt = default!; _explicitNullProperties?.Remove("received_at"); }
+            else if (parseNode.GetChildNode("received_at") is { } nullNodeReceivedAt && nullNodeReceivedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReceivedAt = null;
+            if (parseNode.GetChildNode("signer_address") is null) { _explicitNullValueSignerAddress = default!; _explicitNullProperties?.Remove("signer_address"); }
+            else if (parseNode.GetChildNode("signer_address") is { } nullNodeSignerAddress && nullNodeSignerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignerAddress = null;
+            if (parseNode.GetChildNode("size_e6") is null) { _explicitNullValueSizeE6 = default!; _explicitNullProperties?.Remove("size_e6"); }
+            else if (parseNode.GetChildNode("size_e6") is { } nullNodeSizeE6 && nullNodeSizeE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeE6 = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,54 +36,54 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The maker_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
+        public string? MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; AdditionalData?.Remove("maker_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
         private string? _explicitNullValueMakerAddress = default!;
 #nullable restore
 #else
-        public string MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
+        public string MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; AdditionalData?.Remove("maker_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
         private string _explicitNullValueMakerAddress = default!;
 #endif
         /// <summary>The maker_quote_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerQuoteId { get => _explicitNullValueMakerQuoteId; set { _explicitNullValueMakerQuoteId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_quote_id"); else _explicitNullProperties?.Remove("maker_quote_id"); } }
+        public string? MakerQuoteId { get => _explicitNullValueMakerQuoteId; set { _explicitNullValueMakerQuoteId = value; AdditionalData?.Remove("maker_quote_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_quote_id"); else _explicitNullProperties?.Remove("maker_quote_id"); } }
         private string? _explicitNullValueMakerQuoteId = default!;
 #nullable restore
 #else
-        public string MakerQuoteId { get => _explicitNullValueMakerQuoteId; set { _explicitNullValueMakerQuoteId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_quote_id"); else _explicitNullProperties?.Remove("maker_quote_id"); } }
+        public string MakerQuoteId { get => _explicitNullValueMakerQuoteId; set { _explicitNullValueMakerQuoteId = value; AdditionalData?.Remove("maker_quote_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_quote_id"); else _explicitNullProperties?.Remove("maker_quote_id"); } }
         private string _explicitNullValueMakerQuoteId = default!;
 #endif
         /// <summary>Fill price in six-decimal fixed-point units.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PriceE6 { get => _explicitNullValuePriceE6; set { _explicitNullValuePriceE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("price_e6"); else _explicitNullProperties?.Remove("price_e6"); } }
+        public string? PriceE6 { get => _explicitNullValuePriceE6; set { _explicitNullValuePriceE6 = value; AdditionalData?.Remove("price_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("price_e6"); else _explicitNullProperties?.Remove("price_e6"); } }
         private string? _explicitNullValuePriceE6 = default!;
 #nullable restore
 #else
-        public string PriceE6 { get => _explicitNullValuePriceE6; set { _explicitNullValuePriceE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("price_e6"); else _explicitNullProperties?.Remove("price_e6"); } }
+        public string PriceE6 { get => _explicitNullValuePriceE6; set { _explicitNullValuePriceE6 = value; AdditionalData?.Remove("price_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("price_e6"); else _explicitNullProperties?.Remove("price_e6"); } }
         private string _explicitNullValuePriceE6 = default!;
 #endif
         /// <summary>Receipt time in Unix milliseconds.</summary>
-        public long? ReceivedAt { get => _explicitNullValueReceivedAt; set { _explicitNullValueReceivedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("received_at"); else _explicitNullProperties?.Remove("received_at"); } }
+        public long? ReceivedAt { get => _explicitNullValueReceivedAt; set { _explicitNullValueReceivedAt = value; AdditionalData?.Remove("received_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("received_at"); else _explicitNullProperties?.Remove("received_at"); } }
         private long? _explicitNullValueReceivedAt = default!;
         /// <summary>The signer_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
+        public string? SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; AdditionalData?.Remove("signer_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
         private string? _explicitNullValueSignerAddress = default!;
 #nullable restore
 #else
-        public string SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
+        public string SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; AdditionalData?.Remove("signer_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
         private string _explicitNullValueSignerAddress = default!;
 #endif
         /// <summary>Accepted fill size for this maker quote, in six-decimal fixed-point units.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SizeE6 { get => _explicitNullValueSizeE6; set { _explicitNullValueSizeE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_e6"); else _explicitNullProperties?.Remove("size_e6"); } }
+        public string? SizeE6 { get => _explicitNullValueSizeE6; set { _explicitNullValueSizeE6 = value; AdditionalData?.Remove("size_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_e6"); else _explicitNullProperties?.Remove("size_e6"); } }
         private string? _explicitNullValueSizeE6 = default!;
 #nullable restore
 #else
-        public string SizeE6 { get => _explicitNullValueSizeE6; set { _explicitNullValueSizeE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_e6"); else _explicitNullProperties?.Remove("size_e6"); } }
+        public string SizeE6 { get => _explicitNullValueSizeE6; set { _explicitNullValueSizeE6 = value; AdditionalData?.Remove("size_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_e6"); else _explicitNullProperties?.Remove("size_e6"); } }
         private string _explicitNullValueSizeE6 = default!;
 #endif
         /// <summary>

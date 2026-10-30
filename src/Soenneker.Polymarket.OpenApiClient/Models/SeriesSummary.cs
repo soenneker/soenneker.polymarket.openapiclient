@@ -17,13 +17,20 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("earliest_open_date") is { } nullNodeEarliestOpenDate && nullNodeEarliestOpenDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EarliestOpenDate = null;
-            if (parseNode.GetChildNode("earliest_open_week") is { } nullNodeEarliestOpenWeek && nullNodeEarliestOpenWeek.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EarliestOpenWeek = null;
-            if (parseNode.GetChildNode("eventDates") is { } nullNodeEventDates && nullNodeEventDates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventDates = null;
-            if (parseNode.GetChildNode("eventWeeks") is { } nullNodeEventWeeks && nullNodeEventWeeks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventWeeks = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
-            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("earliest_open_date") is null) { _explicitNullValueEarliestOpenDate = default!; _explicitNullProperties?.Remove("earliest_open_date"); }
+            else if (parseNode.GetChildNode("earliest_open_date") is { } nullNodeEarliestOpenDate && nullNodeEarliestOpenDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EarliestOpenDate = null;
+            if (parseNode.GetChildNode("earliest_open_week") is null) { _explicitNullValueEarliestOpenWeek = default!; _explicitNullProperties?.Remove("earliest_open_week"); }
+            else if (parseNode.GetChildNode("earliest_open_week") is { } nullNodeEarliestOpenWeek && nullNodeEarliestOpenWeek.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EarliestOpenWeek = null;
+            if (parseNode.GetChildNode("eventDates") is null) { _explicitNullValueEventDates = default!; _explicitNullProperties?.Remove("eventDates"); }
+            else if (parseNode.GetChildNode("eventDates") is { } nullNodeEventDates && nullNodeEventDates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventDates = null;
+            if (parseNode.GetChildNode("eventWeeks") is null) { _explicitNullValueEventWeeks = default!; _explicitNullProperties?.Remove("eventWeeks"); }
+            else if (parseNode.GetChildNode("eventWeeks") is { } nullNodeEventWeeks && nullNodeEventWeeks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventWeeks = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("slug") is null) { _explicitNullValueSlug = default!; _explicitNullProperties?.Remove("slug"); }
+            else if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
+            if (parseNode.GetChildNode("title") is null) { _explicitNullValueTitle = default!; _explicitNullProperties?.Remove("title"); }
+            else if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,64 +38,64 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The earliest_open_date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EarliestOpenDate { get => _explicitNullValueEarliestOpenDate; set { _explicitNullValueEarliestOpenDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("earliest_open_date"); else _explicitNullProperties?.Remove("earliest_open_date"); } }
+        public string? EarliestOpenDate { get => _explicitNullValueEarliestOpenDate; set { _explicitNullValueEarliestOpenDate = value; AdditionalData?.Remove("earliest_open_date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("earliest_open_date"); else _explicitNullProperties?.Remove("earliest_open_date"); } }
         private string? _explicitNullValueEarliestOpenDate = default!;
 #nullable restore
 #else
-        public string EarliestOpenDate { get => _explicitNullValueEarliestOpenDate; set { _explicitNullValueEarliestOpenDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("earliest_open_date"); else _explicitNullProperties?.Remove("earliest_open_date"); } }
+        public string EarliestOpenDate { get => _explicitNullValueEarliestOpenDate; set { _explicitNullValueEarliestOpenDate = value; AdditionalData?.Remove("earliest_open_date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("earliest_open_date"); else _explicitNullProperties?.Remove("earliest_open_date"); } }
         private string _explicitNullValueEarliestOpenDate = default!;
 #endif
         /// <summary>The earliest_open_week property</summary>
-        public int? EarliestOpenWeek { get => _explicitNullValueEarliestOpenWeek; set { _explicitNullValueEarliestOpenWeek = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("earliest_open_week"); else _explicitNullProperties?.Remove("earliest_open_week"); } }
+        public int? EarliestOpenWeek { get => _explicitNullValueEarliestOpenWeek; set { _explicitNullValueEarliestOpenWeek = value; AdditionalData?.Remove("earliest_open_week"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("earliest_open_week"); else _explicitNullProperties?.Remove("earliest_open_week"); } }
         private int? _explicitNullValueEarliestOpenWeek = default!;
         /// <summary>The eventDates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EventDates { get => _explicitNullValueEventDates; set { _explicitNullValueEventDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventDates"); else _explicitNullProperties?.Remove("eventDates"); } }
+        public List<string>? EventDates { get => _explicitNullValueEventDates; set { _explicitNullValueEventDates = value; AdditionalData?.Remove("eventDates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventDates"); else _explicitNullProperties?.Remove("eventDates"); } }
         private List<string>? _explicitNullValueEventDates = default!;
 #nullable restore
 #else
-        public List<string> EventDates { get => _explicitNullValueEventDates; set { _explicitNullValueEventDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventDates"); else _explicitNullProperties?.Remove("eventDates"); } }
+        public List<string> EventDates { get => _explicitNullValueEventDates; set { _explicitNullValueEventDates = value; AdditionalData?.Remove("eventDates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventDates"); else _explicitNullProperties?.Remove("eventDates"); } }
         private List<string> _explicitNullValueEventDates = default!;
 #endif
         /// <summary>The eventWeeks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? EventWeeks { get => _explicitNullValueEventWeeks; set { _explicitNullValueEventWeeks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventWeeks"); else _explicitNullProperties?.Remove("eventWeeks"); } }
+        public List<int?>? EventWeeks { get => _explicitNullValueEventWeeks; set { _explicitNullValueEventWeeks = value; AdditionalData?.Remove("eventWeeks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventWeeks"); else _explicitNullProperties?.Remove("eventWeeks"); } }
         private List<int?>? _explicitNullValueEventWeeks = default!;
 #nullable restore
 #else
-        public List<int?> EventWeeks { get => _explicitNullValueEventWeeks; set { _explicitNullValueEventWeeks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventWeeks"); else _explicitNullProperties?.Remove("eventWeeks"); } }
+        public List<int?> EventWeeks { get => _explicitNullValueEventWeeks; set { _explicitNullValueEventWeeks = value; AdditionalData?.Remove("eventWeeks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventWeeks"); else _explicitNullProperties?.Remove("eventWeeks"); } }
         private List<int?> _explicitNullValueEventWeeks = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>The slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
+        public string? Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; AdditionalData?.Remove("slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
         private string? _explicitNullValueSlug = default!;
 #nullable restore
 #else
-        public string Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
+        public string Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; AdditionalData?.Remove("slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
         private string _explicitNullValueSlug = default!;
 #endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>

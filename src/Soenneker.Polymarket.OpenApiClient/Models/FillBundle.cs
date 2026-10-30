@@ -18,10 +18,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allocations") is { } nullNodeAllocations && nullNodeAllocations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Allocations = null;
-            if (parseNode.GetChildNode("blended_price_e6") is { } nullNodeBlendedPriceE6 && nullNodeBlendedPriceE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlendedPriceE6 = null;
-            if (parseNode.GetChildNode("requested_notional_e6") is { } nullNodeRequestedNotionalE6 && nullNodeRequestedNotionalE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedNotionalE6 = null;
-            if (parseNode.GetChildNode("requested_shares_e6") is { } nullNodeRequestedSharesE6 && nullNodeRequestedSharesE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedSharesE6 = null;
+            if (parseNode.GetChildNode("allocations") is null) { _explicitNullValueAllocations = default!; _explicitNullProperties?.Remove("allocations"); }
+            else if (parseNode.GetChildNode("allocations") is { } nullNodeAllocations && nullNodeAllocations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Allocations = null;
+            if (parseNode.GetChildNode("blended_price_e6") is null) { _explicitNullValueBlendedPriceE6 = default!; _explicitNullProperties?.Remove("blended_price_e6"); }
+            else if (parseNode.GetChildNode("blended_price_e6") is { } nullNodeBlendedPriceE6 && nullNodeBlendedPriceE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlendedPriceE6 = null;
+            if (parseNode.GetChildNode("requested_notional_e6") is null) { _explicitNullValueRequestedNotionalE6 = default!; _explicitNullProperties?.Remove("requested_notional_e6"); }
+            else if (parseNode.GetChildNode("requested_notional_e6") is { } nullNodeRequestedNotionalE6 && nullNodeRequestedNotionalE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedNotionalE6 = null;
+            if (parseNode.GetChildNode("requested_shares_e6") is null) { _explicitNullValueRequestedSharesE6 = default!; _explicitNullProperties?.Remove("requested_shares_e6"); }
+            else if (parseNode.GetChildNode("requested_shares_e6") is { } nullNodeRequestedSharesE6 && nullNodeRequestedSharesE6.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedSharesE6 = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,41 +33,41 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The allocations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FillAllocation>? Allocations { get => _explicitNullValueAllocations; set { _explicitNullValueAllocations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allocations"); else _explicitNullProperties?.Remove("allocations"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FillAllocation>? Allocations { get => _explicitNullValueAllocations; set { _explicitNullValueAllocations = value; AdditionalData?.Remove("allocations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allocations"); else _explicitNullProperties?.Remove("allocations"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.FillAllocation>? _explicitNullValueAllocations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FillAllocation> Allocations { get => _explicitNullValueAllocations; set { _explicitNullValueAllocations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allocations"); else _explicitNullProperties?.Remove("allocations"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FillAllocation> Allocations { get => _explicitNullValueAllocations; set { _explicitNullValueAllocations = value; AdditionalData?.Remove("allocations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allocations"); else _explicitNullProperties?.Remove("allocations"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.FillAllocation> _explicitNullValueAllocations = default!;
 #endif
         /// <summary>Blended bundle price in six-decimal fixed-point units.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BlendedPriceE6 { get => _explicitNullValueBlendedPriceE6; set { _explicitNullValueBlendedPriceE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blended_price_e6"); else _explicitNullProperties?.Remove("blended_price_e6"); } }
+        public string? BlendedPriceE6 { get => _explicitNullValueBlendedPriceE6; set { _explicitNullValueBlendedPriceE6 = value; AdditionalData?.Remove("blended_price_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blended_price_e6"); else _explicitNullProperties?.Remove("blended_price_e6"); } }
         private string? _explicitNullValueBlendedPriceE6 = default!;
 #nullable restore
 #else
-        public string BlendedPriceE6 { get => _explicitNullValueBlendedPriceE6; set { _explicitNullValueBlendedPriceE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blended_price_e6"); else _explicitNullProperties?.Remove("blended_price_e6"); } }
+        public string BlendedPriceE6 { get => _explicitNullValueBlendedPriceE6; set { _explicitNullValueBlendedPriceE6 = value; AdditionalData?.Remove("blended_price_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blended_price_e6"); else _explicitNullProperties?.Remove("blended_price_e6"); } }
         private string _explicitNullValueBlendedPriceE6 = default!;
 #endif
         /// <summary>Requested notional in six-decimal fixed-point units (BUY RFQs only).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequestedNotionalE6 { get => _explicitNullValueRequestedNotionalE6; set { _explicitNullValueRequestedNotionalE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_notional_e6"); else _explicitNullProperties?.Remove("requested_notional_e6"); } }
+        public string? RequestedNotionalE6 { get => _explicitNullValueRequestedNotionalE6; set { _explicitNullValueRequestedNotionalE6 = value; AdditionalData?.Remove("requested_notional_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_notional_e6"); else _explicitNullProperties?.Remove("requested_notional_e6"); } }
         private string? _explicitNullValueRequestedNotionalE6 = default!;
 #nullable restore
 #else
-        public string RequestedNotionalE6 { get => _explicitNullValueRequestedNotionalE6; set { _explicitNullValueRequestedNotionalE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_notional_e6"); else _explicitNullProperties?.Remove("requested_notional_e6"); } }
+        public string RequestedNotionalE6 { get => _explicitNullValueRequestedNotionalE6; set { _explicitNullValueRequestedNotionalE6 = value; AdditionalData?.Remove("requested_notional_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_notional_e6"); else _explicitNullProperties?.Remove("requested_notional_e6"); } }
         private string _explicitNullValueRequestedNotionalE6 = default!;
 #endif
         /// <summary>Requested share size in six-decimal fixed-point units.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequestedSharesE6 { get => _explicitNullValueRequestedSharesE6; set { _explicitNullValueRequestedSharesE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_shares_e6"); else _explicitNullProperties?.Remove("requested_shares_e6"); } }
+        public string? RequestedSharesE6 { get => _explicitNullValueRequestedSharesE6; set { _explicitNullValueRequestedSharesE6 = value; AdditionalData?.Remove("requested_shares_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_shares_e6"); else _explicitNullProperties?.Remove("requested_shares_e6"); } }
         private string? _explicitNullValueRequestedSharesE6 = default!;
 #nullable restore
 #else
-        public string RequestedSharesE6 { get => _explicitNullValueRequestedSharesE6; set { _explicitNullValueRequestedSharesE6 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_shares_e6"); else _explicitNullProperties?.Remove("requested_shares_e6"); } }
+        public string RequestedSharesE6 { get => _explicitNullValueRequestedSharesE6; set { _explicitNullValueRequestedSharesE6 = value; AdditionalData?.Remove("requested_shares_e6"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_shares_e6"); else _explicitNullProperties?.Remove("requested_shares_e6"); } }
         private string _explicitNullValueRequestedSharesE6 = default!;
 #endif
         /// <summary>

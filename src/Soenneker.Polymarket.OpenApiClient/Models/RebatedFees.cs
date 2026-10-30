@@ -18,11 +18,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("asset_address") is { } nullNodeAssetAddress && nullNodeAssetAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetAddress = null;
-            if (parseNode.GetChildNode("condition_id") is { } nullNodeConditionId && nullNodeConditionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionId = null;
-            if (parseNode.GetChildNode("date") is { } nullNodeDate && nullNodeDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Date = null;
-            if (parseNode.GetChildNode("maker_address") is { } nullNodeMakerAddress && nullNodeMakerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAddress = null;
-            if (parseNode.GetChildNode("rebated_fees_usdc") is { } nullNodeRebatedFeesUsdc && nullNodeRebatedFeesUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RebatedFeesUsdc = null;
+            if (parseNode.GetChildNode("asset_address") is null) { _explicitNullValueAssetAddress = default!; _explicitNullProperties?.Remove("asset_address"); }
+            else if (parseNode.GetChildNode("asset_address") is { } nullNodeAssetAddress && nullNodeAssetAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetAddress = null;
+            if (parseNode.GetChildNode("condition_id") is null) { _explicitNullValueConditionId = default!; _explicitNullProperties?.Remove("condition_id"); }
+            else if (parseNode.GetChildNode("condition_id") is { } nullNodeConditionId && nullNodeConditionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionId = null;
+            if (parseNode.GetChildNode("date") is null) { _explicitNullValueDate = default!; _explicitNullProperties?.Remove("date"); }
+            else if (parseNode.GetChildNode("date") is { } nullNodeDate && nullNodeDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Date = null;
+            if (parseNode.GetChildNode("maker_address") is null) { _explicitNullValueMakerAddress = default!; _explicitNullProperties?.Remove("maker_address"); }
+            else if (parseNode.GetChildNode("maker_address") is { } nullNodeMakerAddress && nullNodeMakerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAddress = null;
+            if (parseNode.GetChildNode("rebated_fees_usdc") is null) { _explicitNullValueRebatedFeesUsdc = default!; _explicitNullProperties?.Remove("rebated_fees_usdc"); }
+            else if (parseNode.GetChildNode("rebated_fees_usdc") is { } nullNodeRebatedFeesUsdc && nullNodeRebatedFeesUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RebatedFeesUsdc = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,51 +35,51 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Asset address (e.g. USDC contract)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssetAddress { get => _explicitNullValueAssetAddress; set { _explicitNullValueAssetAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_address"); else _explicitNullProperties?.Remove("asset_address"); } }
+        public string? AssetAddress { get => _explicitNullValueAssetAddress; set { _explicitNullValueAssetAddress = value; AdditionalData?.Remove("asset_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_address"); else _explicitNullProperties?.Remove("asset_address"); } }
         private string? _explicitNullValueAssetAddress = default!;
 #nullable restore
 #else
-        public string AssetAddress { get => _explicitNullValueAssetAddress; set { _explicitNullValueAssetAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_address"); else _explicitNullProperties?.Remove("asset_address"); } }
+        public string AssetAddress { get => _explicitNullValueAssetAddress; set { _explicitNullValueAssetAddress = value; AdditionalData?.Remove("asset_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_address"); else _explicitNullProperties?.Remove("asset_address"); } }
         private string _explicitNullValueAssetAddress = default!;
 #endif
         /// <summary>Condition ID of the market</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
+        public string? ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; AdditionalData?.Remove("condition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
         private string? _explicitNullValueConditionId = default!;
 #nullable restore
 #else
-        public string ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
+        public string ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; AdditionalData?.Remove("condition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
         private string _explicitNullValueConditionId = default!;
 #endif
         /// <summary>Date of the rebate (YYYY-MM-DD)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
+        public string? Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
         private string? _explicitNullValueDate = default!;
 #nullable restore
 #else
-        public string Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
+        public string Date { get => _explicitNullValueDate; set { _explicitNullValueDate = value; AdditionalData?.Remove("date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date"); else _explicitNullProperties?.Remove("date"); } }
         private string _explicitNullValueDate = default!;
 #endif
         /// <summary>Maker&apos;s Ethereum address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
+        public string? MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; AdditionalData?.Remove("maker_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
         private string? _explicitNullValueMakerAddress = default!;
 #nullable restore
 #else
-        public string MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
+        public string MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; AdditionalData?.Remove("maker_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
         private string _explicitNullValueMakerAddress = default!;
 #endif
         /// <summary>Rebated fee amount in USDC</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RebatedFeesUsdc { get => _explicitNullValueRebatedFeesUsdc; set { _explicitNullValueRebatedFeesUsdc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rebated_fees_usdc"); else _explicitNullProperties?.Remove("rebated_fees_usdc"); } }
+        public string? RebatedFeesUsdc { get => _explicitNullValueRebatedFeesUsdc; set { _explicitNullValueRebatedFeesUsdc = value; AdditionalData?.Remove("rebated_fees_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rebated_fees_usdc"); else _explicitNullProperties?.Remove("rebated_fees_usdc"); } }
         private string? _explicitNullValueRebatedFeesUsdc = default!;
 #nullable restore
 #else
-        public string RebatedFeesUsdc { get => _explicitNullValueRebatedFeesUsdc; set { _explicitNullValueRebatedFeesUsdc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rebated_fees_usdc"); else _explicitNullProperties?.Remove("rebated_fees_usdc"); } }
+        public string RebatedFeesUsdc { get => _explicitNullValueRebatedFeesUsdc; set { _explicitNullValueRebatedFeesUsdc = value; AdditionalData?.Remove("rebated_fees_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rebated_fees_usdc"); else _explicitNullProperties?.Remove("rebated_fees_usdc"); } }
         private string _explicitNullValueRebatedFeesUsdc = default!;
 #endif
         /// <summary>

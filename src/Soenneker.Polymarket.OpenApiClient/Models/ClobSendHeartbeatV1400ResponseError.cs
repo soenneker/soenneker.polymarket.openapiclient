@@ -18,11 +18,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
-            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
-            if (parseNode.GetChildNode("error_msg") is { } nullNodeErrorMsg && nullNodeErrorMsg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorMsg = null;
-            if (parseNode.GetChildNode("heartbeat_id") is { } nullNodeHeartbeatId && nullNodeHeartbeatId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeartbeatId = null;
-            if (parseNode.GetChildNode("retry_after_seconds") is { } nullNodeRetryAfterSeconds && nullNodeRetryAfterSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetryAfterSeconds = null;
+            if (parseNode.GetChildNode("code") is null) { _explicitNullValueCode = default!; _explicitNullProperties?.Remove("code"); }
+            else if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
+            if (parseNode.GetChildNode("error") is null) { _explicitNullValueError = default!; _explicitNullProperties?.Remove("error"); }
+            else if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("error_msg") is null) { _explicitNullValueErrorMsg = default!; _explicitNullProperties?.Remove("error_msg"); }
+            else if (parseNode.GetChildNode("error_msg") is { } nullNodeErrorMsg && nullNodeErrorMsg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorMsg = null;
+            if (parseNode.GetChildNode("heartbeat_id") is null) { _explicitNullValueHeartbeatId = default!; _explicitNullProperties?.Remove("heartbeat_id"); }
+            else if (parseNode.GetChildNode("heartbeat_id") is { } nullNodeHeartbeatId && nullNodeHeartbeatId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeartbeatId = null;
+            if (parseNode.GetChildNode("retry_after_seconds") is null) { _explicitNullValueRetryAfterSeconds = default!; _explicitNullProperties?.Remove("retry_after_seconds"); }
+            else if (parseNode.GetChildNode("retry_after_seconds") is { } nullNodeRetryAfterSeconds && nullNodeRetryAfterSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetryAfterSeconds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,47 +35,47 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Machine-readable error code, when provided</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
         private string? _explicitNullValueCode = default!;
 #nullable restore
 #else
-        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
         private string _explicitNullValueCode = default!;
 #endif
         /// <summary>Error message</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; AdditionalData?.Remove("error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
         private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; AdditionalData?.Remove("error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
         private string _explicitNullValueError = default!;
 #endif
         /// <summary>Error message</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ErrorMsg { get => _explicitNullValueErrorMsg; set { _explicitNullValueErrorMsg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_msg"); else _explicitNullProperties?.Remove("error_msg"); } }
+        public string? ErrorMsg { get => _explicitNullValueErrorMsg; set { _explicitNullValueErrorMsg = value; AdditionalData?.Remove("error_msg"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_msg"); else _explicitNullProperties?.Remove("error_msg"); } }
         private string? _explicitNullValueErrorMsg = default!;
 #nullable restore
 #else
-        public string ErrorMsg { get => _explicitNullValueErrorMsg; set { _explicitNullValueErrorMsg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_msg"); else _explicitNullProperties?.Remove("error_msg"); } }
+        public string ErrorMsg { get => _explicitNullValueErrorMsg; set { _explicitNullValueErrorMsg = value; AdditionalData?.Remove("error_msg"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_msg"); else _explicitNullProperties?.Remove("error_msg"); } }
         private string _explicitNullValueErrorMsg = default!;
 #endif
         /// <summary>The expected heartbeat ID; can be empty after a legacy send</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HeartbeatId { get => _explicitNullValueHeartbeatId; set { _explicitNullValueHeartbeatId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heartbeat_id"); else _explicitNullProperties?.Remove("heartbeat_id"); } }
+        public string? HeartbeatId { get => _explicitNullValueHeartbeatId; set { _explicitNullValueHeartbeatId = value; AdditionalData?.Remove("heartbeat_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heartbeat_id"); else _explicitNullProperties?.Remove("heartbeat_id"); } }
         private string? _explicitNullValueHeartbeatId = default!;
 #nullable restore
 #else
-        public string HeartbeatId { get => _explicitNullValueHeartbeatId; set { _explicitNullValueHeartbeatId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heartbeat_id"); else _explicitNullProperties?.Remove("heartbeat_id"); } }
+        public string HeartbeatId { get => _explicitNullValueHeartbeatId; set { _explicitNullValueHeartbeatId = value; AdditionalData?.Remove("heartbeat_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heartbeat_id"); else _explicitNullProperties?.Remove("heartbeat_id"); } }
         private string _explicitNullValueHeartbeatId = default!;
 #endif
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
         /// <summary>Number of seconds to wait before retrying, when provided</summary>
-        public int? RetryAfterSeconds { get => _explicitNullValueRetryAfterSeconds; set { _explicitNullValueRetryAfterSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retry_after_seconds"); else _explicitNullProperties?.Remove("retry_after_seconds"); } }
+        public int? RetryAfterSeconds { get => _explicitNullValueRetryAfterSeconds; set { _explicitNullValueRetryAfterSeconds = value; AdditionalData?.Remove("retry_after_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retry_after_seconds"); else _explicitNullProperties?.Remove("retry_after_seconds"); } }
         private int? _explicitNullValueRetryAfterSeconds = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.ClobSendHeartbeatV1400ResponseError"/> and sets the default values.

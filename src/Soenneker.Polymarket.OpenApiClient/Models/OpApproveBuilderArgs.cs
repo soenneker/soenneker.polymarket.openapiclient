@@ -17,34 +17,37 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("approval_version") is { } nullNodeApprovalVersion && nullNodeApprovalVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalVersion = null;
-            if (parseNode.GetChildNode("builder") is { } nullNodeBuilder && nullNodeBuilder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Builder = null;
-            if (parseNode.GetChildNode("max_fee_rate") is { } nullNodeMaxFeeRate && nullNodeMaxFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxFeeRate = null;
+            if (parseNode.GetChildNode("approval_version") is null) { _explicitNullValueApprovalVersion = default!; _explicitNullProperties?.Remove("approval_version"); }
+            else if (parseNode.GetChildNode("approval_version") is { } nullNodeApprovalVersion && nullNodeApprovalVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalVersion = null;
+            if (parseNode.GetChildNode("builder") is null) { _explicitNullValueBuilder = default!; _explicitNullProperties?.Remove("builder"); }
+            else if (parseNode.GetChildNode("builder") is { } nullNodeBuilder && nullNodeBuilder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Builder = null;
+            if (parseNode.GetChildNode("max_fee_rate") is null) { _explicitNullValueMaxFeeRate = default!; _explicitNullProperties?.Remove("max_fee_rate"); }
+            else if (parseNode.GetChildNode("max_fee_rate") is { } nullNodeMaxFeeRate && nullNodeMaxFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxFeeRate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Exactly the previous version plus one, starting at 1. Revocation retains the version and prevents signed approval replay.</summary>
-        public int? ApprovalVersion { get => _explicitNullValueApprovalVersion; set { _explicitNullValueApprovalVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_version"); else _explicitNullProperties?.Remove("approval_version"); } }
+        public int? ApprovalVersion { get => _explicitNullValueApprovalVersion; set { _explicitNullValueApprovalVersion = value; AdditionalData?.Remove("approval_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_version"); else _explicitNullProperties?.Remove("approval_version"); } }
         private int? _explicitNullValueApprovalVersion = default!;
         /// <summary>Address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
+        public string? Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
         private string? _explicitNullValueBuilder = default!;
 #nullable restore
 #else
-        public string Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
+        public string Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
         private string _explicitNullValueBuilder = default!;
 #endif
         /// <summary>Additional builder fee as a decimal fraction of executed notional, from 0 through 0.001 (10 basis points). Zero approval revokes future admission. Never a percentage string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaxFeeRate { get => _explicitNullValueMaxFeeRate; set { _explicitNullValueMaxFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_fee_rate"); else _explicitNullProperties?.Remove("max_fee_rate"); } }
+        public string? MaxFeeRate { get => _explicitNullValueMaxFeeRate; set { _explicitNullValueMaxFeeRate = value; AdditionalData?.Remove("max_fee_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_fee_rate"); else _explicitNullProperties?.Remove("max_fee_rate"); } }
         private string? _explicitNullValueMaxFeeRate = default!;
 #nullable restore
 #else
-        public string MaxFeeRate { get => _explicitNullValueMaxFeeRate; set { _explicitNullValueMaxFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_fee_rate"); else _explicitNullProperties?.Remove("max_fee_rate"); } }
+        public string MaxFeeRate { get => _explicitNullValueMaxFeeRate; set { _explicitNullValueMaxFeeRate = value; AdditionalData?.Remove("max_fee_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_fee_rate"); else _explicitNullProperties?.Remove("max_fee_rate"); } }
         private string _explicitNullValueMaxFeeRate = default!;
 #endif
         /// <summary>

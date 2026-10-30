@@ -17,43 +17,48 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("deferExec") is { } nullNodeDeferExec && nullNodeDeferExec.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeferExec = null;
-            if (parseNode.GetChildNode("order") is { } nullNodeOrder && nullNodeOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Order = null;
-            if (parseNode.GetChildNode("orderType") is { } nullNodeOrderType && nullNodeOrderType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderType = null;
-            if (parseNode.GetChildNode("owner") is { } nullNodeOwner && nullNodeOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Owner = null;
-            if (parseNode.GetChildNode("postOnly") is { } nullNodePostOnly && nullNodePostOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PostOnly = null;
+            if (parseNode.GetChildNode("deferExec") is null) { _explicitNullValueDeferExec = default!; _explicitNullProperties?.Remove("deferExec"); }
+            else if (parseNode.GetChildNode("deferExec") is { } nullNodeDeferExec && nullNodeDeferExec.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeferExec = null;
+            if (parseNode.GetChildNode("order") is null) { _explicitNullValueOrder = default!; _explicitNullProperties?.Remove("order"); }
+            else if (parseNode.GetChildNode("order") is { } nullNodeOrder && nullNodeOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Order = null;
+            if (parseNode.GetChildNode("orderType") is null) { _explicitNullValueOrderType = default!; _explicitNullProperties?.Remove("orderType"); }
+            else if (parseNode.GetChildNode("orderType") is { } nullNodeOrderType && nullNodeOrderType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderType = null;
+            if (parseNode.GetChildNode("owner") is null) { _explicitNullValueOwner = default!; _explicitNullProperties?.Remove("owner"); }
+            else if (parseNode.GetChildNode("owner") is { } nullNodeOwner && nullNodeOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Owner = null;
+            if (parseNode.GetChildNode("postOnly") is null) { _explicitNullValuePostOnly = default!; _explicitNullProperties?.Remove("postOnly"); }
+            else if (parseNode.GetChildNode("postOnly") is { } nullNodePostOnly && nullNodePostOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PostOnly = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to defer execution</summary>
-        public bool? DeferExec { get => _explicitNullValueDeferExec; set { _explicitNullValueDeferExec = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deferExec"); else _explicitNullProperties?.Remove("deferExec"); } }
+        public bool? DeferExec { get => _explicitNullValueDeferExec; set { _explicitNullValueDeferExec = value; AdditionalData?.Remove("deferExec"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deferExec"); else _explicitNullProperties?.Remove("deferExec"); } }
         private bool? _explicitNullValueDeferExec = default!;
         /// <summary>Order payload submitted to the CLOB API. In CLOB V2, `expiration` remains inthe POST /order wire body for GTD/order-expiry handling, but it is not partof the EIP-712 signed order struct.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder? Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder? Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; AdditionalData?.Remove("order"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder? _explicitNullValueOrder = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; AdditionalData?.Remove("order"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder _explicitNullValueOrder = default!;
 #endif
         /// <summary>Time in force</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderOrderType? OrderType { get => _explicitNullValueOrderType; set { _explicitNullValueOrderType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderType"); else _explicitNullProperties?.Remove("orderType"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderOrderType? OrderType { get => _explicitNullValueOrderType; set { _explicitNullValueOrderType = value; AdditionalData?.Remove("orderType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderType"); else _explicitNullProperties?.Remove("orderType"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderOrderType? _explicitNullValueOrderType = default!;
         /// <summary>UUID of the API key owner</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
+        public string? Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; AdditionalData?.Remove("owner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
         private string? _explicitNullValueOwner = default!;
 #nullable restore
 #else
-        public string Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
+        public string Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; AdditionalData?.Remove("owner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
         private string _explicitNullValueOwner = default!;
 #endif
         /// <summary>Whether the order must rest on the book and not match immediately. Only supported for GTC and GTD orders.</summary>
-        public bool? PostOnly { get => _explicitNullValuePostOnly; set { _explicitNullValuePostOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("postOnly"); else _explicitNullProperties?.Remove("postOnly"); } }
+        public bool? PostOnly { get => _explicitNullValuePostOnly; set { _explicitNullValuePostOnly = value; AdditionalData?.Remove("postOnly"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("postOnly"); else _explicitNullProperties?.Remove("postOnly"); } }
         private bool? _explicitNullValuePostOnly = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.SendOrder"/> and sets the default values.
@@ -84,7 +89,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "deferExec", n => { DeferExec = n.GetBoolValue(); } },
                 { "order", n => { Order = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder>(global::Soenneker.Polymarket.OpenApiClient.Models.ClobOrder.CreateFromDiscriminatorValue); } },
-                { "orderType", n => { OrderType = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderOrderType>(); } },
+                { "orderType", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderOrderType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOrderType = default; _explicitNullProperties?.Remove("orderType"); AdditionalData["orderType"] = unknown; } else { OrderType = parsed; AdditionalData.Remove("orderType"); } } },
                 { "owner", n => { Owner = n.GetStringValue(); } },
                 { "postOnly", n => { PostOnly = n.GetBoolValue(); } },
             };

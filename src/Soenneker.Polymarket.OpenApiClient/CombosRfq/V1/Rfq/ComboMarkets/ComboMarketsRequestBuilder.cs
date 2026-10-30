@@ -72,7 +72,7 @@ namespace Soenneker.Polymarket.OpenApiClient.CombosRfq.V1.Rfq.ComboMarkets
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Polymarket.OpenApiClient.CombosRfq.V1.Rfq.ComboMarkets.ComboMarketsRequestBuilder.ComboMarketsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://combos-rfq-api.polymarket.com", "/combos-rfq/v1/rfq/combo-markets", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

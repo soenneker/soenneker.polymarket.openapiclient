@@ -17,60 +17,66 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("decision") is { } nullNodeDecision && nullNodeDecision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decision = null;
-            if (parseNode.GetChildNode("maker_address") is { } nullNodeMakerAddress && nullNodeMakerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAddress = null;
-            if (parseNode.GetChildNode("quote_id") is { } nullNodeQuoteId && nullNodeQuoteId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuoteId = null;
-            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
-            if (parseNode.GetChildNode("responded_at") is { } nullNodeRespondedAt && nullNodeRespondedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RespondedAt = null;
-            if (parseNode.GetChildNode("signer_address") is { } nullNodeSignerAddress && nullNodeSignerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignerAddress = null;
+            if (parseNode.GetChildNode("decision") is null) { _explicitNullValueDecision = default!; _explicitNullProperties?.Remove("decision"); }
+            else if (parseNode.GetChildNode("decision") is { } nullNodeDecision && nullNodeDecision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decision = null;
+            if (parseNode.GetChildNode("maker_address") is null) { _explicitNullValueMakerAddress = default!; _explicitNullProperties?.Remove("maker_address"); }
+            else if (parseNode.GetChildNode("maker_address") is { } nullNodeMakerAddress && nullNodeMakerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAddress = null;
+            if (parseNode.GetChildNode("quote_id") is null) { _explicitNullValueQuoteId = default!; _explicitNullProperties?.Remove("quote_id"); }
+            else if (parseNode.GetChildNode("quote_id") is { } nullNodeQuoteId && nullNodeQuoteId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuoteId = null;
+            if (parseNode.GetChildNode("reason") is null) { _explicitNullValueReason = default!; _explicitNullProperties?.Remove("reason"); }
+            else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("responded_at") is null) { _explicitNullValueRespondedAt = default!; _explicitNullProperties?.Remove("responded_at"); }
+            else if (parseNode.GetChildNode("responded_at") is { } nullNodeRespondedAt && nullNodeRespondedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RespondedAt = null;
+            if (parseNode.GetChildNode("signer_address") is null) { _explicitNullValueSignerAddress = default!; _explicitNullProperties?.Remove("signer_address"); }
+            else if (parseNode.GetChildNode("signer_address") is { } nullNodeSignerAddress && nullNodeSignerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignerAddress = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The decision property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshotDecision? Decision { get => _explicitNullValueDecision; set { _explicitNullValueDecision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision"); else _explicitNullProperties?.Remove("decision"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshotDecision? Decision { get => _explicitNullValueDecision; set { _explicitNullValueDecision = value; AdditionalData?.Remove("decision"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision"); else _explicitNullProperties?.Remove("decision"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshotDecision? _explicitNullValueDecision = default!;
         /// <summary>The maker_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
+        public string? MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; AdditionalData?.Remove("maker_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
         private string? _explicitNullValueMakerAddress = default!;
 #nullable restore
 #else
-        public string MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
+        public string MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; AdditionalData?.Remove("maker_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
         private string _explicitNullValueMakerAddress = default!;
 #endif
         /// <summary>The quote_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuoteId { get => _explicitNullValueQuoteId; set { _explicitNullValueQuoteId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quote_id"); else _explicitNullProperties?.Remove("quote_id"); } }
+        public string? QuoteId { get => _explicitNullValueQuoteId; set { _explicitNullValueQuoteId = value; AdditionalData?.Remove("quote_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quote_id"); else _explicitNullProperties?.Remove("quote_id"); } }
         private string? _explicitNullValueQuoteId = default!;
 #nullable restore
 #else
-        public string QuoteId { get => _explicitNullValueQuoteId; set { _explicitNullValueQuoteId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quote_id"); else _explicitNullProperties?.Remove("quote_id"); } }
+        public string QuoteId { get => _explicitNullValueQuoteId; set { _explicitNullValueQuoteId = value; AdditionalData?.Remove("quote_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quote_id"); else _explicitNullProperties?.Remove("quote_id"); } }
         private string _explicitNullValueQuoteId = default!;
 #endif
         /// <summary>The reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Response time in Unix milliseconds.</summary>
-        public long? RespondedAt { get => _explicitNullValueRespondedAt; set { _explicitNullValueRespondedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responded_at"); else _explicitNullProperties?.Remove("responded_at"); } }
+        public long? RespondedAt { get => _explicitNullValueRespondedAt; set { _explicitNullValueRespondedAt = value; AdditionalData?.Remove("responded_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responded_at"); else _explicitNullProperties?.Remove("responded_at"); } }
         private long? _explicitNullValueRespondedAt = default!;
         /// <summary>The signer_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
+        public string? SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; AdditionalData?.Remove("signer_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
         private string? _explicitNullValueSignerAddress = default!;
 #nullable restore
 #else
-        public string SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
+        public string SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; AdditionalData?.Remove("signer_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
         private string _explicitNullValueSignerAddress = default!;
 #endif
         /// <summary>
@@ -98,7 +104,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "decision", n => { Decision = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshotDecision>(); } },
+                { "decision", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshotDecision>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDecision = default; _explicitNullProperties?.Remove("decision"); AdditionalData["decision"] = unknown; } else { Decision = parsed; AdditionalData.Remove("decision"); } } },
                 { "maker_address", n => { MakerAddress = n.GetStringValue(); } },
                 { "quote_id", n => { QuoteId = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },

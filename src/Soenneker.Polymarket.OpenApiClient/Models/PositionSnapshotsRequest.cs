@@ -17,19 +17,22 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("active_instrument_ids") is { } nullNodeActiveInstrumentIds && nullNodeActiveInstrumentIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveInstrumentIds = null;
-            if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
-            if (parseNode.GetChildNode("history_fills") is { } nullNodeHistoryFills && nullNodeHistoryFills.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HistoryFills = null;
+            if (parseNode.GetChildNode("active_instrument_ids") is null) { _explicitNullValueActiveInstrumentIds = default!; _explicitNullProperties?.Remove("active_instrument_ids"); }
+            else if (parseNode.GetChildNode("active_instrument_ids") is { } nullNodeActiveInstrumentIds && nullNodeActiveInstrumentIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveInstrumentIds = null;
+            if (parseNode.GetChildNode("address") is null) { _explicitNullValueAddress = default!; _explicitNullProperties?.Remove("address"); }
+            else if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
+            if (parseNode.GetChildNode("history_fills") is null) { _explicitNullValueHistoryFills = default!; _explicitNullProperties?.Remove("history_fills"); }
+            else if (parseNode.GetChildNode("history_fills") is { } nullNodeHistoryFills && nullNodeHistoryFills.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HistoryFills = null;
         }
 
         /// <summary>The active_instrument_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
+        public List<int?>? ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; AdditionalData?.Remove("active_instrument_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
         private List<int?>? _explicitNullValueActiveInstrumentIds = default!;
 #nullable restore
 #else
-        public List<int?> ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
+        public List<int?> ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; AdditionalData?.Remove("active_instrument_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
         private List<int?> _explicitNullValueActiveInstrumentIds = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,21 +40,21 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        public string? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; AdditionalData?.Remove("address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
         private string? _explicitNullValueAddress = default!;
 #nullable restore
 #else
-        public string Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        public string Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; AdditionalData?.Remove("address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
         private string _explicitNullValueAddress = default!;
 #endif
         /// <summary>Selected public AccountTrade fill keys, in response order. Deduplicated by (instrument_id, trade_id).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>? HistoryFills { get => _explicitNullValueHistoryFills; set { _explicitNullValueHistoryFills = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("history_fills"); else _explicitNullProperties?.Remove("history_fills"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>? HistoryFills { get => _explicitNullValueHistoryFills; set { _explicitNullValueHistoryFills = value; AdditionalData?.Remove("history_fills"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("history_fills"); else _explicitNullProperties?.Remove("history_fills"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>? _explicitNullValueHistoryFills = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill> HistoryFills { get => _explicitNullValueHistoryFills; set { _explicitNullValueHistoryFills = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("history_fills"); else _explicitNullProperties?.Remove("history_fills"); } }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill> HistoryFills { get => _explicitNullValueHistoryFills; set { _explicitNullValueHistoryFills = value; AdditionalData?.Remove("history_fills"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("history_fills"); else _explicitNullProperties?.Remove("history_fills"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill> _explicitNullValueHistoryFills = default!;
 #endif
         /// <summary>

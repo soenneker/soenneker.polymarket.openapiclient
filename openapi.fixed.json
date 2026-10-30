@@ -5976,7 +5976,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GenericResponse"
+                  "$ref": "#/components/schemas/GenericResponseError"
                 }
               }
             }
@@ -37658,6 +37658,10 @@
             {
               "value": "SELL",
               "name": "Sell"
+            },
+            {
+              "value": "",
+              "name": "EnumValue"
             }
           ]
         }
@@ -39027,6 +39031,43 @@
               "name": "Wallet"
             }
           ]
+        }
+      },
+      "GenericResponseError": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "err"
+            ],
+            "x-ms-enum": {
+              "name": "Status",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "ok",
+                  "name": "Ok"
+                },
+                {
+                  "value": "err",
+                  "name": "Err"
+                }
+              ]
+            }
+          },
+          "error": {
+            "type": "string",
+            "description": "Error identifier. For domain rejections and transport errors (\u0060401\u0060/\u0060404\u0060/\u0060429\u0060/\u0060500\u0060) this is a stable, machine-readable snake_case identifier that is part of the API contract and safe to branch on, e.g. \u0060insufficient_margin\u0060, \u0060insufficient_balance\u0060, \u0060order_not_found\u0060, \u0060reduce_only_invalid\u0060, \u0060price_outside_bounds\u0060, \u0060position_not_found\u0060, \u0060position_exists\u0060, \u0060open_orders_exist\u0060, \u0060invalid_margin_mode\u0060, \u0060invalid_margin_amount\u0060, \u0060margin_below_required_initial\u0060, \u0060account_liquidating\u0060, \u0060instrument_close_only\u0060, \u0060instrument_settled\u0060, \u0060settlement_price_unavailable\u0060, \u0060settlement_insurance_insufficient\u0060, \u0060settlement_invalid_state\u0060, \u0060unauthorized\u0060, \u0060not_found\u0060. \u0060instrument_close_only\u0060 means user orders must reduce an existing position; \u0060instrument_settled\u0060 is permanent. Settlement readiness errors leave the instrument and accounts unchanged. For \u0060400\u0060 it is a human-readable validation detail whose wording may change. See the Error handling guide for the domain identifiers. (Post-only / Fill-or-Kill outcomes are order statuses such as \u0060post_only_rejected\u0060, not rejections.)",
+            "example": "insufficient_margin"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/GenericResponse"
         }
       },
       "ClobSendHeartbeatV1400ResponseError": {

@@ -17,75 +17,83 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("pnl") is { } nullNodePnl && nullNodePnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pnl = null;
-            if (parseNode.GetChildNode("profileImage") is { } nullNodeProfileImage && nullNodeProfileImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProfileImage = null;
-            if (parseNode.GetChildNode("proxyWallet") is { } nullNodeProxyWallet && nullNodeProxyWallet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProxyWallet = null;
-            if (parseNode.GetChildNode("rank") is { } nullNodeRank && nullNodeRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rank = null;
-            if (parseNode.GetChildNode("userName") is { } nullNodeUserName && nullNodeUserName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserName = null;
-            if (parseNode.GetChildNode("verifiedBadge") is { } nullNodeVerifiedBadge && nullNodeVerifiedBadge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VerifiedBadge = null;
-            if (parseNode.GetChildNode("vol") is { } nullNodeVol && nullNodeVol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Vol = null;
-            if (parseNode.GetChildNode("xUsername") is { } nullNodeXUsername && nullNodeXUsername.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XUsername = null;
+            if (parseNode.GetChildNode("pnl") is null) { _explicitNullValuePnl = default!; _explicitNullProperties?.Remove("pnl"); }
+            else if (parseNode.GetChildNode("pnl") is { } nullNodePnl && nullNodePnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pnl = null;
+            if (parseNode.GetChildNode("profileImage") is null) { _explicitNullValueProfileImage = default!; _explicitNullProperties?.Remove("profileImage"); }
+            else if (parseNode.GetChildNode("profileImage") is { } nullNodeProfileImage && nullNodeProfileImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProfileImage = null;
+            if (parseNode.GetChildNode("proxyWallet") is null) { _explicitNullValueProxyWallet = default!; _explicitNullProperties?.Remove("proxyWallet"); }
+            else if (parseNode.GetChildNode("proxyWallet") is { } nullNodeProxyWallet && nullNodeProxyWallet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProxyWallet = null;
+            if (parseNode.GetChildNode("rank") is null) { _explicitNullValueRank = default!; _explicitNullProperties?.Remove("rank"); }
+            else if (parseNode.GetChildNode("rank") is { } nullNodeRank && nullNodeRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rank = null;
+            if (parseNode.GetChildNode("userName") is null) { _explicitNullValueUserName = default!; _explicitNullProperties?.Remove("userName"); }
+            else if (parseNode.GetChildNode("userName") is { } nullNodeUserName && nullNodeUserName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserName = null;
+            if (parseNode.GetChildNode("verifiedBadge") is null) { _explicitNullValueVerifiedBadge = default!; _explicitNullProperties?.Remove("verifiedBadge"); }
+            else if (parseNode.GetChildNode("verifiedBadge") is { } nullNodeVerifiedBadge && nullNodeVerifiedBadge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VerifiedBadge = null;
+            if (parseNode.GetChildNode("vol") is null) { _explicitNullValueVol = default!; _explicitNullProperties?.Remove("vol"); }
+            else if (parseNode.GetChildNode("vol") is { } nullNodeVol && nullNodeVol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Vol = null;
+            if (parseNode.GetChildNode("xUsername") is null) { _explicitNullValueXUsername = default!; _explicitNullProperties?.Remove("xUsername"); }
+            else if (parseNode.GetChildNode("xUsername") is { } nullNodeXUsername && nullNodeXUsername.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XUsername = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Profit and loss for this trader</summary>
-        public double? Pnl { get => _explicitNullValuePnl; set { _explicitNullValuePnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pnl"); else _explicitNullProperties?.Remove("pnl"); } }
+        public double? Pnl { get => _explicitNullValuePnl; set { _explicitNullValuePnl = value; AdditionalData?.Remove("pnl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pnl"); else _explicitNullProperties?.Remove("pnl"); } }
         private double? _explicitNullValuePnl = default!;
         /// <summary>URL to the trader&apos;s profile image</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProfileImage { get => _explicitNullValueProfileImage; set { _explicitNullValueProfileImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profileImage"); else _explicitNullProperties?.Remove("profileImage"); } }
+        public string? ProfileImage { get => _explicitNullValueProfileImage; set { _explicitNullValueProfileImage = value; AdditionalData?.Remove("profileImage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profileImage"); else _explicitNullProperties?.Remove("profileImage"); } }
         private string? _explicitNullValueProfileImage = default!;
 #nullable restore
 #else
-        public string ProfileImage { get => _explicitNullValueProfileImage; set { _explicitNullValueProfileImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profileImage"); else _explicitNullProperties?.Remove("profileImage"); } }
+        public string ProfileImage { get => _explicitNullValueProfileImage; set { _explicitNullValueProfileImage = value; AdditionalData?.Remove("profileImage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profileImage"); else _explicitNullProperties?.Remove("profileImage"); } }
         private string _explicitNullValueProfileImage = default!;
 #endif
         /// <summary>User Profile Address (0x-prefixed, 40 hex chars)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProxyWallet { get => _explicitNullValueProxyWallet; set { _explicitNullValueProxyWallet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proxyWallet"); else _explicitNullProperties?.Remove("proxyWallet"); } }
+        public string? ProxyWallet { get => _explicitNullValueProxyWallet; set { _explicitNullValueProxyWallet = value; AdditionalData?.Remove("proxyWallet"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proxyWallet"); else _explicitNullProperties?.Remove("proxyWallet"); } }
         private string? _explicitNullValueProxyWallet = default!;
 #nullable restore
 #else
-        public string ProxyWallet { get => _explicitNullValueProxyWallet; set { _explicitNullValueProxyWallet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proxyWallet"); else _explicitNullProperties?.Remove("proxyWallet"); } }
+        public string ProxyWallet { get => _explicitNullValueProxyWallet; set { _explicitNullValueProxyWallet = value; AdditionalData?.Remove("proxyWallet"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proxyWallet"); else _explicitNullProperties?.Remove("proxyWallet"); } }
         private string _explicitNullValueProxyWallet = default!;
 #endif
         /// <summary>The rank position of the trader</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
+        public string? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; AdditionalData?.Remove("rank"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
         private string? _explicitNullValueRank = default!;
 #nullable restore
 #else
-        public string Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
+        public string Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; AdditionalData?.Remove("rank"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
         private string _explicitNullValueRank = default!;
 #endif
         /// <summary>The trader&apos;s username</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("userName"); else _explicitNullProperties?.Remove("userName"); } }
+        public string? UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; AdditionalData?.Remove("userName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("userName"); else _explicitNullProperties?.Remove("userName"); } }
         private string? _explicitNullValueUserName = default!;
 #nullable restore
 #else
-        public string UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("userName"); else _explicitNullProperties?.Remove("userName"); } }
+        public string UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; AdditionalData?.Remove("userName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("userName"); else _explicitNullProperties?.Remove("userName"); } }
         private string _explicitNullValueUserName = default!;
 #endif
         /// <summary>Whether the trader has a verified badge</summary>
-        public bool? VerifiedBadge { get => _explicitNullValueVerifiedBadge; set { _explicitNullValueVerifiedBadge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verifiedBadge"); else _explicitNullProperties?.Remove("verifiedBadge"); } }
+        public bool? VerifiedBadge { get => _explicitNullValueVerifiedBadge; set { _explicitNullValueVerifiedBadge = value; AdditionalData?.Remove("verifiedBadge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verifiedBadge"); else _explicitNullProperties?.Remove("verifiedBadge"); } }
         private bool? _explicitNullValueVerifiedBadge = default!;
         /// <summary>Trading volume for this trader</summary>
-        public double? Vol { get => _explicitNullValueVol; set { _explicitNullValueVol = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vol"); else _explicitNullProperties?.Remove("vol"); } }
+        public double? Vol { get => _explicitNullValueVol; set { _explicitNullValueVol = value; AdditionalData?.Remove("vol"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vol"); else _explicitNullProperties?.Remove("vol"); } }
         private double? _explicitNullValueVol = default!;
         /// <summary>The trader&apos;s X (Twitter) username</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XUsername { get => _explicitNullValueXUsername; set { _explicitNullValueXUsername = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xUsername"); else _explicitNullProperties?.Remove("xUsername"); } }
+        public string? XUsername { get => _explicitNullValueXUsername; set { _explicitNullValueXUsername = value; AdditionalData?.Remove("xUsername"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xUsername"); else _explicitNullProperties?.Remove("xUsername"); } }
         private string? _explicitNullValueXUsername = default!;
 #nullable restore
 #else
-        public string XUsername { get => _explicitNullValueXUsername; set { _explicitNullValueXUsername = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xUsername"); else _explicitNullProperties?.Remove("xUsername"); } }
+        public string XUsername { get => _explicitNullValueXUsername; set { _explicitNullValueXUsername = value; AdditionalData?.Remove("xUsername"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xUsername"); else _explicitNullProperties?.Remove("xUsername"); } }
         private string _explicitNullValueXUsername = default!;
 #endif
         /// <summary>

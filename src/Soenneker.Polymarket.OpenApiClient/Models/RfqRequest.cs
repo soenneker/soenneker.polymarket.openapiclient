@@ -18,20 +18,34 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("auth_address") is { } nullNodeAuthAddress && nullNodeAuthAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthAddress = null;
-            if (parseNode.GetChildNode("condition_id") is { } nullNodeConditionId && nullNodeConditionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionId = null;
-            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
-            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
-            if (parseNode.GetChildNode("leg_position_ids") is { } nullNodeLegPositionIds && nullNodeLegPositionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegPositionIds = null;
-            if (parseNode.GetChildNode("maker_address") is { } nullNodeMakerAddress && nullNodeMakerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAddress = null;
-            if (parseNode.GetChildNode("no_position_id") is { } nullNodeNoPositionId && nullNodeNoPositionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoPositionId = null;
-            if (parseNode.GetChildNode("requested_size") is { } nullNodeRequestedSize && nullNodeRequestedSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedSize = null;
-            if (parseNode.GetChildNode("requestor_public_id") is { } nullNodeRequestorPublicId && nullNodeRequestorPublicId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestorPublicId = null;
-            if (parseNode.GetChildNode("rfq_id") is { } nullNodeRfqId && nullNodeRfqId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RfqId = null;
-            if (parseNode.GetChildNode("side") is { } nullNodeSide && nullNodeSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Side = null;
-            if (parseNode.GetChildNode("signature_type") is { } nullNodeSignatureType && nullNodeSignatureType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignatureType = null;
-            if (parseNode.GetChildNode("signer_address") is { } nullNodeSignerAddress && nullNodeSignerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignerAddress = null;
-            if (parseNode.GetChildNode("yes_position_id") is { } nullNodeYesPositionId && nullNodeYesPositionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YesPositionId = null;
+            if (parseNode.GetChildNode("auth_address") is null) { _explicitNullValueAuthAddress = default!; _explicitNullProperties?.Remove("auth_address"); }
+            else if (parseNode.GetChildNode("auth_address") is { } nullNodeAuthAddress && nullNodeAuthAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthAddress = null;
+            if (parseNode.GetChildNode("condition_id") is null) { _explicitNullValueConditionId = default!; _explicitNullProperties?.Remove("condition_id"); }
+            else if (parseNode.GetChildNode("condition_id") is { } nullNodeConditionId && nullNodeConditionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionId = null;
+            if (parseNode.GetChildNode("created_at") is null) { _explicitNullValueCreatedAt = default!; _explicitNullProperties?.Remove("created_at"); }
+            else if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("direction") is null) { _explicitNullValueDirection = default!; _explicitNullProperties?.Remove("direction"); }
+            else if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("leg_position_ids") is null) { _explicitNullValueLegPositionIds = default!; _explicitNullProperties?.Remove("leg_position_ids"); }
+            else if (parseNode.GetChildNode("leg_position_ids") is { } nullNodeLegPositionIds && nullNodeLegPositionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegPositionIds = null;
+            if (parseNode.GetChildNode("maker_address") is null) { _explicitNullValueMakerAddress = default!; _explicitNullProperties?.Remove("maker_address"); }
+            else if (parseNode.GetChildNode("maker_address") is { } nullNodeMakerAddress && nullNodeMakerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerAddress = null;
+            if (parseNode.GetChildNode("no_position_id") is null) { _explicitNullValueNoPositionId = default!; _explicitNullProperties?.Remove("no_position_id"); }
+            else if (parseNode.GetChildNode("no_position_id") is { } nullNodeNoPositionId && nullNodeNoPositionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoPositionId = null;
+            if (parseNode.GetChildNode("requested_size") is null) { _explicitNullValueRequestedSize = default!; _explicitNullProperties?.Remove("requested_size"); }
+            else if (parseNode.GetChildNode("requested_size") is { } nullNodeRequestedSize && nullNodeRequestedSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedSize = null;
+            if (parseNode.GetChildNode("requestor_public_id") is null) { _explicitNullValueRequestorPublicId = default!; _explicitNullProperties?.Remove("requestor_public_id"); }
+            else if (parseNode.GetChildNode("requestor_public_id") is { } nullNodeRequestorPublicId && nullNodeRequestorPublicId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestorPublicId = null;
+            if (parseNode.GetChildNode("rfq_id") is null) { _explicitNullValueRfqId = default!; _explicitNullProperties?.Remove("rfq_id"); }
+            else if (parseNode.GetChildNode("rfq_id") is { } nullNodeRfqId && nullNodeRfqId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RfqId = null;
+            if (parseNode.GetChildNode("side") is null) { _explicitNullValueSide = default!; _explicitNullProperties?.Remove("side"); }
+            else if (parseNode.GetChildNode("side") is { } nullNodeSide && nullNodeSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Side = null;
+            if (parseNode.GetChildNode("signature_type") is null) { _explicitNullValueSignatureType = default!; _explicitNullProperties?.Remove("signature_type"); }
+            else if (parseNode.GetChildNode("signature_type") is { } nullNodeSignatureType && nullNodeSignatureType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignatureType = null;
+            if (parseNode.GetChildNode("signer_address") is null) { _explicitNullValueSignerAddress = default!; _explicitNullProperties?.Remove("signer_address"); }
+            else if (parseNode.GetChildNode("signer_address") is { } nullNodeSignerAddress && nullNodeSignerAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignerAddress = null;
+            if (parseNode.GetChildNode("yes_position_id") is null) { _explicitNullValueYesPositionId = default!; _explicitNullProperties?.Remove("yes_position_id"); }
+            else if (parseNode.GetChildNode("yes_position_id") is { } nullNodeYesPositionId && nullNodeYesPositionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YesPositionId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -39,113 +53,113 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The auth_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuthAddress { get => _explicitNullValueAuthAddress; set { _explicitNullValueAuthAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_address"); else _explicitNullProperties?.Remove("auth_address"); } }
+        public string? AuthAddress { get => _explicitNullValueAuthAddress; set { _explicitNullValueAuthAddress = value; AdditionalData?.Remove("auth_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_address"); else _explicitNullProperties?.Remove("auth_address"); } }
         private string? _explicitNullValueAuthAddress = default!;
 #nullable restore
 #else
-        public string AuthAddress { get => _explicitNullValueAuthAddress; set { _explicitNullValueAuthAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_address"); else _explicitNullProperties?.Remove("auth_address"); } }
+        public string AuthAddress { get => _explicitNullValueAuthAddress; set { _explicitNullValueAuthAddress = value; AdditionalData?.Remove("auth_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_address"); else _explicitNullProperties?.Remove("auth_address"); } }
         private string _explicitNullValueAuthAddress = default!;
 #endif
         /// <summary>The condition_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
+        public string? ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; AdditionalData?.Remove("condition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
         private string? _explicitNullValueConditionId = default!;
 #nullable restore
 #else
-        public string ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
+        public string ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; AdditionalData?.Remove("condition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
         private string _explicitNullValueConditionId = default!;
 #endif
         /// <summary>Creation time in Unix milliseconds.</summary>
-        public long? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        public long? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("created_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
         private long? _explicitNullValueCreatedAt = default!;
         /// <summary>Requester trade direction</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Direction2? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Direction2? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Direction2? _explicitNullValueDirection = default!;
         /// <summary>The leg_position_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? LegPositionIds { get => _explicitNullValueLegPositionIds; set { _explicitNullValueLegPositionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_position_ids"); else _explicitNullProperties?.Remove("leg_position_ids"); } }
+        public List<string>? LegPositionIds { get => _explicitNullValueLegPositionIds; set { _explicitNullValueLegPositionIds = value; AdditionalData?.Remove("leg_position_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_position_ids"); else _explicitNullProperties?.Remove("leg_position_ids"); } }
         private List<string>? _explicitNullValueLegPositionIds = default!;
 #nullable restore
 #else
-        public List<string> LegPositionIds { get => _explicitNullValueLegPositionIds; set { _explicitNullValueLegPositionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_position_ids"); else _explicitNullProperties?.Remove("leg_position_ids"); } }
+        public List<string> LegPositionIds { get => _explicitNullValueLegPositionIds; set { _explicitNullValueLegPositionIds = value; AdditionalData?.Remove("leg_position_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_position_ids"); else _explicitNullProperties?.Remove("leg_position_ids"); } }
         private List<string> _explicitNullValueLegPositionIds = default!;
 #endif
         /// <summary>The maker_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
+        public string? MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; AdditionalData?.Remove("maker_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
         private string? _explicitNullValueMakerAddress = default!;
 #nullable restore
 #else
-        public string MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
+        public string MakerAddress { get => _explicitNullValueMakerAddress; set { _explicitNullValueMakerAddress = value; AdditionalData?.Remove("maker_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_address"); else _explicitNullProperties?.Remove("maker_address"); } }
         private string _explicitNullValueMakerAddress = default!;
 #endif
         /// <summary>The no_position_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NoPositionId { get => _explicitNullValueNoPositionId; set { _explicitNullValueNoPositionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_position_id"); else _explicitNullProperties?.Remove("no_position_id"); } }
+        public string? NoPositionId { get => _explicitNullValueNoPositionId; set { _explicitNullValueNoPositionId = value; AdditionalData?.Remove("no_position_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_position_id"); else _explicitNullProperties?.Remove("no_position_id"); } }
         private string? _explicitNullValueNoPositionId = default!;
 #nullable restore
 #else
-        public string NoPositionId { get => _explicitNullValueNoPositionId; set { _explicitNullValueNoPositionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_position_id"); else _explicitNullProperties?.Remove("no_position_id"); } }
+        public string NoPositionId { get => _explicitNullValueNoPositionId; set { _explicitNullValueNoPositionId = value; AdditionalData?.Remove("no_position_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_position_id"); else _explicitNullProperties?.Remove("no_position_id"); } }
         private string _explicitNullValueNoPositionId = default!;
 #endif
         /// <summary>Requested RFQ size and unit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSize? RequestedSize { get => _explicitNullValueRequestedSize; set { _explicitNullValueRequestedSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_size"); else _explicitNullProperties?.Remove("requested_size"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSize? RequestedSize { get => _explicitNullValueRequestedSize; set { _explicitNullValueRequestedSize = value; AdditionalData?.Remove("requested_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_size"); else _explicitNullProperties?.Remove("requested_size"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSize? _explicitNullValueRequestedSize = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSize RequestedSize { get => _explicitNullValueRequestedSize; set { _explicitNullValueRequestedSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_size"); else _explicitNullProperties?.Remove("requested_size"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSize RequestedSize { get => _explicitNullValueRequestedSize; set { _explicitNullValueRequestedSize = value; AdditionalData?.Remove("requested_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_size"); else _explicitNullProperties?.Remove("requested_size"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSize _explicitNullValueRequestedSize = default!;
 #endif
         /// <summary>The requestor_public_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequestorPublicId { get => _explicitNullValueRequestorPublicId; set { _explicitNullValueRequestorPublicId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestor_public_id"); else _explicitNullProperties?.Remove("requestor_public_id"); } }
+        public string? RequestorPublicId { get => _explicitNullValueRequestorPublicId; set { _explicitNullValueRequestorPublicId = value; AdditionalData?.Remove("requestor_public_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestor_public_id"); else _explicitNullProperties?.Remove("requestor_public_id"); } }
         private string? _explicitNullValueRequestorPublicId = default!;
 #nullable restore
 #else
-        public string RequestorPublicId { get => _explicitNullValueRequestorPublicId; set { _explicitNullValueRequestorPublicId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestor_public_id"); else _explicitNullProperties?.Remove("requestor_public_id"); } }
+        public string RequestorPublicId { get => _explicitNullValueRequestorPublicId; set { _explicitNullValueRequestorPublicId = value; AdditionalData?.Remove("requestor_public_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestor_public_id"); else _explicitNullProperties?.Remove("requestor_public_id"); } }
         private string _explicitNullValueRequestorPublicId = default!;
 #endif
         /// <summary>The rfq_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RfqId { get => _explicitNullValueRfqId; set { _explicitNullValueRfqId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rfq_id"); else _explicitNullProperties?.Remove("rfq_id"); } }
+        public string? RfqId { get => _explicitNullValueRfqId; set { _explicitNullValueRfqId = value; AdditionalData?.Remove("rfq_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rfq_id"); else _explicitNullProperties?.Remove("rfq_id"); } }
         private string? _explicitNullValueRfqId = default!;
 #nullable restore
 #else
-        public string RfqId { get => _explicitNullValueRfqId; set { _explicitNullValueRfqId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rfq_id"); else _explicitNullProperties?.Remove("rfq_id"); } }
+        public string RfqId { get => _explicitNullValueRfqId; set { _explicitNullValueRfqId = value; AdditionalData?.Remove("rfq_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rfq_id"); else _explicitNullProperties?.Remove("rfq_id"); } }
         private string _explicitNullValueRfqId = default!;
 #endif
         /// <summary>Combinatorial position side. Currently only `YES` is supported.</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Side2? Side { get => _explicitNullValueSide; set { _explicitNullValueSide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side"); else _explicitNullProperties?.Remove("side"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Side2? Side { get => _explicitNullValueSide; set { _explicitNullValueSide = value; AdditionalData?.Remove("side"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side"); else _explicitNullProperties?.Remove("side"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.Side2? _explicitNullValueSide = default!;
         /// <summary>CLOB signature type:- `0` EOA- `1` POLY_PROXY- `2` GNOSIS_SAFE- `3` POLY_1271</summary>
-        public int? SignatureType { get => _explicitNullValueSignatureType; set { _explicitNullValueSignatureType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signature_type"); else _explicitNullProperties?.Remove("signature_type"); } }
+        public int? SignatureType { get => _explicitNullValueSignatureType; set { _explicitNullValueSignatureType = value; AdditionalData?.Remove("signature_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signature_type"); else _explicitNullProperties?.Remove("signature_type"); } }
         private int? _explicitNullValueSignatureType = default!;
         /// <summary>The signer_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
+        public string? SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; AdditionalData?.Remove("signer_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
         private string? _explicitNullValueSignerAddress = default!;
 #nullable restore
 #else
-        public string SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
+        public string SignerAddress { get => _explicitNullValueSignerAddress; set { _explicitNullValueSignerAddress = value; AdditionalData?.Remove("signer_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signer_address"); else _explicitNullProperties?.Remove("signer_address"); } }
         private string _explicitNullValueSignerAddress = default!;
 #endif
         /// <summary>The yes_position_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? YesPositionId { get => _explicitNullValueYesPositionId; set { _explicitNullValueYesPositionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yes_position_id"); else _explicitNullProperties?.Remove("yes_position_id"); } }
+        public string? YesPositionId { get => _explicitNullValueYesPositionId; set { _explicitNullValueYesPositionId = value; AdditionalData?.Remove("yes_position_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yes_position_id"); else _explicitNullProperties?.Remove("yes_position_id"); } }
         private string? _explicitNullValueYesPositionId = default!;
 #nullable restore
 #else
-        public string YesPositionId { get => _explicitNullValueYesPositionId; set { _explicitNullValueYesPositionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yes_position_id"); else _explicitNullProperties?.Remove("yes_position_id"); } }
+        public string YesPositionId { get => _explicitNullValueYesPositionId; set { _explicitNullValueYesPositionId = value; AdditionalData?.Remove("yes_position_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yes_position_id"); else _explicitNullProperties?.Remove("yes_position_id"); } }
         private string _explicitNullValueYesPositionId = default!;
 #endif
         /// <summary>
@@ -176,14 +190,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "auth_address", n => { AuthAddress = n.GetStringValue(); } },
                 { "condition_id", n => { ConditionId = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetLongValue(); } },
-                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Direction2>(); } },
+                { "direction", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Direction2>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDirection = default; _explicitNullProperties?.Remove("direction"); AdditionalData["direction"] = unknown; } else { Direction = parsed; AdditionalData.Remove("direction"); } } },
                 { "leg_position_ids", n => { LegPositionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "maker_address", n => { MakerAddress = n.GetStringValue(); } },
                 { "no_position_id", n => { NoPositionId = n.GetStringValue(); } },
                 { "requested_size", n => { RequestedSize = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSize>(global::Soenneker.Polymarket.OpenApiClient.Models.RequestedSize.CreateFromDiscriminatorValue); } },
                 { "requestor_public_id", n => { RequestorPublicId = n.GetStringValue(); } },
                 { "rfq_id", n => { RfqId = n.GetStringValue(); } },
-                { "side", n => { Side = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>(); } },
+                { "side", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSide = default; _explicitNullProperties?.Remove("side"); AdditionalData["side"] = unknown; } else { Side = parsed; AdditionalData.Remove("side"); } } },
                 { "signature_type", n => { SignatureType = n.GetIntValue(); } },
                 { "signer_address", n => { SignerAddress = n.GetStringValue(); } },
                 { "yes_position_id", n => { YesPositionId = n.GetStringValue(); } },

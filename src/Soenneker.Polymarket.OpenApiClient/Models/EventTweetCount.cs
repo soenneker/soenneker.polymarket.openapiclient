@@ -17,13 +17,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("tweetCount") is { } nullNodeTweetCount && nullNodeTweetCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TweetCount = null;
+            if (parseNode.GetChildNode("tweetCount") is null) { _explicitNullValueTweetCount = default!; _explicitNullProperties?.Remove("tweetCount"); }
+            else if (parseNode.GetChildNode("tweetCount") is { } nullNodeTweetCount && nullNodeTweetCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TweetCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The tweetCount property</summary>
-        public int? TweetCount { get => _explicitNullValueTweetCount; set { _explicitNullValueTweetCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tweetCount"); else _explicitNullProperties?.Remove("tweetCount"); } }
+        public int? TweetCount { get => _explicitNullValueTweetCount; set { _explicitNullValueTweetCount = value; AdditionalData?.Remove("tweetCount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tweetCount"); else _explicitNullProperties?.Remove("tweetCount"); } }
         private int? _explicitNullValueTweetCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.EventTweetCount"/> and sets the default values.

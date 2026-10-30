@@ -17,8 +17,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("canceled") is { } nullNodeCanceled && nullNodeCanceled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Canceled = null;
-            if (parseNode.GetChildNode("not_canceled") is { } nullNodeNotCanceled && nullNodeNotCanceled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotCanceled = null;
+            if (parseNode.GetChildNode("canceled") is null) { _explicitNullValueCanceled = default!; _explicitNullProperties?.Remove("canceled"); }
+            else if (parseNode.GetChildNode("canceled") is { } nullNodeCanceled && nullNodeCanceled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Canceled = null;
+            if (parseNode.GetChildNode("not_canceled") is null) { _explicitNullValueNotCanceled = default!; _explicitNullProperties?.Remove("not_canceled"); }
+            else if (parseNode.GetChildNode("not_canceled") is { } nullNodeNotCanceled && nullNodeNotCanceled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotCanceled = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Array of order IDs that were successfully canceled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Canceled { get => _explicitNullValueCanceled; set { _explicitNullValueCanceled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canceled"); else _explicitNullProperties?.Remove("canceled"); } }
+        public List<string>? Canceled { get => _explicitNullValueCanceled; set { _explicitNullValueCanceled = value; AdditionalData?.Remove("canceled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canceled"); else _explicitNullProperties?.Remove("canceled"); } }
         private List<string>? _explicitNullValueCanceled = default!;
 #nullable restore
 #else
-        public List<string> Canceled { get => _explicitNullValueCanceled; set { _explicitNullValueCanceled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canceled"); else _explicitNullProperties?.Remove("canceled"); } }
+        public List<string> Canceled { get => _explicitNullValueCanceled; set { _explicitNullValueCanceled = value; AdditionalData?.Remove("canceled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canceled"); else _explicitNullProperties?.Remove("canceled"); } }
         private List<string> _explicitNullValueCanceled = default!;
 #endif
         /// <summary>Map of order IDs that could not be canceled with error messages</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersResponseNotCanceledProperty? NotCanceled { get => _explicitNullValueNotCanceled; set { _explicitNullValueNotCanceled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_canceled"); else _explicitNullProperties?.Remove("not_canceled"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersResponseNotCanceledProperty? NotCanceled { get => _explicitNullValueNotCanceled; set { _explicitNullValueNotCanceled = value; AdditionalData?.Remove("not_canceled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_canceled"); else _explicitNullProperties?.Remove("not_canceled"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersResponseNotCanceledProperty? _explicitNullValueNotCanceled = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersResponseNotCanceledProperty NotCanceled { get => _explicitNullValueNotCanceled; set { _explicitNullValueNotCanceled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_canceled"); else _explicitNullProperties?.Remove("not_canceled"); } }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersResponseNotCanceledProperty NotCanceled { get => _explicitNullValueNotCanceled; set { _explicitNullValueNotCanceled = value; AdditionalData?.Remove("not_canceled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_canceled"); else _explicitNullProperties?.Remove("not_canceled"); } }
         private global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersResponseNotCanceledProperty _explicitNullValueNotCanceled = default!;
 #endif
         /// <summary>
