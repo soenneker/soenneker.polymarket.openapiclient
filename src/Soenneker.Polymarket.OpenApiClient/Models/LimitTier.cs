@@ -11,29 +11,51 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LimitTier : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions_burst_limit") is { } nullNodeActionsBurstLimit && nullNodeActionsBurstLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsBurstLimit = null;
+            if (parseNode.GetChildNode("actions_per_minute_limit") is { } nullNodeActionsPerMinuteLimit && nullNodeActionsPerMinuteLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsPerMinuteLimit = null;
+            if (parseNode.GetChildNode("messages_per_minute") is { } nullNodeMessagesPerMinute && nullNodeMessagesPerMinute.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagesPerMinute = null;
+            if (parseNode.GetChildNode("min_volume_14d") is { } nullNodeMinVolume14d && nullNodeMinVolume14d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinVolume14d = null;
+            if (parseNode.GetChildNode("open_orders_limit") is { } nullNodeOpenOrdersLimit && nullNodeOpenOrdersLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenOrdersLimit = null;
+            if (parseNode.GetChildNode("rate_burst_limit") is { } nullNodeRateBurstLimit && nullNodeRateBurstLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RateBurstLimit = null;
+            if (parseNode.GetChildNode("rate_per_minute_limit") is { } nullNodeRatePerMinuteLimit && nullNodeRatePerMinuteLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RatePerMinuteLimit = null;
+        }
+
         /// <summary>Additional account action allowance limit</summary>
-        public int? ActionsBurstLimit { get; set; }
+        public int? ActionsBurstLimit { get => _explicitNullValueActionsBurstLimit; set { _explicitNullValueActionsBurstLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_burst_limit"); else _explicitNullProperties?.Remove("actions_burst_limit"); } }
+        private int? _explicitNullValueActionsBurstLimit = default!;
         /// <summary>Maximum order action tokens per account per minute</summary>
-        public int? ActionsPerMinuteLimit { get; set; }
+        public int? ActionsPerMinuteLimit { get => _explicitNullValueActionsPerMinuteLimit; set { _explicitNullValueActionsPerMinuteLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_per_minute_limit"); else _explicitNullProperties?.Remove("actions_per_minute_limit"); } }
+        private int? _explicitNullValueActionsPerMinuteLimit = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Display-only per-minute action/message allowance, equal to actions_per_minute_limit. Not separately configured or enforced.</summary>
-        public int? MessagesPerMinute { get; set; }
+        public int? MessagesPerMinute { get => _explicitNullValueMessagesPerMinute; set { _explicitNullValueMessagesPerMinute = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages_per_minute"); else _explicitNullProperties?.Remove("messages_per_minute"); } }
+        private int? _explicitNullValueMessagesPerMinute = default!;
         /// <summary>Minimum volume threshold for this tier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MinVolume14d { get; set; }
+        public string? MinVolume14d { get => _explicitNullValueMinVolume14d; set { _explicitNullValueMinVolume14d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_volume_14d"); else _explicitNullProperties?.Remove("min_volume_14d"); } }
+        private string? _explicitNullValueMinVolume14d = default!;
 #nullable restore
 #else
-        public string MinVolume14d { get; set; }
+        public string MinVolume14d { get => _explicitNullValueMinVolume14d; set { _explicitNullValueMinVolume14d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_volume_14d"); else _explicitNullProperties?.Remove("min_volume_14d"); } }
+        private string _explicitNullValueMinVolume14d = default!;
 #endif
         /// <summary>Maximum number of open orders per account</summary>
-        public int? OpenOrdersLimit { get; set; }
+        public int? OpenOrdersLimit { get => _explicitNullValueOpenOrdersLimit; set { _explicitNullValueOpenOrdersLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_orders_limit"); else _explicitNullProperties?.Remove("open_orders_limit"); } }
+        private int? _explicitNullValueOpenOrdersLimit = default!;
         /// <summary>Legacy limit-tier request-rate field. It is not used for gateway enforcement.</summary>
-        public int? RateBurstLimit { get; set; }
+        public int? RateBurstLimit { get => _explicitNullValueRateBurstLimit; set { _explicitNullValueRateBurstLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate_burst_limit"); else _explicitNullProperties?.Remove("rate_burst_limit"); } }
+        private int? _explicitNullValueRateBurstLimit = default!;
         /// <summary>Maximum IP request weight per minute. In limit tiers, this is a legacy field and is not used for gateway enforcement.</summary>
-        public int? RatePerMinuteLimit { get; set; }
+        public int? RatePerMinuteLimit { get => _explicitNullValueRatePerMinuteLimit; set { _explicitNullValueRatePerMinuteLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate_per_minute_limit"); else _explicitNullProperties?.Remove("rate_per_minute_limit"); } }
+        private int? _explicitNullValueRatePerMinuteLimit = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.LimitTier"/> and sets the default values.
         /// </summary>
@@ -49,7 +71,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.LimitTier CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.LimitTier();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.LimitTier(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +104,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("open_orders_limit", OpenOrdersLimit);
             writer.WriteIntValue("rate_burst_limit", RateBurstLimit);
             writer.WriteIntValue("rate_per_minute_limit", RatePerMinuteLimit);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

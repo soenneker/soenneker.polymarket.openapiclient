@@ -12,32 +12,53 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TpSlOrderFields : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("armed_qty") is { } nullNodeArmedQty && nullNodeArmedQty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArmedQty = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("parent_oid") is { } nullNodeParentOid && nullNodeParentOid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentOid = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("slip_bps") is { } nullNodeSlipBps && nullNodeSlipBps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlipBps = null;
+            if (parseNode.GetChildNode("trp") is { } nullNodeTrp && nullNodeTrp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trp = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Quantity in no. of contracts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ArmedQty { get; set; }
+        public string? ArmedQty { get => _explicitNullValueArmedQty; set { _explicitNullValueArmedQty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("armed_qty"); else _explicitNullProperties?.Remove("armed_qty"); } }
+        private string? _explicitNullValueArmedQty = default!;
 #nullable restore
 #else
-        public string ArmedQty { get; set; }
+        public string ArmedQty { get => _explicitNullValueArmedQty; set { _explicitNullValueArmedQty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("armed_qty"); else _explicitNullProperties?.Remove("armed_qty"); } }
+        private string _explicitNullValueArmedQty = default!;
 #endif
         /// <summary>Conditional order type (TakeProfit / StopLoss)</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Kind? Kind { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Kind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.Kind? _explicitNullValueKind = default!;
         /// <summary>Parent entry order id. Optional — omit it (do not send `0`) when the parent is created in the same request (inline `CreateOrder.tpsl` or `CreateTpSlArgs.parent`); the gateway auto-wires the child to it. Set it only to attach an order-scoped leg to an existing resting order. Inline `CreateOrder.tpsl` rejects a non-zero value; position-scoped legs carry no parent.</summary>
-        public int? ParentOid { get; set; }
+        public int? ParentOid { get => _explicitNullValueParentOid; set { _explicitNullValueParentOid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_oid"); else _explicitNullProperties?.Remove("parent_oid"); } }
+        private int? _explicitNullValueParentOid = default!;
         /// <summary>How the conditional order sizes itself.- `order` - child of a parent entry (bracket / OCO ladder). Quantity is required.- `position` - attached to an open position. v1 always closes the full position (`qty` must be `&quot;0&quot;`).</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.TrScope? Scope { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.TrScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.TrScope? _explicitNullValueScope = default!;
         /// <summary>Per-order market-trigger slippage cap in basis points. 0 = use the per-instrument default. Clamped to the instrument cap.</summary>
-        public int? SlipBps { get; set; }
+        public int? SlipBps { get => _explicitNullValueSlipBps; set { _explicitNullValueSlipBps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slip_bps"); else _explicitNullProperties?.Remove("slip_bps"); } }
+        private int? _explicitNullValueSlipBps = default!;
         /// <summary>Trigger price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Trp { get; set; }
+        public string? Trp { get => _explicitNullValueTrp; set { _explicitNullValueTrp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trp"); else _explicitNullProperties?.Remove("trp"); } }
+        private string? _explicitNullValueTrp = default!;
 #nullable restore
 #else
-        public string Trp { get; set; }
+        public string Trp { get => _explicitNullValueTrp; set { _explicitNullValueTrp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trp"); else _explicitNullProperties?.Remove("trp"); } }
+        private string _explicitNullValueTrp = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.TpSlOrderFields"/> and sets the default values.
@@ -54,7 +75,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.TpSlOrderFields CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.TpSlOrderFields();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.TpSlOrderFields(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +106,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.TrScope>("scope", Scope);
             writer.WriteIntValue("slip_bps", SlipBps);
             writer.WriteStringValue("trp", Trp);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

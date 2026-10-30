@@ -61,6 +61,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Leverage.Batch
                 { "429", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Polymarket.OpenApiClient.Models.GenericRejected.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Polymarket.OpenApiClient.Models.LeverageBatchResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.LeverageBatchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

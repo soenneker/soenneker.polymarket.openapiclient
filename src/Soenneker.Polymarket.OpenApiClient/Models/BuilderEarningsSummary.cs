@@ -12,27 +12,47 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BuilderEarningsSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_approval_count") is { } nullNodeActiveApprovalCount && nullNodeActiveApprovalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveApprovalCount = null;
+            if (parseNode.GetChildNode("as_of_sequence") is { } nullNodeAsOfSequence && nullNodeAsOfSequence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AsOfSequence = null;
+            if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
+            if (parseNode.GetChildNode("end_timestamp") is { } nullNodeEndTimestamp && nullNodeEndTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndTimestamp = null;
+            if (parseNode.GetChildNode("start_timestamp") is { } nullNodeStartTimestamp && nullNodeStartTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartTimestamp = null;
+            if (parseNode.GetChildNode("trader_count") is { } nullNodeTraderCount && nullNodeTraderCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraderCount = null;
+        }
+
         /// <summary>Current positive, unrevoked approvals to this builder. This count is independent of the historical window and cutoff. Disabling a builder or platform admission does not erase grants.</summary>
-        public int? ActiveApprovalCount { get; set; }
+        public int? ActiveApprovalCount { get => _explicitNullValueActiveApprovalCount; set { _explicitNullValueActiveApprovalCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_approval_count"); else _explicitNullProperties?.Remove("active_approval_count"); } }
+        private int? _explicitNullValueActiveApprovalCount = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The as_of_sequence property</summary>
-        public int? AsOfSequence { get; set; }
+        public int? AsOfSequence { get => _explicitNullValueAsOfSequence; set { _explicitNullValueAsOfSequence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("as_of_sequence"); else _explicitNullProperties?.Remove("as_of_sequence"); } }
+        private int? _explicitNullValueAsOfSequence = default!;
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsAsset>? Data { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsAsset>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsAsset>? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsAsset> Data { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsAsset> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsAsset> _explicitNullValueData = default!;
 #endif
         /// <summary>Timestamp in milliseconds</summary>
-        public long? EndTimestamp { get; set; }
+        public long? EndTimestamp { get => _explicitNullValueEndTimestamp; set { _explicitNullValueEndTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_timestamp"); else _explicitNullProperties?.Remove("end_timestamp"); } }
+        private long? _explicitNullValueEndTimestamp = default!;
         /// <summary>Timestamp in milliseconds</summary>
-        public long? StartTimestamp { get; set; }
+        public long? StartTimestamp { get => _explicitNullValueStartTimestamp; set { _explicitNullValueStartTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_timestamp"); else _explicitNullProperties?.Remove("start_timestamp"); } }
+        private long? _explicitNullValueStartTimestamp = default!;
         /// <summary>Distinct trading accounts with at least one attributed fill in this window and indexed cutoff, including zero-fee fills and counting once across markets, assets and maker/taker roles.</summary>
-        public int? TraderCount { get; set; }
+        public int? TraderCount { get => _explicitNullValueTraderCount; set { _explicitNullValueTraderCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trader_count"); else _explicitNullProperties?.Remove("trader_count"); } }
+        private int? _explicitNullValueTraderCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsSummary"/> and sets the default values.
         /// </summary>
@@ -48,7 +68,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningsSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +99,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteLongValue("end_timestamp", EndTimestamp);
             writer.WriteLongValue("start_timestamp", StartTimestamp);
             writer.WriteIntValue("trader_count", TraderCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

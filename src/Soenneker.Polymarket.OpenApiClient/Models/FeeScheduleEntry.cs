@@ -11,42 +11,63 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FeeScheduleEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("instrument_type") is { } nullNodeInstrumentType && nullNodeInstrumentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentType = null;
+            if (parseNode.GetChildNode("maker_fee_rate") is { } nullNodeMakerFeeRate && nullNodeMakerFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerFeeRate = null;
+            if (parseNode.GetChildNode("taker_fee_rate") is { } nullNodeTakerFeeRate && nullNodeTakerFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerFeeRate = null;
+            if (parseNode.GetChildNode("tiers") is { } nullNodeTiers && nullNodeTiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tiers = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The category property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Category2? Category { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Category2? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.Category2? _explicitNullValueCategory = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Category2 Category { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Category2 Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.Category2 _explicitNullValueCategory = default!;
 #endif
         /// <summary>Instrument type</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType? InstrumentType { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType? InstrumentType { get => _explicitNullValueInstrumentType; set { _explicitNullValueInstrumentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_type"); else _explicitNullProperties?.Remove("instrument_type"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.InstrumentType? _explicitNullValueInstrumentType = default!;
         /// <summary>Exchange maker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerFeeRate { get; set; }
+        public string? MakerFeeRate { get => _explicitNullValueMakerFeeRate; set { _explicitNullValueMakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_fee_rate"); else _explicitNullProperties?.Remove("maker_fee_rate"); } }
+        private string? _explicitNullValueMakerFeeRate = default!;
 #nullable restore
 #else
-        public string MakerFeeRate { get; set; }
+        public string MakerFeeRate { get => _explicitNullValueMakerFeeRate; set { _explicitNullValueMakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_fee_rate"); else _explicitNullProperties?.Remove("maker_fee_rate"); } }
+        private string _explicitNullValueMakerFeeRate = default!;
 #endif
         /// <summary>Exchange taker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TakerFeeRate { get; set; }
+        public string? TakerFeeRate { get => _explicitNullValueTakerFeeRate; set { _explicitNullValueTakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_fee_rate"); else _explicitNullProperties?.Remove("taker_fee_rate"); } }
+        private string? _explicitNullValueTakerFeeRate = default!;
 #nullable restore
 #else
-        public string TakerFeeRate { get; set; }
+        public string TakerFeeRate { get => _explicitNullValueTakerFeeRate; set { _explicitNullValueTakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_fee_rate"); else _explicitNullProperties?.Remove("taker_fee_rate"); } }
+        private string _explicitNullValueTakerFeeRate = default!;
 #endif
         /// <summary>The tiers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier>? Tiers { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier>? Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier>? _explicitNullValueTiers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier> Tiers { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier> Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier> _explicitNullValueTiers = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry"/> and sets the default values.
@@ -63,7 +84,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.FeeScheduleEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +113,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("maker_fee_rate", MakerFeeRate);
             writer.WriteStringValue("taker_fee_rate", TakerFeeRate);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier>("tiers", Tiers);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

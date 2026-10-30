@@ -57,6 +57,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Rewards.User.Total
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Polymarket.OpenApiClient.Models.TotalUserEarning>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.TotalUserEarning.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

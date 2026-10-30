@@ -11,32 +11,48 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PositionSnapshotsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_instrument_ids") is { } nullNodeActiveInstrumentIds && nullNodeActiveInstrumentIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveInstrumentIds = null;
+            if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
+            if (parseNode.GetChildNode("history_fills") is { } nullNodeHistoryFills && nullNodeHistoryFills.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HistoryFills = null;
+        }
+
         /// <summary>The active_instrument_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ActiveInstrumentIds { get; set; }
+        public List<int?>? ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
+        private List<int?>? _explicitNullValueActiveInstrumentIds = default!;
 #nullable restore
 #else
-        public List<int?> ActiveInstrumentIds { get; set; }
+        public List<int?> ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
+        private List<int?> _explicitNullValueActiveInstrumentIds = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Address { get; set; }
+        public string? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        private string? _explicitNullValueAddress = default!;
 #nullable restore
 #else
-        public string Address { get; set; }
+        public string Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        private string _explicitNullValueAddress = default!;
 #endif
         /// <summary>Selected public AccountTrade fill keys, in response order. Deduplicated by (instrument_id, trade_id).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>? HistoryFills { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>? HistoryFills { get => _explicitNullValueHistoryFills; set { _explicitNullValueHistoryFills = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("history_fills"); else _explicitNullProperties?.Remove("history_fills"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>? _explicitNullValueHistoryFills = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill> HistoryFills { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill> HistoryFills { get => _explicitNullValueHistoryFills; set { _explicitNullValueHistoryFills = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("history_fills"); else _explicitNullProperties?.Remove("history_fills"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill> _explicitNullValueHistoryFills = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotsRequest"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<int?>("active_instrument_ids", ActiveInstrumentIds);
             writer.WriteStringValue("address", Address);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>("history_fills", HistoryFills);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

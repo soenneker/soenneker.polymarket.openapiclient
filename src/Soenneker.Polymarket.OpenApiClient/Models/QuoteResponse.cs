@@ -11,38 +11,60 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QuoteResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("estCheckoutTimeMs") is { } nullNodeEstCheckoutTimeMs && nullNodeEstCheckoutTimeMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstCheckoutTimeMs = null;
+            if (parseNode.GetChildNode("estFeeBreakdown") is { } nullNodeEstFeeBreakdown && nullNodeEstFeeBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstFeeBreakdown = null;
+            if (parseNode.GetChildNode("estInputUsd") is { } nullNodeEstInputUsd && nullNodeEstInputUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstInputUsd = null;
+            if (parseNode.GetChildNode("estOutputUsd") is { } nullNodeEstOutputUsd && nullNodeEstOutputUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstOutputUsd = null;
+            if (parseNode.GetChildNode("estToTokenBaseUnit") is { } nullNodeEstToTokenBaseUnit && nullNodeEstToTokenBaseUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstToTokenBaseUnit = null;
+            if (parseNode.GetChildNode("quoteId") is { } nullNodeQuoteId && nullNodeQuoteId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuoteId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Estimated time to complete the checkout in milliseconds</summary>
-        public int? EstCheckoutTimeMs { get; set; }
+        public int? EstCheckoutTimeMs { get => _explicitNullValueEstCheckoutTimeMs; set { _explicitNullValueEstCheckoutTimeMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estCheckoutTimeMs"); else _explicitNullProperties?.Remove("estCheckoutTimeMs"); } }
+        private int? _explicitNullValueEstCheckoutTimeMs = default!;
         /// <summary>Breakdown of the estimated fees</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown? EstFeeBreakdown { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown? EstFeeBreakdown { get => _explicitNullValueEstFeeBreakdown; set { _explicitNullValueEstFeeBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estFeeBreakdown"); else _explicitNullProperties?.Remove("estFeeBreakdown"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown? _explicitNullValueEstFeeBreakdown = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown EstFeeBreakdown { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown EstFeeBreakdown { get => _explicitNullValueEstFeeBreakdown; set { _explicitNullValueEstFeeBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estFeeBreakdown"); else _explicitNullProperties?.Remove("estFeeBreakdown"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown _explicitNullValueEstFeeBreakdown = default!;
 #endif
         /// <summary>Estimated token amount received in USD</summary>
-        public double? EstInputUsd { get; set; }
+        public double? EstInputUsd { get => _explicitNullValueEstInputUsd; set { _explicitNullValueEstInputUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estInputUsd"); else _explicitNullProperties?.Remove("estInputUsd"); } }
+        private double? _explicitNullValueEstInputUsd = default!;
         /// <summary>Estimated token amount sent in USD</summary>
-        public double? EstOutputUsd { get; set; }
+        public double? EstOutputUsd { get => _explicitNullValueEstOutputUsd; set { _explicitNullValueEstOutputUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estOutputUsd"); else _explicitNullProperties?.Remove("estOutputUsd"); } }
+        private double? _explicitNullValueEstOutputUsd = default!;
         /// <summary>Estimated token amount received</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EstToTokenBaseUnit { get; set; }
+        public string? EstToTokenBaseUnit { get => _explicitNullValueEstToTokenBaseUnit; set { _explicitNullValueEstToTokenBaseUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estToTokenBaseUnit"); else _explicitNullProperties?.Remove("estToTokenBaseUnit"); } }
+        private string? _explicitNullValueEstToTokenBaseUnit = default!;
 #nullable restore
 #else
-        public string EstToTokenBaseUnit { get; set; }
+        public string EstToTokenBaseUnit { get => _explicitNullValueEstToTokenBaseUnit; set { _explicitNullValueEstToTokenBaseUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estToTokenBaseUnit"); else _explicitNullProperties?.Remove("estToTokenBaseUnit"); } }
+        private string _explicitNullValueEstToTokenBaseUnit = default!;
 #endif
         /// <summary>Unique quote id of the request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuoteId { get; set; }
+        public string? QuoteId { get => _explicitNullValueQuoteId; set { _explicitNullValueQuoteId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quoteId"); else _explicitNullProperties?.Remove("quoteId"); } }
+        private string? _explicitNullValueQuoteId = default!;
 #nullable restore
 #else
-        public string QuoteId { get; set; }
+        public string QuoteId { get => _explicitNullValueQuoteId; set { _explicitNullValueQuoteId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quoteId"); else _explicitNullProperties?.Remove("quoteId"); } }
+        private string _explicitNullValueQuoteId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.QuoteResponse"/> and sets the default values.
@@ -59,7 +81,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.QuoteResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.QuoteResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.QuoteResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,6 +112,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteDoubleValue("estOutputUsd", EstOutputUsd);
             writer.WriteStringValue("estToTokenBaseUnit", EstToTokenBaseUnit);
             writer.WriteStringValue("quoteId", QuoteId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

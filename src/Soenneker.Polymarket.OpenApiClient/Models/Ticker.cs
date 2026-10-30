@@ -11,71 +11,105 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Ticker : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("funding_rate") is { } nullNodeFundingRate && nullNodeFundingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FundingRate = null;
+            if (parseNode.GetChildNode("index_price") is { } nullNodeIndexPrice && nullNodeIndexPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IndexPrice = null;
+            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("last_price") is { } nullNodeLastPrice && nullNodeLastPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastPrice = null;
+            if (parseNode.GetChildNode("mark_price") is { } nullNodeMarkPrice && nullNodeMarkPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarkPrice = null;
+            if (parseNode.GetChildNode("mid_price") is { } nullNodeMidPrice && nullNodeMidPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MidPrice = null;
+            if (parseNode.GetChildNode("next_funding") is { } nullNodeNextFunding && nullNodeNextFunding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextFunding = null;
+            if (parseNode.GetChildNode("open_interest") is { } nullNodeOpenInterest && nullNodeOpenInterest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenInterest = null;
+            if (parseNode.GetChildNode("symbol") is { } nullNodeSymbol && nullNodeSymbol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Symbol = null;
+            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The funding_rate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.FundingRate2? FundingRate { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.FundingRate2? FundingRate { get => _explicitNullValueFundingRate; set { _explicitNullValueFundingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funding_rate"); else _explicitNullProperties?.Remove("funding_rate"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.FundingRate2? _explicitNullValueFundingRate = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.FundingRate2 FundingRate { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.FundingRate2 FundingRate { get => _explicitNullValueFundingRate; set { _explicitNullValueFundingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funding_rate"); else _explicitNullProperties?.Remove("funding_rate"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.FundingRate2 _explicitNullValueFundingRate = default!;
 #endif
         /// <summary>Index price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IndexPrice { get; set; }
+        public string? IndexPrice { get => _explicitNullValueIndexPrice; set { _explicitNullValueIndexPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_price"); else _explicitNullProperties?.Remove("index_price"); } }
+        private string? _explicitNullValueIndexPrice = default!;
 #nullable restore
 #else
-        public string IndexPrice { get; set; }
+        public string IndexPrice { get => _explicitNullValueIndexPrice; set { _explicitNullValueIndexPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_price"); else _explicitNullProperties?.Remove("index_price"); } }
+        private string _explicitNullValueIndexPrice = default!;
 #endif
         /// <summary>Instrument ID</summary>
-        public int? InstrumentId { get; set; }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        private int? _explicitNullValueInstrumentId = default!;
         /// <summary>Last traded price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastPrice { get; set; }
+        public string? LastPrice { get => _explicitNullValueLastPrice; set { _explicitNullValueLastPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_price"); else _explicitNullProperties?.Remove("last_price"); } }
+        private string? _explicitNullValueLastPrice = default!;
 #nullable restore
 #else
-        public string LastPrice { get; set; }
+        public string LastPrice { get => _explicitNullValueLastPrice; set { _explicitNullValueLastPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_price"); else _explicitNullProperties?.Remove("last_price"); } }
+        private string _explicitNullValueLastPrice = default!;
 #endif
         /// <summary>Mark price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MarkPrice { get; set; }
+        public string? MarkPrice { get => _explicitNullValueMarkPrice; set { _explicitNullValueMarkPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mark_price"); else _explicitNullProperties?.Remove("mark_price"); } }
+        private string? _explicitNullValueMarkPrice = default!;
 #nullable restore
 #else
-        public string MarkPrice { get; set; }
+        public string MarkPrice { get => _explicitNullValueMarkPrice; set { _explicitNullValueMarkPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mark_price"); else _explicitNullProperties?.Remove("mark_price"); } }
+        private string _explicitNullValueMarkPrice = default!;
 #endif
         /// <summary>Mid price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MidPrice { get; set; }
+        public string? MidPrice { get => _explicitNullValueMidPrice; set { _explicitNullValueMidPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mid_price"); else _explicitNullProperties?.Remove("mid_price"); } }
+        private string? _explicitNullValueMidPrice = default!;
 #nullable restore
 #else
-        public string MidPrice { get; set; }
+        public string MidPrice { get => _explicitNullValueMidPrice; set { _explicitNullValueMidPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mid_price"); else _explicitNullProperties?.Remove("mid_price"); } }
+        private string _explicitNullValueMidPrice = default!;
 #endif
         /// <summary>Next funding timestamp in milliseconds</summary>
-        public long? NextFunding { get; set; }
+        public long? NextFunding { get => _explicitNullValueNextFunding; set { _explicitNullValueNextFunding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_funding"); else _explicitNullProperties?.Remove("next_funding"); } }
+        private long? _explicitNullValueNextFunding = default!;
         /// <summary>Open interest in number of contracts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OpenInterest { get; set; }
+        public string? OpenInterest { get => _explicitNullValueOpenInterest; set { _explicitNullValueOpenInterest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest"); else _explicitNullProperties?.Remove("open_interest"); } }
+        private string? _explicitNullValueOpenInterest = default!;
 #nullable restore
 #else
-        public string OpenInterest { get; set; }
+        public string OpenInterest { get => _explicitNullValueOpenInterest; set { _explicitNullValueOpenInterest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest"); else _explicitNullProperties?.Remove("open_interest"); } }
+        private string _explicitNullValueOpenInterest = default!;
 #endif
         /// <summary>Instrument symbol</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Symbol { get; set; }
+        public string? Symbol { get => _explicitNullValueSymbol; set { _explicitNullValueSymbol = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol"); else _explicitNullProperties?.Remove("symbol"); } }
+        private string? _explicitNullValueSymbol = default!;
 #nullable restore
 #else
-        public string Symbol { get; set; }
+        public string Symbol { get => _explicitNullValueSymbol; set { _explicitNullValueSymbol = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol"); else _explicitNullProperties?.Remove("symbol"); } }
+        private string _explicitNullValueSymbol = default!;
 #endif
         /// <summary>Timestamp in milliseconds</summary>
-        public long? Timestamp { get; set; }
+        public long? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private long? _explicitNullValueTimestamp = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Ticker"/> and sets the default values.
         /// </summary>
@@ -91,7 +125,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.Ticker CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.Ticker();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.Ticker(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -130,6 +164,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("open_interest", OpenInterest);
             writer.WriteStringValue("symbol", Symbol);
             writer.WriteLongValue("timestamp", Timestamp);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

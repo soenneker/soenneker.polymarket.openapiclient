@@ -55,6 +55,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Statistics
             {
                 { "429", global::Soenneker.Polymarket.OpenApiClient.Models.Error429.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.Error500.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Polymarket.OpenApiClient.Models.Statistic>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.Statistic.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

@@ -57,6 +57,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Referral
                 { "401", global::Soenneker.Polymarket.OpenApiClient.Models.Error401.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Polymarket.OpenApiClient.Models.Error429.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.Error500.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.AccountReferral>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.AccountReferral.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -88,6 +90,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.Referral
                 { "401", global::Soenneker.Polymarket.OpenApiClient.Models.Error401.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Polymarket.OpenApiClient.Models.Error429.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.Error500.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.GenericAccepted>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.GenericAccepted.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

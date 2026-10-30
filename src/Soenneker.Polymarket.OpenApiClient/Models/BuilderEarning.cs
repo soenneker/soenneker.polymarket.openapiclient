@@ -11,110 +11,164 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BuilderEarning : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("builder_fee") is { } nullNodeBuilderFee && nullNodeBuilderFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuilderFee = null;
+            if (parseNode.GetChildNode("buy") is { } nullNodeBuy && nullNodeBuy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Buy = null;
+            if (parseNode.GetChildNode("client_order_id") is { } nullNodeClientOrderId && nullNodeClientOrderId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientOrderId = null;
+            if (parseNode.GetChildNode("earning_id") is { } nullNodeEarningId && nullNodeEarningId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EarningId = null;
+            if (parseNode.GetChildNode("fee") is { } nullNodeFee && nullNodeFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fee = null;
+            if (parseNode.GetChildNode("fee_asset") is { } nullNodeFeeAsset && nullNodeFeeAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeAsset = null;
+            if (parseNode.GetChildNode("fee_rate") is { } nullNodeFeeRate && nullNodeFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeRate = null;
+            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("notional") is { } nullNodeNotional && nullNodeNotional.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notional = null;
+            if (parseNode.GetChildNode("order_id") is { } nullNodeOrderId && nullNodeOrderId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderId = null;
+            if (parseNode.GetChildNode("price") is { } nullNodePrice && nullNodePrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Price = null;
+            if (parseNode.GetChildNode("quantity") is { } nullNodeQuantity && nullNodeQuantity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantity = null;
+            if (parseNode.GetChildNode("sequence") is { } nullNodeSequence && nullNodeSequence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sequence = null;
+            if (parseNode.GetChildNode("side") is { } nullNodeSide && nullNodeSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Side = null;
+            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+            if (parseNode.GetChildNode("total_fee") is { } nullNodeTotalFee && nullNodeTotalFee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalFee = null;
+            if (parseNode.GetChildNode("trade_id") is { } nullNodeTradeId && nullNodeTradeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TradeId = null;
+            if (parseNode.GetChildNode("trader") is { } nullNodeTrader && nullNodeTrader.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trader = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Actual additional builder fee in the same asset as fee, floored independently for each execution to that asset&apos;s token decimals (six for pUSD), with discarded dust and no carry. The fee is non-negative and is zero for older or untagged fills and excluded forced liquidation legs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BuilderFee { get; set; }
+        public string? BuilderFee { get => _explicitNullValueBuilderFee; set { _explicitNullValueBuilderFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder_fee"); else _explicitNullProperties?.Remove("builder_fee"); } }
+        private string? _explicitNullValueBuilderFee = default!;
 #nullable restore
 #else
-        public string BuilderFee { get; set; }
+        public string BuilderFee { get => _explicitNullValueBuilderFee; set { _explicitNullValueBuilderFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder_fee"); else _explicitNullProperties?.Remove("builder_fee"); } }
+        private string _explicitNullValueBuilderFee = default!;
 #endif
         /// <summary>Is buy</summary>
-        public bool? Buy { get; set; }
+        public bool? Buy { get => _explicitNullValueBuy; set { _explicitNullValueBuy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buy"); else _explicitNullProperties?.Remove("buy"); } }
+        private bool? _explicitNullValueBuy = default!;
         /// <summary>Client order ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientOrderId { get; set; }
+        public string? ClientOrderId { get => _explicitNullValueClientOrderId; set { _explicitNullValueClientOrderId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_order_id"); else _explicitNullProperties?.Remove("client_order_id"); } }
+        private string? _explicitNullValueClientOrderId = default!;
 #nullable restore
 #else
-        public string ClientOrderId { get; set; }
+        public string ClientOrderId { get => _explicitNullValueClientOrderId; set { _explicitNullValueClientOrderId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_order_id"); else _explicitNullProperties?.Remove("client_order_id"); } }
+        private string _explicitNullValueClientOrderId = default!;
 #endif
         /// <summary>Stable side-specific receipt identity, unique for this builder. Use this to deduplicate, not sequence or trade_id alone.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EarningId { get; set; }
+        public string? EarningId { get => _explicitNullValueEarningId; set { _explicitNullValueEarningId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("earning_id"); else _explicitNullProperties?.Remove("earning_id"); } }
+        private string? _explicitNullValueEarningId = default!;
 #nullable restore
 #else
-        public string EarningId { get; set; }
+        public string EarningId { get => _explicitNullValueEarningId; set { _explicitNullValueEarningId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("earning_id"); else _explicitNullProperties?.Remove("earning_id"); } }
+        private string _explicitNullValueEarningId = default!;
 #endif
         /// <summary>Signed exchange fee for this trade side, excluding builder_fee. Negative values are rebates</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Fee { get; set; }
+        public string? Fee { get => _explicitNullValueFee; set { _explicitNullValueFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee"); else _explicitNullProperties?.Remove("fee"); } }
+        private string? _explicitNullValueFee = default!;
 #nullable restore
 #else
-        public string Fee { get; set; }
+        public string Fee { get => _explicitNullValueFee; set { _explicitNullValueFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee"); else _explicitNullProperties?.Remove("fee"); } }
+        private string _explicitNullValueFee = default!;
 #endif
         /// <summary>Fee asset name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeeAsset { get; set; }
+        public string? FeeAsset { get => _explicitNullValueFeeAsset; set { _explicitNullValueFeeAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_asset"); else _explicitNullProperties?.Remove("fee_asset"); } }
+        private string? _explicitNullValueFeeAsset = default!;
 #nullable restore
 #else
-        public string FeeAsset { get; set; }
+        public string FeeAsset { get => _explicitNullValueFeeAsset; set { _explicitNullValueFeeAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_asset"); else _explicitNullProperties?.Remove("fee_asset"); } }
+        private string _explicitNullValueFeeAsset = default!;
 #endif
         /// <summary>Additional builder fee as a decimal fraction of executed notional, from 0 through 0.001 (10 basis points). Zero approval revokes future admission. Never a percentage string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeeRate { get; set; }
+        public string? FeeRate { get => _explicitNullValueFeeRate; set { _explicitNullValueFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_rate"); else _explicitNullProperties?.Remove("fee_rate"); } }
+        private string? _explicitNullValueFeeRate = default!;
 #nullable restore
 #else
-        public string FeeRate { get; set; }
+        public string FeeRate { get => _explicitNullValueFeeRate; set { _explicitNullValueFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_rate"); else _explicitNullProperties?.Remove("fee_rate"); } }
+        private string _explicitNullValueFeeRate = default!;
 #endif
         /// <summary>Instrument ID</summary>
-        public int? InstrumentId { get; set; }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        private int? _explicitNullValueInstrumentId = default!;
         /// <summary>The notional property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Notional { get; set; }
+        public string? Notional { get => _explicitNullValueNotional; set { _explicitNullValueNotional = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notional"); else _explicitNullProperties?.Remove("notional"); } }
+        private string? _explicitNullValueNotional = default!;
 #nullable restore
 #else
-        public string Notional { get; set; }
+        public string Notional { get => _explicitNullValueNotional; set { _explicitNullValueNotional = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notional"); else _explicitNullProperties?.Remove("notional"); } }
+        private string _explicitNullValueNotional = default!;
 #endif
         /// <summary>Order ID</summary>
-        public int? OrderId { get; set; }
+        public int? OrderId { get => _explicitNullValueOrderId; set { _explicitNullValueOrderId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_id"); else _explicitNullProperties?.Remove("order_id"); } }
+        private int? _explicitNullValueOrderId = default!;
         /// <summary>Price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Price { get; set; }
+        public string? Price { get => _explicitNullValuePrice; set { _explicitNullValuePrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("price"); else _explicitNullProperties?.Remove("price"); } }
+        private string? _explicitNullValuePrice = default!;
 #nullable restore
 #else
-        public string Price { get; set; }
+        public string Price { get => _explicitNullValuePrice; set { _explicitNullValuePrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("price"); else _explicitNullProperties?.Remove("price"); } }
+        private string _explicitNullValuePrice = default!;
 #endif
         /// <summary>Quantity in number of contracts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Quantity { get; set; }
+        public string? Quantity { get => _explicitNullValueQuantity; set { _explicitNullValueQuantity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantity"); else _explicitNullProperties?.Remove("quantity"); } }
+        private string? _explicitNullValueQuantity = default!;
 #nullable restore
 #else
-        public string Quantity { get; set; }
+        public string Quantity { get => _explicitNullValueQuantity; set { _explicitNullValueQuantity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantity"); else _explicitNullProperties?.Remove("quantity"); } }
+        private string _explicitNullValueQuantity = default!;
 #endif
         /// <summary>The sequence property</summary>
-        public int? Sequence { get; set; }
+        public int? Sequence { get => _explicitNullValueSequence; set { _explicitNullValueSequence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequence"); else _explicitNullProperties?.Remove("sequence"); } }
+        private int? _explicitNullValueSequence = default!;
         /// <summary>The side property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningSide? Side { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningSide? Side { get => _explicitNullValueSide; set { _explicitNullValueSide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side"); else _explicitNullProperties?.Remove("side"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningSide? _explicitNullValueSide = default!;
         /// <summary>Timestamp in milliseconds</summary>
-        public long? Timestamp { get; set; }
+        public long? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private long? _explicitNullValueTimestamp = default!;
         /// <summary>Exact signed sum of exchange fee and builder_fee in the same asset. May be negative when exchange rebates exceed the builder charge.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalFee { get; set; }
+        public string? TotalFee { get => _explicitNullValueTotalFee; set { _explicitNullValueTotalFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_fee"); else _explicitNullProperties?.Remove("total_fee"); } }
+        private string? _explicitNullValueTotalFee = default!;
 #nullable restore
 #else
-        public string TotalFee { get; set; }
+        public string TotalFee { get => _explicitNullValueTotalFee; set { _explicitNullValueTotalFee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_fee"); else _explicitNullProperties?.Remove("total_fee"); } }
+        private string _explicitNullValueTotalFee = default!;
 #endif
         /// <summary>Trade ID</summary>
-        public int? TradeId { get; set; }
+        public int? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
+        private int? _explicitNullValueTradeId = default!;
         /// <summary>Address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Trader { get; set; }
+        public string? Trader { get => _explicitNullValueTrader; set { _explicitNullValueTrader = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trader"); else _explicitNullProperties?.Remove("trader"); } }
+        private string? _explicitNullValueTrader = default!;
 #nullable restore
 #else
-        public string Trader { get; set; }
+        public string Trader { get => _explicitNullValueTrader; set { _explicitNullValueTrader = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trader"); else _explicitNullProperties?.Remove("trader"); } }
+        private string _explicitNullValueTrader = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarning"/> and sets the default values.
@@ -131,7 +185,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarning CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarning();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarning(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -186,6 +240,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("total_fee", TotalFee);
             writer.WriteIntValue("trade_id", TradeId);
             writer.WriteStringValue("trader", Trader);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

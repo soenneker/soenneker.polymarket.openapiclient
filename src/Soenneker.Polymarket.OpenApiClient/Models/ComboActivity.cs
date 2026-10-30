@@ -11,96 +11,144 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ComboActivity : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("amount_usdc") is { } nullNodeAmountUsdc && nullNodeAmountUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AmountUsdc = null;
+            if (parseNode.GetChildNode("block_number") is { } nullNodeBlockNumber && nullNodeBlockNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockNumber = null;
+            if (parseNode.GetChildNode("combo_condition_id") is { } nullNodeComboConditionId && nullNodeComboConditionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComboConditionId = null;
+            if (parseNode.GetChildNode("combo_position_id") is { } nullNodeComboPositionId && nullNodeComboPositionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComboPositionId = null;
+            if (parseNode.GetChildNode("event_kind") is { } nullNodeEventKind && nullNodeEventKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventKind = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("legs") is { } nullNodeLegs && nullNodeLegs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Legs = null;
+            if (parseNode.GetChildNode("log_index") is { } nullNodeLogIndex && nullNodeLogIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogIndex = null;
+            if (parseNode.GetChildNode("module_id") is { } nullNodeModuleId && nullNodeModuleId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModuleId = null;
+            if (parseNode.GetChildNode("module_kind") is { } nullNodeModuleKind && nullNodeModuleKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModuleKind = null;
+            if (parseNode.GetChildNode("payout_usdc") is { } nullNodePayoutUsdc && nullNodePayoutUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayoutUsdc = null;
+            if (parseNode.GetChildNode("side") is { } nullNodeSide && nullNodeSide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Side = null;
+            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+            if (parseNode.GetChildNode("tx_dttm") is { } nullNodeTxDttm && nullNodeTxDttm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TxDttm = null;
+            if (parseNode.GetChildNode("tx_hash") is { } nullNodeTxHash && nullNodeTxHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TxHash = null;
+            if (parseNode.GetChildNode("user_address") is { } nullNodeUserAddress && nullNodeUserAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserAddress = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Lifecycle amount; null on redeems.</summary>
-        public double? AmountUsdc { get; set; }
+        public double? AmountUsdc { get => _explicitNullValueAmountUsdc; set { _explicitNullValueAmountUsdc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amount_usdc"); else _explicitNullProperties?.Remove("amount_usdc"); } }
+        private double? _explicitNullValueAmountUsdc = default!;
         /// <summary>The block_number property</summary>
-        public long? BlockNumber { get; set; }
+        public long? BlockNumber { get => _explicitNullValueBlockNumber; set { _explicitNullValueBlockNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("block_number"); else _explicitNullProperties?.Remove("block_number"); } }
+        private long? _explicitNullValueBlockNumber = default!;
         /// <summary>Combo condition ID (0x-prefixed, 62 hex chars / bytes31). Equals the market_id (unified) / conditionId (legacy) of isCombo rows on /activity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ComboConditionId { get; set; }
+        public string? ComboConditionId { get => _explicitNullValueComboConditionId; set { _explicitNullValueComboConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combo_condition_id"); else _explicitNullProperties?.Remove("combo_condition_id"); } }
+        private string? _explicitNullValueComboConditionId = default!;
 #nullable restore
 #else
-        public string ComboConditionId { get; set; }
+        public string ComboConditionId { get => _explicitNullValueComboConditionId; set { _explicitNullValueComboConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combo_condition_id"); else _explicitNullProperties?.Remove("combo_condition_id"); } }
+        private string _explicitNullValueComboConditionId = default!;
 #endif
         /// <summary>The combo_position_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ComboPositionId { get; set; }
+        public string? ComboPositionId { get => _explicitNullValueComboPositionId; set { _explicitNullValueComboPositionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combo_position_id"); else _explicitNullProperties?.Remove("combo_position_id"); } }
+        private string? _explicitNullValueComboPositionId = default!;
 #nullable restore
 #else
-        public string ComboPositionId { get; set; }
+        public string ComboPositionId { get => _explicitNullValueComboPositionId; set { _explicitNullValueComboPositionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combo_position_id"); else _explicitNullProperties?.Remove("combo_position_id"); } }
+        private string _explicitNullValueComboPositionId = default!;
 #endif
         /// <summary>Deprecated. Use `type` instead.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventKind { get; set; }
+        public string? EventKind { get => _explicitNullValueEventKind; set { _explicitNullValueEventKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_kind"); else _explicitNullProperties?.Remove("event_kind"); } }
+        private string? _explicitNullValueEventKind = default!;
 #nullable restore
 #else
-        public string EventKind { get; set; }
+        public string EventKind { get => _explicitNullValueEventKind; set { _explicitNullValueEventKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_kind"); else _explicitNullProperties?.Remove("event_kind"); } }
+        private string _explicitNullValueEventKind = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The legs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg>? Legs { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg>? Legs { get => _explicitNullValueLegs; set { _explicitNullValueLegs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legs"); else _explicitNullProperties?.Remove("legs"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg>? _explicitNullValueLegs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg> Legs { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg> Legs { get => _explicitNullValueLegs; set { _explicitNullValueLegs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legs"); else _explicitNullProperties?.Remove("legs"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg> _explicitNullValueLegs = default!;
 #endif
         /// <summary>The log_index property</summary>
-        public int? LogIndex { get; set; }
+        public int? LogIndex { get => _explicitNullValueLogIndex; set { _explicitNullValueLogIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_index"); else _explicitNullProperties?.Remove("log_index"); } }
+        private int? _explicitNullValueLogIndex = default!;
         /// <summary>The module_id property</summary>
-        public int? ModuleId { get; set; }
+        public int? ModuleId { get => _explicitNullValueModuleId; set { _explicitNullValueModuleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("module_id"); else _explicitNullProperties?.Remove("module_id"); } }
+        private int? _explicitNullValueModuleId = default!;
         /// <summary>Always Combinatorial.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModuleKind { get; set; }
+        public string? ModuleKind { get => _explicitNullValueModuleKind; set { _explicitNullValueModuleKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("module_kind"); else _explicitNullProperties?.Remove("module_kind"); } }
+        private string? _explicitNullValueModuleKind = default!;
 #nullable restore
 #else
-        public string ModuleKind { get; set; }
+        public string ModuleKind { get => _explicitNullValueModuleKind; set { _explicitNullValueModuleKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("module_kind"); else _explicitNullProperties?.Remove("module_kind"); } }
+        private string _explicitNullValueModuleKind = default!;
 #endif
         /// <summary>Redeem payout; null on lifecycle events.</summary>
-        public double? PayoutUsdc { get; set; }
+        public double? PayoutUsdc { get => _explicitNullValuePayoutUsdc; set { _explicitNullValuePayoutUsdc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payout_usdc"); else _explicitNullProperties?.Remove("payout_usdc"); } }
+        private double? _explicitNullValuePayoutUsdc = default!;
         /// <summary>Deprecated. Use `type` instead.</summary>
         [Obsolete("")]
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivitySide? Side { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivitySide? Side { get => _explicitNullValueSide; set { _explicitNullValueSide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side"); else _explicitNullProperties?.Remove("side"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivitySide? _explicitNullValueSide = default!;
         /// <summary>The timestamp property</summary>
-        public long? Timestamp { get; set; }
+        public long? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private long? _explicitNullValueTimestamp = default!;
         /// <summary>RFC3339 UTC</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TxDttm { get; set; }
+        public string? TxDttm { get => _explicitNullValueTxDttm; set { _explicitNullValueTxDttm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tx_dttm"); else _explicitNullProperties?.Remove("tx_dttm"); } }
+        private string? _explicitNullValueTxDttm = default!;
 #nullable restore
 #else
-        public string TxDttm { get; set; }
+        public string TxDttm { get => _explicitNullValueTxDttm; set { _explicitNullValueTxDttm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tx_dttm"); else _explicitNullProperties?.Remove("tx_dttm"); } }
+        private string _explicitNullValueTxDttm = default!;
 #endif
         /// <summary>The tx_hash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TxHash { get; set; }
+        public string? TxHash { get => _explicitNullValueTxHash; set { _explicitNullValueTxHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tx_hash"); else _explicitNullProperties?.Remove("tx_hash"); } }
+        private string? _explicitNullValueTxHash = default!;
 #nullable restore
 #else
-        public string TxHash { get; set; }
+        public string TxHash { get => _explicitNullValueTxHash; set { _explicitNullValueTxHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tx_hash"); else _explicitNullProperties?.Remove("tx_hash"); } }
+        private string _explicitNullValueTxHash = default!;
 #endif
         /// <summary>User Profile Address (0x-prefixed, 40 hex chars)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserAddress { get; set; }
+        public string? UserAddress { get => _explicitNullValueUserAddress; set { _explicitNullValueUserAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_address"); else _explicitNullProperties?.Remove("user_address"); } }
+        private string? _explicitNullValueUserAddress = default!;
 #nullable restore
 #else
-        public string UserAddress { get; set; }
+        public string UserAddress { get => _explicitNullValueUserAddress; set { _explicitNullValueUserAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_address"); else _explicitNullProperties?.Remove("user_address"); } }
+        private string _explicitNullValueUserAddress = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivity"/> and sets the default values.
@@ -117,7 +165,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivity();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivity(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -168,6 +216,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("tx_dttm", TxDttm);
             writer.WriteStringValue("tx_hash", TxHash);
             writer.WriteStringValue("user_address", UserAddress);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,88 +11,130 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CompetitionEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("account") is { } nullNodeAccount && nullNodeAccount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Account = null;
+            if (parseNode.GetChildNode("boosted_volume") is { } nullNodeBoostedVolume && nullNodeBoostedVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoostedVolume = null;
+            if (parseNode.GetChildNode("first_fill_at") is { } nullNodeFirstFillAt && nullNodeFirstFillAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstFillAt = null;
+            if (parseNode.GetChildNode("paid_at") is { } nullNodePaidAt && nullNodePaidAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PaidAt = null;
+            if (parseNode.GetChildNode("payout_tx_hash") is { } nullNodePayoutTxHash && nullNodePayoutTxHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayoutTxHash = null;
+            if (parseNode.GetChildNode("pnl") is { } nullNodePnl && nullNodePnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pnl = null;
+            if (parseNode.GetChildNode("prize") is { } nullNodePrize && nullNodePrize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prize = null;
+            if (parseNode.GetChildNode("rank") is { } nullNodeRank && nullNodeRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rank = null;
+            if (parseNode.GetChildNode("realized_pnl") is { } nullNodeRealizedPnl && nullNodeRealizedPnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedPnl = null;
+            if (parseNode.GetChildNode("row_state") is { } nullNodeRowState && nullNodeRowState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowState = null;
+            if (parseNode.GetChildNode("score") is { } nullNodeScore && nullNodeScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Score = null;
+            if (parseNode.GetChildNode("unrealized_pnl") is { } nullNodeUnrealizedPnl && nullNodeUnrealizedPnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnrealizedPnl = null;
+            if (parseNode.GetChildNode("volume") is { } nullNodeVolume && nullNodeVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Volume = null;
+        }
+
         /// <summary>Account address in hex format</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Account { get; set; }
+        public string? Account { get => _explicitNullValueAccount; set { _explicitNullValueAccount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account"); else _explicitNullProperties?.Remove("account"); } }
+        private string? _explicitNullValueAccount = default!;
 #nullable restore
 #else
-        public string Account { get; set; }
+        public string Account { get => _explicitNullValueAccount; set { _explicitNullValueAccount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account"); else _explicitNullProperties?.Remove("account"); } }
+        private string _explicitNullValueAccount = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The boosted_volume property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BoostedVolume { get; set; }
+        public string? BoostedVolume { get => _explicitNullValueBoostedVolume; set { _explicitNullValueBoostedVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boosted_volume"); else _explicitNullProperties?.Remove("boosted_volume"); } }
+        private string? _explicitNullValueBoostedVolume = default!;
 #nullable restore
 #else
-        public string BoostedVolume { get; set; }
+        public string BoostedVolume { get => _explicitNullValueBoostedVolume; set { _explicitNullValueBoostedVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boosted_volume"); else _explicitNullProperties?.Remove("boosted_volume"); } }
+        private string _explicitNullValueBoostedVolume = default!;
 #endif
         /// <summary>Time of the account&apos;s first counted fill in this competition, in Unix milliseconds; absent when unavailable or the account has no counted fills. Ranked ties use the configured tie-breaks, normally boosted volume then first fill order. Fill order can distinguish fills within the same millisecond.</summary>
-        public long? FirstFillAt { get; set; }
+        public long? FirstFillAt { get => _explicitNullValueFirstFillAt; set { _explicitNullValueFirstFillAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_fill_at"); else _explicitNullProperties?.Remove("first_fill_at"); } }
+        private long? _explicitNullValueFirstFillAt = default!;
         /// <summary>Payment time in Unix milliseconds once paid</summary>
-        public int? PaidAt { get; set; }
+        public int? PaidAt { get => _explicitNullValuePaidAt; set { _explicitNullValuePaidAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("paid_at"); else _explicitNullProperties?.Remove("paid_at"); } }
+        private int? _explicitNullValuePaidAt = default!;
         /// <summary>Payment transaction hash once paid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PayoutTxHash { get; set; }
+        public string? PayoutTxHash { get => _explicitNullValuePayoutTxHash; set { _explicitNullValuePayoutTxHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payout_tx_hash"); else _explicitNullProperties?.Remove("payout_tx_hash"); } }
+        private string? _explicitNullValuePayoutTxHash = default!;
 #nullable restore
 #else
-        public string PayoutTxHash { get; set; }
+        public string PayoutTxHash { get => _explicitNullValuePayoutTxHash; set { _explicitNullValuePayoutTxHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payout_tx_hash"); else _explicitNullProperties?.Remove("payout_tx_hash"); } }
+        private string _explicitNullValuePayoutTxHash = default!;
 #endif
         /// <summary>Competition PnL after fees, funding and liquidation losses</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Pnl { get; set; }
+        public string? Pnl { get => _explicitNullValuePnl; set { _explicitNullValuePnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pnl"); else _explicitNullProperties?.Remove("pnl"); } }
+        private string? _explicitNullValuePnl = default!;
 #nullable restore
 #else
-        public string Pnl { get; set; }
+        public string Pnl { get => _explicitNullValuePnl; set { _explicitNullValuePnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pnl"); else _explicitNullProperties?.Remove("pnl"); } }
+        private string _explicitNullValuePnl = default!;
 #endif
         /// <summary>Projected prize while live, prize won once ended; absent outside the prize zone</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prize { get; set; }
+        public string? Prize { get => _explicitNullValuePrize; set { _explicitNullValuePrize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prize"); else _explicitNullProperties?.Remove("prize"); } }
+        private string? _explicitNullValuePrize = default!;
 #nullable restore
 #else
-        public string Prize { get; set; }
+        public string Prize { get => _explicitNullValuePrize; set { _explicitNullValuePrize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prize"); else _explicitNullProperties?.Remove("prize"); } }
+        private string _explicitNullValuePrize = default!;
 #endif
         /// <summary>Leaderboard rank under the requested ranking metric, starting at 1</summary>
-        public int? Rank { get; set; }
+        public int? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
+        private int? _explicitNullValueRank = default!;
         /// <summary>The realized_pnl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RealizedPnl { get; set; }
+        public string? RealizedPnl { get => _explicitNullValueRealizedPnl; set { _explicitNullValueRealizedPnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_pnl"); else _explicitNullProperties?.Remove("realized_pnl"); } }
+        private string? _explicitNullValueRealizedPnl = default!;
 #nullable restore
 #else
-        public string RealizedPnl { get; set; }
+        public string RealizedPnl { get => _explicitNullValueRealizedPnl; set { _explicitNullValueRealizedPnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_pnl"); else _explicitNullProperties?.Remove("realized_pnl"); } }
+        private string _explicitNullValueRealizedPnl = default!;
 #endif
         /// <summary>How a leaderboard row is shown. `live` while running (prize is projected), `provisional` while in review, `disqualified` for a rule violation, `final` once results are finalized, `paid` once the prize is paid.</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionRowState? RowState { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionRowState? RowState { get => _explicitNullValueRowState; set { _explicitNullValueRowState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_state"); else _explicitNullProperties?.Remove("row_state"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionRowState? _explicitNullValueRowState = default!;
         /// <summary>Competition score, PnL × √(boosted volume), as a numeric string rounded to 6 decimal places. Can be negative.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Score { get; set; }
+        public string? Score { get => _explicitNullValueScore; set { _explicitNullValueScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score"); else _explicitNullProperties?.Remove("score"); } }
+        private string? _explicitNullValueScore = default!;
 #nullable restore
 #else
-        public string Score { get; set; }
+        public string Score { get => _explicitNullValueScore; set { _explicitNullValueScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score"); else _explicitNullProperties?.Remove("score"); } }
+        private string _explicitNullValueScore = default!;
 #endif
         /// <summary>The unrealized_pnl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UnrealizedPnl { get; set; }
+        public string? UnrealizedPnl { get => _explicitNullValueUnrealizedPnl; set { _explicitNullValueUnrealizedPnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unrealized_pnl"); else _explicitNullProperties?.Remove("unrealized_pnl"); } }
+        private string? _explicitNullValueUnrealizedPnl = default!;
 #nullable restore
 #else
-        public string UnrealizedPnl { get; set; }
+        public string UnrealizedPnl { get => _explicitNullValueUnrealizedPnl; set { _explicitNullValueUnrealizedPnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unrealized_pnl"); else _explicitNullProperties?.Remove("unrealized_pnl"); } }
+        private string _explicitNullValueUnrealizedPnl = default!;
 #endif
         /// <summary>Unboosted notional volume</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Volume { get; set; }
+        public string? Volume { get => _explicitNullValueVolume; set { _explicitNullValueVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume"); else _explicitNullProperties?.Remove("volume"); } }
+        private string? _explicitNullValueVolume = default!;
 #nullable restore
 #else
-        public string Volume { get; set; }
+        public string Volume { get => _explicitNullValueVolume; set { _explicitNullValueVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume"); else _explicitNullProperties?.Remove("volume"); } }
+        private string _explicitNullValueVolume = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionEntry"/> and sets the default values.
@@ -109,7 +151,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -154,6 +196,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("score", Score);
             writer.WriteStringValue("unrealized_pnl", UnrealizedPnl);
             writer.WriteStringValue("volume", Volume);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

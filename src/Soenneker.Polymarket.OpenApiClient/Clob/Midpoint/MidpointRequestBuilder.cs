@@ -55,6 +55,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Midpoint
             {
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetMidpoint200Response>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetMidpoint200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

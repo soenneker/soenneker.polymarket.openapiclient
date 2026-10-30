@@ -61,6 +61,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.PositionFills
                 { "413", global::Soenneker.Polymarket.OpenApiClient.Models.Error413.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Polymarket.OpenApiClient.Models.Error429.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.Error500.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.AccountTrades.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

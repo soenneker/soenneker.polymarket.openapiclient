@@ -55,6 +55,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.PublicProfile
             {
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.PublicProfileError.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Polymarket.OpenApiClient.Models.PublicProfileError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.PublicProfileResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.PublicProfileResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -11,24 +11,37 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RevisionPayload : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("questionID") is { } nullNodeQuestionID && nullNodeQuestionID.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionID = null;
+            if (parseNode.GetChildNode("revisions") is { } nullNodeRevisions && nullNodeRevisions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Revisions = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>0x-prefixed 64-hex string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuestionID { get; set; }
+        public string? QuestionID { get => _explicitNullValueQuestionID; set { _explicitNullValueQuestionID = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questionID"); else _explicitNullProperties?.Remove("questionID"); } }
+        private string? _explicitNullValueQuestionID = default!;
 #nullable restore
 #else
-        public string QuestionID { get; set; }
+        public string QuestionID { get => _explicitNullValueQuestionID; set { _explicitNullValueQuestionID = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questionID"); else _explicitNullProperties?.Remove("questionID"); } }
+        private string _explicitNullValueQuestionID = default!;
 #endif
         /// <summary>The revisions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry>? Revisions { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry>? Revisions { get => _explicitNullValueRevisions; set { _explicitNullValueRevisions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisions"); else _explicitNullProperties?.Remove("revisions"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry>? _explicitNullValueRevisions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry> Revisions { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry> Revisions { get => _explicitNullValueRevisions; set { _explicitNullValueRevisions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisions"); else _explicitNullProperties?.Remove("revisions"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry> _explicitNullValueRevisions = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.RevisionPayload"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.RevisionPayload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.RevisionPayload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.RevisionPayload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("questionID", QuestionID);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.RevisionEntry>("revisions", Revisions);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

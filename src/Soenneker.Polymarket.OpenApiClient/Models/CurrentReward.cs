@@ -12,37 +12,62 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CurrentReward : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("condition_id") is { } nullNodeConditionId && nullNodeConditionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionId = null;
+            if (parseNode.GetChildNode("native_daily_rate") is { } nullNodeNativeDailyRate && nullNodeNativeDailyRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeDailyRate = null;
+            if (parseNode.GetChildNode("rewards_config") is { } nullNodeRewardsConfig && nullNodeRewardsConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardsConfig = null;
+            if (parseNode.GetChildNode("rewards_max_spread") is { } nullNodeRewardsMaxSpread && nullNodeRewardsMaxSpread.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardsMaxSpread = null;
+            if (parseNode.GetChildNode("rewards_min_size") is { } nullNodeRewardsMinSize && nullNodeRewardsMinSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RewardsMinSize = null;
+            if (parseNode.GetChildNode("sponsored_daily_rate") is { } nullNodeSponsoredDailyRate && nullNodeSponsoredDailyRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SponsoredDailyRate = null;
+            if (parseNode.GetChildNode("sponsors_count") is { } nullNodeSponsorsCount && nullNodeSponsorsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SponsorsCount = null;
+            if (parseNode.GetChildNode("total_daily_rate") is { } nullNodeTotalDailyRate && nullNodeTotalDailyRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalDailyRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Condition ID of the market</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConditionId { get; set; }
+        public string? ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
+        private string? _explicitNullValueConditionId = default!;
 #nullable restore
 #else
-        public string ConditionId { get; set; }
+        public string ConditionId { get => _explicitNullValueConditionId; set { _explicitNullValueConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_id"); else _explicitNullProperties?.Remove("condition_id"); } }
+        private string _explicitNullValueConditionId = default!;
 #endif
         /// <summary>Computed native daily rate excluding sponsors (omitted when zero)</summary>
-        public double? NativeDailyRate { get; set; }
+        public double? NativeDailyRate { get => _explicitNullValueNativeDailyRate; set { _explicitNullValueNativeDailyRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_daily_rate"); else _explicitNullProperties?.Remove("native_daily_rate"); } }
+        private double? _explicitNullValueNativeDailyRate = default!;
         /// <summary>The rewards_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.CurrentRewardConfig>? RewardsConfig { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.CurrentRewardConfig>? RewardsConfig { get => _explicitNullValueRewardsConfig; set { _explicitNullValueRewardsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rewards_config"); else _explicitNullProperties?.Remove("rewards_config"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.CurrentRewardConfig>? _explicitNullValueRewardsConfig = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.CurrentRewardConfig> RewardsConfig { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.CurrentRewardConfig> RewardsConfig { get => _explicitNullValueRewardsConfig; set { _explicitNullValueRewardsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rewards_config"); else _explicitNullProperties?.Remove("rewards_config"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.CurrentRewardConfig> _explicitNullValueRewardsConfig = default!;
 #endif
         /// <summary>Maximum spread for rewards eligibility</summary>
-        public double? RewardsMaxSpread { get; set; }
+        public double? RewardsMaxSpread { get => _explicitNullValueRewardsMaxSpread; set { _explicitNullValueRewardsMaxSpread = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rewards_max_spread"); else _explicitNullProperties?.Remove("rewards_max_spread"); } }
+        private double? _explicitNullValueRewardsMaxSpread = default!;
         /// <summary>Minimum order size for rewards eligibility</summary>
-        public double? RewardsMinSize { get; set; }
+        public double? RewardsMinSize { get => _explicitNullValueRewardsMinSize; set { _explicitNullValueRewardsMinSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rewards_min_size"); else _explicitNullProperties?.Remove("rewards_min_size"); } }
+        private double? _explicitNullValueRewardsMinSize = default!;
         /// <summary>Sponsored daily rate (omitted when zero)</summary>
-        public double? SponsoredDailyRate { get; set; }
+        public double? SponsoredDailyRate { get => _explicitNullValueSponsoredDailyRate; set { _explicitNullValueSponsoredDailyRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sponsored_daily_rate"); else _explicitNullProperties?.Remove("sponsored_daily_rate"); } }
+        private double? _explicitNullValueSponsoredDailyRate = default!;
         /// <summary>Number of sponsors (omitted when zero)</summary>
-        public int? SponsorsCount { get; set; }
+        public int? SponsorsCount { get => _explicitNullValueSponsorsCount; set { _explicitNullValueSponsorsCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sponsors_count"); else _explicitNullProperties?.Remove("sponsors_count"); } }
+        private int? _explicitNullValueSponsorsCount = default!;
         /// <summary>Computed total daily rate including sponsors (omitted when zero)</summary>
-        public double? TotalDailyRate { get; set; }
+        public double? TotalDailyRate { get => _explicitNullValueTotalDailyRate; set { _explicitNullValueTotalDailyRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_daily_rate"); else _explicitNullProperties?.Remove("total_daily_rate"); } }
+        private double? _explicitNullValueTotalDailyRate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CurrentReward"/> and sets the default values.
         /// </summary>
@@ -58,7 +83,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.CurrentReward CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.CurrentReward();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.CurrentReward(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,6 +118,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteDoubleValue("sponsored_daily_rate", SponsoredDailyRate);
             writer.WriteIntValue("sponsors_count", SponsorsCount);
             writer.WriteDoubleValue("total_daily_rate", TotalDailyRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

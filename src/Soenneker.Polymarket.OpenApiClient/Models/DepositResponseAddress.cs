@@ -12,40 +12,59 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DepositResponseAddress : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("btc") is { } nullNodeBtc && nullNodeBtc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Btc = null;
+            if (parseNode.GetChildNode("evm") is { } nullNodeEvm && nullNodeEvm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evm = null;
+            if (parseNode.GetChildNode("svm") is { } nullNodeSvm && nullNodeSvm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Svm = null;
+            if (parseNode.GetChildNode("tron") is { } nullNodeTron && nullNodeTron.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tron = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bitcoin bridge address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Btc { get; set; }
+        public string? Btc { get => _explicitNullValueBtc; set { _explicitNullValueBtc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("btc"); else _explicitNullProperties?.Remove("btc"); } }
+        private string? _explicitNullValueBtc = default!;
 #nullable restore
 #else
-        public string Btc { get; set; }
+        public string Btc { get => _explicitNullValueBtc; set { _explicitNullValueBtc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("btc"); else _explicitNullProperties?.Remove("btc"); } }
+        private string _explicitNullValueBtc = default!;
 #endif
         /// <summary>EVM-compatible bridge address (Ethereum, Polygon, Arbitrum, Base, etc.)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Evm { get; set; }
+        public string? Evm { get => _explicitNullValueEvm; set { _explicitNullValueEvm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evm"); else _explicitNullProperties?.Remove("evm"); } }
+        private string? _explicitNullValueEvm = default!;
 #nullable restore
 #else
-        public string Evm { get; set; }
+        public string Evm { get => _explicitNullValueEvm; set { _explicitNullValueEvm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evm"); else _explicitNullProperties?.Remove("evm"); } }
+        private string _explicitNullValueEvm = default!;
 #endif
         /// <summary>Solana Virtual Machine bridge address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Svm { get; set; }
+        public string? Svm { get => _explicitNullValueSvm; set { _explicitNullValueSvm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svm"); else _explicitNullProperties?.Remove("svm"); } }
+        private string? _explicitNullValueSvm = default!;
 #nullable restore
 #else
-        public string Svm { get; set; }
+        public string Svm { get => _explicitNullValueSvm; set { _explicitNullValueSvm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svm"); else _explicitNullProperties?.Remove("svm"); } }
+        private string _explicitNullValueSvm = default!;
 #endif
         /// <summary>Tron bridge address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tron { get; set; }
+        public string? Tron { get => _explicitNullValueTron; set { _explicitNullValueTron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tron"); else _explicitNullProperties?.Remove("tron"); } }
+        private string? _explicitNullValueTron = default!;
 #nullable restore
 #else
-        public string Tron { get; set; }
+        public string Tron { get => _explicitNullValueTron; set { _explicitNullValueTron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tron"); else _explicitNullProperties?.Remove("tron"); } }
+        private string _explicitNullValueTron = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.DepositResponseAddress"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.DepositResponseAddress CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.DepositResponseAddress();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.DepositResponseAddress(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("evm", Evm);
             writer.WriteStringValue("svm", Svm);
             writer.WriteStringValue("tron", Tron);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

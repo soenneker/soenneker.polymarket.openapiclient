@@ -55,6 +55,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.LastTradePrice
             {
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetLastTradePrice200Response>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetLastTradePrice200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

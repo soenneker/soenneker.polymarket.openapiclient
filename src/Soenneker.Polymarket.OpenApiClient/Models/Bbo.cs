@@ -11,45 +11,68 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Bbo : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ask_price") is { } nullNodeAskPrice && nullNodeAskPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AskPrice = null;
+            if (parseNode.GetChildNode("ask_quantity") is { } nullNodeAskQuantity && nullNodeAskQuantity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AskQuantity = null;
+            if (parseNode.GetChildNode("bid_price") is { } nullNodeBidPrice && nullNodeBidPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BidPrice = null;
+            if (parseNode.GetChildNode("bid_quantity") is { } nullNodeBidQuantity && nullNodeBidQuantity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BidQuantity = null;
+            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Best ask price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AskPrice { get; set; }
+        public string? AskPrice { get => _explicitNullValueAskPrice; set { _explicitNullValueAskPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask_price"); else _explicitNullProperties?.Remove("ask_price"); } }
+        private string? _explicitNullValueAskPrice = default!;
 #nullable restore
 #else
-        public string AskPrice { get; set; }
+        public string AskPrice { get => _explicitNullValueAskPrice; set { _explicitNullValueAskPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask_price"); else _explicitNullProperties?.Remove("ask_price"); } }
+        private string _explicitNullValueAskPrice = default!;
 #endif
         /// <summary>Best ask quantity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AskQuantity { get; set; }
+        public string? AskQuantity { get => _explicitNullValueAskQuantity; set { _explicitNullValueAskQuantity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask_quantity"); else _explicitNullProperties?.Remove("ask_quantity"); } }
+        private string? _explicitNullValueAskQuantity = default!;
 #nullable restore
 #else
-        public string AskQuantity { get; set; }
+        public string AskQuantity { get => _explicitNullValueAskQuantity; set { _explicitNullValueAskQuantity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask_quantity"); else _explicitNullProperties?.Remove("ask_quantity"); } }
+        private string _explicitNullValueAskQuantity = default!;
 #endif
         /// <summary>Best bid price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BidPrice { get; set; }
+        public string? BidPrice { get => _explicitNullValueBidPrice; set { _explicitNullValueBidPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bid_price"); else _explicitNullProperties?.Remove("bid_price"); } }
+        private string? _explicitNullValueBidPrice = default!;
 #nullable restore
 #else
-        public string BidPrice { get; set; }
+        public string BidPrice { get => _explicitNullValueBidPrice; set { _explicitNullValueBidPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bid_price"); else _explicitNullProperties?.Remove("bid_price"); } }
+        private string _explicitNullValueBidPrice = default!;
 #endif
         /// <summary>Best bid quantity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BidQuantity { get; set; }
+        public string? BidQuantity { get => _explicitNullValueBidQuantity; set { _explicitNullValueBidQuantity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bid_quantity"); else _explicitNullProperties?.Remove("bid_quantity"); } }
+        private string? _explicitNullValueBidQuantity = default!;
 #nullable restore
 #else
-        public string BidQuantity { get; set; }
+        public string BidQuantity { get => _explicitNullValueBidQuantity; set { _explicitNullValueBidQuantity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bid_quantity"); else _explicitNullProperties?.Remove("bid_quantity"); } }
+        private string _explicitNullValueBidQuantity = default!;
 #endif
         /// <summary>Instrument ID</summary>
-        public int? InstrumentId { get; set; }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        private int? _explicitNullValueInstrumentId = default!;
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public long? Timestamp { get; set; }
+        public long? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private long? _explicitNullValueTimestamp = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Bbo"/> and sets the default values.
         /// </summary>
@@ -65,7 +88,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.Bbo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.Bbo();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.Bbo(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +119,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("bid_quantity", BidQuantity);
             writer.WriteIntValue("instrument_id", InstrumentId);
             writer.WriteLongValue("timestamp", Timestamp);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

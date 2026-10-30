@@ -12,36 +12,56 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RateLimitTierResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("next_tier_threshold") is { } nullNodeNextTierThreshold && nullNodeNextTierThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextTierThreshold = null;
+            if (parseNode.GetChildNode("period") is { } nullNodePeriod && nullNodePeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Period = null;
+            if (parseNode.GetChildNode("tier") is { } nullNodeTier && nullNodeTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tier = null;
+            if (parseNode.GetChildNode("tier_details") is { } nullNodeTierDetails && nullNodeTierDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierDetails = null;
+            if (parseNode.GetChildNode("usdc_volume") is { } nullNodeUsdcVolume && nullNodeUsdcVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsdcVolume = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>30-day volume needed for the next tier. Omitted at the top tier and for manually assigned tiers</summary>
-        public int? NextTierThreshold { get; set; }
+        public int? NextTierThreshold { get => _explicitNullValueNextTierThreshold; set { _explicitNullValueNextTierThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_tier_threshold"); else _explicitNullProperties?.Remove("next_tier_threshold"); } }
+        private int? _explicitNullValueNextTierThreshold = default!;
         /// <summary>Length of the volume window, in days</summary>
-        public int? Period { get; set; }
+        public int? Period { get => _explicitNullValuePeriod; set { _explicitNullValuePeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period"); else _explicitNullProperties?.Remove("period"); } }
+        private int? _explicitNullValuePeriod = default!;
         /// <summary>Tier currently applied to your signer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tier { get; set; }
+        public string? Tier { get => _explicitNullValueTier; set { _explicitNullValueTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier"); else _explicitNullProperties?.Remove("tier"); } }
+        private string? _explicitNullValueTier = default!;
 #nullable restore
 #else
-        public string Tier { get; set; }
+        public string Tier { get => _explicitNullValueTier; set { _explicitNullValueTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier"); else _explicitNullProperties?.Remove("tier"); } }
+        private string _explicitNullValueTier = default!;
 #endif
         /// <summary>Rate, burst and negative-balance settings for the tier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails? TierDetails { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails? TierDetails { get => _explicitNullValueTierDetails; set { _explicitNullValueTierDetails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_details"); else _explicitNullProperties?.Remove("tier_details"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails? _explicitNullValueTierDetails = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails TierDetails { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails TierDetails { get => _explicitNullValueTierDetails; set { _explicitNullValueTierDetails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_details"); else _explicitNullProperties?.Remove("tier_details"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails _explicitNullValueTierDetails = default!;
 #endif
         /// <summary>Trailing-window volume, in USDC, of the maker wallet that set your tier. Omitted below the lowest paid tier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsdcVolume { get; set; }
+        public string? UsdcVolume { get => _explicitNullValueUsdcVolume; set { _explicitNullValueUsdcVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usdc_volume"); else _explicitNullProperties?.Remove("usdc_volume"); } }
+        private string? _explicitNullValueUsdcVolume = default!;
 #nullable restore
 #else
-        public string UsdcVolume { get; set; }
+        public string UsdcVolume { get => _explicitNullValueUsdcVolume; set { _explicitNullValueUsdcVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usdc_volume"); else _explicitNullProperties?.Remove("usdc_volume"); } }
+        private string _explicitNullValueUsdcVolume = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierResponse"/> and sets the default values.
@@ -58,7 +78,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,6 +107,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("tier", Tier);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails>("tier_details", TierDetails);
             writer.WriteStringValue("usdc_volume", UsdcVolume);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

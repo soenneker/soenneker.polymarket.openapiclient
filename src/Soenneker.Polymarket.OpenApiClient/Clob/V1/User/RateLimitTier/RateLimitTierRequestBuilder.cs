@@ -55,6 +55,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.V1.User.RateLimitTier
             {
                 { "401", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

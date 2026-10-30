@@ -11,40 +11,59 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WithdrawalRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
+            if (parseNode.GetChildNode("recipientAddr") is { } nullNodeRecipientAddr && nullNodeRecipientAddr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecipientAddr = null;
+            if (parseNode.GetChildNode("toChainId") is { } nullNodeToChainId && nullNodeToChainId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToChainId = null;
+            if (parseNode.GetChildNode("toTokenAddress") is { } nullNodeToTokenAddress && nullNodeToTokenAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToTokenAddress = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Ethereum address (0x-prefixed, 40 hex chars)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Address { get; set; }
+        public string? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        private string? _explicitNullValueAddress = default!;
 #nullable restore
 #else
-        public string Address { get; set; }
+        public string Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        private string _explicitNullValueAddress = default!;
 #endif
         /// <summary>Destination wallet address where funds will be sent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RecipientAddr { get; set; }
+        public string? RecipientAddr { get => _explicitNullValueRecipientAddr; set { _explicitNullValueRecipientAddr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipientAddr"); else _explicitNullProperties?.Remove("recipientAddr"); } }
+        private string? _explicitNullValueRecipientAddr = default!;
 #nullable restore
 #else
-        public string RecipientAddr { get; set; }
+        public string RecipientAddr { get => _explicitNullValueRecipientAddr; set { _explicitNullValueRecipientAddr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipientAddr"); else _explicitNullProperties?.Remove("recipientAddr"); } }
+        private string _explicitNullValueRecipientAddr = default!;
 #endif
         /// <summary>Destination chain ID (e.g., &quot;1&quot; for Ethereum, &quot;8453&quot; for Base, &quot;1151111081099710&quot; for Solana)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToChainId { get; set; }
+        public string? ToChainId { get => _explicitNullValueToChainId; set { _explicitNullValueToChainId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toChainId"); else _explicitNullProperties?.Remove("toChainId"); } }
+        private string? _explicitNullValueToChainId = default!;
 #nullable restore
 #else
-        public string ToChainId { get; set; }
+        public string ToChainId { get => _explicitNullValueToChainId; set { _explicitNullValueToChainId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toChainId"); else _explicitNullProperties?.Remove("toChainId"); } }
+        private string _explicitNullValueToChainId = default!;
 #endif
         /// <summary>Destination token contract address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToTokenAddress { get; set; }
+        public string? ToTokenAddress { get => _explicitNullValueToTokenAddress; set { _explicitNullValueToTokenAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toTokenAddress"); else _explicitNullProperties?.Remove("toTokenAddress"); } }
+        private string? _explicitNullValueToTokenAddress = default!;
 #nullable restore
 #else
-        public string ToTokenAddress { get; set; }
+        public string ToTokenAddress { get => _explicitNullValueToTokenAddress; set { _explicitNullValueToTokenAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toTokenAddress"); else _explicitNullProperties?.Remove("toTokenAddress"); } }
+        private string _explicitNullValueToTokenAddress = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawalRequest"/> and sets the default values.
@@ -61,7 +80,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawalRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawalRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.WithdrawalRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +107,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("recipientAddr", RecipientAddr);
             writer.WriteStringValue("toChainId", ToChainId);
             writer.WriteStringValue("toTokenAddress", ToTokenAddress);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

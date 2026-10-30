@@ -12,30 +12,49 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BlpLiquidation : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cross") is { } nullNodeCross && nullNodeCross.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cross = null;
+            if (parseNode.GetChildNode("liquidation_id") is { } nullNodeLiquidationId && nullNodeLiquidationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiquidationId = null;
+            if (parseNode.GetChildNode("margin") is { } nullNodeMargin && nullNodeMargin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Margin = null;
+            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+            if (parseNode.GetChildNode("trades") is { } nullNodeTrades && nullNodeTrades.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trades = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to use cross margin mode</summary>
-        public bool? Cross { get; set; }
+        public bool? Cross { get => _explicitNullValueCross; set { _explicitNullValueCross = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cross"); else _explicitNullProperties?.Remove("cross"); } }
+        private bool? _explicitNullValueCross = default!;
         /// <summary>Liquidation ID. Identifies one absorption of an account&apos;s positions by the insurance fund. Probabilistically unique (same guarantees as trade IDs).</summary>
-        public int? LiquidationId { get; set; }
+        public int? LiquidationId { get => _explicitNullValueLiquidationId; set { _explicitNullValueLiquidationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquidation_id"); else _explicitNullProperties?.Remove("liquidation_id"); } }
+        private int? _explicitNullValueLiquidationId = default!;
         /// <summary>Net margin transferred to the insurance fund in USD, covering the quote asset only. Negative when the fund returned more isolated margin than the account&apos;s balance covered, i.e. it absorbed bad debt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Margin { get; set; }
+        public string? Margin { get => _explicitNullValueMargin; set { _explicitNullValueMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("margin"); else _explicitNullProperties?.Remove("margin"); } }
+        private string? _explicitNullValueMargin = default!;
 #nullable restore
 #else
-        public string Margin { get; set; }
+        public string Margin { get => _explicitNullValueMargin; set { _explicitNullValueMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("margin"); else _explicitNullProperties?.Remove("margin"); } }
+        private string _explicitNullValueMargin = default!;
 #endif
         /// <summary>Request timestamp. Unix milliseconds for most operations; Unix seconds for withdrawals (must match the on-chain EIP-712 struct verified against block.timestamp).</summary>
-        public long? Timestamp { get; set; }
+        public long? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private long? _explicitNullValueTimestamp = default!;
         /// <summary>Trades booked for the positions absorbed in this liquidation, in the order they were booked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade>? Trades { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade>? Trades { get => _explicitNullValueTrades; set { _explicitNullValueTrades = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trades"); else _explicitNullProperties?.Remove("trades"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade>? _explicitNullValueTrades = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade> Trades { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade> Trades { get => _explicitNullValueTrades; set { _explicitNullValueTrades = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trades"); else _explicitNullProperties?.Remove("trades"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade> _explicitNullValueTrades = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidation"/> and sets the default values.
@@ -52,7 +71,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +100,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("margin", Margin);
             writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.BlpLiquidationTrade>("trades", Trades);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

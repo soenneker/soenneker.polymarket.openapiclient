@@ -11,62 +11,93 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ComboLeg : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("leg_condition_id") is { } nullNodeLegConditionId && nullNodeLegConditionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegConditionId = null;
+            if (parseNode.GetChildNode("leg_current_price") is { } nullNodeLegCurrentPrice && nullNodeLegCurrentPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegCurrentPrice = null;
+            if (parseNode.GetChildNode("leg_index") is { } nullNodeLegIndex && nullNodeLegIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegIndex = null;
+            if (parseNode.GetChildNode("leg_outcome_index") is { } nullNodeLegOutcomeIndex && nullNodeLegOutcomeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegOutcomeIndex = null;
+            if (parseNode.GetChildNode("leg_outcome_label") is { } nullNodeLegOutcomeLabel && nullNodeLegOutcomeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegOutcomeLabel = null;
+            if (parseNode.GetChildNode("leg_position_id") is { } nullNodeLegPositionId && nullNodeLegPositionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegPositionId = null;
+            if (parseNode.GetChildNode("leg_resolved_at") is { } nullNodeLegResolvedAt && nullNodeLegResolvedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegResolvedAt = null;
+            if (parseNode.GetChildNode("leg_status") is { } nullNodeLegStatus && nullNodeLegStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegStatus = null;
+            if (parseNode.GetChildNode("market") is { } nullNodeMarket && nullNodeMarket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Market = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The leg market&apos;s condition ID (distinct from the combo&apos;s).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LegConditionId { get; set; }
+        public string? LegConditionId { get => _explicitNullValueLegConditionId; set { _explicitNullValueLegConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_condition_id"); else _explicitNullProperties?.Remove("leg_condition_id"); } }
+        private string? _explicitNullValueLegConditionId = default!;
 #nullable restore
 #else
-        public string LegConditionId { get; set; }
+        public string LegConditionId { get => _explicitNullValueLegConditionId; set { _explicitNullValueLegConditionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_condition_id"); else _explicitNullProperties?.Remove("leg_condition_id"); } }
+        private string _explicitNullValueLegConditionId = default!;
 #endif
         /// <summary>Live price for the leg outcome (decimal string, 0–1). &quot;0&quot; when no price is available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LegCurrentPrice { get; set; }
+        public string? LegCurrentPrice { get => _explicitNullValueLegCurrentPrice; set { _explicitNullValueLegCurrentPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_current_price"); else _explicitNullProperties?.Remove("leg_current_price"); } }
+        private string? _explicitNullValueLegCurrentPrice = default!;
 #nullable restore
 #else
-        public string LegCurrentPrice { get; set; }
+        public string LegCurrentPrice { get => _explicitNullValueLegCurrentPrice; set { _explicitNullValueLegCurrentPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_current_price"); else _explicitNullProperties?.Remove("leg_current_price"); } }
+        private string _explicitNullValueLegCurrentPrice = default!;
 #endif
         /// <summary>The leg_index property</summary>
-        public int? LegIndex { get; set; }
+        public int? LegIndex { get => _explicitNullValueLegIndex; set { _explicitNullValueLegIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_index"); else _explicitNullProperties?.Remove("leg_index"); } }
+        private int? _explicitNullValueLegIndex = default!;
         /// <summary>The leg_outcome_index property</summary>
-        public int? LegOutcomeIndex { get; set; }
+        public int? LegOutcomeIndex { get => _explicitNullValueLegOutcomeIndex; set { _explicitNullValueLegOutcomeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_outcome_index"); else _explicitNullProperties?.Remove("leg_outcome_index"); } }
+        private int? _explicitNullValueLegOutcomeIndex = default!;
         /// <summary>The leg_outcome_label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LegOutcomeLabel { get; set; }
+        public string? LegOutcomeLabel { get => _explicitNullValueLegOutcomeLabel; set { _explicitNullValueLegOutcomeLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_outcome_label"); else _explicitNullProperties?.Remove("leg_outcome_label"); } }
+        private string? _explicitNullValueLegOutcomeLabel = default!;
 #nullable restore
 #else
-        public string LegOutcomeLabel { get; set; }
+        public string LegOutcomeLabel { get => _explicitNullValueLegOutcomeLabel; set { _explicitNullValueLegOutcomeLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_outcome_label"); else _explicitNullProperties?.Remove("leg_outcome_label"); } }
+        private string _explicitNullValueLegOutcomeLabel = default!;
 #endif
         /// <summary>The leg_position_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LegPositionId { get; set; }
+        public string? LegPositionId { get => _explicitNullValueLegPositionId; set { _explicitNullValueLegPositionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_position_id"); else _explicitNullProperties?.Remove("leg_position_id"); } }
+        private string? _explicitNullValueLegPositionId = default!;
 #nullable restore
 #else
-        public string LegPositionId { get; set; }
+        public string LegPositionId { get => _explicitNullValueLegPositionId; set { _explicitNullValueLegPositionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_position_id"); else _explicitNullProperties?.Remove("leg_position_id"); } }
+        private string _explicitNullValueLegPositionId = default!;
 #endif
         /// <summary>RFC3339 UTC. Set once the leg&apos;s market resolves on-chain, including fractional resolutions that still report leg_status OPEN.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LegResolvedAt { get; set; }
+        public string? LegResolvedAt { get => _explicitNullValueLegResolvedAt; set { _explicitNullValueLegResolvedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_resolved_at"); else _explicitNullProperties?.Remove("leg_resolved_at"); } }
+        private string? _explicitNullValueLegResolvedAt = default!;
 #nullable restore
 #else
-        public string LegResolvedAt { get; set; }
+        public string LegResolvedAt { get => _explicitNullValueLegResolvedAt; set { _explicitNullValueLegResolvedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_resolved_at"); else _explicitNullProperties?.Remove("leg_resolved_at"); } }
+        private string _explicitNullValueLegResolvedAt = default!;
 #endif
         /// <summary>Live per-leg resolution state, derived from the leg market&apos;s on-chain payout vector. Markets resolved with a fractional payout (e.g. a 50/50 void) surface as RESOLVED_PARTIAL with leg_resolved_at set.</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegLegStatus? LegStatus { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegLegStatus? LegStatus { get => _explicitNullValueLegStatus; set { _explicitNullValueLegStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_status"); else _explicitNullProperties?.Remove("leg_status"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegLegStatus? _explicitNullValueLegStatus = default!;
         /// <summary>The market property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket? Market { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket? Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket? _explicitNullValueMarket = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket Market { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket _explicitNullValueMarket = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg"/> and sets the default values.
@@ -83,7 +114,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,6 +151,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("leg_resolved_at", LegResolvedAt);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegLegStatus>("leg_status", LegStatus);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket>("market", Market);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

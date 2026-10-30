@@ -12,29 +12,51 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RateLimitTierDetails : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allow_negative") is { } nullNodeAllowNegative && nullNodeAllowNegative.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowNegative = null;
+            if (parseNode.GetChildNode("cancel_burst") is { } nullNodeCancelBurst && nullNodeCancelBurst.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CancelBurst = null;
+            if (parseNode.GetChildNode("cancel_rate_per_sec") is { } nullNodeCancelRatePerSec && nullNodeCancelRatePerSec.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CancelRatePerSec = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("order_burst") is { } nullNodeOrderBurst && nullNodeOrderBurst.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderBurst = null;
+            if (parseNode.GetChildNode("order_rate_per_sec") is { } nullNodeOrderRatePerSec && nullNodeOrderRatePerSec.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderRatePerSec = null;
+            if (parseNode.GetChildNode("volume_threshold") is { } nullNodeVolumeThreshold && nullNodeVolumeThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeThreshold = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the cancel bucket can carry a negative balance</summary>
-        public bool? AllowNegative { get; set; }
+        public bool? AllowNegative { get => _explicitNullValueAllowNegative; set { _explicitNullValueAllowNegative = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_negative"); else _explicitNullProperties?.Remove("allow_negative"); } }
+        private bool? _explicitNullValueAllowNegative = default!;
         /// <summary>Cancel bucket burst capacity, in tokens</summary>
-        public int? CancelBurst { get; set; }
+        public int? CancelBurst { get => _explicitNullValueCancelBurst; set { _explicitNullValueCancelBurst = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cancel_burst"); else _explicitNullProperties?.Remove("cancel_burst"); } }
+        private int? _explicitNullValueCancelBurst = default!;
         /// <summary>Cancel bucket refill rate, in tokens per second</summary>
-        public int? CancelRatePerSec { get; set; }
+        public int? CancelRatePerSec { get => _explicitNullValueCancelRatePerSec; set { _explicitNullValueCancelRatePerSec = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cancel_rate_per_sec"); else _explicitNullProperties?.Remove("cancel_rate_per_sec"); } }
+        private int? _explicitNullValueCancelRatePerSec = default!;
         /// <summary>Tier name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Order bucket burst capacity, in tokens</summary>
-        public int? OrderBurst { get; set; }
+        public int? OrderBurst { get => _explicitNullValueOrderBurst; set { _explicitNullValueOrderBurst = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_burst"); else _explicitNullProperties?.Remove("order_burst"); } }
+        private int? _explicitNullValueOrderBurst = default!;
         /// <summary>Order bucket refill rate, in tokens per second</summary>
-        public int? OrderRatePerSec { get; set; }
+        public int? OrderRatePerSec { get => _explicitNullValueOrderRatePerSec; set { _explicitNullValueOrderRatePerSec = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_rate_per_sec"); else _explicitNullProperties?.Remove("order_rate_per_sec"); } }
+        private int? _explicitNullValueOrderRatePerSec = default!;
         /// <summary>30-day volume required for the tier</summary>
-        public int? VolumeThreshold { get; set; }
+        public int? VolumeThreshold { get => _explicitNullValueVolumeThreshold; set { _explicitNullValueVolumeThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_threshold"); else _explicitNullProperties?.Remove("volume_threshold"); } }
+        private int? _explicitNullValueVolumeThreshold = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails"/> and sets the default values.
         /// </summary>
@@ -50,7 +72,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.RateLimitTierDetails(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +105,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("order_burst", OrderBurst);
             writer.WriteIntValue("order_rate_per_sec", OrderRatePerSec);
             writer.WriteIntValue("volume_threshold", VolumeThreshold);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

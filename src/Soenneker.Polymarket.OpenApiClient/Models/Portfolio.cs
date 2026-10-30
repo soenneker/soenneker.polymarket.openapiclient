@@ -11,38 +11,60 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Portfolio : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("fee_tier") is { } nullNodeFeeTier && nullNodeFeeTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeeTier = null;
+            if (parseNode.GetChildNode("in_liquidation") is { } nullNodeInLiquidation && nullNodeInLiquidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InLiquidation = null;
+            if (parseNode.GetChildNode("margin") is { } nullNodeMargin && nullNodeMargin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Margin = null;
+            if (parseNode.GetChildNode("positions") is { } nullNodePositions && nullNodePositions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Positions = null;
+            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+            if (parseNode.GetChildNode("withdrawable") is { } nullNodeWithdrawable && nullNodeWithdrawable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Withdrawable = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Zero-based index into `tiers` of the single perpetual fee schedule returned by `/v1/info/fees`, which applies to every perpetual regardless of category. Builder fees are additional and are not part of this tier. Defaults to 0 without a current tier assignment and is capped at the highest configured tier. WebSocket tier changes appear on the next portfolio update, published every 5 seconds.</summary>
-        public int? FeeTier { get; set; }
+        public int? FeeTier { get => _explicitNullValueFeeTier; set { _explicitNullValueFeeTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fee_tier"); else _explicitNullProperties?.Remove("fee_tier"); } }
+        private int? _explicitNullValueFeeTier = default!;
         /// <summary>Whether the account is currently under liquidation</summary>
-        public bool? InLiquidation { get; set; }
+        public bool? InLiquidation { get => _explicitNullValueInLiquidation; set { _explicitNullValueInLiquidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("in_liquidation"); else _explicitNullProperties?.Remove("in_liquidation"); } }
+        private bool? _explicitNullValueInLiquidation = default!;
         /// <summary>The margin property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary? Margin { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary? Margin { get => _explicitNullValueMargin; set { _explicitNullValueMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("margin"); else _explicitNullProperties?.Remove("margin"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary? _explicitNullValueMargin = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary Margin { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary Margin { get => _explicitNullValueMargin; set { _explicitNullValueMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("margin"); else _explicitNullProperties?.Remove("margin"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary _explicitNullValueMargin = default!;
 #endif
         /// <summary>The positions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition>? Positions { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition>? Positions { get => _explicitNullValuePositions; set { _explicitNullValuePositions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positions"); else _explicitNullProperties?.Remove("positions"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition>? _explicitNullValuePositions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition> Positions { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition> Positions { get => _explicitNullValuePositions; set { _explicitNullValuePositions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positions"); else _explicitNullProperties?.Remove("positions"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition> _explicitNullValuePositions = default!;
 #endif
         /// <summary>Update timestamp in milliseconds</summary>
-        public long? Timestamp { get; set; }
+        public long? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private long? _explicitNullValueTimestamp = default!;
         /// <summary>Withdrawable balance in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Withdrawable { get; set; }
+        public string? Withdrawable { get => _explicitNullValueWithdrawable; set { _explicitNullValueWithdrawable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawable"); else _explicitNullProperties?.Remove("withdrawable"); } }
+        private string? _explicitNullValueWithdrawable = default!;
 #nullable restore
 #else
-        public string Withdrawable { get; set; }
+        public string Withdrawable { get => _explicitNullValueWithdrawable; set { _explicitNullValueWithdrawable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawable"); else _explicitNullProperties?.Remove("withdrawable"); } }
+        private string _explicitNullValueWithdrawable = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.Portfolio"/> and sets the default values.
@@ -59,7 +81,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.Portfolio CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.Portfolio();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.Portfolio(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,6 +112,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition>("positions", Positions);
             writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteStringValue("withdrawable", Withdrawable);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

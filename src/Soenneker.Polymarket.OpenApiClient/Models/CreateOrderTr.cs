@@ -12,20 +12,34 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateOrderTr : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("market") is { } nullNodeMarket && nullNodeMarket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Market = null;
+            if (parseNode.GetChildNode("tpsl") is { } nullNodeTpsl && nullNodeTpsl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tpsl = null;
+            if (parseNode.GetChildNode("trp") is { } nullNodeTrp && nullNodeTrp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trp = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the trigger executes as a market order</summary>
-        public bool? Market { get; set; }
+        public bool? Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
+        private bool? _explicitNullValueMarket = default!;
         /// <summary>Trigger type</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl? Tpsl { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl? Tpsl { get => _explicitNullValueTpsl; set { _explicitNullValueTpsl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tpsl"); else _explicitNullProperties?.Remove("tpsl"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl? _explicitNullValueTpsl = default!;
         /// <summary>Trigger price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Trp { get; set; }
+        public string? Trp { get => _explicitNullValueTrp; set { _explicitNullValueTrp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trp"); else _explicitNullProperties?.Remove("trp"); } }
+        private string? _explicitNullValueTrp = default!;
 #nullable restore
 #else
-        public string Trp { get; set; }
+        public string Trp { get => _explicitNullValueTrp; set { _explicitNullValueTrp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trp"); else _explicitNullProperties?.Remove("trp"); } }
+        private string _explicitNullValueTrp = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrderTr"/> and sets the default values.
@@ -42,7 +56,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrderTr CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrderTr();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.CreateOrderTr(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("market", Market);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Tpsl>("tpsl", Tpsl);
             writer.WriteStringValue("trp", Trp);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

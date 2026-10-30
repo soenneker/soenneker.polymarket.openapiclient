@@ -12,51 +12,80 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RfqSnapshot : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bundle") is { } nullNodeBundle && nullNodeBundle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bundle = null;
+            if (parseNode.GetChildNode("competition_ends_at") is { } nullNodeCompetitionEndsAt && nullNodeCompetitionEndsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitionEndsAt = null;
+            if (parseNode.GetChildNode("competition_started_at") is { } nullNodeCompetitionStartedAt && nullNodeCompetitionStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitionStartedAt = null;
+            if (parseNode.GetChildNode("confirmation_ends_at") is { } nullNodeConfirmationEndsAt && nullNodeConfirmationEndsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfirmationEndsAt = null;
+            if (parseNode.GetChildNode("confirmation_started_at") is { } nullNodeConfirmationStartedAt && nullNodeConfirmationStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfirmationStartedAt = null;
+            if (parseNode.GetChildNode("maker_confirmations") is { } nullNodeMakerConfirmations && nullNodeMakerConfirmations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerConfirmations = null;
+            if (parseNode.GetChildNode("quote_id") is { } nullNodeQuoteId && nullNodeQuoteId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuoteId = null;
+            if (parseNode.GetChildNode("request") is { } nullNodeRequest && nullNodeRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Request = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The selected executable bundle of maker allocations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.FillBundle? Bundle { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.FillBundle? Bundle { get => _explicitNullValueBundle; set { _explicitNullValueBundle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle"); else _explicitNullProperties?.Remove("bundle"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.FillBundle? _explicitNullValueBundle = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.FillBundle Bundle { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.FillBundle Bundle { get => _explicitNullValueBundle; set { _explicitNullValueBundle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle"); else _explicitNullProperties?.Remove("bundle"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.FillBundle _explicitNullValueBundle = default!;
 #endif
         /// <summary>Unix milliseconds.</summary>
-        public long? CompetitionEndsAt { get; set; }
+        public long? CompetitionEndsAt { get => _explicitNullValueCompetitionEndsAt; set { _explicitNullValueCompetitionEndsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competition_ends_at"); else _explicitNullProperties?.Remove("competition_ends_at"); } }
+        private long? _explicitNullValueCompetitionEndsAt = default!;
         /// <summary>Unix milliseconds.</summary>
-        public long? CompetitionStartedAt { get; set; }
+        public long? CompetitionStartedAt { get => _explicitNullValueCompetitionStartedAt; set { _explicitNullValueCompetitionStartedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competition_started_at"); else _explicitNullProperties?.Remove("competition_started_at"); } }
+        private long? _explicitNullValueCompetitionStartedAt = default!;
         /// <summary>Unix milliseconds.</summary>
-        public long? ConfirmationEndsAt { get; set; }
+        public long? ConfirmationEndsAt { get => _explicitNullValueConfirmationEndsAt; set { _explicitNullValueConfirmationEndsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirmation_ends_at"); else _explicitNullProperties?.Remove("confirmation_ends_at"); } }
+        private long? _explicitNullValueConfirmationEndsAt = default!;
         /// <summary>Unix milliseconds.</summary>
-        public long? ConfirmationStartedAt { get; set; }
+        public long? ConfirmationStartedAt { get => _explicitNullValueConfirmationStartedAt; set { _explicitNullValueConfirmationStartedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirmation_started_at"); else _explicitNullProperties?.Remove("confirmation_started_at"); } }
+        private long? _explicitNullValueConfirmationStartedAt = default!;
         /// <summary>The maker_confirmations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshot>? MakerConfirmations { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshot>? MakerConfirmations { get => _explicitNullValueMakerConfirmations; set { _explicitNullValueMakerConfirmations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_confirmations"); else _explicitNullProperties?.Remove("maker_confirmations"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshot>? _explicitNullValueMakerConfirmations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshot> MakerConfirmations { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshot> MakerConfirmations { get => _explicitNullValueMakerConfirmations; set { _explicitNullValueMakerConfirmations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_confirmations"); else _explicitNullProperties?.Remove("maker_confirmations"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.MakerConfirmationSnapshot> _explicitNullValueMakerConfirmations = default!;
 #endif
         /// <summary>The quote_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuoteId { get; set; }
+        public string? QuoteId { get => _explicitNullValueQuoteId; set { _explicitNullValueQuoteId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quote_id"); else _explicitNullProperties?.Remove("quote_id"); } }
+        private string? _explicitNullValueQuoteId = default!;
 #nullable restore
 #else
-        public string QuoteId { get; set; }
+        public string QuoteId { get => _explicitNullValueQuoteId; set { _explicitNullValueQuoteId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quote_id"); else _explicitNullProperties?.Remove("quote_id"); } }
+        private string _explicitNullValueQuoteId = default!;
 #endif
         /// <summary>The RFQ request as stored by the engine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RfqRequest? Request { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RfqRequest? Request { get => _explicitNullValueRequest; set { _explicitNullValueRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request"); else _explicitNullProperties?.Remove("request"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.RfqRequest? _explicitNullValueRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RfqRequest Request { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RfqRequest Request { get => _explicitNullValueRequest; set { _explicitNullValueRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request"); else _explicitNullProperties?.Remove("request"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.RfqRequest _explicitNullValueRequest = default!;
 #endif
         /// <summary>Lifecycle status of the RFQ</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.RfqStatus? Status { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.RfqStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.RfqStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.RfqSnapshot"/> and sets the default values.
         /// </summary>
@@ -72,7 +101,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.RfqSnapshot CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.RfqSnapshot();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.RfqSnapshot(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -109,6 +138,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("quote_id", QuoteId);
             writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.RfqRequest>("request", Request);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.RfqStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

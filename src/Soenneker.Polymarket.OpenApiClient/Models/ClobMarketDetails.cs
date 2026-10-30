@@ -12,51 +12,85 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ClobMarketDetails : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("fd") is { } nullNodeFd && nullNodeFd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fd = null;
+            if (parseNode.GetChildNode("gst") is { } nullNodeGst && nullNodeGst.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gst = null;
+            if (parseNode.GetChildNode("ibce") is { } nullNodeIbce && nullNodeIbce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ibce = null;
+            if (parseNode.GetChildNode("itode") is { } nullNodeItode && nullNodeItode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Itode = null;
+            if (parseNode.GetChildNode("mbf") is { } nullNodeMbf && nullNodeMbf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mbf = null;
+            if (parseNode.GetChildNode("mos") is { } nullNodeMos && nullNodeMos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mos = null;
+            if (parseNode.GetChildNode("mts") is { } nullNodeMts && nullNodeMts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mts = null;
+            if (parseNode.GetChildNode("oas") is { } nullNodeOas && nullNodeOas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Oas = null;
+            if (parseNode.GetChildNode("r") is { } nullNodeR && nullNodeR.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) R = null;
+            if (parseNode.GetChildNode("rfqe") is { } nullNodeRfqe && nullNodeRfqe.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rfqe = null;
+            if (parseNode.GetChildNode("t") is { } nullNodeT && nullNodeT.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) T = null;
+            if (parseNode.GetChildNode("tbf") is { } nullNodeTbf && nullNodeTbf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tbf = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Fee curve parameters for a market.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.FeeDetails? Fd { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.FeeDetails? Fd { get => _explicitNullValueFd; set { _explicitNullValueFd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fd"); else _explicitNullProperties?.Remove("fd"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.FeeDetails? _explicitNullValueFd = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.FeeDetails Fd { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.FeeDetails Fd { get => _explicitNullValueFd; set { _explicitNullValueFd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fd"); else _explicitNullProperties?.Remove("fd"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.FeeDetails _explicitNullValueFd = default!;
 #endif
         /// <summary>Game start time (used for sports markets), ISO 8601 timestamp or null</summary>
-        public DateTimeOffset? Gst { get; set; }
+        public DateTimeOffset? Gst { get => _explicitNullValueGst; set { _explicitNullValueGst = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gst"); else _explicitNullProperties?.Remove("gst"); } }
+        private DateTimeOffset? _explicitNullValueGst = default!;
         /// <summary>Whether Blockaid check is enabled</summary>
-        public bool? Ibce { get; set; }
+        public bool? Ibce { get => _explicitNullValueIbce; set { _explicitNullValueIbce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ibce"); else _explicitNullProperties?.Remove("ibce"); } }
+        private bool? _explicitNullValueIbce = default!;
         /// <summary>Whether taker order delay is enabled for this market. When true, marketable orders are held for the 250 ms taker-delay window before synchronous processing. This field is omitted when false.</summary>
-        public bool? Itode { get; set; }
+        public bool? Itode { get => _explicitNullValueItode; set { _explicitNullValueItode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("itode"); else _explicitNullProperties?.Remove("itode"); } }
+        private bool? _explicitNullValueItode = default!;
         /// <summary>Maker base fee in basis points</summary>
-        public long? Mbf { get; set; }
+        public long? Mbf { get => _explicitNullValueMbf; set { _explicitNullValueMbf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mbf"); else _explicitNullProperties?.Remove("mbf"); } }
+        private long? _explicitNullValueMbf = default!;
         /// <summary>Minimum order size</summary>
-        public float? Mos { get; set; }
+        public float? Mos { get => _explicitNullValueMos; set { _explicitNullValueMos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mos"); else _explicitNullProperties?.Remove("mos"); } }
+        private float? _explicitNullValueMos = default!;
         /// <summary>Minimum tick size (price increment)</summary>
-        public float? Mts { get; set; }
+        public float? Mts { get => _explicitNullValueMts; set { _explicitNullValueMts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mts"); else _explicitNullProperties?.Remove("mts"); } }
+        private float? _explicitNullValueMts = default!;
         /// <summary>Minimum order age in seconds</summary>
-        public int? Oas { get; set; }
+        public int? Oas { get => _explicitNullValueOas; set { _explicitNullValueOas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oas"); else _explicitNullProperties?.Remove("oas"); } }
+        private int? _explicitNullValueOas = default!;
         /// <summary>Rewards configuration for a market.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetailsR? R { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetailsR? R { get => _explicitNullValueR; set { _explicitNullValueR = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("r"); else _explicitNullProperties?.Remove("r"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetailsR? _explicitNullValueR = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetailsR R { get; set; }
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetailsR R { get => _explicitNullValueR; set { _explicitNullValueR = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("r"); else _explicitNullProperties?.Remove("r"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetailsR _explicitNullValueR = default!;
 #endif
         /// <summary>Whether RFQ (Request for Quote) is enabled for this market</summary>
-        public bool? Rfqe { get; set; }
+        public bool? Rfqe { get => _explicitNullValueRfqe; set { _explicitNullValueRfqe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rfqe"); else _explicitNullProperties?.Remove("rfqe"); } }
+        private bool? _explicitNullValueRfqe = default!;
         /// <summary>Tokens for this market</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.ClobToken2>? T { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.ClobToken2>? T { get => _explicitNullValueT; set { _explicitNullValueT = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("t"); else _explicitNullProperties?.Remove("t"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.ClobToken2>? _explicitNullValueT = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.ClobToken2> T { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.ClobToken2> T { get => _explicitNullValueT; set { _explicitNullValueT = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("t"); else _explicitNullProperties?.Remove("t"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.ClobToken2> _explicitNullValueT = default!;
 #endif
         /// <summary>Taker base fee in basis points</summary>
-        public long? Tbf { get; set; }
+        public long? Tbf { get => _explicitNullValueTbf; set { _explicitNullValueTbf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tbf"); else _explicitNullProperties?.Remove("tbf"); } }
+        private long? _explicitNullValueTbf = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetails"/> and sets the default values.
         /// </summary>
@@ -72,7 +106,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetails();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.ClobMarketDetails(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,6 +149,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("rfqe", Rfqe);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.ClobToken2>("t", T);
             writer.WriteLongValue("tbf", Tbf);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

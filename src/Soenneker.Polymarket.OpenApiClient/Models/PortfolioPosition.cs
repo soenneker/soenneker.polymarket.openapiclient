@@ -11,94 +11,137 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PortfolioPosition : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cross") is { } nullNodeCross && nullNodeCross.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cross = null;
+            if (parseNode.GetChildNode("cumulative_funding") is { } nullNodeCumulativeFunding && nullNodeCumulativeFunding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CumulativeFunding = null;
+            if (parseNode.GetChildNode("entry_price") is { } nullNodeEntryPrice && nullNodeEntryPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryPrice = null;
+            if (parseNode.GetChildNode("initial_margin") is { } nullNodeInitialMargin && nullNodeInitialMargin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InitialMargin = null;
+            if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
+            if (parseNode.GetChildNode("leverage") is { } nullNodeLeverage && nullNodeLeverage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Leverage = null;
+            if (parseNode.GetChildNode("liquidation_price") is { } nullNodeLiquidationPrice && nullNodeLiquidationPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiquidationPrice = null;
+            if (parseNode.GetChildNode("maintenance_margin") is { } nullNodeMaintenanceMargin && nullNodeMaintenanceMargin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaintenanceMargin = null;
+            if (parseNode.GetChildNode("position_value") is { } nullNodePositionValue && nullNodePositionValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PositionValue = null;
+            if (parseNode.GetChildNode("return_on_equity") is { } nullNodeReturnOnEquity && nullNodeReturnOnEquity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnOnEquity = null;
+            if (parseNode.GetChildNode("size") is { } nullNodeSize && nullNodeSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Size = null;
+            if (parseNode.GetChildNode("symbol") is { } nullNodeSymbol && nullNodeSymbol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Symbol = null;
+            if (parseNode.GetChildNode("unrealized_pnl") is { } nullNodeUnrealizedPnl && nullNodeUnrealizedPnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnrealizedPnl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to use cross margin mode</summary>
-        public bool? Cross { get; set; }
+        public bool? Cross { get => _explicitNullValueCross; set { _explicitNullValueCross = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cross"); else _explicitNullProperties?.Remove("cross"); } }
+        private bool? _explicitNullValueCross = default!;
         /// <summary>Cumulative funding paid/received in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CumulativeFunding { get; set; }
+        public string? CumulativeFunding { get => _explicitNullValueCumulativeFunding; set { _explicitNullValueCumulativeFunding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cumulative_funding"); else _explicitNullProperties?.Remove("cumulative_funding"); } }
+        private string? _explicitNullValueCumulativeFunding = default!;
 #nullable restore
 #else
-        public string CumulativeFunding { get; set; }
+        public string CumulativeFunding { get => _explicitNullValueCumulativeFunding; set { _explicitNullValueCumulativeFunding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cumulative_funding"); else _explicitNullProperties?.Remove("cumulative_funding"); } }
+        private string _explicitNullValueCumulativeFunding = default!;
 #endif
         /// <summary>Average entry price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EntryPrice { get; set; }
+        public string? EntryPrice { get => _explicitNullValueEntryPrice; set { _explicitNullValueEntryPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_price"); else _explicitNullProperties?.Remove("entry_price"); } }
+        private string? _explicitNullValueEntryPrice = default!;
 #nullable restore
 #else
-        public string EntryPrice { get; set; }
+        public string EntryPrice { get => _explicitNullValueEntryPrice; set { _explicitNullValueEntryPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_price"); else _explicitNullProperties?.Remove("entry_price"); } }
+        private string _explicitNullValueEntryPrice = default!;
 #endif
         /// <summary>Current collateral backing the position. For cross positions, this isthe required initial margin based on position size, mark price, theapplicable risk tier, and configured leverage. For isolated positions,this is the position&apos;s current equity: signed allocated margin plusunrealized PnL minus settled funding.The legacy `initial_margin` name is retained for API compatibility;`margin` would more accurately describe the field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InitialMargin { get; set; }
+        public string? InitialMargin { get => _explicitNullValueInitialMargin; set { _explicitNullValueInitialMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_margin"); else _explicitNullProperties?.Remove("initial_margin"); } }
+        private string? _explicitNullValueInitialMargin = default!;
 #nullable restore
 #else
-        public string InitialMargin { get; set; }
+        public string InitialMargin { get => _explicitNullValueInitialMargin; set { _explicitNullValueInitialMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_margin"); else _explicitNullProperties?.Remove("initial_margin"); } }
+        private string _explicitNullValueInitialMargin = default!;
 #endif
         /// <summary>Instrument ID</summary>
-        public int? InstrumentId { get; set; }
+        public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
+        private int? _explicitNullValueInstrumentId = default!;
         /// <summary>Leverage</summary>
-        public int? Leverage { get; set; }
+        public int? Leverage { get => _explicitNullValueLeverage; set { _explicitNullValueLeverage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leverage"); else _explicitNullProperties?.Remove("leverage"); } }
+        private int? _explicitNullValueLeverage = default!;
         /// <summary>Liquidation price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LiquidationPrice { get; set; }
+        public string? LiquidationPrice { get => _explicitNullValueLiquidationPrice; set { _explicitNullValueLiquidationPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquidation_price"); else _explicitNullProperties?.Remove("liquidation_price"); } }
+        private string? _explicitNullValueLiquidationPrice = default!;
 #nullable restore
 #else
-        public string LiquidationPrice { get; set; }
+        public string LiquidationPrice { get => _explicitNullValueLiquidationPrice; set { _explicitNullValueLiquidationPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquidation_price"); else _explicitNullProperties?.Remove("liquidation_price"); } }
+        private string _explicitNullValueLiquidationPrice = default!;
 #endif
         /// <summary>Maintenance margin amount</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaintenanceMargin { get; set; }
+        public string? MaintenanceMargin { get => _explicitNullValueMaintenanceMargin; set { _explicitNullValueMaintenanceMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maintenance_margin"); else _explicitNullProperties?.Remove("maintenance_margin"); } }
+        private string? _explicitNullValueMaintenanceMargin = default!;
 #nullable restore
 #else
-        public string MaintenanceMargin { get; set; }
+        public string MaintenanceMargin { get => _explicitNullValueMaintenanceMargin; set { _explicitNullValueMaintenanceMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maintenance_margin"); else _explicitNullProperties?.Remove("maintenance_margin"); } }
+        private string _explicitNullValueMaintenanceMargin = default!;
 #endif
         /// <summary>Notional position value in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PositionValue { get; set; }
+        public string? PositionValue { get => _explicitNullValuePositionValue; set { _explicitNullValuePositionValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position_value"); else _explicitNullProperties?.Remove("position_value"); } }
+        private string? _explicitNullValuePositionValue = default!;
 #nullable restore
 #else
-        public string PositionValue { get; set; }
+        public string PositionValue { get => _explicitNullValuePositionValue; set { _explicitNullValuePositionValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position_value"); else _explicitNullProperties?.Remove("position_value"); } }
+        private string _explicitNullValuePositionValue = default!;
 #endif
         /// <summary>Unrealized PnL divided by the position&apos;s current required initial margin, as a decimal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReturnOnEquity { get; set; }
+        public string? ReturnOnEquity { get => _explicitNullValueReturnOnEquity; set { _explicitNullValueReturnOnEquity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_on_equity"); else _explicitNullProperties?.Remove("return_on_equity"); } }
+        private string? _explicitNullValueReturnOnEquity = default!;
 #nullable restore
 #else
-        public string ReturnOnEquity { get; set; }
+        public string ReturnOnEquity { get => _explicitNullValueReturnOnEquity; set { _explicitNullValueReturnOnEquity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_on_equity"); else _explicitNullProperties?.Remove("return_on_equity"); } }
+        private string _explicitNullValueReturnOnEquity = default!;
 #endif
         /// <summary>Signed position size in no. of contracts (positive = long, negative = short)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Size { get; set; }
+        public string? Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
+        private string? _explicitNullValueSize = default!;
 #nullable restore
 #else
-        public string Size { get; set; }
+        public string Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
+        private string _explicitNullValueSize = default!;
 #endif
         /// <summary>Instrument symbol</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Symbol { get; set; }
+        public string? Symbol { get => _explicitNullValueSymbol; set { _explicitNullValueSymbol = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol"); else _explicitNullProperties?.Remove("symbol"); } }
+        private string? _explicitNullValueSymbol = default!;
 #nullable restore
 #else
-        public string Symbol { get; set; }
+        public string Symbol { get => _explicitNullValueSymbol; set { _explicitNullValueSymbol = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol"); else _explicitNullProperties?.Remove("symbol"); } }
+        private string _explicitNullValueSymbol = default!;
 #endif
         /// <summary>Unrealized PnL in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UnrealizedPnl { get; set; }
+        public string? UnrealizedPnl { get => _explicitNullValueUnrealizedPnl; set { _explicitNullValueUnrealizedPnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unrealized_pnl"); else _explicitNullProperties?.Remove("unrealized_pnl"); } }
+        private string? _explicitNullValueUnrealizedPnl = default!;
 #nullable restore
 #else
-        public string UnrealizedPnl { get; set; }
+        public string UnrealizedPnl { get => _explicitNullValueUnrealizedPnl; set { _explicitNullValueUnrealizedPnl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unrealized_pnl"); else _explicitNullProperties?.Remove("unrealized_pnl"); } }
+        private string _explicitNullValueUnrealizedPnl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition"/> and sets the default values.
@@ -115,7 +158,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.PortfolioPosition(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -160,6 +203,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("size", Size);
             writer.WriteStringValue("symbol", Symbol);
             writer.WriteStringValue("unrealized_pnl", UnrealizedPnl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

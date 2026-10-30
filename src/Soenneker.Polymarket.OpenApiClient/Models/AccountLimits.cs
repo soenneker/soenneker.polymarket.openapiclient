@@ -11,25 +11,48 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountLimits : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions_burst") is { } nullNodeActionsBurst && nullNodeActionsBurst.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsBurst = null;
+            if (parseNode.GetChildNode("actions_burst_limit") is { } nullNodeActionsBurstLimit && nullNodeActionsBurstLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsBurstLimit = null;
+            if (parseNode.GetChildNode("actions_per_minute") is { } nullNodeActionsPerMinute && nullNodeActionsPerMinute.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsPerMinute = null;
+            if (parseNode.GetChildNode("actions_per_minute_limit") is { } nullNodeActionsPerMinuteLimit && nullNodeActionsPerMinuteLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsPerMinuteLimit = null;
+            if (parseNode.GetChildNode("messages_per_minute") is { } nullNodeMessagesPerMinute && nullNodeMessagesPerMinute.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagesPerMinute = null;
+            if (parseNode.GetChildNode("open_orders") is { } nullNodeOpenOrders && nullNodeOpenOrders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenOrders = null;
+            if (parseNode.GetChildNode("open_orders_limit") is { } nullNodeOpenOrdersLimit && nullNodeOpenOrdersLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenOrdersLimit = null;
+            if (parseNode.GetChildNode("reset") is { } nullNodeReset && nullNodeReset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reset = null;
+        }
+
         /// <summary>Additional account action allowance remaining</summary>
-        public int? ActionsBurst { get; set; }
+        public int? ActionsBurst { get => _explicitNullValueActionsBurst; set { _explicitNullValueActionsBurst = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_burst"); else _explicitNullProperties?.Remove("actions_burst"); } }
+        private int? _explicitNullValueActionsBurst = default!;
         /// <summary>Additional account action allowance limit</summary>
-        public int? ActionsBurstLimit { get; set; }
+        public int? ActionsBurstLimit { get => _explicitNullValueActionsBurstLimit; set { _explicitNullValueActionsBurstLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_burst_limit"); else _explicitNullProperties?.Remove("actions_burst_limit"); } }
+        private int? _explicitNullValueActionsBurstLimit = default!;
         /// <summary>Order action tokens used by the account in the current minute</summary>
-        public int? ActionsPerMinute { get; set; }
+        public int? ActionsPerMinute { get => _explicitNullValueActionsPerMinute; set { _explicitNullValueActionsPerMinute = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_per_minute"); else _explicitNullProperties?.Remove("actions_per_minute"); } }
+        private int? _explicitNullValueActionsPerMinute = default!;
         /// <summary>Maximum order action tokens per account per minute</summary>
-        public int? ActionsPerMinuteLimit { get; set; }
+        public int? ActionsPerMinuteLimit { get => _explicitNullValueActionsPerMinuteLimit; set { _explicitNullValueActionsPerMinuteLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_per_minute_limit"); else _explicitNullProperties?.Remove("actions_per_minute_limit"); } }
+        private int? _explicitNullValueActionsPerMinuteLimit = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Display-only per-minute action/message allowance, equal to actions_per_minute_limit. Not separately configured or enforced.</summary>
-        public int? MessagesPerMinute { get; set; }
+        public int? MessagesPerMinute { get => _explicitNullValueMessagesPerMinute; set { _explicitNullValueMessagesPerMinute = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages_per_minute"); else _explicitNullProperties?.Remove("messages_per_minute"); } }
+        private int? _explicitNullValueMessagesPerMinute = default!;
         /// <summary>Current number of open orders</summary>
-        public int? OpenOrders { get; set; }
+        public int? OpenOrders { get => _explicitNullValueOpenOrders; set { _explicitNullValueOpenOrders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_orders"); else _explicitNullProperties?.Remove("open_orders"); } }
+        private int? _explicitNullValueOpenOrders = default!;
         /// <summary>Maximum number of open orders per account</summary>
-        public int? OpenOrdersLimit { get; set; }
+        public int? OpenOrdersLimit { get => _explicitNullValueOpenOrdersLimit; set { _explicitNullValueOpenOrdersLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_orders_limit"); else _explicitNullProperties?.Remove("open_orders_limit"); } }
+        private int? _explicitNullValueOpenOrdersLimit = default!;
         /// <summary>Timestamp in milliseconds when the current interval resets</summary>
-        public long? Reset { get; set; }
+        public long? Reset { get => _explicitNullValueReset; set { _explicitNullValueReset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset"); else _explicitNullProperties?.Remove("reset"); } }
+        private long? _explicitNullValueReset = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountLimits"/> and sets the default values.
         /// </summary>
@@ -45,7 +68,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.AccountLimits CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.AccountLimits();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.AccountLimits(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +103,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("open_orders", OpenOrders);
             writer.WriteIntValue("open_orders_limit", OpenOrdersLimit);
             writer.WriteLongValue("reset", Reset);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -55,6 +55,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Relayer.Nonce
             {
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.RelayerErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.RelayerErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.NonceResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.NonceResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

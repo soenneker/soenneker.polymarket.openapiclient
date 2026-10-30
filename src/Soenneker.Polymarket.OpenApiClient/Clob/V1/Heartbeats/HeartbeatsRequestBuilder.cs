@@ -40,6 +40,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.V1.Heartbeats
         /// <param name="body">Request body for heartbeat v1 endpoint</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.ClobSendHeartbeatV1400ResponseError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,8 +56,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.V1.Heartbeats
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "400", global::Soenneker.Polymarket.OpenApiClient.Models.ClobSendHeartbeatV1400ResponseError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.ClobErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatV1Response>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.HeartbeatV1Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

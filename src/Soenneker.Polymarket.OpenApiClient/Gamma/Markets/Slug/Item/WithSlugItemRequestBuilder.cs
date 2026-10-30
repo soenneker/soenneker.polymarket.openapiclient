@@ -49,7 +49,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma.Markets.Slug.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.GammaMarket>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.GammaMarket.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.GammaMarket>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.GammaMarket.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get market by slug

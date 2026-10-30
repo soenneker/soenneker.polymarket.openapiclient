@@ -12,39 +12,71 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeeBreakdown : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("appFeeLabel") is { } nullNodeAppFeeLabel && nullNodeAppFeeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppFeeLabel = null;
+            if (parseNode.GetChildNode("appFeePercent") is { } nullNodeAppFeePercent && nullNodeAppFeePercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppFeePercent = null;
+            if (parseNode.GetChildNode("appFeeUsd") is { } nullNodeAppFeeUsd && nullNodeAppFeeUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppFeeUsd = null;
+            if (parseNode.GetChildNode("fillCostPercent") is { } nullNodeFillCostPercent && nullNodeFillCostPercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FillCostPercent = null;
+            if (parseNode.GetChildNode("fillCostUsd") is { } nullNodeFillCostUsd && nullNodeFillCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FillCostUsd = null;
+            if (parseNode.GetChildNode("gasUsd") is { } nullNodeGasUsd && nullNodeGasUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GasUsd = null;
+            if (parseNode.GetChildNode("maxSlippage") is { } nullNodeMaxSlippage && nullNodeMaxSlippage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSlippage = null;
+            if (parseNode.GetChildNode("minReceived") is { } nullNodeMinReceived && nullNodeMinReceived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinReceived = null;
+            if (parseNode.GetChildNode("swapImpact") is { } nullNodeSwapImpact && nullNodeSwapImpact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SwapImpact = null;
+            if (parseNode.GetChildNode("swapImpactUsd") is { } nullNodeSwapImpactUsd && nullNodeSwapImpactUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SwapImpactUsd = null;
+            if (parseNode.GetChildNode("totalImpact") is { } nullNodeTotalImpact && nullNodeTotalImpact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalImpact = null;
+            if (parseNode.GetChildNode("totalImpactUsd") is { } nullNodeTotalImpactUsd && nullNodeTotalImpactUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalImpactUsd = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Label of the app fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AppFeeLabel { get; set; }
+        public string? AppFeeLabel { get => _explicitNullValueAppFeeLabel; set { _explicitNullValueAppFeeLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appFeeLabel"); else _explicitNullProperties?.Remove("appFeeLabel"); } }
+        private string? _explicitNullValueAppFeeLabel = default!;
 #nullable restore
 #else
-        public string AppFeeLabel { get; set; }
+        public string AppFeeLabel { get => _explicitNullValueAppFeeLabel; set { _explicitNullValueAppFeeLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appFeeLabel"); else _explicitNullProperties?.Remove("appFeeLabel"); } }
+        private string _explicitNullValueAppFeeLabel = default!;
 #endif
         /// <summary>App fees as a percentage of the total amount sent</summary>
-        public double? AppFeePercent { get; set; }
+        public double? AppFeePercent { get => _explicitNullValueAppFeePercent; set { _explicitNullValueAppFeePercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appFeePercent"); else _explicitNullProperties?.Remove("appFeePercent"); } }
+        private double? _explicitNullValueAppFeePercent = default!;
         /// <summary>App fees in USD</summary>
-        public double? AppFeeUsd { get; set; }
+        public double? AppFeeUsd { get => _explicitNullValueAppFeeUsd; set { _explicitNullValueAppFeeUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appFeeUsd"); else _explicitNullProperties?.Remove("appFeeUsd"); } }
+        private double? _explicitNullValueAppFeeUsd = default!;
         /// <summary>Fill cost percentage of the total amount sent</summary>
-        public double? FillCostPercent { get; set; }
+        public double? FillCostPercent { get => _explicitNullValueFillCostPercent; set { _explicitNullValueFillCostPercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fillCostPercent"); else _explicitNullProperties?.Remove("fillCostPercent"); } }
+        private double? _explicitNullValueFillCostPercent = default!;
         /// <summary>Fill cost in USD</summary>
-        public double? FillCostUsd { get; set; }
+        public double? FillCostUsd { get => _explicitNullValueFillCostUsd; set { _explicitNullValueFillCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fillCostUsd"); else _explicitNullProperties?.Remove("fillCostUsd"); } }
+        private double? _explicitNullValueFillCostUsd = default!;
         /// <summary>Gas fee in USD</summary>
-        public double? GasUsd { get; set; }
+        public double? GasUsd { get => _explicitNullValueGasUsd; set { _explicitNullValueGasUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gasUsd"); else _explicitNullProperties?.Remove("gasUsd"); } }
+        private double? _explicitNullValueGasUsd = default!;
         /// <summary>Maximum potential slippage as a percentage</summary>
-        public double? MaxSlippage { get; set; }
+        public double? MaxSlippage { get => _explicitNullValueMaxSlippage; set { _explicitNullValueMaxSlippage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxSlippage"); else _explicitNullProperties?.Remove("maxSlippage"); } }
+        private double? _explicitNullValueMaxSlippage = default!;
         /// <summary>Amount after factoring slippage</summary>
-        public double? MinReceived { get; set; }
+        public double? MinReceived { get => _explicitNullValueMinReceived; set { _explicitNullValueMinReceived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minReceived"); else _explicitNullProperties?.Remove("minReceived"); } }
+        private double? _explicitNullValueMinReceived = default!;
         /// <summary>Swap impact as a percentage of the total amount sent</summary>
-        public double? SwapImpact { get; set; }
+        public double? SwapImpact { get => _explicitNullValueSwapImpact; set { _explicitNullValueSwapImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("swapImpact"); else _explicitNullProperties?.Remove("swapImpact"); } }
+        private double? _explicitNullValueSwapImpact = default!;
         /// <summary>Swap impact of the transaction in USD</summary>
-        public double? SwapImpactUsd { get; set; }
+        public double? SwapImpactUsd { get => _explicitNullValueSwapImpactUsd; set { _explicitNullValueSwapImpactUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("swapImpactUsd"); else _explicitNullProperties?.Remove("swapImpactUsd"); } }
+        private double? _explicitNullValueSwapImpactUsd = default!;
         /// <summary>Total impact as a percentage of the total amount sent</summary>
-        public double? TotalImpact { get; set; }
+        public double? TotalImpact { get => _explicitNullValueTotalImpact; set { _explicitNullValueTotalImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalImpact"); else _explicitNullProperties?.Remove("totalImpact"); } }
+        private double? _explicitNullValueTotalImpact = default!;
         /// <summary>Impact cost of the transaction</summary>
-        public double? TotalImpactUsd { get; set; }
+        public double? TotalImpactUsd { get => _explicitNullValueTotalImpactUsd; set { _explicitNullValueTotalImpactUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalImpactUsd"); else _explicitNullProperties?.Remove("totalImpactUsd"); } }
+        private double? _explicitNullValueTotalImpactUsd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown"/> and sets the default values.
         /// </summary>
@@ -60,7 +92,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.FeeBreakdown(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,6 +135,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteDoubleValue("swapImpactUsd", SwapImpactUsd);
             writer.WriteDoubleValue("totalImpact", TotalImpact);
             writer.WriteDoubleValue("totalImpactUsd", TotalImpactUsd);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,32 +11,48 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FeeTier : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("maker_fee_rate") is { } nullNodeMakerFeeRate && nullNodeMakerFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MakerFeeRate = null;
+            if (parseNode.GetChildNode("min_volume_30d") is { } nullNodeMinVolume30d && nullNodeMinVolume30d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinVolume30d = null;
+            if (parseNode.GetChildNode("taker_fee_rate") is { } nullNodeTakerFeeRate && nullNodeTakerFeeRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakerFeeRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Exchange maker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MakerFeeRate { get; set; }
+        public string? MakerFeeRate { get => _explicitNullValueMakerFeeRate; set { _explicitNullValueMakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_fee_rate"); else _explicitNullProperties?.Remove("maker_fee_rate"); } }
+        private string? _explicitNullValueMakerFeeRate = default!;
 #nullable restore
 #else
-        public string MakerFeeRate { get; set; }
+        public string MakerFeeRate { get => _explicitNullValueMakerFeeRate; set { _explicitNullValueMakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maker_fee_rate"); else _explicitNullProperties?.Remove("maker_fee_rate"); } }
+        private string _explicitNullValueMakerFeeRate = default!;
 #endif
         /// <summary>Minimum rolling 30-day notional volume in USD required for this tier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MinVolume30d { get; set; }
+        public string? MinVolume30d { get => _explicitNullValueMinVolume30d; set { _explicitNullValueMinVolume30d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_volume_30d"); else _explicitNullProperties?.Remove("min_volume_30d"); } }
+        private string? _explicitNullValueMinVolume30d = default!;
 #nullable restore
 #else
-        public string MinVolume30d { get; set; }
+        public string MinVolume30d { get => _explicitNullValueMinVolume30d; set { _explicitNullValueMinVolume30d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_volume_30d"); else _explicitNullProperties?.Remove("min_volume_30d"); } }
+        private string _explicitNullValueMinVolume30d = default!;
 #endif
         /// <summary>Exchange taker fee rate as a decimal fraction, excluding any per-order builder fee</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TakerFeeRate { get; set; }
+        public string? TakerFeeRate { get => _explicitNullValueTakerFeeRate; set { _explicitNullValueTakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_fee_rate"); else _explicitNullProperties?.Remove("taker_fee_rate"); } }
+        private string? _explicitNullValueTakerFeeRate = default!;
 #nullable restore
 #else
-        public string TakerFeeRate { get; set; }
+        public string TakerFeeRate { get => _explicitNullValueTakerFeeRate; set { _explicitNullValueTakerFeeRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taker_fee_rate"); else _explicitNullProperties?.Remove("taker_fee_rate"); } }
+        private string _explicitNullValueTakerFeeRate = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.FeeTier(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("maker_fee_rate", MakerFeeRate);
             writer.WriteStringValue("min_volume_30d", MinVolume30d);
             writer.WriteStringValue("taker_fee_rate", TakerFeeRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

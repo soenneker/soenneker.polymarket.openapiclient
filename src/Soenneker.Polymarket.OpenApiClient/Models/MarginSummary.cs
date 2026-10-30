@@ -11,48 +11,70 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MarginSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("available_order_margin") is { } nullNodeAvailableOrderMargin && nullNodeAvailableOrderMargin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableOrderMargin = null;
+            if (parseNode.GetChildNode("total_account_value") is { } nullNodeTotalAccountValue && nullNodeTotalAccountValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalAccountValue = null;
+            if (parseNode.GetChildNode("total_initial_margin") is { } nullNodeTotalInitialMargin && nullNodeTotalInitialMargin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalInitialMargin = null;
+            if (parseNode.GetChildNode("total_maintenance_margin") is { } nullNodeTotalMaintenanceMargin && nullNodeTotalMaintenanceMargin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalMaintenanceMargin = null;
+            if (parseNode.GetChildNode("total_position_value") is { } nullNodeTotalPositionValue && nullNodeTotalPositionValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalPositionValue = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Collateral available in USD for additional order initial margin after existing exposure, open orders, orders and isolated-margin additions awaiting risk processing, and pending withdrawals or transfers</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AvailableOrderMargin { get; set; }
+        public string? AvailableOrderMargin { get => _explicitNullValueAvailableOrderMargin; set { _explicitNullValueAvailableOrderMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_order_margin"); else _explicitNullProperties?.Remove("available_order_margin"); } }
+        private string? _explicitNullValueAvailableOrderMargin = default!;
 #nullable restore
 #else
-        public string AvailableOrderMargin { get; set; }
+        public string AvailableOrderMargin { get => _explicitNullValueAvailableOrderMargin; set { _explicitNullValueAvailableOrderMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_order_margin"); else _explicitNullProperties?.Remove("available_order_margin"); } }
+        private string _explicitNullValueAvailableOrderMargin = default!;
 #endif
         /// <summary>Total account value in USD (equity + unrealized PnL)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalAccountValue { get; set; }
+        public string? TotalAccountValue { get => _explicitNullValueTotalAccountValue; set { _explicitNullValueTotalAccountValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_account_value"); else _explicitNullProperties?.Remove("total_account_value"); } }
+        private string? _explicitNullValueTotalAccountValue = default!;
 #nullable restore
 #else
-        public string TotalAccountValue { get; set; }
+        public string TotalAccountValue { get => _explicitNullValueTotalAccountValue; set { _explicitNullValueTotalAccountValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_account_value"); else _explicitNullProperties?.Remove("total_account_value"); } }
+        private string _explicitNullValueTotalAccountValue = default!;
 #endif
         /// <summary>Total initial margin in use across all positions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalInitialMargin { get; set; }
+        public string? TotalInitialMargin { get => _explicitNullValueTotalInitialMargin; set { _explicitNullValueTotalInitialMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_initial_margin"); else _explicitNullProperties?.Remove("total_initial_margin"); } }
+        private string? _explicitNullValueTotalInitialMargin = default!;
 #nullable restore
 #else
-        public string TotalInitialMargin { get; set; }
+        public string TotalInitialMargin { get => _explicitNullValueTotalInitialMargin; set { _explicitNullValueTotalInitialMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_initial_margin"); else _explicitNullProperties?.Remove("total_initial_margin"); } }
+        private string _explicitNullValueTotalInitialMargin = default!;
 #endif
         /// <summary>Total maintenance margin across all positions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalMaintenanceMargin { get; set; }
+        public string? TotalMaintenanceMargin { get => _explicitNullValueTotalMaintenanceMargin; set { _explicitNullValueTotalMaintenanceMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_maintenance_margin"); else _explicitNullProperties?.Remove("total_maintenance_margin"); } }
+        private string? _explicitNullValueTotalMaintenanceMargin = default!;
 #nullable restore
 #else
-        public string TotalMaintenanceMargin { get; set; }
+        public string TotalMaintenanceMargin { get => _explicitNullValueTotalMaintenanceMargin; set { _explicitNullValueTotalMaintenanceMargin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_maintenance_margin"); else _explicitNullProperties?.Remove("total_maintenance_margin"); } }
+        private string _explicitNullValueTotalMaintenanceMargin = default!;
 #endif
         /// <summary>Total notional position value in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalPositionValue { get; set; }
+        public string? TotalPositionValue { get => _explicitNullValueTotalPositionValue; set { _explicitNullValueTotalPositionValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_position_value"); else _explicitNullProperties?.Remove("total_position_value"); } }
+        private string? _explicitNullValueTotalPositionValue = default!;
 #nullable restore
 #else
-        public string TotalPositionValue { get; set; }
+        public string TotalPositionValue { get => _explicitNullValueTotalPositionValue; set { _explicitNullValueTotalPositionValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_position_value"); else _explicitNullProperties?.Remove("total_position_value"); } }
+        private string _explicitNullValueTotalPositionValue = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary"/> and sets the default values.
@@ -69,7 +91,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.MarginSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +120,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("total_initial_margin", TotalInitialMargin);
             writer.WriteStringValue("total_maintenance_margin", TotalMaintenanceMargin);
             writer.WriteStringValue("total_position_value", TotalPositionValue);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

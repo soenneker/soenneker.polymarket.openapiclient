@@ -57,6 +57,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V1.MarketPositions
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.DataErrorResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Polymarket.OpenApiClient.Models.DataErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.DataErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Polymarket.OpenApiClient.Models.MetaMarketPositionV1>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.MetaMarketPositionV1.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

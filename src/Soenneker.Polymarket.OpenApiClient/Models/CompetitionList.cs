@@ -11,23 +11,39 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CompetitionList : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("competitions") is { } nullNodeCompetitions && nullNodeCompetitions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Competitions = null;
+            if (parseNode.GetChildNode("landing_competition_id") is { } nullNodeLandingCompetitionId && nullNodeLandingCompetitionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LandingCompetitionId = null;
+            if (parseNode.GetChildNode("live_competition_id") is { } nullNodeLiveCompetitionId && nullNodeLiveCompetitionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiveCompetitionId = null;
+            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Newest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionSummary>? Competitions { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionSummary>? Competitions { get => _explicitNullValueCompetitions; set { _explicitNullValueCompetitions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitions"); else _explicitNullProperties?.Remove("competitions"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionSummary>? _explicitNullValueCompetitions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionSummary> Competitions { get; set; }
+        public List<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionSummary> Competitions { get => _explicitNullValueCompetitions; set { _explicitNullValueCompetitions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitions"); else _explicitNullProperties?.Remove("competitions"); } }
+        private List<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionSummary> _explicitNullValueCompetitions = default!;
 #endif
         /// <summary>Trading competition ID</summary>
-        public int? LandingCompetitionId { get; set; }
+        public int? LandingCompetitionId { get => _explicitNullValueLandingCompetitionId; set { _explicitNullValueLandingCompetitionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("landing_competition_id"); else _explicitNullProperties?.Remove("landing_competition_id"); } }
+        private int? _explicitNullValueLandingCompetitionId = default!;
         /// <summary>Trading competition ID</summary>
-        public int? LiveCompetitionId { get; set; }
+        public int? LiveCompetitionId { get => _explicitNullValueLiveCompetitionId; set { _explicitNullValueLiveCompetitionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("live_competition_id"); else _explicitNullProperties?.Remove("live_competition_id"); } }
+        private int? _explicitNullValueLiveCompetitionId = default!;
         /// <summary>Update timestamp in milliseconds</summary>
-        public long? Timestamp { get; set; }
+        public long? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private long? _explicitNullValueTimestamp = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionList"/> and sets the default values.
         /// </summary>
@@ -43,7 +59,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public static global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionList CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionList();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionList(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteIntValue("landing_competition_id", LandingCompetitionId);
             writer.WriteIntValue("live_competition_id", LiveCompetitionId);
             writer.WriteLongValue("timestamp", Timestamp);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
