@@ -221,6 +221,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Bridge addresses created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepositResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [],
@@ -299,6 +310,25 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Withdrawal addresses created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepositResponse"
+                },
+                "example": {
+                  "address": {
+                    "evm": "0x23566f8b2E82aDfCf01846E54899d110e97AC053",
+                    "svm": "CrvTBvzryYxBHbWu2TiQpcqD5M7Le7iBKzVmEj3f36Jb",
+                    "btc": "bc1q8eau83qffxcj8ht4hsjdza3lha9r3egfqysj3g"
+                  },
+                  "note": "Send funds to these addresses to bridge to your destination chain and token."
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [],
