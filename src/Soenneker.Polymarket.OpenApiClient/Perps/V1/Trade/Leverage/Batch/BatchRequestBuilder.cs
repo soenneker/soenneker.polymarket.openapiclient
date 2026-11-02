@@ -40,10 +40,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Leverage.Batch
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.OpenApi.Generated.OpenApiRawError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.OpenApi.Generated.OpenApiRawError">When receiving a 429 status code</exception>
-        /// <exception cref="global::Soenneker.OpenApi.Generated.OpenApiRawError">When receiving a 500 status code</exception>
-        /// <exception cref="global::Soenneker.OpenApi.Generated.OpenApiRawError">When receiving a 503 status code</exception>
+        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.BatchError400ResponseResponseContentError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.BatchError429ResponseResponseContentError">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.BatchError500ResponseResponseContentError">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.BatchError503ResponseResponseContentError">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<global::Soenneker.Polymarket.OpenApiClient.Models.LeverageBatchResponse>?> PatchAsync(global::Soenneker.Polymarket.OpenApiClient.Models.LeverageBatchRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -57,10 +57,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Trade.Leverage.Batch
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
-                { "503", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Polymarket.OpenApiClient.Models.BatchError400ResponseResponseContentError.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Polymarket.OpenApiClient.Models.BatchError429ResponseResponseContentError.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Polymarket.OpenApiClient.Models.BatchError500ResponseResponseContentError.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Polymarket.OpenApiClient.Models.BatchError503ResponseResponseContentError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };

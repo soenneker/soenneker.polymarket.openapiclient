@@ -28,12 +28,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>The active_instrument_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; AdditionalData?.Remove("active_instrument_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
-        private List<int?>? _explicitNullValueActiveInstrumentIds = default!;
+        public List<long?>? ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; AdditionalData?.Remove("active_instrument_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
+        private List<long?>? _explicitNullValueActiveInstrumentIds = default!;
 #nullable restore
 #else
-        public List<int?> ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; AdditionalData?.Remove("active_instrument_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
-        private List<int?> _explicitNullValueActiveInstrumentIds = default!;
+        public List<long?> ActiveInstrumentIds { get => _explicitNullValueActiveInstrumentIds; set { _explicitNullValueActiveInstrumentIds = value; AdditionalData?.Remove("active_instrument_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_instrument_ids"); else _explicitNullProperties?.Remove("active_instrument_ids"); } }
+        private List<long?> _explicitNullValueActiveInstrumentIds = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active_instrument_ids", n => { ActiveInstrumentIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "active_instrument_ids", n => { ActiveInstrumentIds = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "address", n => { Address = n.GetStringValue(); } },
                 { "history_fills", n => { HistoryFills = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>(global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -94,7 +94,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<int?>("active_instrument_ids", ActiveInstrumentIds);
+            writer.WriteCollectionOfPrimitiveValues<long?>("active_instrument_ids", ActiveInstrumentIds);
             writer.WriteStringValue("address", Address);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PositionSnapshotFill>("history_fills", HistoryFills);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

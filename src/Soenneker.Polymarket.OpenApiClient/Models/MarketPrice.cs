@@ -29,8 +29,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public float? P { get => _explicitNullValueP; set { _explicitNullValueP = value; AdditionalData?.Remove("p"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p"); else _explicitNullProperties?.Remove("p"); } }
         private float? _explicitNullValueP = default!;
         /// <summary>The t property</summary>
-        public int? T { get => _explicitNullValueT; set { _explicitNullValueT = value; AdditionalData?.Remove("t"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("t"); else _explicitNullProperties?.Remove("t"); } }
-        private int? _explicitNullValueT = default!;
+        public long? T { get => _explicitNullValueT; set { _explicitNullValueT = value; AdditionalData?.Remove("t"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("t"); else _explicitNullProperties?.Remove("t"); } }
+        private long? _explicitNullValueT = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.MarketPrice"/> and sets the default values.
         /// </summary>
@@ -57,7 +57,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "p", n => { P = n.GetFloatValue(); } },
-                { "t", n => { T = n.GetIntValue(); } },
+                { "t", n => { T = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteFloatValue("p", P);
-            writer.WriteIntValue("t", T);
+            writer.WriteLongValue("t", T);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

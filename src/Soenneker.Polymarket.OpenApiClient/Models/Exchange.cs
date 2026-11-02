@@ -37,8 +37,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public bool? CancelOnly { get => _explicitNullValueCancelOnly; set { _explicitNullValueCancelOnly = value; AdditionalData?.Remove("cancel_only"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cancel_only"); else _explicitNullProperties?.Remove("cancel_only"); } }
         private bool? _explicitNullValueCancelOnly = default!;
         /// <summary>Chain ID of the network the exchange is deployed on.</summary>
-        public int? ChainId { get => _explicitNullValueChainId; set { _explicitNullValueChainId = value; AdditionalData?.Remove("chain_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chain_id"); else _explicitNullProperties?.Remove("chain_id"); } }
-        private int? _explicitNullValueChainId = default!;
+        public long? ChainId { get => _explicitNullValueChainId; set { _explicitNullValueChainId = value; AdditionalData?.Remove("chain_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chain_id"); else _explicitNullProperties?.Remove("chain_id"); } }
+        private long? _explicitNullValueChainId = default!;
         /// <summary>Verifying contract address or the EIP-712 domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,7 +105,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cancel_only", n => { CancelOnly = n.GetBoolValue(); } },
-                { "chain_id", n => { ChainId = n.GetIntValue(); } },
+                { "chain_id", n => { ChainId = n.GetLongValue(); } },
                 { "contract", n => { Contract = n.GetStringValue(); } },
                 { "engine_version", n => { EngineVersion = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -120,7 +120,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("cancel_only", CancelOnly);
-            writer.WriteIntValue("chain_id", ChainId);
+            writer.WriteLongValue("chain_id", ChainId);
             writer.WriteStringValue("contract", Contract);
             writer.WriteStringValue("engine_version", EngineVersion);
             writer.WriteStringValue("name", Name);

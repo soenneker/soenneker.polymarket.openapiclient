@@ -41,6 +41,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfer
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.PerpsInternalTransfer422ResponseError">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error429">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error500">When receiving a 500 status code</exception>
         /// <exception cref="global::Soenneker.Polymarket.OpenApiClient.Models.Error503">When receiving a 503 status code</exception>
@@ -58,6 +59,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Account.InternalTransfer
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Polymarket.OpenApiClient.Models.Error400.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.Polymarket.OpenApiClient.Models.PerpsInternalTransfer422ResponseError.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Polymarket.OpenApiClient.Models.Error429.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Polymarket.OpenApiClient.Models.Error500.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Polymarket.OpenApiClient.Models.Error503.CreateFromDiscriminatorValue },
