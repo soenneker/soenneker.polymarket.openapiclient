@@ -2,18 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Polymarket.OpenApiClient.Data.Activity;
-using Soenneker.Polymarket.OpenApiClient.Data.ClosedPositions;
-using Soenneker.Polymarket.OpenApiClient.Data.Holders;
-using Soenneker.Polymarket.OpenApiClient.Data.LiveVolume;
-using Soenneker.Polymarket.OpenApiClient.Data.Oi;
-using Soenneker.Polymarket.OpenApiClient.Data.Other;
-using Soenneker.Polymarket.OpenApiClient.Data.Positions;
-using Soenneker.Polymarket.OpenApiClient.Data.Revisions;
-using Soenneker.Polymarket.OpenApiClient.Data.Traded;
-using Soenneker.Polymarket.OpenApiClient.Data.Trades;
-using Soenneker.Polymarket.OpenApiClient.Data.V1;
-using Soenneker.Polymarket.OpenApiClient.Data.Value;
+using Soenneker.Polymarket.OpenApiClient.Data.V2;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -26,70 +15,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Data
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The activity property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Activity.ActivityRequestBuilder Activity
+        /// <summary>The v2 property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Data.V2.V2RequestBuilder V2
         {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The closedPositions property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.ClosedPositions.ClosedPositionsRequestBuilder ClosedPositions
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.ClosedPositions.ClosedPositionsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The EmptyPathSegment property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.EmptyPathSegmentRequestBuilder EmptyPathSegment
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The holders property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Holders.HoldersRequestBuilder Holders
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Holders.HoldersRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The liveVolume property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.LiveVolume.LiveVolumeRequestBuilder LiveVolume
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.LiveVolume.LiveVolumeRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The oi property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Oi.OiRequestBuilder Oi
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Oi.OiRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The other property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Other.OtherRequestBuilder Other
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Other.OtherRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The positions property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Positions.PositionsRequestBuilder Positions
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Positions.PositionsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The revisions property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Revisions.RevisionsRequestBuilder Revisions
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Revisions.RevisionsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The traded property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Traded.TradedRequestBuilder Traded
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Traded.TradedRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The trades property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Trades.TradesRequestBuilder Trades
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Trades.TradesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The v1 property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.V1.V1RequestBuilder V1
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.V1.V1RequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The value property</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Data.Value.ValueRequestBuilder Value
-        {
-            get => new global::Soenneker.Polymarket.OpenApiClient.Data.Value.ValueRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Polymarket.OpenApiClient.Data.V2.V2RequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Data.DataRequestBuilder"/> and sets the default values.

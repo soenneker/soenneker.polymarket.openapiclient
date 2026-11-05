@@ -22,7 +22,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.Leaderboa
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LeaderboardRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/info/competition/leaderboard?competition_id={competition_id}{&limit*,offset*}", pathParameters)
+        public LeaderboardRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/info/competition/leaderboard?competition_id={competition_id}{&include_unqualified*,limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.Leaderboa
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LeaderboardRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/info/competition/leaderboard?competition_id={competition_id}{&limit*,offset*}", rawUrl)
+        public LeaderboardRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/perps/v1/info/competition/leaderboard?competition_id={competition_id}{&include_unqualified*,limit*,offset*}", rawUrl)
         {
         }
         /// <summary>
-        /// Ranked leaderboard rows at any depth. Only accounts that reached theminimum volume are ranked; ties go to higher boosted volume, then theearlier first qualifying fill. `prize` is the projected prize while liveand the prize won once the competition ends. `updated_at` is the eventtime the standings reflect (&quot;Updated X seconds ago&quot;).Returns 50 entries by default and at most 100 per request.
+        /// Ranked leaderboard rows at any depth. Only accounts that reached theminimum volume are ranked; ties go to higher boosted volume, then theearlier first qualifying fill. `prize` is the projected prize while liveand the prize won once the competition ends. `updated_at` is the eventtime the standings reflect (&quot;Updated X seconds ago&quot;).With `include_unqualified=true` on a ranked board, the rows still shortof the entry gate follow the ranked ones, unranked and without a prize,by score with the same tie-breaks. Only live accounts with volume arelisted; disqualified and under-review accounts never are. `total` and`offset` then count across both, and every entry carries `qualified`.Returns 50 entries by default and at most 100 per request.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionLeaderboard"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.Leaderboa
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionLeaderboard>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionLeaderboard.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Ranked leaderboard rows at any depth. Only accounts that reached theminimum volume are ranked; ties go to higher boosted volume, then theearlier first qualifying fill. `prize` is the projected prize while liveand the prize won once the competition ends. `updated_at` is the eventtime the standings reflect (&quot;Updated X seconds ago&quot;).Returns 50 entries by default and at most 100 per request.
+        /// Ranked leaderboard rows at any depth. Only accounts that reached theminimum volume are ranked; ties go to higher boosted volume, then theearlier first qualifying fill. `prize` is the projected prize while liveand the prize won once the competition ends. `updated_at` is the eventtime the standings reflect (&quot;Updated X seconds ago&quot;).With `include_unqualified=true` on a ranked board, the rows still shortof the entry gate follow the ranked ones, unranked and without a prize,by score with the same tie-breaks. Only live accounts with volume arelisted; disqualified and under-review accounts never are. `total` and`offset` then count across both, and every entry carries `qualified`.Returns 50 entries by default and at most 100 per request.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -95,7 +95,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.Leaderboa
             return new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.Leaderboard.LeaderboardRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Ranked leaderboard rows at any depth. Only accounts that reached theminimum volume are ranked; ties go to higher boosted volume, then theearlier first qualifying fill. `prize` is the projected prize while liveand the prize won once the competition ends. `updated_at` is the eventtime the standings reflect (&quot;Updated X seconds ago&quot;).Returns 50 entries by default and at most 100 per request.
+        /// Ranked leaderboard rows at any depth. Only accounts that reached theminimum volume are ranked; ties go to higher boosted volume, then theearlier first qualifying fill. `prize` is the projected prize while liveand the prize won once the competition ends. `updated_at` is the eventtime the standings reflect (&quot;Updated X seconds ago&quot;).With `include_unqualified=true` on a ranked board, the rows still shortof the entry gate follow the ranked ones, unranked and without a prize,by score with the same tie-breaks. Only live accounts with volume arelisted; disqualified and under-review accounts never are. `total` and`offset` then count across both, and every entry carries `qualified`.Returns 50 entries by default and at most 100 per request.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LeaderboardRequestBuilderGetQueryParameters 
@@ -103,6 +103,10 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competition.Leaderboa
             #pragma warning disable CS1591
             [QueryParameter("competition_id")]
             public int? CompetitionId { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
+            [QueryParameter("include_unqualified")]
+            public bool? IncludeUnqualified { get; set; }
             #pragma warning restore CS1591
             #pragma warning disable CS1591
             [QueryParameter("limit")]

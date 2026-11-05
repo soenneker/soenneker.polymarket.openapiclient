@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Polymarket.OpenApiClient.Models
 {
+    /// <summary>
+    /// One combo position (`/v2/positions/combos`); a user&apos;s holding in a singlecombo outcome, with leg rollups and enrichment.Paginated on `(first_entry_at_micros, combo_condition_id, outcome_index)`;follow the response&apos;s `next_cursor` rather than rebuilding that triple.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ComboPosition : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -21,6 +22,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             else if (parseNode.GetChildNode("combo_condition_id") is { } nullNodeComboConditionId && nullNodeComboConditionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComboConditionId = null;
             if (parseNode.GetChildNode("combo_position_id") is null) { _explicitNullValueComboPositionId = default!; _explicitNullProperties?.Remove("combo_position_id"); }
             else if (parseNode.GetChildNode("combo_position_id") is { } nullNodeComboPositionId && nullNodeComboPositionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComboPositionId = null;
+            if (parseNode.GetChildNode("current_size") is null) { _explicitNullValueCurrentSize = default!; _explicitNullProperties?.Remove("current_size"); }
+            else if (parseNode.GetChildNode("current_size") is { } nullNodeCurrentSize && nullNodeCurrentSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentSize = null;
             if (parseNode.GetChildNode("entry_avg_price_usdc") is null) { _explicitNullValueEntryAvgPriceUsdc = default!; _explicitNullProperties?.Remove("entry_avg_price_usdc"); }
             else if (parseNode.GetChildNode("entry_avg_price_usdc") is { } nullNodeEntryAvgPriceUsdc && nullNodeEntryAvgPriceUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryAvgPriceUsdc = null;
             if (parseNode.GetChildNode("entry_cost_usdc") is null) { _explicitNullValueEntryCostUsdc = default!; _explicitNullProperties?.Remove("entry_cost_usdc"); }
@@ -29,6 +32,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             else if (parseNode.GetChildNode("entry_fees_usdc") is { } nullNodeEntryFeesUsdc && nullNodeEntryFeesUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryFeesUsdc = null;
             if (parseNode.GetChildNode("first_entry_at") is null) { _explicitNullValueFirstEntryAt = default!; _explicitNullProperties?.Remove("first_entry_at"); }
             else if (parseNode.GetChildNode("first_entry_at") is { } nullNodeFirstEntryAt && nullNodeFirstEntryAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstEntryAt = null;
+            if (parseNode.GetChildNode("first_entry_at_micros") is null) { _explicitNullValueFirstEntryAtMicros = default!; _explicitNullProperties?.Remove("first_entry_at_micros"); }
+            else if (parseNode.GetChildNode("first_entry_at_micros") is { } nullNodeFirstEntryAtMicros && nullNodeFirstEntryAtMicros.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstEntryAtMicros = null;
             if (parseNode.GetChildNode("gross_entry_cost_usdc") is null) { _explicitNullValueGrossEntryCostUsdc = default!; _explicitNullProperties?.Remove("gross_entry_cost_usdc"); }
             else if (parseNode.GetChildNode("gross_entry_cost_usdc") is { } nullNodeGrossEntryCostUsdc && nullNodeGrossEntryCostUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrossEntryCostUsdc = null;
             if (parseNode.GetChildNode("legs") is null) { _explicitNullValueLegs = default!; _explicitNullProperties?.Remove("legs"); }
@@ -39,27 +44,29 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             else if (parseNode.GetChildNode("legs_resolved") is { } nullNodeLegsResolved && nullNodeLegsResolved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegsResolved = null;
             if (parseNode.GetChildNode("legs_total") is null) { _explicitNullValueLegsTotal = default!; _explicitNullProperties?.Remove("legs_total"); }
             else if (parseNode.GetChildNode("legs_total") is { } nullNodeLegsTotal && nullNodeLegsTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegsTotal = null;
-            if (parseNode.GetChildNode("module_id") is null) { _explicitNullValueModuleId = default!; _explicitNullProperties?.Remove("module_id"); }
-            else if (parseNode.GetChildNode("module_id") is { } nullNodeModuleId && nullNodeModuleId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModuleId = null;
+            if (parseNode.GetChildNode("outcome_index") is null) { _explicitNullValueOutcomeIndex = default!; _explicitNullProperties?.Remove("outcome_index"); }
+            else if (parseNode.GetChildNode("outcome_index") is { } nullNodeOutcomeIndex && nullNodeOutcomeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutcomeIndex = null;
+            if (parseNode.GetChildNode("outcome_label") is null) { _explicitNullValueOutcomeLabel = default!; _explicitNullProperties?.Remove("outcome_label"); }
+            else if (parseNode.GetChildNode("outcome_label") is { } nullNodeOutcomeLabel && nullNodeOutcomeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutcomeLabel = null;
+            if (parseNode.GetChildNode("proxy_wallet") is null) { _explicitNullValueProxyWallet = default!; _explicitNullProperties?.Remove("proxy_wallet"); }
+            else if (parseNode.GetChildNode("proxy_wallet") is { } nullNodeProxyWallet && nullNodeProxyWallet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProxyWallet = null;
             if (parseNode.GetChildNode("realized_payout_usdc") is null) { _explicitNullValueRealizedPayoutUsdc = default!; _explicitNullProperties?.Remove("realized_payout_usdc"); }
             else if (parseNode.GetChildNode("realized_payout_usdc") is { } nullNodeRealizedPayoutUsdc && nullNodeRealizedPayoutUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedPayoutUsdc = null;
+            if (parseNode.GetChildNode("redeemable") is null) { _explicitNullValueRedeemable = default!; _explicitNullProperties?.Remove("redeemable"); }
+            else if (parseNode.GetChildNode("redeemable") is { } nullNodeRedeemable && nullNodeRedeemable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Redeemable = null;
             if (parseNode.GetChildNode("resolved_at") is null) { _explicitNullValueResolvedAt = default!; _explicitNullProperties?.Remove("resolved_at"); }
             else if (parseNode.GetChildNode("resolved_at") is { } nullNodeResolvedAt && nullNodeResolvedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedAt = null;
-            if (parseNode.GetChildNode("shares_balance") is null) { _explicitNullValueSharesBalance = default!; _explicitNullProperties?.Remove("shares_balance"); }
-            else if (parseNode.GetChildNode("shares_balance") is { } nullNodeSharesBalance && nullNodeSharesBalance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharesBalance = null;
             if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
             else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("total_cost_usdc") is null) { _explicitNullValueTotalCostUsdc = default!; _explicitNullProperties?.Remove("total_cost_usdc"); }
-            else if (parseNode.GetChildNode("total_cost_usdc") is { } nullNodeTotalCostUsdc && nullNodeTotalCostUsdc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCostUsdc = null;
             if (parseNode.GetChildNode("updated_at") is null) { _explicitNullValueUpdatedAt = default!; _explicitNullProperties?.Remove("updated_at"); }
             else if (parseNode.GetChildNode("updated_at") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
-            if (parseNode.GetChildNode("user_address") is null) { _explicitNullValueUserAddress = default!; _explicitNullProperties?.Remove("user_address"); }
-            else if (parseNode.GetChildNode("user_address") is { } nullNodeUserAddress && nullNodeUserAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserAddress = null;
+            if (parseNode.GetChildNode("updated_at_micros") is null) { _explicitNullValueUpdatedAtMicros = default!; _explicitNullProperties?.Remove("updated_at_micros"); }
+            else if (parseNode.GetChildNode("updated_at_micros") is { } nullNodeUpdatedAtMicros && nullNodeUpdatedAtMicros.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAtMicros = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Combo condition ID (0x-prefixed, 62 hex chars / bytes31). Equals the market_id (unified) / conditionId (legacy) of isCombo rows on /activity.</summary>
+        /// <summary>On-chain combo condition id (structural, `0x03`-prefixed).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ComboConditionId { get => _explicitNullValueComboConditionId; set { _explicitNullValueComboConditionId = value; AdditionalData?.Remove("combo_condition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combo_condition_id"); else _explicitNullProperties?.Remove("combo_condition_id"); } }
@@ -69,7 +76,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string ComboConditionId { get => _explicitNullValueComboConditionId; set { _explicitNullValueComboConditionId = value; AdditionalData?.Remove("combo_condition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combo_condition_id"); else _explicitNullProperties?.Remove("combo_condition_id"); } }
         private string _explicitNullValueComboConditionId = default!;
 #endif
-        /// <summary>The combo_position_id property</summary>
+        /// <summary>Token id of the combo position.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ComboPositionId { get => _explicitNullValueComboPositionId; set { _explicitNullValueComboPositionId = value; AdditionalData?.Remove("combo_position_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combo_position_id"); else _explicitNullProperties?.Remove("combo_position_id"); } }
@@ -79,37 +86,19 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string ComboPositionId { get => _explicitNullValueComboPositionId; set { _explicitNullValueComboPositionId = value; AdditionalData?.Remove("combo_position_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combo_position_id"); else _explicitNullProperties?.Remove("combo_position_id"); } }
         private string _explicitNullValueComboPositionId = default!;
 #endif
-        /// <summary>The entry_avg_price_usdc property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EntryAvgPriceUsdc { get => _explicitNullValueEntryAvgPriceUsdc; set { _explicitNullValueEntryAvgPriceUsdc = value; AdditionalData?.Remove("entry_avg_price_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_avg_price_usdc"); else _explicitNullProperties?.Remove("entry_avg_price_usdc"); } }
-        private string? _explicitNullValueEntryAvgPriceUsdc = default!;
-#nullable restore
-#else
-        public string EntryAvgPriceUsdc { get => _explicitNullValueEntryAvgPriceUsdc; set { _explicitNullValueEntryAvgPriceUsdc = value; AdditionalData?.Remove("entry_avg_price_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_avg_price_usdc"); else _explicitNullProperties?.Remove("entry_avg_price_usdc"); } }
-        private string _explicitNullValueEntryAvgPriceUsdc = default!;
-#endif
-        /// <summary>REMAINING cost basis (entry_avg_price × shares_balance). Reads ~0 after a winning combo is redeemed — use total_cost_usdc to display what was paid on closed positions.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EntryCostUsdc { get => _explicitNullValueEntryCostUsdc; set { _explicitNullValueEntryCostUsdc = value; AdditionalData?.Remove("entry_cost_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_cost_usdc"); else _explicitNullProperties?.Remove("entry_cost_usdc"); } }
-        private string? _explicitNullValueEntryCostUsdc = default!;
-#nullable restore
-#else
-        public string EntryCostUsdc { get => _explicitNullValueEntryCostUsdc; set { _explicitNullValueEntryCostUsdc = value; AdditionalData?.Remove("entry_cost_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_cost_usdc"); else _explicitNullProperties?.Remove("entry_cost_usdc"); } }
-        private string _explicitNullValueEntryCostUsdc = default!;
-#endif
-        /// <summary>BUY-fee portion of the same basis, as a six-decimal precision-preserving string. SELL fees are excluded; always ≤ gross_entry_cost_usdc.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EntryFeesUsdc { get => _explicitNullValueEntryFeesUsdc; set { _explicitNullValueEntryFeesUsdc = value; AdditionalData?.Remove("entry_fees_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_fees_usdc"); else _explicitNullProperties?.Remove("entry_fees_usdc"); } }
-        private string? _explicitNullValueEntryFeesUsdc = default!;
-#nullable restore
-#else
-        public string EntryFeesUsdc { get => _explicitNullValueEntryFeesUsdc; set { _explicitNullValueEntryFeesUsdc = value; AdditionalData?.Remove("entry_fees_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_fees_usdc"); else _explicitNullProperties?.Remove("entry_fees_usdc"); } }
-        private string _explicitNullValueEntryFeesUsdc = default!;
-#endif
-        /// <summary>RFC3339 UTC</summary>
+        /// <summary>Current holding in shares.</summary>
+        public double? CurrentSize { get => _explicitNullValueCurrentSize; set { _explicitNullValueCurrentSize = value; AdditionalData?.Remove("current_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_size"); else _explicitNullProperties?.Remove("current_size"); } }
+        private double? _explicitNullValueCurrentSize = default!;
+        /// <summary>Weighted-average entry price per share, in USDC.</summary>
+        public double? EntryAvgPriceUsdc { get => _explicitNullValueEntryAvgPriceUsdc; set { _explicitNullValueEntryAvgPriceUsdc = value; AdditionalData?.Remove("entry_avg_price_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_avg_price_usdc"); else _explicitNullProperties?.Remove("entry_avg_price_usdc"); } }
+        private double? _explicitNullValueEntryAvgPriceUsdc = default!;
+        /// <summary>Entry cost basis in USDC (rounded weighted-average form).</summary>
+        public double? EntryCostUsdc { get => _explicitNullValueEntryCostUsdc; set { _explicitNullValueEntryCostUsdc = value; AdditionalData?.Remove("entry_cost_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_cost_usdc"); else _explicitNullProperties?.Remove("entry_cost_usdc"); } }
+        private double? _explicitNullValueEntryCostUsdc = default!;
+        /// <summary>Attributed BUY-fee portion of `gross_entry_cost_usdc`, 6-decimal grain.SELL fees are exit costs and are excluded.</summary>
+        public double? EntryFeesUsdc { get => _explicitNullValueEntryFeesUsdc; set { _explicitNullValueEntryFeesUsdc = value; AdditionalData?.Remove("entry_fees_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_fees_usdc"); else _explicitNullProperties?.Remove("entry_fees_usdc"); } }
+        private double? _explicitNullValueEntryFeesUsdc = default!;
+        /// <summary>First acquisition time, RFC3339.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstEntryAt { get => _explicitNullValueFirstEntryAt; set { _explicitNullValueFirstEntryAt = value; AdditionalData?.Remove("first_entry_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_entry_at"); else _explicitNullProperties?.Remove("first_entry_at"); } }
@@ -119,17 +108,13 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string FirstEntryAt { get => _explicitNullValueFirstEntryAt; set { _explicitNullValueFirstEntryAt = value; AdditionalData?.Remove("first_entry_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_entry_at"); else _explicitNullProperties?.Remove("first_entry_at"); } }
         private string _explicitNullValueFirstEntryAt = default!;
 #endif
-        /// <summary>Exact gross entry basis including attributed BUY fees, as a six-decimal precision-preserving string (e.g. &quot;8999.997488&quot;) — parse it as a decimal, never through a float. Tracks the remaining basis while the position is live and freezes once it is terminal. Exact net basis = gross_entry_cost_usdc − entry_fees_usdc.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? GrossEntryCostUsdc { get => _explicitNullValueGrossEntryCostUsdc; set { _explicitNullValueGrossEntryCostUsdc = value; AdditionalData?.Remove("gross_entry_cost_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gross_entry_cost_usdc"); else _explicitNullProperties?.Remove("gross_entry_cost_usdc"); } }
-        private string? _explicitNullValueGrossEntryCostUsdc = default!;
-#nullable restore
-#else
-        public string GrossEntryCostUsdc { get => _explicitNullValueGrossEntryCostUsdc; set { _explicitNullValueGrossEntryCostUsdc = value; AdditionalData?.Remove("gross_entry_cost_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gross_entry_cost_usdc"); else _explicitNullProperties?.Remove("gross_entry_cost_usdc"); } }
-        private string _explicitNullValueGrossEntryCostUsdc = default!;
-#endif
-        /// <summary>The legs property</summary>
+        /// <summary>Epoch-micros of `first_entry_at`; `null`/absent on the NULL tail.</summary>
+        public long? FirstEntryAtMicros { get => _explicitNullValueFirstEntryAtMicros; set { _explicitNullValueFirstEntryAtMicros = value; AdditionalData?.Remove("first_entry_at_micros"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_entry_at_micros"); else _explicitNullProperties?.Remove("first_entry_at_micros"); } }
+        private long? _explicitNullValueFirstEntryAtMicros = default!;
+        /// <summary>Exact fee-inclusive entry basis at 6-decimal grain; formatting to 6 dprecovers the stored value. Do NOT reconstruct it as`entry_cost_usdc + entry_fees_usdc`; `entry_cost_usdc` is rounded WAC;the fee-exclusive basis is `gross_entry_cost_usdc − entry_fees_usdc`.</summary>
+        public double? GrossEntryCostUsdc { get => _explicitNullValueGrossEntryCostUsdc; set { _explicitNullValueGrossEntryCostUsdc = value; AdditionalData?.Remove("gross_entry_cost_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gross_entry_cost_usdc"); else _explicitNullProperties?.Remove("gross_entry_cost_usdc"); } }
+        private double? _explicitNullValueGrossEntryCostUsdc = default!;
+        /// <summary>The combo&apos;s legs, in leg order, with market and event enrichment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg>? Legs { get => _explicitNullValueLegs; set { _explicitNullValueLegs = value; AdditionalData?.Remove("legs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legs"); else _explicitNullProperties?.Remove("legs"); } }
@@ -139,29 +124,45 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg> Legs { get => _explicitNullValueLegs; set { _explicitNullValueLegs = value; AdditionalData?.Remove("legs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legs"); else _explicitNullProperties?.Remove("legs"); } }
         private List<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg> _explicitNullValueLegs = default!;
 #endif
-        /// <summary>The legs_pending property</summary>
+        /// <summary>Legs still awaiting resolution.</summary>
         public int? LegsPending { get => _explicitNullValueLegsPending; set { _explicitNullValueLegsPending = value; AdditionalData?.Remove("legs_pending"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legs_pending"); else _explicitNullProperties?.Remove("legs_pending"); } }
         private int? _explicitNullValueLegsPending = default!;
-        /// <summary>The legs_resolved property</summary>
+        /// <summary>Legs whose markets have resolved.</summary>
         public int? LegsResolved { get => _explicitNullValueLegsResolved; set { _explicitNullValueLegsResolved = value; AdditionalData?.Remove("legs_resolved"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legs_resolved"); else _explicitNullProperties?.Remove("legs_resolved"); } }
         private int? _explicitNullValueLegsResolved = default!;
-        /// <summary>The legs_total property</summary>
+        /// <summary>Number of legs in the combo.</summary>
         public int? LegsTotal { get => _explicitNullValueLegsTotal; set { _explicitNullValueLegsTotal = value; AdditionalData?.Remove("legs_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legs_total"); else _explicitNullProperties?.Remove("legs_total"); } }
         private int? _explicitNullValueLegsTotal = default!;
-        /// <summary>3 = Combinatorial</summary>
-        public int? ModuleId { get => _explicitNullValueModuleId; set { _explicitNullValueModuleId = value; AdditionalData?.Remove("module_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("module_id"); else _explicitNullProperties?.Remove("module_id"); } }
-        private int? _explicitNullValueModuleId = default!;
-        /// <summary>Gross redemption proceeds (winning combo shares redeem 1:1 at $1). &quot;0.00&quot; while OPEN / unredeemed / RESOLVED_LOSS; accumulates under PARTIAL. Gross payout, not net PnL — net = realized_payout_usdc − total_cost_usdc.</summary>
+        /// <summary>Index of the combo outcome held; `999` means unlabelable.</summary>
+        public int? OutcomeIndex { get => _explicitNullValueOutcomeIndex; set { _explicitNullValueOutcomeIndex = value; AdditionalData?.Remove("outcome_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_index"); else _explicitNullProperties?.Remove("outcome_index"); } }
+        private int? _explicitNullValueOutcomeIndex = default!;
+        /// <summary>Label of the combo outcome held.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RealizedPayoutUsdc { get => _explicitNullValueRealizedPayoutUsdc; set { _explicitNullValueRealizedPayoutUsdc = value; AdditionalData?.Remove("realized_payout_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_payout_usdc"); else _explicitNullProperties?.Remove("realized_payout_usdc"); } }
-        private string? _explicitNullValueRealizedPayoutUsdc = default!;
+        public string? OutcomeLabel { get => _explicitNullValueOutcomeLabel; set { _explicitNullValueOutcomeLabel = value; AdditionalData?.Remove("outcome_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_label"); else _explicitNullProperties?.Remove("outcome_label"); } }
+        private string? _explicitNullValueOutcomeLabel = default!;
 #nullable restore
 #else
-        public string RealizedPayoutUsdc { get => _explicitNullValueRealizedPayoutUsdc; set { _explicitNullValueRealizedPayoutUsdc = value; AdditionalData?.Remove("realized_payout_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_payout_usdc"); else _explicitNullProperties?.Remove("realized_payout_usdc"); } }
-        private string _explicitNullValueRealizedPayoutUsdc = default!;
+        public string OutcomeLabel { get => _explicitNullValueOutcomeLabel; set { _explicitNullValueOutcomeLabel = value; AdditionalData?.Remove("outcome_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome_label"); else _explicitNullProperties?.Remove("outcome_label"); } }
+        private string _explicitNullValueOutcomeLabel = default!;
 #endif
-        /// <summary>The resolved_at property</summary>
+        /// <summary>The holder&apos;s wallet. `proxy_wallet` on every /v2 response; `user` isthe REQUEST param vocabulary, never a response field (2026-08-19).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProxyWallet { get => _explicitNullValueProxyWallet; set { _explicitNullValueProxyWallet = value; AdditionalData?.Remove("proxy_wallet"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proxy_wallet"); else _explicitNullProperties?.Remove("proxy_wallet"); } }
+        private string? _explicitNullValueProxyWallet = default!;
+#nullable restore
+#else
+        public string ProxyWallet { get => _explicitNullValueProxyWallet; set { _explicitNullValueProxyWallet = value; AdditionalData?.Remove("proxy_wallet"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proxy_wallet"); else _explicitNullProperties?.Remove("proxy_wallet"); } }
+        private string _explicitNullValueProxyWallet = default!;
+#endif
+        /// <summary>Gross redemption payout received so far in USDC; turnover, notprofit; net result = payout minus `gross_entry_cost_usdc`.</summary>
+        public double? RealizedPayoutUsdc { get => _explicitNullValueRealizedPayoutUsdc; set { _explicitNullValueRealizedPayoutUsdc = value; AdditionalData?.Remove("realized_payout_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_payout_usdc"); else _explicitNullProperties?.Remove("realized_payout_usdc"); } }
+        private double? _explicitNullValueRealizedPayoutUsdc = default!;
+        /// <summary>Whether the combo can be redeemed now.</summary>
+        public bool? Redeemable { get => _explicitNullValueRedeemable; set { _explicitNullValueRedeemable = value; AdditionalData?.Remove("redeemable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redeemable"); else _explicitNullProperties?.Remove("redeemable"); } }
+        private bool? _explicitNullValueRedeemable = default!;
+        /// <summary>When the combo fully resolved, RFC3339; `null` while any leg is open.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResolvedAt { get => _explicitNullValueResolvedAt; set { _explicitNullValueResolvedAt = value; AdditionalData?.Remove("resolved_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_at"); else _explicitNullProperties?.Remove("resolved_at"); } }
@@ -171,30 +172,17 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string ResolvedAt { get => _explicitNullValueResolvedAt; set { _explicitNullValueResolvedAt = value; AdditionalData?.Remove("resolved_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_at"); else _explicitNullProperties?.Remove("resolved_at"); } }
         private string _explicitNullValueResolvedAt = default!;
 #endif
-        /// <summary>Decimal string (precision-preserving).</summary>
+        /// <summary>Lifecycle state of the position (OPEN, REDEEMABLE, RESOLVED_WIN,RESOLVED_LOSS, RESOLVED_PARTIAL).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SharesBalance { get => _explicitNullValueSharesBalance; set { _explicitNullValueSharesBalance = value; AdditionalData?.Remove("shares_balance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shares_balance"); else _explicitNullProperties?.Remove("shares_balance"); } }
-        private string? _explicitNullValueSharesBalance = default!;
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string SharesBalance { get => _explicitNullValueSharesBalance; set { _explicitNullValueSharesBalance = value; AdditionalData?.Remove("shares_balance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shares_balance"); else _explicitNullProperties?.Remove("shares_balance"); } }
-        private string _explicitNullValueSharesBalance = default!;
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
-        /// <summary>RESOLVED_PARTIAL = the combo resolved at a fractional payout (e.g. a leg voided 50/50) — redemption pays the fractional value per share.</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboPositionStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
-        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboPositionStatus? _explicitNullValueStatus = default!;
-        /// <summary>Original cost basis = entry_avg_price × (shares_balance + realized_payout). Survives redemption burning the shares; equals entry_cost_usdc while OPEN.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TotalCostUsdc { get => _explicitNullValueTotalCostUsdc; set { _explicitNullValueTotalCostUsdc = value; AdditionalData?.Remove("total_cost_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_cost_usdc"); else _explicitNullProperties?.Remove("total_cost_usdc"); } }
-        private string? _explicitNullValueTotalCostUsdc = default!;
-#nullable restore
-#else
-        public string TotalCostUsdc { get => _explicitNullValueTotalCostUsdc; set { _explicitNullValueTotalCostUsdc = value; AdditionalData?.Remove("total_cost_usdc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_cost_usdc"); else _explicitNullProperties?.Remove("total_cost_usdc"); } }
-        private string _explicitNullValueTotalCostUsdc = default!;
-#endif
-        /// <summary>Last-modified time (UTC, ISO 8601). Bumps on any recompute of the row (trade, redemption, resolution classification) — the incremental-sync watermark field. Omitted on responses served by the legacy backend.</summary>
+        /// <summary>Last event touching the position, RFC3339.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; AdditionalData?.Remove("updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
@@ -204,16 +192,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; AdditionalData?.Remove("updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
         private string _explicitNullValueUpdatedAt = default!;
 #endif
-        /// <summary>User Profile Address (0x-prefixed, 40 hex chars)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? UserAddress { get => _explicitNullValueUserAddress; set { _explicitNullValueUserAddress = value; AdditionalData?.Remove("user_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_address"); else _explicitNullProperties?.Remove("user_address"); } }
-        private string? _explicitNullValueUserAddress = default!;
-#nullable restore
-#else
-        public string UserAddress { get => _explicitNullValueUserAddress; set { _explicitNullValueUserAddress = value; AdditionalData?.Remove("user_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_address"); else _explicitNullProperties?.Remove("user_address"); } }
-        private string _explicitNullValueUserAddress = default!;
-#endif
+        /// <summary>Epoch-micros of `updated_at`.</summary>
+        public long? UpdatedAtMicros { get => _explicitNullValueUpdatedAtMicros; set { _explicitNullValueUpdatedAtMicros = value; AdditionalData?.Remove("updated_at_micros"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at_micros"); else _explicitNullProperties?.Remove("updated_at_micros"); } }
+        private long? _explicitNullValueUpdatedAtMicros = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.ComboPosition"/> and sets the default values.
         /// </summary>
@@ -241,23 +222,26 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "combo_condition_id", n => { ComboConditionId = n.GetStringValue(); } },
                 { "combo_position_id", n => { ComboPositionId = n.GetStringValue(); } },
-                { "entry_avg_price_usdc", n => { EntryAvgPriceUsdc = n.GetStringValue(); } },
-                { "entry_cost_usdc", n => { EntryCostUsdc = n.GetStringValue(); } },
-                { "entry_fees_usdc", n => { EntryFeesUsdc = n.GetStringValue(); } },
+                { "current_size", n => { CurrentSize = n.GetDoubleValue(); } },
+                { "entry_avg_price_usdc", n => { EntryAvgPriceUsdc = n.GetDoubleValue(); } },
+                { "entry_cost_usdc", n => { EntryCostUsdc = n.GetDoubleValue(); } },
+                { "entry_fees_usdc", n => { EntryFeesUsdc = n.GetDoubleValue(); } },
                 { "first_entry_at", n => { FirstEntryAt = n.GetStringValue(); } },
-                { "gross_entry_cost_usdc", n => { GrossEntryCostUsdc = n.GetStringValue(); } },
+                { "first_entry_at_micros", n => { FirstEntryAtMicros = n.GetLongValue(); } },
+                { "gross_entry_cost_usdc", n => { GrossEntryCostUsdc = n.GetDoubleValue(); } },
                 { "legs", n => { Legs = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg>(global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "legs_pending", n => { LegsPending = n.GetIntValue(); } },
                 { "legs_resolved", n => { LegsResolved = n.GetIntValue(); } },
                 { "legs_total", n => { LegsTotal = n.GetIntValue(); } },
-                { "module_id", n => { ModuleId = n.GetIntValue(); } },
-                { "realized_payout_usdc", n => { RealizedPayoutUsdc = n.GetStringValue(); } },
+                { "outcome_index", n => { OutcomeIndex = n.GetIntValue(); } },
+                { "outcome_label", n => { OutcomeLabel = n.GetStringValue(); } },
+                { "proxy_wallet", n => { ProxyWallet = n.GetStringValue(); } },
+                { "realized_payout_usdc", n => { RealizedPayoutUsdc = n.GetDoubleValue(); } },
+                { "redeemable", n => { Redeemable = n.GetBoolValue(); } },
                 { "resolved_at", n => { ResolvedAt = n.GetStringValue(); } },
-                { "shares_balance", n => { SharesBalance = n.GetStringValue(); } },
-                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboPositionStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
-                { "total_cost_usdc", n => { TotalCostUsdc = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
-                { "user_address", n => { UserAddress = n.GetStringValue(); } },
+                { "updated_at_micros", n => { UpdatedAtMicros = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -269,23 +253,26 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("combo_condition_id", ComboConditionId);
             writer.WriteStringValue("combo_position_id", ComboPositionId);
-            writer.WriteStringValue("entry_avg_price_usdc", EntryAvgPriceUsdc);
-            writer.WriteStringValue("entry_cost_usdc", EntryCostUsdc);
-            writer.WriteStringValue("entry_fees_usdc", EntryFeesUsdc);
+            writer.WriteDoubleValue("current_size", CurrentSize);
+            writer.WriteDoubleValue("entry_avg_price_usdc", EntryAvgPriceUsdc);
+            writer.WriteDoubleValue("entry_cost_usdc", EntryCostUsdc);
+            writer.WriteDoubleValue("entry_fees_usdc", EntryFeesUsdc);
             writer.WriteStringValue("first_entry_at", FirstEntryAt);
-            writer.WriteStringValue("gross_entry_cost_usdc", GrossEntryCostUsdc);
+            writer.WriteLongValue("first_entry_at_micros", FirstEntryAtMicros);
+            writer.WriteDoubleValue("gross_entry_cost_usdc", GrossEntryCostUsdc);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg>("legs", Legs);
             writer.WriteIntValue("legs_pending", LegsPending);
             writer.WriteIntValue("legs_resolved", LegsResolved);
             writer.WriteIntValue("legs_total", LegsTotal);
-            writer.WriteIntValue("module_id", ModuleId);
-            writer.WriteStringValue("realized_payout_usdc", RealizedPayoutUsdc);
+            writer.WriteIntValue("outcome_index", OutcomeIndex);
+            writer.WriteStringValue("outcome_label", OutcomeLabel);
+            writer.WriteStringValue("proxy_wallet", ProxyWallet);
+            writer.WriteDoubleValue("realized_payout_usdc", RealizedPayoutUsdc);
+            writer.WriteBoolValue("redeemable", Redeemable);
             writer.WriteStringValue("resolved_at", ResolvedAt);
-            writer.WriteStringValue("shares_balance", SharesBalance);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboPositionStatus>("status", Status);
-            writer.WriteStringValue("total_cost_usdc", TotalCostUsdc);
+            writer.WriteStringValue("status", Status);
             writer.WriteStringValue("updated_at", UpdatedAt);
-            writer.WriteStringValue("user_address", UserAddress);
+            writer.WriteLongValue("updated_at_micros", UpdatedAtMicros);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

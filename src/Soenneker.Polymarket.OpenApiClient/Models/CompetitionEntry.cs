@@ -31,6 +31,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             else if (parseNode.GetChildNode("pnl") is { } nullNodePnl && nullNodePnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pnl = null;
             if (parseNode.GetChildNode("prize") is null) { _explicitNullValuePrize = default!; _explicitNullProperties?.Remove("prize"); }
             else if (parseNode.GetChildNode("prize") is { } nullNodePrize && nullNodePrize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prize = null;
+            if (parseNode.GetChildNode("qualified") is null) { _explicitNullValueQualified = default!; _explicitNullProperties?.Remove("qualified"); }
+            else if (parseNode.GetChildNode("qualified") is { } nullNodeQualified && nullNodeQualified.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Qualified = null;
             if (parseNode.GetChildNode("rank") is null) { _explicitNullValueRank = default!; _explicitNullProperties?.Remove("rank"); }
             else if (parseNode.GetChildNode("rank") is { } nullNodeRank && nullNodeRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rank = null;
             if (parseNode.GetChildNode("realized_pnl") is null) { _explicitNullValueRealizedPnl = default!; _explicitNullProperties?.Remove("realized_pnl"); }
@@ -103,6 +105,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string Prize { get => _explicitNullValuePrize; set { _explicitNullValuePrize = value; AdditionalData?.Remove("prize"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prize"); else _explicitNullProperties?.Remove("prize"); } }
         private string _explicitNullValuePrize = default!;
 #endif
+        /// <summary>Whether the account meets the entry gate. Present only with `include_unqualified=true`.</summary>
+        public bool? Qualified { get => _explicitNullValueQualified; set { _explicitNullValueQualified = value; AdditionalData?.Remove("qualified"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("qualified"); else _explicitNullProperties?.Remove("qualified"); } }
+        private bool? _explicitNullValueQualified = default!;
         /// <summary>Leaderboard rank under the requested ranking metric, starting at 1</summary>
         public int? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; AdditionalData?.Remove("rank"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
         private int? _explicitNullValueRank = default!;
@@ -181,6 +186,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "payout_tx_hash", n => { PayoutTxHash = n.GetStringValue(); } },
                 { "pnl", n => { Pnl = n.GetStringValue(); } },
                 { "prize", n => { Prize = n.GetStringValue(); } },
+                { "qualified", n => { Qualified = n.GetBoolValue(); } },
                 { "rank", n => { Rank = n.GetIntValue(); } },
                 { "realized_pnl", n => { RealizedPnl = n.GetStringValue(); } },
                 { "row_state", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionRowState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRowState = default; _explicitNullProperties?.Remove("row_state"); AdditionalData["row_state"] = unknown; } else { RowState = parsed; AdditionalData.Remove("row_state"); } } },
@@ -203,6 +209,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("payout_tx_hash", PayoutTxHash);
             writer.WriteStringValue("pnl", Pnl);
             writer.WriteStringValue("prize", Prize);
+            writer.WriteBoolValue("qualified", Qualified);
             writer.WriteIntValue("rank", Rank);
             writer.WriteStringValue("realized_pnl", RealizedPnl);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CompetitionRowState>("row_state", RowState);

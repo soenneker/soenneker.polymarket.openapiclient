@@ -558,6 +558,13 @@ paths:
         Retrieves live orders for the authenticated user. Returns paginated results.
         Filtering by id returns that order regardless of status, including canceled or fully matched orders.
         Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+      x-mint:
+        content: |
+          <Warning>
+            Filtering by `id` only returns canceled and fully matched orders within the last hour.
+            Listen to the [user stream](/trading/realtime-order-updates#user-stream) for fuller data.
+            Historical fills remain in [get trades](/api-reference/trade/get-trades).
+          </Warning>
       operationId: getOrders
       tags:
         - Trade
@@ -2589,7 +2596,7 @@ paths:
           example: 0xabc123def456...
         - name: signature_type
           in: query
-          description: Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE)
+          description: Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE, 3=POLY_1271)
           required: false
           schema:
             type: integer
@@ -2598,6 +2605,7 @@ paths:
               - 0
               - 1
               - 2
+              - 3
       responses:
         '200':
           description: Successfully retrieved balance and allowances
@@ -2675,7 +2683,7 @@ paths:
           example: 0xabc123def456...
         - name: signature_type
           in: query
-          description: Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE)
+          description: Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE, 3=POLY_1271)
           required: false
           schema:
             type: integer
@@ -2684,6 +2692,7 @@ paths:
               - 0
               - 1
               - 2
+              - 3
       responses:
         '200':
           description: Balance and allowances successfully updated
@@ -2758,7 +2767,7 @@ paths:
           example: 0xabc123def456...
         - name: signature_type
           in: query
-          description: Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE)
+          description: Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE, 3=POLY_1271)
           required: false
           schema:
             type: integer
@@ -2767,6 +2776,7 @@ paths:
               - 0
               - 1
               - 2
+              - 3
       responses:
         '200':
           description: Balance and allowances successfully updated
@@ -3023,6 +3033,7 @@ paths:
             - 0: EOA
             - 1: POLY_PROXY
             - 2: POLY_GNOSIS_SAFE
+            - 3: POLY_1271 (Deposit Wallet)
           required: true
           schema:
             type: integer
@@ -3030,6 +3041,7 @@ paths:
               - 0
               - 1
               - 2
+              - 3
       responses:
         '200':
           description: Successfully retrieved notifications
@@ -3168,6 +3180,7 @@ paths:
             - 0: EOA
             - 1: POLY_PROXY
             - 2: POLY_GNOSIS_SAFE
+            - 3: POLY_1271 (Deposit Wallet)
           required: false
           schema:
             type: integer
@@ -3175,6 +3188,7 @@ paths:
               - 0
               - 1
               - 2
+              - 3
         - name: maker_address
           in: query
           description: Maker address to query earnings for
@@ -3281,6 +3295,7 @@ paths:
             - 0: EOA
             - 1: POLY_PROXY
             - 2: POLY_GNOSIS_SAFE
+            - 3: POLY_1271 (Deposit Wallet)
           required: false
           schema:
             type: integer
@@ -3288,6 +3303,7 @@ paths:
               - 0
               - 1
               - 2
+              - 3
         - name: maker_address
           in: query
           description: Maker address to query earnings for
@@ -3384,6 +3400,7 @@ paths:
             - 0: EOA
             - 1: POLY_PROXY
             - 2: POLY_GNOSIS_SAFE
+            - 3: POLY_1271 (Deposit Wallet)
           required: false
           schema:
             type: integer
@@ -3391,6 +3408,7 @@ paths:
               - 0
               - 1
               - 2
+              - 3
         - name: maker_address
           in: query
           description: Maker address to query percentages for
@@ -3485,6 +3503,7 @@ paths:
             - 0: EOA
             - 1: POLY_PROXY
             - 2: POLY_GNOSIS_SAFE
+            - 3: POLY_1271 (Deposit Wallet)
           required: false
           schema:
             type: integer
@@ -3492,6 +3511,7 @@ paths:
               - 0
               - 1
               - 2
+              - 3
         - name: maker_address
           in: query
           description: Maker address to query data for
@@ -4899,11 +4919,12 @@ components:
           example: 1234567890
         signatureType:
           type: integer
-          description: Type of signature (0 = EOA, 1 = POLY_PROXY, 2 = POLY_GNOSIS_SAFE)
+          description: Type of signature (0 = EOA, 1 = POLY_PROXY, 2 = POLY_GNOSIS_SAFE, 3 = POLY_1271)
           enum:
             - 0
             - 1
             - 2
+            - 3
     SendOrder:
       type: object
       required:

@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Polymarket.OpenApiClient.Models
 {
+    /// <summary>
+    /// One leg of a combo, with its market and event enrichment.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ComboLeg : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -39,7 +40,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The leg market&apos;s condition ID (distinct from the combo&apos;s).</summary>
+        /// <summary>On-chain condition id of the leg&apos;s market.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LegConditionId { get => _explicitNullValueLegConditionId; set { _explicitNullValueLegConditionId = value; AdditionalData?.Remove("leg_condition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_condition_id"); else _explicitNullProperties?.Remove("leg_condition_id"); } }
@@ -49,23 +50,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string LegConditionId { get => _explicitNullValueLegConditionId; set { _explicitNullValueLegConditionId = value; AdditionalData?.Remove("leg_condition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_condition_id"); else _explicitNullProperties?.Remove("leg_condition_id"); } }
         private string _explicitNullValueLegConditionId = default!;
 #endif
-        /// <summary>Live price for the leg outcome (decimal string, 0–1). &quot;0&quot; when no price is available.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LegCurrentPrice { get => _explicitNullValueLegCurrentPrice; set { _explicitNullValueLegCurrentPrice = value; AdditionalData?.Remove("leg_current_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_current_price"); else _explicitNullProperties?.Remove("leg_current_price"); } }
-        private string? _explicitNullValueLegCurrentPrice = default!;
-#nullable restore
-#else
-        public string LegCurrentPrice { get => _explicitNullValueLegCurrentPrice; set { _explicitNullValueLegCurrentPrice = value; AdditionalData?.Remove("leg_current_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_current_price"); else _explicitNullProperties?.Remove("leg_current_price"); } }
-        private string _explicitNullValueLegCurrentPrice = default!;
-#endif
-        /// <summary>The leg_index property</summary>
+        /// <summary>Live price of the leg outcome (Gamma marks).</summary>
+        public double? LegCurrentPrice { get => _explicitNullValueLegCurrentPrice; set { _explicitNullValueLegCurrentPrice = value; AdditionalData?.Remove("leg_current_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_current_price"); else _explicitNullProperties?.Remove("leg_current_price"); } }
+        private double? _explicitNullValueLegCurrentPrice = default!;
+        /// <summary>Position of the leg within the combo, 0-based.</summary>
         public int? LegIndex { get => _explicitNullValueLegIndex; set { _explicitNullValueLegIndex = value; AdditionalData?.Remove("leg_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_index"); else _explicitNullProperties?.Remove("leg_index"); } }
         private int? _explicitNullValueLegIndex = default!;
-        /// <summary>The leg_outcome_index property</summary>
+        /// <summary>Index of the outcome the combo takes on this leg; `999` means theoutcome could not be labeled.</summary>
         public int? LegOutcomeIndex { get => _explicitNullValueLegOutcomeIndex; set { _explicitNullValueLegOutcomeIndex = value; AdditionalData?.Remove("leg_outcome_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_outcome_index"); else _explicitNullProperties?.Remove("leg_outcome_index"); } }
         private int? _explicitNullValueLegOutcomeIndex = default!;
-        /// <summary>The leg_outcome_label property</summary>
+        /// <summary>Label of the outcome the combo takes on this leg.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LegOutcomeLabel { get => _explicitNullValueLegOutcomeLabel; set { _explicitNullValueLegOutcomeLabel = value; AdditionalData?.Remove("leg_outcome_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_outcome_label"); else _explicitNullProperties?.Remove("leg_outcome_label"); } }
@@ -75,7 +69,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string LegOutcomeLabel { get => _explicitNullValueLegOutcomeLabel; set { _explicitNullValueLegOutcomeLabel = value; AdditionalData?.Remove("leg_outcome_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_outcome_label"); else _explicitNullProperties?.Remove("leg_outcome_label"); } }
         private string _explicitNullValueLegOutcomeLabel = default!;
 #endif
-        /// <summary>The leg_position_id property</summary>
+        /// <summary>Outcome token id of the leg.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LegPositionId { get => _explicitNullValueLegPositionId; set { _explicitNullValueLegPositionId = value; AdditionalData?.Remove("leg_position_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_position_id"); else _explicitNullProperties?.Remove("leg_position_id"); } }
@@ -85,7 +79,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string LegPositionId { get => _explicitNullValueLegPositionId; set { _explicitNullValueLegPositionId = value; AdditionalData?.Remove("leg_position_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_position_id"); else _explicitNullProperties?.Remove("leg_position_id"); } }
         private string _explicitNullValueLegPositionId = default!;
 #endif
-        /// <summary>RFC3339 UTC. Set once the leg&apos;s market resolves on-chain, including fractional resolutions that still report leg_status OPEN.</summary>
+        /// <summary>Gamma `closed_time`, RFC3339; `null` while open.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LegResolvedAt { get => _explicitNullValueLegResolvedAt; set { _explicitNullValueLegResolvedAt = value; AdditionalData?.Remove("leg_resolved_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_resolved_at"); else _explicitNullProperties?.Remove("leg_resolved_at"); } }
@@ -95,18 +89,25 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string LegResolvedAt { get => _explicitNullValueLegResolvedAt; set { _explicitNullValueLegResolvedAt = value; AdditionalData?.Remove("leg_resolved_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_resolved_at"); else _explicitNullProperties?.Remove("leg_resolved_at"); } }
         private string _explicitNullValueLegResolvedAt = default!;
 #endif
-        /// <summary>Live per-leg resolution state, derived from the leg market&apos;s on-chain payout vector. Markets resolved with a fractional payout (e.g. a 50/50 void) surface as RESOLVED_PARTIAL with leg_resolved_at set.</summary>
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegLegStatus? LegStatus { get => _explicitNullValueLegStatus; set { _explicitNullValueLegStatus = value; AdditionalData?.Remove("leg_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_status"); else _explicitNullProperties?.Remove("leg_status"); } }
-        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegLegStatus? _explicitNullValueLegStatus = default!;
-        /// <summary>The market property</summary>
+        /// <summary>OPEN / RESOLVED_WIN / RESOLVED_LOSS (live resolution state).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket? Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; AdditionalData?.Remove("market"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
-        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket? _explicitNullValueMarket = default!;
+        public string? LegStatus { get => _explicitNullValueLegStatus; set { _explicitNullValueLegStatus = value; AdditionalData?.Remove("leg_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_status"); else _explicitNullProperties?.Remove("leg_status"); } }
+        private string? _explicitNullValueLegStatus = default!;
 #nullable restore
 #else
-        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; AdditionalData?.Remove("market"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
-        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket _explicitNullValueMarket = default!;
+        public string LegStatus { get => _explicitNullValueLegStatus; set { _explicitNullValueLegStatus = value; AdditionalData?.Remove("leg_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leg_status"); else _explicitNullProperties?.Remove("leg_status"); } }
+        private string _explicitNullValueLegStatus = default!;
+#endif
+        /// <summary>The leg&apos;s market, with its (single) event nested.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegMarketComposed? Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; AdditionalData?.Remove("market"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegMarketComposed? _explicitNullValueMarket = default!;
+#nullable restore
+#else
+        public global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegMarketComposed Market { get => _explicitNullValueMarket; set { _explicitNullValueMarket = value; AdditionalData?.Remove("market"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("market"); else _explicitNullProperties?.Remove("market"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegMarketComposed _explicitNullValueMarket = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.ComboLeg"/> and sets the default values.
@@ -134,14 +135,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "leg_condition_id", n => { LegConditionId = n.GetStringValue(); } },
-                { "leg_current_price", n => { LegCurrentPrice = n.GetStringValue(); } },
+                { "leg_current_price", n => { LegCurrentPrice = n.GetDoubleValue(); } },
                 { "leg_index", n => { LegIndex = n.GetIntValue(); } },
                 { "leg_outcome_index", n => { LegOutcomeIndex = n.GetIntValue(); } },
                 { "leg_outcome_label", n => { LegOutcomeLabel = n.GetStringValue(); } },
                 { "leg_position_id", n => { LegPositionId = n.GetStringValue(); } },
                 { "leg_resolved_at", n => { LegResolvedAt = n.GetStringValue(); } },
-                { "leg_status", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegLegStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLegStatus = default; _explicitNullProperties?.Remove("leg_status"); AdditionalData["leg_status"] = unknown; } else { LegStatus = parsed; AdditionalData.Remove("leg_status"); } } },
-                { "market", n => { Market = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket>(global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket.CreateFromDiscriminatorValue); } },
+                { "leg_status", n => { LegStatus = n.GetStringValue(); } },
+                { "market", n => { Market = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegMarketComposed>(global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegMarketComposed.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -152,14 +153,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("leg_condition_id", LegConditionId);
-            writer.WriteStringValue("leg_current_price", LegCurrentPrice);
+            writer.WriteDoubleValue("leg_current_price", LegCurrentPrice);
             writer.WriteIntValue("leg_index", LegIndex);
             writer.WriteIntValue("leg_outcome_index", LegOutcomeIndex);
             writer.WriteStringValue("leg_outcome_label", LegOutcomeLabel);
             writer.WriteStringValue("leg_position_id", LegPositionId);
             writer.WriteStringValue("leg_resolved_at", LegResolvedAt);
-            writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegLegStatus>("leg_status", LegStatus);
-            writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboMarket>("market", Market);
+            writer.WriteStringValue("leg_status", LegStatus);
+            writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.ComboLegMarketComposed>("market", Market);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

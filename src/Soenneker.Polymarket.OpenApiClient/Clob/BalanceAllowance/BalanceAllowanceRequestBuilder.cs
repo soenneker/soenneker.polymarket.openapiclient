@@ -153,7 +153,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.BalanceAllowance
             /// <summary>Type of asset</summary>
             [QueryParameter("asset_type")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.ClobGetBalanceAllowanceAssetTypeParameter? AssetType { get; set; }
-            /// <summary>Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE)</summary>
+            /// <summary>Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE, 3=POLY_1271)</summary>
             [QueryParameter("signature_type")]
             public int? SignatureType { get; set; }
             /// <summary>Token ID (asset ID). Defaults to &quot;-1&quot; for ERC20 collateral.</summary>
@@ -176,7 +176,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.BalanceAllowance
             /// <summary>Type of asset</summary>
             [QueryParameter("asset_type")]
             public global::Soenneker.Polymarket.OpenApiClient.Models.ClobUpdateBalanceAllowanceAssetTypeParameter? AssetType { get; set; }
-            /// <summary>Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE)</summary>
+            /// <summary>Signature type for address derivation (0=EOA, 1=POLY_PROXY, 2=POLY_GNOSIS_SAFE, 3=POLY_1271)</summary>
             [QueryParameter("signature_type")]
             public int? SignatureType { get; set; }
             /// <summary>Token ID (asset ID). Defaults to &quot;-1&quot; for ERC20 collateral.</summary>

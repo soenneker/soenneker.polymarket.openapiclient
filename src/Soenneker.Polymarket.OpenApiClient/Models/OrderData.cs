@@ -131,7 +131,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Reduce only</summary>
         public bool? Ro { get => _explicitNullValueRo; set { _explicitNullValueRo = value; AdditionalData?.Remove("ro"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ro"); else _explicitNullProperties?.Remove("ro"); } }
         private bool? _explicitNullValueRo = default!;
-        /// <summary>Order status</summary>
+        /// <summary>Order status, such as `open` for a resting order. See [Handle Terminal Order Outcomes](/perps/trading#handle-terminal-order-outcomes) for the statuses that end an order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }

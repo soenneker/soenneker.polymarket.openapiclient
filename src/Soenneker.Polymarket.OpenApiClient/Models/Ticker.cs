@@ -97,7 +97,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Next funding timestamp in milliseconds</summary>
         public long? NextFunding { get => _explicitNullValueNextFunding; set { _explicitNullValueNextFunding = value; AdditionalData?.Remove("next_funding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_funding"); else _explicitNullProperties?.Remove("next_funding"); } }
         private long? _explicitNullValueNextFunding = default!;
-        /// <summary>Open interest in number of contracts</summary>
+        /// <summary>One-sided open interest in number of contracts (total long size, equal to total short size); multiply by mark price for quote-asset notional</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OpenInterest { get => _explicitNullValueOpenInterest; set { _explicitNullValueOpenInterest = value; AdditionalData?.Remove("open_interest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_interest"); else _explicitNullProperties?.Remove("open_interest"); } }

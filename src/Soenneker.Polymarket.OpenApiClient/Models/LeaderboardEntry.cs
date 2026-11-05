@@ -7,83 +7,89 @@ using System.IO;
 using System;
 namespace Soenneker.Polymarket.OpenApiClient.Models
 {
+    /// <summary>
+    /// One `/v2/leaderboard` row: a user&apos;s standing on the ranked board.`pnl` is realized USDC over the window, base and combo positions unified.`volume` is both-sides SHARES, not USDC. `rank` is a competitionrank; tied users share one, and the next rank skips.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class LeaderboardEntry : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("activeUsers") is null) { _explicitNullValueActiveUsers = default!; _explicitNullProperties?.Remove("activeUsers"); }
-            else if (parseNode.GetChildNode("activeUsers") is { } nullNodeActiveUsers && nullNodeActiveUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveUsers = null;
-            if (parseNode.GetChildNode("builder") is null) { _explicitNullValueBuilder = default!; _explicitNullProperties?.Remove("builder"); }
-            else if (parseNode.GetChildNode("builder") is { } nullNodeBuilder && nullNodeBuilder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Builder = null;
-            if (parseNode.GetChildNode("builderCode") is null) { _explicitNullValueBuilderCode = default!; _explicitNullProperties?.Remove("builderCode"); }
-            else if (parseNode.GetChildNode("builderCode") is { } nullNodeBuilderCode && nullNodeBuilderCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuilderCode = null;
-            if (parseNode.GetChildNode("builderLogo") is null) { _explicitNullValueBuilderLogo = default!; _explicitNullProperties?.Remove("builderLogo"); }
-            else if (parseNode.GetChildNode("builderLogo") is { } nullNodeBuilderLogo && nullNodeBuilderLogo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuilderLogo = null;
+            if (parseNode.GetChildNode("pnl") is null) { _explicitNullValuePnl = default!; _explicitNullProperties?.Remove("pnl"); }
+            else if (parseNode.GetChildNode("pnl") is { } nullNodePnl && nullNodePnl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pnl = null;
+            if (parseNode.GetChildNode("profile_image") is null) { _explicitNullValueProfileImage = default!; _explicitNullProperties?.Remove("profile_image"); }
+            else if (parseNode.GetChildNode("profile_image") is { } nullNodeProfileImage && nullNodeProfileImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProfileImage = null;
             if (parseNode.GetChildNode("rank") is null) { _explicitNullValueRank = default!; _explicitNullProperties?.Remove("rank"); }
             else if (parseNode.GetChildNode("rank") is { } nullNodeRank && nullNodeRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rank = null;
+            if (parseNode.GetChildNode("user_id") is null) { _explicitNullValueUserId = default!; _explicitNullProperties?.Remove("user_id"); }
+            else if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
+            if (parseNode.GetChildNode("user_name") is null) { _explicitNullValueUserName = default!; _explicitNullProperties?.Remove("user_name"); }
+            else if (parseNode.GetChildNode("user_name") is { } nullNodeUserName && nullNodeUserName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserName = null;
             if (parseNode.GetChildNode("verified") is null) { _explicitNullValueVerified = default!; _explicitNullProperties?.Remove("verified"); }
             else if (parseNode.GetChildNode("verified") is { } nullNodeVerified && nullNodeVerified.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verified = null;
             if (parseNode.GetChildNode("volume") is null) { _explicitNullValueVolume = default!; _explicitNullProperties?.Remove("volume"); }
             else if (parseNode.GetChildNode("volume") is { } nullNodeVolume && nullNodeVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Volume = null;
+            if (parseNode.GetChildNode("x_username") is null) { _explicitNullValueXUsername = default!; _explicitNullProperties?.Remove("x_username"); }
+            else if (parseNode.GetChildNode("x_username") is { } nullNodeXUsername && nullNodeXUsername.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XUsername = null;
         }
 
-        /// <summary>Number of active users for this builder</summary>
-        public int? ActiveUsers { get => _explicitNullValueActiveUsers; set { _explicitNullValueActiveUsers = value; AdditionalData?.Remove("activeUsers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activeUsers"); else _explicitNullProperties?.Remove("activeUsers"); } }
-        private int? _explicitNullValueActiveUsers = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The builder name or identifier</summary>
+        /// <summary>Window PnL in USDC. Finite windows (day/week/month) are the MARKEDequity change net of flows; realized plus mark moves; `all` is therealized-only lifetime ledger. The two deliberately differ.</summary>
+        public double? Pnl { get => _explicitNullValuePnl; set { _explicitNullValuePnl = value; AdditionalData?.Remove("pnl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pnl"); else _explicitNullProperties?.Remove("pnl"); } }
+        private double? _explicitNullValuePnl = default!;
+        /// <summary>Profile image URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
-        private string? _explicitNullValueBuilder = default!;
+        public string? ProfileImage { get => _explicitNullValueProfileImage; set { _explicitNullValueProfileImage = value; AdditionalData?.Remove("profile_image"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile_image"); else _explicitNullProperties?.Remove("profile_image"); } }
+        private string? _explicitNullValueProfileImage = default!;
 #nullable restore
 #else
-        public string Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
-        private string _explicitNullValueBuilder = default!;
+        public string ProfileImage { get => _explicitNullValueProfileImage; set { _explicitNullValueProfileImage = value; AdditionalData?.Remove("profile_image"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile_image"); else _explicitNullProperties?.Remove("profile_image"); } }
+        private string _explicitNullValueProfileImage = default!;
 #endif
-        /// <summary>The builder&apos;s onchain attribution code as attached to orders via `builderCode` (see CLOB V2). Empty string for legacy builders without a registered code.</summary>
+        /// <summary>Rank on the requested board; ties share a rank and the next skips.</summary>
+        public int? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; AdditionalData?.Remove("rank"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
+        private int? _explicitNullValueRank = default!;
+        /// <summary>The ranked wallet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BuilderCode { get => _explicitNullValueBuilderCode; set { _explicitNullValueBuilderCode = value; AdditionalData?.Remove("builderCode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builderCode"); else _explicitNullProperties?.Remove("builderCode"); } }
-        private string? _explicitNullValueBuilderCode = default!;
+        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        private string? _explicitNullValueUserId = default!;
 #nullable restore
 #else
-        public string BuilderCode { get => _explicitNullValueBuilderCode; set { _explicitNullValueBuilderCode = value; AdditionalData?.Remove("builderCode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builderCode"); else _explicitNullProperties?.Remove("builderCode"); } }
-        private string _explicitNullValueBuilderCode = default!;
+        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        private string _explicitNullValueUserId = default!;
 #endif
-        /// <summary>URL to the builder&apos;s logo image</summary>
+        /// <summary>Profile display name of the wallet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BuilderLogo { get => _explicitNullValueBuilderLogo; set { _explicitNullValueBuilderLogo = value; AdditionalData?.Remove("builderLogo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builderLogo"); else _explicitNullProperties?.Remove("builderLogo"); } }
-        private string? _explicitNullValueBuilderLogo = default!;
+        public string? UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; AdditionalData?.Remove("user_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_name"); else _explicitNullProperties?.Remove("user_name"); } }
+        private string? _explicitNullValueUserName = default!;
 #nullable restore
 #else
-        public string BuilderLogo { get => _explicitNullValueBuilderLogo; set { _explicitNullValueBuilderLogo = value; AdditionalData?.Remove("builderLogo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builderLogo"); else _explicitNullProperties?.Remove("builderLogo"); } }
-        private string _explicitNullValueBuilderLogo = default!;
+        public string UserName { get => _explicitNullValueUserName; set { _explicitNullValueUserName = value; AdditionalData?.Remove("user_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_name"); else _explicitNullProperties?.Remove("user_name"); } }
+        private string _explicitNullValueUserName = default!;
 #endif
-        /// <summary>The rank position of the builder</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; AdditionalData?.Remove("rank"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
-        private string? _explicitNullValueRank = default!;
-#nullable restore
-#else
-        public string Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; AdditionalData?.Remove("rank"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
-        private string _explicitNullValueRank = default!;
-#endif
-        /// <summary>Whether the builder is verified</summary>
+        /// <summary>Profile verification badge.</summary>
         public bool? Verified { get => _explicitNullValueVerified; set { _explicitNullValueVerified = value; AdditionalData?.Remove("verified"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verified"); else _explicitNullProperties?.Remove("verified"); } }
         private bool? _explicitNullValueVerified = default!;
-        /// <summary>Total trading volume attributed to this builder</summary>
+        /// <summary>Both-sides traded volume in shares; never USD.</summary>
         public double? Volume { get => _explicitNullValueVolume; set { _explicitNullValueVolume = value; AdditionalData?.Remove("volume"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume"); else _explicitNullProperties?.Remove("volume"); } }
         private double? _explicitNullValueVolume = default!;
+        /// <summary>Linked X handle, when one exists.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? XUsername { get => _explicitNullValueXUsername; set { _explicitNullValueXUsername = value; AdditionalData?.Remove("x_username"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_username"); else _explicitNullProperties?.Remove("x_username"); } }
+        private string? _explicitNullValueXUsername = default!;
+#nullable restore
+#else
+        public string XUsername { get => _explicitNullValueXUsername; set { _explicitNullValueXUsername = value; AdditionalData?.Remove("x_username"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_username"); else _explicitNullProperties?.Remove("x_username"); } }
+        private string _explicitNullValueXUsername = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.LeaderboardEntry"/> and sets the default values.
         /// </summary>
@@ -109,13 +115,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "activeUsers", n => { ActiveUsers = n.GetIntValue(); } },
-                { "builder", n => { Builder = n.GetStringValue(); } },
-                { "builderCode", n => { BuilderCode = n.GetStringValue(); } },
-                { "builderLogo", n => { BuilderLogo = n.GetStringValue(); } },
-                { "rank", n => { Rank = n.GetStringValue(); } },
+                { "pnl", n => { Pnl = n.GetDoubleValue(); } },
+                { "profile_image", n => { ProfileImage = n.GetStringValue(); } },
+                { "rank", n => { Rank = n.GetIntValue(); } },
+                { "user_id", n => { UserId = n.GetStringValue(); } },
+                { "user_name", n => { UserName = n.GetStringValue(); } },
                 { "verified", n => { Verified = n.GetBoolValue(); } },
                 { "volume", n => { Volume = n.GetDoubleValue(); } },
+                { "x_username", n => { XUsername = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -125,13 +132,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("activeUsers", ActiveUsers);
-            writer.WriteStringValue("builder", Builder);
-            writer.WriteStringValue("builderCode", BuilderCode);
-            writer.WriteStringValue("builderLogo", BuilderLogo);
-            writer.WriteStringValue("rank", Rank);
+            writer.WriteDoubleValue("pnl", Pnl);
+            writer.WriteStringValue("profile_image", ProfileImage);
+            writer.WriteIntValue("rank", Rank);
+            writer.WriteStringValue("user_id", UserId);
+            writer.WriteStringValue("user_name", UserName);
             writer.WriteBoolValue("verified", Verified);
             writer.WriteDoubleValue("volume", Volume);
+            writer.WriteStringValue("x_username", XUsername);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

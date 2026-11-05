@@ -162,7 +162,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Notifications
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class NotificationsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Signature type for address derivation:- 0: EOA- 1: POLY_PROXY- 2: POLY_GNOSIS_SAFE</summary>
+            /// <summary>Signature type for address derivation:- 0: EOA- 1: POLY_PROXY- 2: POLY_GNOSIS_SAFE- 3: POLY_1271 (Deposit Wallet)</summary>
             [QueryParameter("signature_type")]
             public int? SignatureType { get; set; }
         }

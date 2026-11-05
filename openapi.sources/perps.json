@@ -4157,7 +4157,7 @@
         "x-mint": {
           "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **1**</Badge>\n<br/>\n<Badge color=\"gray\" size=\"md\">Cached 1s</Badge>\n"
         },
-        "description": "Ranked leaderboard rows at any depth. Only accounts that reached the\nminimum volume are ranked; ties go to higher boosted volume, then the\nearlier first qualifying fill. `prize` is the projected prize while live\nand the prize won once the competition ends. `updated_at` is the event\ntime the standings reflect (\"Updated X seconds ago\").\n\nReturns 50 entries by default and at most 100 per request.\n",
+        "description": "Ranked leaderboard rows at any depth. Only accounts that reached the\nminimum volume are ranked; ties go to higher boosted volume, then the\nearlier first qualifying fill. `prize` is the projected prize while live\nand the prize won once the competition ends. `updated_at` is the event\ntime the standings reflect (\"Updated X seconds ago\").\n\nWith `include_unqualified=true` on a ranked board, the rows still short\nof the entry gate follow the ranked ones, unranked and without a prize,\nby score with the same tie-breaks. Only live accounts with volume are\nlisted; disqualified and under-review accounts never are. `total` and\n`offset` then count across both, and every entry carries `qualified`.\n\nReturns 50 entries by default and at most 100 per request.\n",
         "parameters": [
           {
             "name": "competition_id",
@@ -4181,6 +4181,14 @@
             "required": false,
             "schema": {
               "$ref": "#/components/schemas/offset"
+            }
+          },
+          {
+            "name": "include_unqualified",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/competition_include_unqualified"
             }
           }
         ],
@@ -5079,7 +5087,7 @@
       },
       "open_interest": {
         "type": "string",
-        "description": "Open interest in number of contracts",
+        "description": "One-sided open interest in number of contracts (total long size, equal to total short size); multiply by mark price for quote-asset notional",
         "example": "10.00"
       },
       "funding_rate": {
@@ -6679,7 +6687,7 @@
       },
       "st": {
         "type": "string",
-        "description": "Order status",
+        "description": "Order status, such as `open` for a resting order. See [Handle Terminal Order Outcomes](/perps/trading#handle-terminal-order-outcomes) for the statuses that end an order.",
         "example": "open"
       },
       "cts": {
@@ -9426,6 +9434,10 @@
           "first_fill_at": {
             "$ref": "#/components/schemas/competition_first_fill_at"
           },
+          "qualified": {
+            "type": "boolean",
+            "description": "Whether the account meets the entry gate. Present only with `include_unqualified=true`."
+          },
           "prize": {
             "type": "string",
             "description": "Projected prize while live, prize won once ended; absent outside the prize zone"
@@ -9742,6 +9754,11 @@
         "minimum": 1,
         "description": "Trading competition ID",
         "example": 3
+      },
+      "competition_include_unqualified": {
+        "type": "boolean",
+        "default": false,
+        "description": "List the traders still short of the entry gate after the ranked board. Ignored for a lottery or raffle board."
       },
       "competition_row_state": {
         "type": "string",

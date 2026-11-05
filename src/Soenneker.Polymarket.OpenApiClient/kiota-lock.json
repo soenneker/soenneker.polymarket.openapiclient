@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "E38BA6B39A71B2D9D1BDBB9EEC0690A5CB220506A0D92299718FDE811E215366DE8C1880222D979CF0A7CF5F4222004B994D4028681E72D6477D935C665C1A73",
+  "descriptionHash": "F946213FF457E20F3E3BC5525B3C98AD2F616777F6E0F98486A0EB60E5E4B20E0D7722745A6FD95FF0EF49762E934B10A65746203D543D6DD2B191743F7B3C01",
   "descriptionLocation": "../../openapi.fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.37.0",
+  "kiotaVersion": "1.38.0",
   "clientClassName": "PolymarketOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Polymarket.OpenApiClient",

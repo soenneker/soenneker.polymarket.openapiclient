@@ -3,7 +3,7 @@
 namespace Soenneker.OpenApi.Generated;
 internal static class OpenApiServiceRoutes
 {
-    private static readonly global::System.Collections.Generic.HashSet<string> KnownServers = new(global::System.StringComparer.OrdinalIgnoreCase) { "https://api.perpetuals.polymarket.com", "https://bridge.polymarket.com", "https://clob-staging.polymarket.com", "https://clob.polymarket.com", "https://combos-rfq-api.polymarket.com", "https://data-api.polymarket.com", "https://gamma-api.polymarket.com", "https://relayer-v2.polymarket.com" };
+    private static readonly global::System.Collections.Generic.HashSet<string> KnownServers = new(global::System.StringComparer.OrdinalIgnoreCase) { "https://api.perpetuals.polymarket.com", "https://bridge.polymarket.com", "https://clob-staging.polymarket.com", "https://clob.polymarket.com", "https://combos-rfq-api.polymarket.com", "https://data-api-rs.stage.pmd.use1.polymarket.sh", "https://data-api.polymarket.com", "https://gamma-api.polymarket.com", "https://relayer-v2.polymarket.com" };
     internal static string Resolve(string template, string? configuredBaseUrl, string server, string path, bool rawUrl)
     {
         int query = template.IndexOf('?');
