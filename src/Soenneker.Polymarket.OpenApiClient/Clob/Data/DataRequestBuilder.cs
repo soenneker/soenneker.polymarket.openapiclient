@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Polymarket.OpenApiClient.Clob.Data.Order;
 using Soenneker.Polymarket.OpenApiClient.Clob.Data.Orders;
 using Soenneker.Polymarket.OpenApiClient.Clob.Data.Trades;
+using Soenneker.Polymarket.OpenApiClient.Clob.Data.WalletOpenOrders;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -31,6 +32,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Data
         public global::Soenneker.Polymarket.OpenApiClient.Clob.Data.Trades.TradesRequestBuilder Trades
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Clob.Data.Trades.TradesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The walletOpenOrders property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Clob.Data.WalletOpenOrders.WalletOpenOrdersRequestBuilder WalletOpenOrders
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Clob.Data.WalletOpenOrders.WalletOpenOrdersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Clob.Data.DataRequestBuilder"/> and sets the default values.

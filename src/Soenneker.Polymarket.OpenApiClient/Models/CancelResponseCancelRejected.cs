@@ -49,8 +49,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         private string _explicitNullValueError = default!;
 #endif
         /// <summary>Order ID</summary>
-        public int? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
-        private int? _explicitNullValueOid = default!;
+        public long? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
+        private long? _explicitNullValueOid = default!;
         /// <summary>The time when the exchange decided this cancellation outcome, in Unix milliseconds. Sequenced outcomes use the exchange event time. Rejections created before sequencing use the gateway’s decision time. This is not the client request timestamp.</summary>
         public long? Ts { get => _explicitNullValueTs; set { _explicitNullValueTs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ts"); else _explicitNullProperties?.Remove("ts"); } }
         private long? _explicitNullValueTs = default!;
@@ -74,7 +74,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "coid", n => { Coid = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "oid", n => { Oid = n.GetIntValue(); } },
+                { "oid", n => { Oid = n.GetLongValue(); } },
                 { "ts", n => { Ts = n.GetLongValue(); } },
             };
         }
@@ -88,7 +88,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             base.Serialize(writer);
             writer.WriteStringValue("coid", Coid);
             writer.WriteStringValue("error", Error);
-            writer.WriteIntValue("oid", Oid);
+            writer.WriteLongValue("oid", Oid);
             writer.WriteLongValue("ts", Ts);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

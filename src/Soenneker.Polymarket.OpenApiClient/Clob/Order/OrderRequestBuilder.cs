@@ -67,7 +67,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Order
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersResponse>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a new order in the order book
+        /// Creates a new order in the order book.When placing an order as a session signer, use the deposit wallet as both `maker`and `signer`, with the POLY_1271 signature wrapped in a session-signer envelope.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.SendOrderResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -122,7 +122,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob.Order
             return requestInfo;
         }
         /// <summary>
-        /// Creates a new order in the order book
+        /// Creates a new order in the order book.When placing an order as a session signer, use the deposit wallet as both `maker`and `signer`, with the POLY_1271 signature wrapped in a session-signer envelope.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

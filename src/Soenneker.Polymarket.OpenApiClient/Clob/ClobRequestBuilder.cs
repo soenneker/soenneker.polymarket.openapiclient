@@ -10,6 +10,7 @@ using Soenneker.Polymarket.OpenApiClient.Clob.Books;
 using Soenneker.Polymarket.OpenApiClient.Clob.Builder;
 using Soenneker.Polymarket.OpenApiClient.Clob.CancelAll;
 using Soenneker.Polymarket.OpenApiClient.Clob.CancelMarketOrders;
+using Soenneker.Polymarket.OpenApiClient.Clob.CancelWalletOrders;
 using Soenneker.Polymarket.OpenApiClient.Clob.ClobMarkets;
 using Soenneker.Polymarket.OpenApiClient.Clob.Data;
 using Soenneker.Polymarket.OpenApiClient.Clob.FeeRate;
@@ -90,6 +91,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Clob
         public global::Soenneker.Polymarket.OpenApiClient.Clob.CancelMarketOrders.CancelMarketOrdersRequestBuilder CancelMarketOrders
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Clob.CancelMarketOrders.CancelMarketOrdersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The cancelWalletOrders property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Clob.CancelWalletOrders.CancelWalletOrdersRequestBuilder CancelWalletOrders
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Clob.CancelWalletOrders.CancelWalletOrdersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The clobMarkets property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Clob.ClobMarkets.ClobMarketsRequestBuilder ClobMarkets

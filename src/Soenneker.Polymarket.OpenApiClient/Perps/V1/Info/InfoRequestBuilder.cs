@@ -11,6 +11,7 @@ using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Competitions;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Exchange;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.ExchangeStats;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fees;
+using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fills;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Funding;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.IndexNamespace;
 using Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Instruments;
@@ -84,6 +85,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Perps.V1.Info
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fees.FeesRequestBuilder Fees
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fees.FeesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The fills property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fills.FillsRequestBuilder Fills
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Fills.FillsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The funding property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Perps.V1.Info.Funding.FundingRequestBuilder Funding

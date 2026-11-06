@@ -80,8 +80,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public long? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; AdditionalData?.Remove("timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
         private long? _explicitNullValueTimestamp = default!;
         /// <summary>Trade ID</summary>
-        public int? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
-        private int? _explicitNullValueTradeId = default!;
+        public long? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
+        private long? _explicitNullValueTradeId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.TradeData"/> and sets the default values.
         /// </summary>
@@ -115,7 +115,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "settlement", n => { Settlement = n.GetBoolValue(); } },
                 { "side", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSide = default; _explicitNullProperties?.Remove("side"); AdditionalData["side"] = unknown; } else { Side = parsed; AdditionalData.Remove("side"); } } },
                 { "timestamp", n => { Timestamp = n.GetLongValue(); } },
-                { "trade_id", n => { TradeId = n.GetIntValue(); } },
+                { "trade_id", n => { TradeId = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -132,7 +132,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("settlement", Settlement);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.Side2>("side", Side);
             writer.WriteLongValue("timestamp", Timestamp);
-            writer.WriteIntValue("trade_id", TradeId);
+            writer.WriteLongValue("trade_id", TradeId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -91,8 +91,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public int? Iid { get => _explicitNullValueIid; set { _explicitNullValueIid = value; AdditionalData?.Remove("iid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iid"); else _explicitNullProperties?.Remove("iid"); } }
         private int? _explicitNullValueIid = default!;
         /// <summary>Order ID</summary>
-        public int? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; AdditionalData?.Remove("oid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
-        private int? _explicitNullValueOid = default!;
+        public long? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; AdditionalData?.Remove("oid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
+        private long? _explicitNullValueOid = default!;
         /// <summary>Price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -178,7 +178,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "cts", n => { Cts = n.GetLongValue(); } },
                 { "fill", n => { Fill = n.GetStringValue(); } },
                 { "iid", n => { Iid = n.GetIntValue(); } },
-                { "oid", n => { Oid = n.GetIntValue(); } },
+                { "oid", n => { Oid = n.GetLongValue(); } },
                 { "p", n => { P = n.GetStringValue(); } },
                 { "po", n => { Po = n.GetBoolValue(); } },
                 { "qty", n => { Qty = n.GetStringValue(); } },
@@ -202,7 +202,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteLongValue("cts", Cts);
             writer.WriteStringValue("fill", Fill);
             writer.WriteIntValue("iid", Iid);
-            writer.WriteIntValue("oid", Oid);
+            writer.WriteLongValue("oid", Oid);
             writer.WriteStringValue("p", P);
             writer.WriteBoolValue("po", Po);
             writer.WriteStringValue("qty", Qty);

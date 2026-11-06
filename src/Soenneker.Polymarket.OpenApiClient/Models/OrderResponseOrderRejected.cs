@@ -47,8 +47,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         private string _explicitNullValueError = default!;
 #endif
         /// <summary>Order ID</summary>
-        public int? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
-        private int? _explicitNullValueOid = default!;
+        public long? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
+        private long? _explicitNullValueOid = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -69,7 +69,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             {
                 { "coid", n => { Coid = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "oid", n => { Oid = n.GetIntValue(); } },
+                { "oid", n => { Oid = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -82,7 +82,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             base.Serialize(writer);
             writer.WriteStringValue("coid", Coid);
             writer.WriteStringValue("error", Error);
-            writer.WriteIntValue("oid", Oid);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteLongValue("oid", Oid);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

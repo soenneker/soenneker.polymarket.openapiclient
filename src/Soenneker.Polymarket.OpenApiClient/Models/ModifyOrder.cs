@@ -28,8 +28,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Order ID</summary>
-        public int? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; AdditionalData?.Remove("oid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
-        private int? _explicitNullValueOid = default!;
+        public long? Oid { get => _explicitNullValueOid; set { _explicitNullValueOid = value; AdditionalData?.Remove("oid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oid"); else _explicitNullProperties?.Remove("oid"); } }
+        private long? _explicitNullValueOid = default!;
         /// <summary>Price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +75,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "oid", n => { Oid = n.GetIntValue(); } },
+                { "oid", n => { Oid = n.GetLongValue(); } },
                 { "p", n => { P = n.GetStringValue(); } },
                 { "qty", n => { Qty = n.GetStringValue(); } },
             };
@@ -87,7 +87,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("oid", Oid);
+            writer.WriteLongValue("oid", Oid);
             writer.WriteStringValue("p", P);
             writer.WriteStringValue("qty", Qty);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

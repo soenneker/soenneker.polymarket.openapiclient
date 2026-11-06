@@ -134,8 +134,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         private string _explicitNullValueNotional = default!;
 #endif
         /// <summary>Order ID</summary>
-        public int? OrderId { get => _explicitNullValueOrderId; set { _explicitNullValueOrderId = value; AdditionalData?.Remove("order_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_id"); else _explicitNullProperties?.Remove("order_id"); } }
-        private int? _explicitNullValueOrderId = default!;
+        public long? OrderId { get => _explicitNullValueOrderId; set { _explicitNullValueOrderId = value; AdditionalData?.Remove("order_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_id"); else _explicitNullProperties?.Remove("order_id"); } }
+        private long? _explicitNullValueOrderId = default!;
         /// <summary>Price</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -176,8 +176,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         private string _explicitNullValueTotalFee = default!;
 #endif
         /// <summary>Trade ID</summary>
-        public int? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
-        private int? _explicitNullValueTradeId = default!;
+        public long? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
+        private long? _explicitNullValueTradeId = default!;
         /// <summary>Address</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -222,14 +222,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "fee_rate", n => { FeeRate = n.GetStringValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
                 { "notional", n => { Notional = n.GetStringValue(); } },
-                { "order_id", n => { OrderId = n.GetIntValue(); } },
+                { "order_id", n => { OrderId = n.GetLongValue(); } },
                 { "price", n => { Price = n.GetStringValue(); } },
                 { "quantity", n => { Quantity = n.GetStringValue(); } },
                 { "sequence", n => { Sequence = n.GetIntValue(); } },
                 { "side", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningSide>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSide = default; _explicitNullProperties?.Remove("side"); AdditionalData["side"] = unknown; } else { Side = parsed; AdditionalData.Remove("side"); } } },
                 { "timestamp", n => { Timestamp = n.GetLongValue(); } },
                 { "total_fee", n => { TotalFee = n.GetStringValue(); } },
-                { "trade_id", n => { TradeId = n.GetIntValue(); } },
+                { "trade_id", n => { TradeId = n.GetLongValue(); } },
                 { "trader", n => { Trader = n.GetStringValue(); } },
             };
         }
@@ -249,14 +249,14 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("fee_rate", FeeRate);
             writer.WriteIntValue("instrument_id", InstrumentId);
             writer.WriteStringValue("notional", Notional);
-            writer.WriteIntValue("order_id", OrderId);
+            writer.WriteLongValue("order_id", OrderId);
             writer.WriteStringValue("price", Price);
             writer.WriteStringValue("quantity", Quantity);
             writer.WriteIntValue("sequence", Sequence);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.BuilderEarningSide>("side", Side);
             writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteStringValue("total_fee", TotalFee);
-            writer.WriteIntValue("trade_id", TradeId);
+            writer.WriteLongValue("trade_id", TradeId);
             writer.WriteStringValue("trader", Trader);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

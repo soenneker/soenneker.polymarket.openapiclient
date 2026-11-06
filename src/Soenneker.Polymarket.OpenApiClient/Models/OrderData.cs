@@ -93,8 +93,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public int? InstrumentId { get => _explicitNullValueInstrumentId; set { _explicitNullValueInstrumentId = value; AdditionalData?.Remove("instrument_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instrument_id"); else _explicitNullProperties?.Remove("instrument_id"); } }
         private int? _explicitNullValueInstrumentId = default!;
         /// <summary>Order ID</summary>
-        public int? OrderId { get => _explicitNullValueOrderId; set { _explicitNullValueOrderId = value; AdditionalData?.Remove("order_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_id"); else _explicitNullProperties?.Remove("order_id"); } }
-        private int? _explicitNullValueOrderId = default!;
+        public long? OrderId { get => _explicitNullValueOrderId; set { _explicitNullValueOrderId = value; AdditionalData?.Remove("order_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_id"); else _explicitNullProperties?.Remove("order_id"); } }
+        private long? _explicitNullValueOrderId = default!;
         /// <summary>Post only</summary>
         public bool? PostOnly { get => _explicitNullValuePostOnly; set { _explicitNullValuePostOnly = value; AdditionalData?.Remove("post_only"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("post_only"); else _explicitNullProperties?.Remove("post_only"); } }
         private bool? _explicitNullValuePostOnly = default!;
@@ -190,7 +190,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "created_timestamp", n => { CreatedTimestamp = n.GetLongValue(); } },
                 { "filled_quantity", n => { FilledQuantity = n.GetStringValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
-                { "order_id", n => { OrderId = n.GetIntValue(); } },
+                { "order_id", n => { OrderId = n.GetLongValue(); } },
                 { "post_only", n => { PostOnly = n.GetBoolValue(); } },
                 { "price", n => { Price = n.GetStringValue(); } },
                 { "quantity", n => { Quantity = n.GetStringValue(); } },
@@ -215,7 +215,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteLongValue("created_timestamp", CreatedTimestamp);
             writer.WriteStringValue("filled_quantity", FilledQuantity);
             writer.WriteIntValue("instrument_id", InstrumentId);
-            writer.WriteIntValue("order_id", OrderId);
+            writer.WriteLongValue("order_id", OrderId);
             writer.WriteBoolValue("post_only", PostOnly);
             writer.WriteStringValue("price", Price);
             writer.WriteStringValue("quantity", Quantity);

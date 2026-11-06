@@ -3915,6 +3915,182 @@
         }
       }
     },
+    "/perps/v1/info/fills": {
+      "get": {
+        "summary": "Get Public Fills",
+        "description": "Get fill history for a registered account address.\nRows include order IDs, exchange and builder fees, and position accounting.\nBuilder identity and rate are omitted on this public surface.\nThe default window starts 30 days before request time.\nWhen instrument_id is provided, returns only fills for that instrument and\nreads at most 250,000 physical rows; reads exceeding this cap return HTTP 413.\nFiltered reads cap the end time at the current time and, when the start is\nomitted, start 30 days before that effective end time.\nIf no end time is provided, the current time will be used.\nMaximum of 100 entries returned per request.\nResults are ordered by time; use `sort` to choose newest-first (`desc`,\ndefault) or oldest-first (`asc`). To page through more than 100 fills,\npass the `cursor` returned by the previous page (keep `sort` consistent\nacross pages). Passing the trade ID of the last fill from the previous\npage is also accepted for unfiltered requests. When instrument_id is set,\nlegacy numeric cursors are rejected with HTTP 400; use the returned keyset cursor.\n",
+        "operationId": "perps_getPublicFills",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/address"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/cursor"
+            }
+          },
+          {
+            "name": "end_timestamp",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/end_timestamp"
+            }
+          },
+          {
+            "name": "instrument_id",
+            "in": "query",
+            "schema": {
+              "maximum": 4294967295,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int64",
+              "x-js-safe-integer": true
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/sort"
+            }
+          },
+          {
+            "name": "start_timestamp",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/start_timestamp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Public fills response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountTrades"
+                },
+                "examples": {
+                  "liquidatedPosition": {
+                    "summary": "Position opened in two fills, then closed by one liquidation fill",
+                    "value": {
+                      "data": [
+                        {
+                          "trade_id": 6790736448213776,
+                          "order_id": 2237918023271485,
+                          "instrument_id": 7,
+                          "side": "short",
+                          "price": "2507",
+                          "quantity": "0.5649",
+                          "taker": true,
+                          "fee": "7.36426236",
+                          "builder_fee": "0",
+                          "total_fee": "7.36426236",
+                          "fee_asset": "pUSD",
+                          "previous_size": "0.5649",
+                          "previous_entry_price": "2567.1",
+                          "pnl": "-33.95049",
+                          "liquidation": true,
+                          "adl": false,
+                          "settlement": false,
+                          "timestamp": 1791466955844,
+                          "hash": "0x"
+                        },
+                        {
+                          "trade_id": 7117662635645083,
+                          "order_id": 8048326000529043,
+                          "instrument_id": 7,
+                          "side": "long",
+                          "price": "2567.1",
+                          "quantity": "0.3115",
+                          "taker": true,
+                          "fee": "0.1599303300000000000000000000",
+                          "builder_fee": "0",
+                          "total_fee": "0.1599303300000000000000000000",
+                          "fee_asset": "pUSD",
+                          "previous_size": "0",
+                          "previous_entry_price": "0",
+                          "pnl": "0",
+                          "liquidation": false,
+                          "adl": false,
+                          "settlement": false,
+                          "timestamp": 1791377749140,
+                          "hash": "0x"
+                        },
+                        {
+                          "trade_id": 7117662635645082,
+                          "order_id": 8048326000529043,
+                          "instrument_id": 7,
+                          "side": "long",
+                          "price": "2567.1",
+                          "quantity": "0.2534",
+                          "taker": true,
+                          "fee": "0.1301006280000000000000000000",
+                          "builder_fee": "0",
+                          "total_fee": "0.1301006280000000000000000000",
+                          "fee_asset": "pUSD",
+                          "previous_size": "0",
+                          "previous_entry_price": "0",
+                          "pnl": "0",
+                          "liquidation": false,
+                          "adl": false,
+                          "settlement": false,
+                          "timestamp": 1791377749140,
+                          "hash": "0x"
+                        }
+                      ],
+                      "more": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400Response"
+          },
+          "408": {
+            "$ref": "#/components/responses/Error408Response"
+          },
+          "413": {
+            "description": "Account history read exceeds the 250,000-row cap; narrow the time window.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error413"
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429Response"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error500Response"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503Response"
+          }
+        },
+        "security": [ ],
+        "servers": [
+          {
+            "url": "https://api.perpetuals.polymarket.com",
+            "description": "Production Perps HTTP API"
+          }
+        ],
+        "x-mint": {
+          "content": "<Badge color=\"gray\" size=\"md\">Request Weight: **10**</Badge>\n<br/>\n<Badge color=\"gray\" size=\"md\">Cached 2s — a request served from cache costs **1**</Badge>"
+        }
+      }
+    },
     "/perps/v1/info/position-fills": {
       "get": {
         "summary": "Get Current Position Fills",
@@ -3963,6 +4139,58 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AccountTrades"
+                },
+                "examples": {
+                  "openPosition": {
+                    "summary": "Current cycle opened in two fills",
+                    "value": {
+                      "data": [
+                        {
+                          "trade_id": 7117662635645083,
+                          "order_id": 8048326000529043,
+                          "instrument_id": 7,
+                          "side": "long",
+                          "price": "2567.1",
+                          "quantity": "0.3115",
+                          "taker": true,
+                          "fee": "0.1599303300000000000000000000",
+                          "builder_fee": "0",
+                          "total_fee": "0.1599303300000000000000000000",
+                          "fee_asset": "pUSD",
+                          "previous_size": "0",
+                          "previous_entry_price": "0",
+                          "pnl": "0",
+                          "liquidation": false,
+                          "adl": false,
+                          "settlement": false,
+                          "timestamp": 1791377749140,
+                          "hash": "0x"
+                        },
+                        {
+                          "trade_id": 7117662635645082,
+                          "order_id": 8048326000529043,
+                          "instrument_id": 7,
+                          "side": "long",
+                          "price": "2567.1",
+                          "quantity": "0.2534",
+                          "taker": true,
+                          "fee": "0.1301006280000000000000000000",
+                          "builder_fee": "0",
+                          "total_fee": "0.1301006280000000000000000000",
+                          "fee_asset": "pUSD",
+                          "previous_size": "0",
+                          "previous_entry_price": "0",
+                          "pnl": "0",
+                          "liquidation": false,
+                          "adl": false,
+                          "settlement": false,
+                          "timestamp": 1791377749140,
+                          "hash": "0x"
+                        }
+                      ],
+                      "more": false
+                    }
+                  }
                 }
               }
             }
@@ -8202,7 +8430,7 @@
           "Trade"
         ],
         "summary": "Post a new order",
-        "description": "Creates a new order in the order book\n",
+        "description": "Creates a new order in the order book.\nWhen placing an order as a session signer, use the deposit wallet as both `maker`\nand `signer`, with the POLY_1271 signature wrapped in a session-signer envelope.\n",
         "operationId": "clob_postOrder",
         "requestBody": {
           "content": {
@@ -8984,6 +9212,282 @@
                 },
                 "example": {
                   "error": "Trading is currently disabled. Check polymarket.com for updates"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "polyApiKey": [ ],
+            "polyAddress": [ ],
+            "polySignature": [ ],
+            "polyPassphrase": [ ],
+            "polyTimestamp": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://clob.polymarket.com",
+            "description": "Production CLOB API"
+          },
+          {
+            "url": "https://clob-staging.polymarket.com",
+            "description": "Staging CLOB API"
+          }
+        ]
+      }
+    },
+    "/clob/data/wallet-open-orders": {
+      "get": {
+        "tags": [
+          "Trade"
+        ],
+        "summary": "Get wallet open orders",
+        "description": "Lists every live order on the caller's deposit wallet, regardless of which signer or API key placed it.\nAuthenticate with L2 headers or `POLY_READONLY_API_KEY` and `POLY_ADDRESS`.\n`POLY_ADDRESS` must be the wallet owner or one of its non-revoked session signers.\n\nResults are newest first, in pages of about 500. A page can be short or empty while\n`next_cursor` is still set. Keep paging with `cursor` until `next_cursor` is empty.\n\nA deposit wallet supports at most 15 non-revoked session signers. Expired signers\ncount toward this limit; revoke them to free a slot. Authorizing or revoking a signer\ncan take up to about 5 seconds to appear in this endpoint and wallet-wide cancellation.\nRevoking a signer immediately triggers cancellation of all its open orders by the relayer;\nthose orders no longer appear here after cancellation.\n",
+        "operationId": "clob_getWalletOpenOrders",
+        "parameters": [
+          {
+            "name": "asset_id",
+            "in": "query",
+            "description": "Exact-match filter on the token ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "The next_cursor returned by the previous page",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "market",
+            "in": "query",
+            "description": "Exact-match filter on the condition ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "session_keys",
+            "in": "query",
+            "description": "Filter to orders placed by these signer addresses (maximum 50).\nAccepts comma-separated or repeated values. Addresses outside the wallet match nothing.\n",
+            "schema": {
+              "maxItems": 50,
+              "type": "array",
+              "items": {
+                "pattern": "^0x[a-fA-F0-9]{40}$",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Wallet open orders, newest first",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletOpenOrdersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid POLY_ADDRESS, cursor or session_keys, or the signer belongs to more than one wallet",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The caller has no deposit wallet or is not a signer of it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The selected signers hold more than 50 API keys; narrow the request with session_keys",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "A dependency is unavailable or timed out; safe to retry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "polyApiKey": [ ],
+            "polyAddress": [ ],
+            "polySignature": [ ],
+            "polyPassphrase": [ ],
+            "polyTimestamp": [ ]
+          },
+          {
+            "polyReadonlyApiKey": [ ],
+            "polyAddress": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://clob.polymarket.com",
+            "description": "Production CLOB API"
+          },
+          {
+            "url": "https://clob-staging.polymarket.com",
+            "description": "Staging CLOB API"
+          }
+        ]
+      }
+    },
+    "/clob/cancel-wallet-orders": {
+      "delete": {
+        "tags": [
+          "Trade"
+        ],
+        "summary": "Cancel wallet orders",
+        "description": "Cancels orders on the deposit wallet across all API keys, including orders from expired session signers.\nAlso served at `/v1/gateway/cancel-wallet-orders`.\n\nOnly the wallet owner can call this endpoint. Send L2 headers with `POLY_ADDRESS`\nset to the owner EOA and the owner's API key. Session signers receive 403 and must use\n`DELETE /order`, `DELETE /orders` or `DELETE /cancel-all`, which only cancel orders\nplaced with their own API key.\n\nSet exactly one of `order_ids` or `all`. Unknown orders, orders from another maker,\nand already canceled orders are returned in `not_canceled` with the reason\n`order not found on the caller's deposit wallet`.\n\nShares the cancel rate-limit bucket with `DELETE /orders` and `DELETE /cancel-all`.\nWith `order_ids`, each ID costs one token up front. With `all`, the request costs\none token up front and is then charged for the number of orders actually canceled.\n\nRevoking a session signer immediately triggers the relayer to cancel its open orders.\nAfter cancellation, canceling those IDs returns them in `not_canceled`.\nAuthorization and revocation changes can take up to about 5 seconds to appear here.\n\nProduction rollout: this route currently returns an nginx 404 page until load-balancer\nrouting is enabled. The production feature flag must also be enabled. A disabled\napplication endpoint returns a JSON 404 response instead.\n",
+        "operationId": "clob_cancelWalletOrders",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelWalletOrdersPayload"
+              },
+              "examples": {
+                "by_id": {
+                  "value": {
+                    "order_ids": [
+                      "0xabababababababababababababababababababababababababababababababab"
+                    ]
+                  }
+                },
+                "all_orders": {
+                  "value": {
+                    "all": true
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Wallet cancellation results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelOrdersResponse"
+                },
+                "example": {
+                  "canceled": [
+                    "0xabababababababababababababababababababababababababababababababab"
+                  ],
+                  "not_canceled": {
+                    "0x0000000000000000000000000000000000000000000000000000000000000000": "order not found on the caller's deposit wallet"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Both or neither of order_ids/all set, more than 1000 IDs, or an invalid order ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The address does not own a deposit wallet; session signers also receive this response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Endpoint disabled in this environment, or production load-balancer routing not yet enabled",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                },
+                "example": {
+                  "error": "not found"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<html><body><h1>404 Not Found</h1></body></html>"
+              }
+            }
+          },
+          "429": {
+            "description": "Cancel rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Deposit-wallet lookup failed; retry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/clob_ErrorResponse"
                 }
               }
             }
@@ -24601,6 +25105,31 @@
         "default": "0x",
         "example": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
       },
+      "LiquidationDetails": {
+        "required": [
+          "mark",
+          "method"
+        ],
+        "type": "object",
+        "properties": {
+          "liquidated_user": {
+            "type": "string",
+            "description": "Checksummed address of the liquidated account. Present on authenticated fill surfaces and, on public account-scoped routes, only on the liquidated account's own rows; absent on fund-side public rows and the anonymous trade tape."
+          },
+          "mark": {
+            "type": "string",
+            "description": "Mark price captured when the liquidation command was issued. The fill price itself stays the accounting price."
+          },
+          "method": {
+            "enum": [
+              "market",
+              "backstop"
+            ],
+            "type": "string",
+            "description": "How the position was liquidated. Only backstop is emitted today; market is reserved for order-book liquidations, which currently carry no liquidation_details."
+          }
+        }
+      },
       "TradeData": {
         "required": [
           "trade_id",
@@ -26334,7 +26863,7 @@
       },
       "cursor": {
         "type": "string",
-        "description": "Pagination cursor. Pass the opaque `cursor` returned by the previous page to fetch the next page. Paging follows the `sort` direction (strictly older fills when `sort=desc`, strictly newer when `sort=asc`). The trade ID of the last fill from the previous page is also accepted for backwards compatibility.",
+        "description": "Pagination cursor. Pass the opaque `cursor` returned by the previous page to fetch the next page. Paging follows the `sort` direction (strictly older fills when `sort=desc`, strictly newer when `sort=asc`). The trade ID of the last fill from the previous page is also accepted for backwards compatibility, except on instrument-filtered `/v1/info/fills`, which requires the returned keyset cursor.",
         "example": "eyJ0cyI6MTc2NzIyNTYwMDAwMDAwMDAwMCwiaWQiOjF9"
       },
       "fills_cursor": {
@@ -26471,6 +27000,9 @@
           },
           "settlement": {
             "$ref": "#/components/schemas/settlement_fill"
+          },
+          "liquidation_details": {
+            "$ref": "#/components/schemas/LiquidationDetails"
           }
         }
       },
@@ -30007,6 +30539,176 @@
             "example": {
               "0xabcdef1234567890abcdef1234567890abcdef12": "Order not found or already canceled"
             }
+          }
+        }
+      },
+      "CancelWalletOrdersPayload": {
+        "oneOf": [
+          {
+            "required": [
+              "order_ids"
+            ],
+            "type": "object",
+            "properties": {
+              "order_ids": {
+                "maxItems": 1000,
+                "type": "array",
+                "items": {
+                  "pattern": "^0x[a-fA-F0-9]{64}$",
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": {
+              "not": { }
+            }
+          },
+          {
+            "required": [
+              "all"
+            ],
+            "type": "object",
+            "properties": {
+              "all": {
+                "enum": [
+                  true
+                ],
+                "type": "boolean",
+                "description": "Cancel every order resting on the wallet"
+              }
+            },
+            "additionalProperties": {
+              "not": { }
+            }
+          }
+        ],
+        "description": "Set exactly one field. The server deduplicates order_ids."
+      },
+      "WalletOpenOrdersResponse": {
+        "required": [
+          "data",
+          "next_cursor"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WalletOpenOrder"
+            }
+          },
+          "next_cursor": {
+            "type": "string",
+            "description": "Pass as cursor on the next request. Keep paging until empty, even if data is empty.",
+            "example": ""
+          }
+        }
+      },
+      "WalletOpenOrder": {
+        "required": [
+          "id",
+          "status",
+          "signer_address",
+          "maker_address",
+          "market",
+          "asset_id",
+          "side",
+          "original_size",
+          "size_matched",
+          "price",
+          "expiration",
+          "order_type",
+          "created_at",
+          "outcome"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Order ID (order hash)",
+            "example": "0xabcdef1234567890abcdef1234567890abcdef12"
+          },
+          "status": {
+            "enum": [
+              "LIVE"
+            ],
+            "type": "string",
+            "description": "Order status"
+          },
+          "owner": {
+            "type": "string",
+            "description": "API key, only filled in for orders placed with the caller's own key",
+            "example": "f4f247b7-4ac7-ff29-a152-04fda0a8755a"
+          },
+          "signer_address": {
+            "type": "string",
+            "description": "EOA whose key placed the order, either the wallet owner or a session signer",
+            "example": "0x1234567890123456789012345678901234567890"
+          },
+          "maker_address": {
+            "type": "string",
+            "description": "Ethereum address of the maker",
+            "example": "0x1234567890123456789012345678901234567890"
+          },
+          "market": {
+            "type": "string",
+            "description": "Market (condition ID)",
+            "example": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          },
+          "asset_id": {
+            "type": "string",
+            "description": "Asset ID (token ID)",
+            "example": "0xabc123def456..."
+          },
+          "side": {
+            "enum": [
+              "BUY",
+              "SELL"
+            ],
+            "type": "string",
+            "description": "Order side",
+            "example": "BUY"
+          },
+          "original_size": {
+            "type": "string",
+            "description": "Original order size",
+            "example": "10"
+          },
+          "size_matched": {
+            "type": "string",
+            "description": "Size that has been matched",
+            "example": "5"
+          },
+          "price": {
+            "type": "string",
+            "description": "Order price",
+            "example": "0.5"
+          },
+          "outcome": {
+            "type": "string",
+            "description": "Market outcome (YES/NO)",
+            "example": "YES"
+          },
+          "expiration": {
+            "type": "string",
+            "description": "Unix timestamp when the order expires",
+            "example": "1735689600"
+          },
+          "order_type": {
+            "enum": [
+              "GTC",
+              "FOK",
+              "GTD",
+              "FAK"
+            ],
+            "type": "string",
+            "description": "Order type",
+            "example": "GTC"
+          },
+          "created_at": {
+            "type": "integer",
+            "description": "Unix timestamp when the order was created",
+            "example": 1700000000
           }
         }
       },
@@ -36731,6 +37433,12 @@
         "type": "apiKey",
         "description": "Your API key",
         "name": "POLY_API_KEY",
+        "in": "header"
+      },
+      "polyReadonlyApiKey": {
+        "type": "apiKey",
+        "description": "Read-only API key for wallet open orders; also requires POLY_ADDRESS",
+        "name": "POLY_READONLY_API_KEY",
         "in": "header"
       },
       "polyAddress": {

@@ -28,12 +28,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Array of order IDs to cancel. Cancelling an order that has attachedtake-profit / stop-loss children (see `CreateOrder.tr`) cascades tothose children — they are cancelled with reason `ParentCancelled`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Args { get => _explicitNullValueArgs; set { _explicitNullValueArgs = value; AdditionalData?.Remove("args"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("args"); else _explicitNullProperties?.Remove("args"); } }
-        private List<int?>? _explicitNullValueArgs = default!;
+        public List<long?>? Args { get => _explicitNullValueArgs; set { _explicitNullValueArgs = value; AdditionalData?.Remove("args"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("args"); else _explicitNullProperties?.Remove("args"); } }
+        private List<long?>? _explicitNullValueArgs = default!;
 #nullable restore
 #else
-        public List<int?> Args { get => _explicitNullValueArgs; set { _explicitNullValueArgs = value; AdditionalData?.Remove("args"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("args"); else _explicitNullProperties?.Remove("args"); } }
-        private List<int?> _explicitNullValueArgs = default!;
+        public List<long?> Args { get => _explicitNullValueArgs; set { _explicitNullValueArgs = value; AdditionalData?.Remove("args"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("args"); else _explicitNullProperties?.Remove("args"); } }
+        private List<long?> _explicitNullValueArgs = default!;
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
@@ -63,7 +63,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "args", n => { Args = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "args", n => { Args = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
@@ -74,7 +74,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<int?>("args", Args);
+            writer.WriteCollectionOfPrimitiveValues<long?>("args", Args);
             writer.WriteEnumValue<global::Soenneker.Polymarket.OpenApiClient.Models.CancelOrdersType>("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

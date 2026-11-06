@@ -33,6 +33,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             else if (parseNode.GetChildNode("instrument_id") is { } nullNodeInstrumentId && nullNodeInstrumentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstrumentId = null;
             if (parseNode.GetChildNode("liquidation") is null) { _explicitNullValueLiquidation = default!; _explicitNullProperties?.Remove("liquidation"); }
             else if (parseNode.GetChildNode("liquidation") is { } nullNodeLiquidation && nullNodeLiquidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Liquidation = null;
+            if (parseNode.GetChildNode("liquidation_details") is null) { _explicitNullValueLiquidationDetails = default!; _explicitNullProperties?.Remove("liquidation_details"); }
+            else if (parseNode.GetChildNode("liquidation_details") is { } nullNodeLiquidationDetails && nullNodeLiquidationDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiquidationDetails = null;
             if (parseNode.GetChildNode("order_id") is null) { _explicitNullValueOrderId = default!; _explicitNullProperties?.Remove("order_id"); }
             else if (parseNode.GetChildNode("order_id") is { } nullNodeOrderId && nullNodeOrderId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderId = null;
             if (parseNode.GetChildNode("pnl") is null) { _explicitNullValuePnl = default!; _explicitNullProperties?.Remove("pnl"); }
@@ -120,9 +122,19 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <summary>Whether this fill was part of a liquidation of the account&apos;s position — true on forced closes and on any fill executed while the account was under liquidation on the instrument, maker or taker. False on the counterparty leg of an auto-deleveraging or backstop match — its fill is part of someone else&apos;s liquidation, flagged by `adl` where applicable</summary>
         public bool? Liquidation { get => _explicitNullValueLiquidation; set { _explicitNullValueLiquidation = value; AdditionalData?.Remove("liquidation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquidation"); else _explicitNullProperties?.Remove("liquidation"); } }
         private bool? _explicitNullValueLiquidation = default!;
+        /// <summary>The liquidation_details property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Polymarket.OpenApiClient.Models.LiquidationDetails? LiquidationDetails { get => _explicitNullValueLiquidationDetails; set { _explicitNullValueLiquidationDetails = value; AdditionalData?.Remove("liquidation_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquidation_details"); else _explicitNullProperties?.Remove("liquidation_details"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.LiquidationDetails? _explicitNullValueLiquidationDetails = default!;
+#nullable restore
+#else
+        public global::Soenneker.Polymarket.OpenApiClient.Models.LiquidationDetails LiquidationDetails { get => _explicitNullValueLiquidationDetails; set { _explicitNullValueLiquidationDetails = value; AdditionalData?.Remove("liquidation_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquidation_details"); else _explicitNullProperties?.Remove("liquidation_details"); } }
+        private global::Soenneker.Polymarket.OpenApiClient.Models.LiquidationDetails _explicitNullValueLiquidationDetails = default!;
+#endif
         /// <summary>Order ID</summary>
-        public int? OrderId { get => _explicitNullValueOrderId; set { _explicitNullValueOrderId = value; AdditionalData?.Remove("order_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_id"); else _explicitNullProperties?.Remove("order_id"); } }
-        private int? _explicitNullValueOrderId = default!;
+        public long? OrderId { get => _explicitNullValueOrderId; set { _explicitNullValueOrderId = value; AdditionalData?.Remove("order_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_id"); else _explicitNullProperties?.Remove("order_id"); } }
+        private long? _explicitNullValueOrderId = default!;
         /// <summary>PnL in USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -196,8 +208,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         private string _explicitNullValueTotalFee = default!;
 #endif
         /// <summary>Trade ID</summary>
-        public int? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
-        private int? _explicitNullValueTradeId = default!;
+        public long? TradeId { get => _explicitNullValueTradeId; set { _explicitNullValueTradeId = value; AdditionalData?.Remove("trade_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trade_id"); else _explicitNullProperties?.Remove("trade_id"); } }
+        private long? _explicitNullValueTradeId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.AccountTradeData"/> and sets the default values.
         /// </summary>
@@ -232,7 +244,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "hash", n => { Hash = n.GetStringValue(); } },
                 { "instrument_id", n => { InstrumentId = n.GetIntValue(); } },
                 { "liquidation", n => { Liquidation = n.GetBoolValue(); } },
-                { "order_id", n => { OrderId = n.GetIntValue(); } },
+                { "liquidation_details", n => { LiquidationDetails = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.LiquidationDetails>(global::Soenneker.Polymarket.OpenApiClient.Models.LiquidationDetails.CreateFromDiscriminatorValue); } },
+                { "order_id", n => { OrderId = n.GetLongValue(); } },
                 { "pnl", n => { Pnl = n.GetStringValue(); } },
                 { "previous_entry_price", n => { PreviousEntryPrice = n.GetStringValue(); } },
                 { "previous_size", n => { PreviousSize = n.GetStringValue(); } },
@@ -243,7 +256,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "taker", n => { Taker = n.GetBoolValue(); } },
                 { "timestamp", n => { Timestamp = n.GetLongValue(); } },
                 { "total_fee", n => { TotalFee = n.GetStringValue(); } },
-                { "trade_id", n => { TradeId = n.GetIntValue(); } },
+                { "trade_id", n => { TradeId = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -261,7 +274,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteStringValue("hash", Hash);
             writer.WriteIntValue("instrument_id", InstrumentId);
             writer.WriteBoolValue("liquidation", Liquidation);
-            writer.WriteIntValue("order_id", OrderId);
+            writer.WriteObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.LiquidationDetails>("liquidation_details", LiquidationDetails);
+            writer.WriteLongValue("order_id", OrderId);
             writer.WriteStringValue("pnl", Pnl);
             writer.WriteStringValue("previous_entry_price", PreviousEntryPrice);
             writer.WriteStringValue("previous_size", PreviousSize);
@@ -272,7 +286,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteBoolValue("taker", Taker);
             writer.WriteLongValue("timestamp", Timestamp);
             writer.WriteStringValue("total_fee", TotalFee);
-            writer.WriteIntValue("trade_id", TradeId);
+            writer.WriteLongValue("trade_id", TradeId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
