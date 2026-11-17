@@ -61,7 +61,8 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string AssetId { get => _explicitNullValueAssetId; set { _explicitNullValueAssetId = value; AdditionalData?.Remove("asset_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_id"); else _explicitNullProperties?.Remove("asset_id"); } }
         private string _explicitNullValueAssetId = default!;
 #endif
-        /// <summary>Array of associated trade IDs</summary>
+        /// <summary>Deprecated and may be omitted. Use size_matched for cumulative filled quantity, or GET /data/trades and match taker_order_id or maker_orders[].order_id to the order ID for individual fills. Absence or an empty array does not mean the order has no fills.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AssociateTrades { get => _explicitNullValueAssociateTrades; set { _explicitNullValueAssociateTrades = value; AdditionalData?.Remove("associate_trades"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("associate_trades"); else _explicitNullProperties?.Remove("associate_trades"); } }

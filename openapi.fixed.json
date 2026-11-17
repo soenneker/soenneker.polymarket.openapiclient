@@ -6626,7 +6626,7 @@
     "/perps/v1/account/rewards": {
       "get": {
         "summary": "Get Account Rewards",
-        "description": "Get per-instrument daily liquidity reward shares for the authenticated account.\nReward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.\nOI rewards pay 6% APR on the account\u0027s full daily average gross OI across all\ninstruments when the combined daily average gross OI of its rewards entity is\nat least $5M. Accounts without an entity mapping qualify independently.\nThe first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,\nthe latest computed reward period is returned.\n",
+        "description": "Get per-instrument daily liquidity reward shares for the authenticated account.\nReward periods run from 12:00 UTC to 12:00 UTC and are labeled by their UTC end date.\nThe first reward period starts at 2026-07-06 12:00 UTC. If no date range is provided,\nthe latest computed reward period is returned.\n",
         "operationId": "PerpsGetAccountRewards",
         "parameters": [
           {
@@ -9649,13 +9649,13 @@
           "Trade"
         ],
         "summary": "Get user orders",
-        "description": "Retrieves live orders for the authenticated user. Returns paginated results.\nFiltering by id returns that order regardless of status, including canceled or fully matched orders.\nBuilder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.\n",
+        "description": "Retrieves live orders for the authenticated user. Returns paginated results.\nWhen filtering by asset_id, also include the market condition ID in market.\nFrom December 14, 2026, asset-only requests return HTTP 400 (asset_id requires market).\nUnfiltered and market-only queries remain supported.\nFiltering by id returns that order regardless of status, including canceled or fully matched orders.\nBuilder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.\n",
         "operationId": "ClobGetOrders",
         "parameters": [
           {
             "name": "asset_id",
             "in": "query",
-            "description": "Asset ID (token ID) to filter orders",
+            "description": "Outcome identifier (CTF token ID or Polymarket V2 position ID) to filter orders. Also supply market.",
             "schema": {
               "type": "string"
             },
@@ -9673,7 +9673,7 @@
           {
             "name": "market",
             "in": "query",
-            "description": "Market (condition ID) to filter orders",
+            "description": "Market condition ID to filter orders. Required when asset_id is supplied.",
             "schema": {
               "type": "string"
             },
@@ -9719,7 +9719,6 @@
                           "outcome": "YES",
                           "expiration": "1735689600",
                           "order_type": "GTC",
-                          "associate_trades": [],
                           "created_at": 1700000000
                         },
                         {
@@ -9736,9 +9735,6 @@
                           "outcome": "NO",
                           "expiration": "1735689600",
                           "order_type": "GTC",
-                          "associate_trades": [
-                            "trade-123"
-                          ],
                           "created_at": 1700000001
                         }
                       ]
@@ -9749,7 +9745,7 @@
             }
           },
           "400": {
-            "description": "Bad request - Invalid parameters",
+            "description": "Bad request - Invalid parameters. From December 14, 2026, this includes asset_id without market.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9854,7 +9850,6 @@
                   "outcome": "YES",
                   "expiration": "1735689600",
                   "order_type": "GTC",
-                  "associate_trades": [],
                   "created_at": 1700000000
                 }
               }
@@ -26007,25 +26002,6 @@
           }
         }
       },
-      "AccountRewardOi": {
-        "required": [
-          "account_oi",
-          "reward_amount"
-        ],
-        "type": "object",
-        "properties": {
-          "account_oi": {
-            "type": "string",
-            "description": "Daily average gross open-interest notional for this account across all instruments",
-            "example": "3200000"
-          },
-          "reward_amount": {
-            "type": "string",
-            "description": "Reward amount attributed to this reward row",
-            "example": "127.50344"
-          }
-        }
-      },
       "AccountReward": {
         "required": [
           "date",
@@ -26055,9 +26031,6 @@
             "items": {
               "$ref": "#/components/schemas/AccountRewardInstrument"
             }
-          },
-          "oi_rewards": {
-            "$ref": "#/components/schemas/AccountRewardOi"
           }
         }
       },
@@ -28951,10 +28924,11 @@
             "items": {
               "type": "string"
             },
-            "description": "Array of associated trade IDs",
+            "description": "Deprecated and may be omitted. Use size_matched for cumulative filled quantity, or GET /data/trades and match taker_order_id or maker_orders[].order_id to the order ID for individual fills. Absence or an empty array does not mean the order has no fills.",
             "example": [
               "trade-123"
-            ]
+            ],
+            "deprecated": true
           },
           "created_at": {
             "type": "integer",
@@ -42815,11 +42789,6 @@
       "type": "string",
       "description": "Reward amount attributed to this reward row",
       "example": "127.50344"
-    },
-    "AccountOi": {
-      "type": "string",
-      "description": "Daily average gross open-interest notional for this account across all instruments",
-      "example": "3200000"
     },
     "AutoCancelTriggered": {
       "type": "integer",
