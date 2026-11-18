@@ -88,7 +88,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "account", n => { Account = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.LeaderboardAccount>(global::Soenneker.Polymarket.OpenApiClient.Models.LeaderboardAccount.CreateFromDiscriminatorValue); } },
                 { "entries", n => { Entries = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.PerpsLeaderboardEntry>(global::Soenneker.Polymarket.OpenApiClient.Models.PerpsLeaderboardEntry.CreateFromDiscriminatorValue)?.AsList(); } },

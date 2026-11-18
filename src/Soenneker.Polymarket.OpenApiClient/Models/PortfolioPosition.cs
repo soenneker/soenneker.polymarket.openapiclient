@@ -179,7 +179,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(13)
             {
                 { "cross", n => { Cross = n.GetBoolValue(); } },
                 { "cumulative_funding", n => { CumulativeFunding = n.GetStringValue(); } },

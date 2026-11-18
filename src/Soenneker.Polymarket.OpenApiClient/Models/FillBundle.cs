@@ -93,7 +93,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "allocations", n => { Allocations = n.GetCollectionOfObjectValues<global::Soenneker.Polymarket.OpenApiClient.Models.FillAllocation>(global::Soenneker.Polymarket.OpenApiClient.Models.FillAllocation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "blended_price_e6", n => { BlendedPriceE6 = n.GetStringValue(); } },

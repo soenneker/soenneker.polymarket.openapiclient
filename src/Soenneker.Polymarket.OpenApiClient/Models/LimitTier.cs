@@ -86,7 +86,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "actions_burst_limit", n => { ActionsBurstLimit = n.GetIntValue(); } },
                 { "actions_per_minute_limit", n => { ActionsPerMinuteLimit = n.GetIntValue(); } },

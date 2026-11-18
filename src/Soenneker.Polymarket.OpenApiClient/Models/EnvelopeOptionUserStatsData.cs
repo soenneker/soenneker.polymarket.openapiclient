@@ -91,7 +91,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "all_time_pnl", n => { AllTimePnl = n.GetObjectValue<global::Soenneker.Polymarket.OpenApiClient.Models.EnvelopeOptionUserStatsDataAllTimePnl>(global::Soenneker.Polymarket.OpenApiClient.Models.EnvelopeOptionUserStatsDataAllTimePnl.CreateFromDiscriminatorValue); } },
                 { "biggest_win", n => { BiggestWin = n.GetDoubleValue(); } },
