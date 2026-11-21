@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Polymarket.OpenApiClient.Gamma.Comments;
 using Soenneker.Polymarket.OpenApiClient.Gamma.Events;
+using Soenneker.Polymarket.OpenApiClient.Gamma.MarketClarifications;
 using Soenneker.Polymarket.OpenApiClient.Gamma.Markets;
 using Soenneker.Polymarket.OpenApiClient.Gamma.Profiles;
 using Soenneker.Polymarket.OpenApiClient.Gamma.PublicProfile;
@@ -14,6 +15,8 @@ using Soenneker.Polymarket.OpenApiClient.Gamma.Sports;
 using Soenneker.Polymarket.OpenApiClient.Gamma.Status;
 using Soenneker.Polymarket.OpenApiClient.Gamma.Tags;
 using Soenneker.Polymarket.OpenApiClient.Gamma.Teams;
+using Soenneker.Polymarket.OpenApiClient.Gamma.Tiers;
+using Soenneker.Polymarket.OpenApiClient.Gamma.V1;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -35,6 +38,11 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma
         public global::Soenneker.Polymarket.OpenApiClient.Gamma.Events.EventsRequestBuilder Events
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Gamma.Events.EventsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The marketClarifications property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Gamma.MarketClarifications.MarketClarificationsRequestBuilder MarketClarifications
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Gamma.MarketClarifications.MarketClarificationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The markets property</summary>
         public global::Soenneker.Polymarket.OpenApiClient.Gamma.Markets.MarketsRequestBuilder Markets
@@ -85,6 +93,16 @@ namespace Soenneker.Polymarket.OpenApiClient.Gamma
         public global::Soenneker.Polymarket.OpenApiClient.Gamma.Teams.TeamsRequestBuilder Teams
         {
             get => new global::Soenneker.Polymarket.OpenApiClient.Gamma.Teams.TeamsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tiers property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Gamma.Tiers.TiersRequestBuilder Tiers
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Gamma.Tiers.TiersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The v1 property</summary>
+        public global::Soenneker.Polymarket.OpenApiClient.Gamma.V1.V1RequestBuilder V1
+        {
+            get => new global::Soenneker.Polymarket.OpenApiClient.Gamma.V1.V1RequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Polymarket.OpenApiClient.Gamma.GammaRequestBuilder"/> and sets the default values.
