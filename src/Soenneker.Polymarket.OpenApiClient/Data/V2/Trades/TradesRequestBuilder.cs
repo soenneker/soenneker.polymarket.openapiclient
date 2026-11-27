@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.Trades
         {
         }
         /// <summary>
-        /// Keyset-paginated trade feed in the standard`{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page;it carries both the page size and the `(block_timestamp, sequence_id)` seekanchor, so deep pages cost the same as shallow ones.A malformed `condition` id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state; absence means the market is not servable,and only that.
+        /// Keyset-paginated trade feed in the standard`{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page;it carries both the page size and the `(block_timestamp, sequence_id)` seekanchor, so deep pages cost the same as shallow ones.When `user` is the active wallet of a Polymarket account that owns otherwallets, the feed holds every wallet&apos;s trades; each row&apos;s `proxy_wallet`names the wallet it belongs to.A malformed `condition` id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state; absence means the market is not servable,and only that.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.TradesPage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.Trades
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.TradesPage>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.TradesPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Keyset-paginated trade feed in the standard`{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page;it carries both the page size and the `(block_timestamp, sequence_id)` seekanchor, so deep pages cost the same as shallow ones.A malformed `condition` id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state; absence means the market is not servable,and only that.
+        /// Keyset-paginated trade feed in the standard`{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page;it carries both the page size and the `(block_timestamp, sequence_id)` seekanchor, so deep pages cost the same as shallow ones.When `user` is the active wallet of a Polymarket account that owns otherwallets, the feed holds every wallet&apos;s trades; each row&apos;s `proxy_wallet`names the wallet it belongs to.A malformed `condition` id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state; absence means the market is not servable,and only that.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +93,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.Trades
             return new global::Soenneker.Polymarket.OpenApiClient.Data.V2.Trades.TradesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Keyset-paginated trade feed in the standard`{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page;it carries both the page size and the `(block_timestamp, sequence_id)` seekanchor, so deep pages cost the same as shallow ones.A malformed `condition` id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state; absence means the market is not servable,and only that.
+        /// Keyset-paginated trade feed in the standard`{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page;it carries both the page size and the `(block_timestamp, sequence_id)` seekanchor, so deep pages cost the same as shallow ones.When `user` is the active wallet of a Polymarket account that owns otherwallets, the feed holds every wallet&apos;s trades; each row&apos;s `proxy_wallet`names the wallet it belongs to.A malformed `condition` id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state; absence means the market is not servable,and only that.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TradesRequestBuilderGetQueryParameters 

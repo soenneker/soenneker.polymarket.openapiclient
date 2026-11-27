@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.UserPnl
         {
         }
         /// <summary>
-        /// Complete cumulative native-PnL atoms and compositions.
+        /// Complete cumulative native-PnL atoms and compositions.When `user` is the active wallet of a Polymarket account that owns otherwallets, the series describes the person: each point adds every wallet&apos;snewest observation at or before it, so PnL made on a former wallet keepscounting after the user moves to a new one, and the final point equals`/v2/user-stats` `all_time_pnl`. A field one wallet does not cover is`null` on the point. Any other wallet reads alone.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.EnvelopeUserPnlSeries"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.UserPnl
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.EnvelopeUserPnlSeries>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.EnvelopeUserPnlSeries.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Complete cumulative native-PnL atoms and compositions.
+        /// Complete cumulative native-PnL atoms and compositions.When `user` is the active wallet of a Polymarket account that owns otherwallets, the series describes the person: each point adds every wallet&apos;snewest observation at or before it, so PnL made on a former wallet keepscounting after the user moves to a new one, and the final point equals`/v2/user-stats` `all_time_pnl`. A field one wallet does not cover is`null` on the point. Any other wallet reads alone.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +93,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.UserPnl
             return new global::Soenneker.Polymarket.OpenApiClient.Data.V2.UserPnl.UserPnlRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Complete cumulative native-PnL atoms and compositions.
+        /// Complete cumulative native-PnL atoms and compositions.When `user` is the active wallet of a Polymarket account that owns otherwallets, the series describes the person: each point adds every wallet&apos;snewest observation at or before it, so PnL made on a former wallet keepscounting after the user moves to a new one, and the final point equals`/v2/user-stats` `all_time_pnl`. A field one wallet does not cover is`null` on the point. Any other wallet reads alone.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class UserPnlRequestBuilderGetQueryParameters 

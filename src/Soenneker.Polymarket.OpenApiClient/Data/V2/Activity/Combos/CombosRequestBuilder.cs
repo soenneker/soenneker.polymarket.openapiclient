@@ -34,7 +34,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.Activity.Combos
         {
         }
         /// <summary>
-        /// Keyset-paginated combo lifecycle + redemptionfeed for a user, in the standard `{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page.Unlike the activity feed, the anchor behind the cursor is`(block_number, log_index)`; this endpoint&apos;s total order.A malformed `condition` combo condition id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state.
+        /// Keyset-paginated combo lifecycle + redemptionfeed for a user, in the standard `{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page.Unlike the activity feed, the anchor behind the cursor is`(block_number, log_index)`; this endpoint&apos;s total order.When `user` is the active wallet of a Polymarket account that owns otherwallets, the feed holds every wallet&apos;s combo activity; each row&apos;s`proxy_wallet` names the wallet it belongs to.A malformed `condition` combo condition id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivityPage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.Activity.Combos
             return await RequestAdapter.SendAsync<global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivityPage>(requestInfo, global::Soenneker.Polymarket.OpenApiClient.Models.ComboActivityPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Keyset-paginated combo lifecycle + redemptionfeed for a user, in the standard `{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page.Unlike the activity feed, the anchor behind the cursor is`(block_number, log_index)`; this endpoint&apos;s total order.A malformed `condition` combo condition id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state.
+        /// Keyset-paginated combo lifecycle + redemptionfeed for a user, in the standard `{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page.Unlike the activity feed, the anchor behind the cursor is`(block_number, log_index)`; this endpoint&apos;s total order.When `user` is the active wallet of a Polymarket account that owns otherwallets, the feed holds every wallet&apos;s combo activity; each row&apos;s`proxy_wallet` names the wallet it belongs to.A malformed `condition` combo condition id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +93,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Data.V2.Activity.Combos
             return new global::Soenneker.Polymarket.OpenApiClient.Data.V2.Activity.Combos.CombosRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Keyset-paginated combo lifecycle + redemptionfeed for a user, in the standard `{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page.Unlike the activity feed, the anchor behind the cursor is`(block_number, log_index)`; this endpoint&apos;s total order.A malformed `condition` combo condition id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state.
+        /// Keyset-paginated combo lifecycle + redemptionfeed for a user, in the standard `{ data, pagination }` envelope.Pass `?cursor=` from a prior response&apos;s `next_cursor` to fetch the next page.Unlike the activity feed, the anchor behind the cursor is`(block_number, log_index)`; this endpoint&apos;s total order.When `user` is the active wallet of a Polymarket account that owns otherwallets, the feed holds every wallet&apos;s combo activity; each row&apos;s`proxy_wallet` names the wallet it belongs to.A malformed `condition` combo condition id is a `400` naming the value; awell-formed one that matches nothing serves an empty `data` array, whichis the meaningful zero-state.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CombosRequestBuilderGetQueryParameters 

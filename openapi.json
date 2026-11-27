@@ -465,7 +465,7 @@
           "feeds"
         ],
         "summary": "List account activity",
-        "description": "Keyset-paginated activity feed (trades, splits, merges,\nredeems, …) in the standard `{ data, pagination }` envelope.\n\nOrdering is `(block_timestamp, sequence_id)`, `DESC` by default or `ASC` via\n`sort_direction=ASC`; both keyset-seekable. Value sorts (`CASH`/`TOKENS`)\nhave no seek anchor and are rejected with `400` rather than silently\nre-served as page one. The cursor binds the direction it was minted under\nand the resume ADOPTS it, so a replay cannot flip the walk mid-stream.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
+        "description": "Keyset-paginated activity feed (trades, splits, merges,\nredeems, …) in the standard `{ data, pagination }` envelope.\n\nOrdering is `(block_timestamp, sequence_id)`, `DESC` by default or `ASC` via\n`sort_direction=ASC`; both keyset-seekable. Value sorts (`CASH`/`TOKENS`)\nhave no seek anchor and are rejected with `400` rather than silently\nre-served as page one. The cursor binds the direction it was minted under\nand the resume ADOPTS it, so a replay cannot flip the walk mid-stream.\n\nWhen `user` is the active wallet of a Polymarket account that owns other\nwallets, the feed holds every wallet's activity; each row's `proxy_wallet`\nnames the wallet it belongs to.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
         "operationId": "data_get_activity",
         "parameters": [
           {
@@ -677,7 +677,7 @@
           "feeds"
         ],
         "summary": "List combo activity",
-        "description": "Keyset-paginated combo lifecycle + redemption\nfeed for a user, in the standard `{ data, pagination }` envelope.\n\nPass `?cursor=` from a prior response's `next_cursor` to fetch the next page.\nUnlike the activity feed, the anchor behind the cursor is\n`(block_number, log_index)`; this endpoint's total order.\n\nA malformed `condition` combo condition id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state.",
+        "description": "Keyset-paginated combo lifecycle + redemption\nfeed for a user, in the standard `{ data, pagination }` envelope.\n\nPass `?cursor=` from a prior response's `next_cursor` to fetch the next page.\nUnlike the activity feed, the anchor behind the cursor is\n`(block_number, log_index)`; this endpoint's total order.\n\nWhen `user` is the active wallet of a Polymarket account that owns other\nwallets, the feed holds every wallet's combo activity; each row's\n`proxy_wallet` names the wallet it belongs to.\n\nA malformed `condition` combo condition id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state.",
         "operationId": "data_get_combos",
         "parameters": [
           {
@@ -1668,7 +1668,7 @@
           "wallet"
         ],
         "summary": "List positions for a user or market",
-        "description": "A keyset page of positions in the standard\n`{ data, pagination }` envelope. One route serves a user's open book, their\nclosed book (`status=CLOSED`), and a market's holders (market anchor).\n\nAt least one of `user`/`condition` is required. Supplying both anchors on the\nuser and applies `condition` as a narrowing filter.\n\n`status` defaults to `OPEN`, which is the **superset**: a\nsettled-but-unredeemed winner still holds its tokens, so it is an open\nposition whose condition resolved. `REDEEMABLE` narrows to that subset, and\neach row echoes its own `status`.\n\nResume contract: a `next_cursor` binds the `status`/`sortBy`/`sortDirection`\nthe walk started with. To follow it, send `cursor` together with the same\n`user` or `condition` anchor used on the first page; a bare `?cursor=` request\nreturns 400. The token is the authority on the spine and the total order,\nand the handler adopts all three from it. Restating them is allowed and\nmust agree;\n**explicitly** contradicting one is a 400, because replaying an anchor under\na different spine or order would silently walk a different result set.\nOmitting them is not a contradiction; a defaulted `status` is the absence of\na choice, not a request for `OPEN`.\nUser CLOSED residual sorts bind their realized-PnL ranking in the signed\ncursor kind. Earlier cursors for those sorts return 400 and require restarting\npagination without `cursor`, because their numeric anchor has ambiguous units.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
+        "description": "A keyset page of positions in the standard\n`{ data, pagination }` envelope. One route serves a user's open book, their\nclosed book (`status=CLOSED`), and a market's holders (market anchor).\n\nAt least one of `user`/`condition` is required. Supplying both anchors on the\nuser and applies `condition` as a narrowing filter.\n\n`status` defaults to `OPEN`, which is the **superset**: a\nsettled-but-unredeemed winner still holds its tokens, so it is an open\nposition whose condition resolved. `REDEEMABLE` narrows to that subset, and\neach row echoes its own `status`.\n\nWhen `user` is the active wallet of a Polymarket account that owns other\nwallets, `status=CLOSED` returns every wallet's closed positions; each\nrow's `proxy_wallet` names the wallet it belongs to. `OPEN` and\n`REDEEMABLE` read the requested wallet.\n\nResume contract: a `next_cursor` binds the `status`/`sortBy`/`sortDirection`\nthe walk started with. To follow it, send `cursor` together with the same\n`user` or `condition` anchor used on the first page; a bare `?cursor=` request\nreturns 400. The token is the authority on the spine and the total order,\nand the handler adopts all three from it. Restating them is allowed and\nmust agree;\n**explicitly** contradicting one is a 400, because replaying an anchor under\na different spine or order would silently walk a different result set.\nOmitting them is not a contradiction; a defaulted `status` is the absence of\na choice, not a request for `OPEN`.\nUser CLOSED residual sorts bind their realized-PnL ranking in the signed\ncursor kind. Earlier cursors for those sorts return 400 and require restarting\npagination without `cursor`, because their numeric anchor has ambiguous units.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
         "operationId": "data_get_positions",
         "parameters": [
           {
@@ -1767,7 +1767,7 @@
           {
             "name": "sort_by",
             "in": "query",
-            "description": "One of `CURRENT_VALUE`, `PRICE`, `TOKENS`, `UNREALIZED_PNL`,\n`REALIZED_PNL`, `TOTAL_PNL`, or `TIMESTAMP` (the row's `last_event_at`).\n`PRICE` ranks by the response's effective `current_price` on every\nsupported anchor and status. On `REDEEMABLE`, the existing winners-first\npartition remains ahead of the requested price order. The default\nfollows the status: `CURRENT_VALUE` for `OPEN`/`REDEEMABLE`,\n`REALIZED_PNL` for `CLOSED`. On a user's `CLOSED` positions, `TOKENS`,\n`CURRENT_VALUE`, `PRICE` and `UNREALIZED_PNL` describe a holding that no\nlonger exists, so those pages are served in `REALIZED_PNL` order.",
+            "description": "One of `CURRENT_VALUE`, `PRICE`, `AVG_PRICE`, `TOKENS`, `UNREALIZED_PNL`,\n`REALIZED_PNL`, `TOTAL_PNL`, or `TIMESTAMP` (the row's `last_event_at`).\n`PRICE` ranks by the response's effective `current_price` on every\nsupported anchor and status. `AVG_PRICE` ranks by the response's\n`avg_price` (the entry price); a user's `CLOSED` and `REDEEMABLE_LOST`\npositions reject it until they have an indexed path for it. On `REDEEMABLE`, the existing winners-first\npartition remains ahead of the requested price order. The default\nfollows the status: `CURRENT_VALUE` for `OPEN`/`REDEEMABLE`,\n`REALIZED_PNL` for `CLOSED`. On a user's `CLOSED` positions, `TOKENS`,\n`CURRENT_VALUE`, `PRICE` and `UNREALIZED_PNL` describe a holding that no\nlonger exists, so those pages are served in `REALIZED_PNL` order.",
             "schema": {
               "type": [
                 "null",
@@ -1801,7 +1801,7 @@
           {
             "name": "status",
             "in": "query",
-            "description": "One of `OPEN`, `REDEEMABLE`, `REDEEMABLE_LOST`, `MERGEABLE`, or `CLOSED`;\ndefaults to `OPEN`. `REDEEMABLE_LOST` requires `user`, supports all six\nsorts, and defaults to `CURRENT_VALUE`; it preserves row status\n`REDEEMABLE`. `MERGEABLE` is `OPEN` narrowed to live complementary pairs\n(conditions where the wallet holds >= 2 servable-live tokens) and defaults\nto `TOKENS`; it is user-scoped, so a market-anchored request renders as\n`OPEN`.\n\n`OPEN` is the superset; it includes settled-but-unredeemed winners,\nwhich `REDEEMABLE` narrows to. `CLOSED` is exited positions.",
+            "description": "One of `OPEN`, `REDEEMABLE`, `REDEEMABLE_LOST`, `MERGEABLE`, or `CLOSED`;\ndefaults to `OPEN`. `REDEEMABLE_LOST` requires `user`, supports every\nsort but `AVG_PRICE`, and defaults to `CURRENT_VALUE`; it preserves row status\n`REDEEMABLE`. `MERGEABLE` is `OPEN` narrowed to live complementary pairs\n(conditions where the wallet holds >= 2 servable-live tokens) and defaults\nto `TOKENS`; it is user-scoped, so a market-anchored request renders as\n`OPEN`.\n\n`OPEN` is the superset; it includes settled-but-unredeemed winners,\nwhich `REDEEMABLE` narrows to. `CLOSED` is exited positions.",
             "schema": {
               "type": [
                 "null",
@@ -1903,7 +1903,7 @@
           "wallet"
         ],
         "summary": "List combo positions",
-        "description": "Combo positions for a user, in the standard\n`{ data, pagination }` envelope.\n\nSorts: `FIRST_ENTRY` (default) | `ENTRY_COST` (+ `CURRENT_VALUE` alias) |\n`UPDATED`, each with `sort_direction`. `FIRST_ENTRY DESC` pages by the\ntwo-state keyset anchor `(first_entry_at_micros, combo_condition_id,\noutcome_index)` (NULL micros = the NULL tail); `UPDATED ASC` by the\nsingle-state `(updated_at_micros, …)` anchor; every other combination by an\noffset-shaped token. The cursor binds sort + direction and the resume\nADOPTS them, so a replay cannot flip or re-sort the walk mid-stream.\n\nIt binds the cohort; `user`/`status`/`condition`/`updated_after`/\n`updated_before`; the same way: following a\npage needs nothing but `?user=` (always required here) and `?cursor=`, and\nrestating a filter is allowed but must agree. Omitting one is not a\ncontradiction, it is the absence of a choice; **contradicting** one is a\n400, because the token's walk state only means anything against the cohort\nit was minted on.\n\nIncremental sync: `updated_after`/`updated_before` are an INCLUSIVE\nepoch-second window on `updated_at`. Without a `status` filter, either\nbound switches the response to the mirror-complete sync view (every live\nrow, not only held ones); a `status` filter keeps its own visibility. The\nupper end is always capped by a short stability ceiling (~90s behind now)\nso a mirror never reads rows that may still move. Pair with\n`sortBy=UPDATED&sortDirection=ASC` for the stable sync order.\n\nA malformed `condition` combo condition id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state.",
+        "description": "Combo positions for a user, in the standard\n`{ data, pagination }` envelope.\n\nSorts: `FIRST_ENTRY` (default) | `ENTRY_COST` (+ `CURRENT_VALUE` alias) |\n`UPDATED`, each with `sort_direction`. `FIRST_ENTRY DESC` pages by the\ntwo-state keyset anchor `(first_entry_at_micros, combo_condition_id,\noutcome_index)` (NULL micros = the NULL tail); `UPDATED ASC` by the\nsingle-state `(updated_at_micros, …)` anchor; every other combination by an\noffset-shaped token. The cursor binds sort + direction and the resume\nADOPTS them, so a replay cannot flip or re-sort the walk mid-stream.\n\nIt binds the cohort; `user`/`status`/`condition`/`updated_after`/\n`updated_before`; the same way: following a\npage needs nothing but `?user=` (always required here) and `?cursor=`, and\nrestating a filter is allowed but must agree. Omitting one is not a\ncontradiction, it is the absence of a choice; **contradicting** one is a\n400, because the token's walk state only means anything against the cohort\nit was minted on.\n\nIncremental sync: `updated_after`/`updated_before` are an INCLUSIVE\nepoch-second window on `updated_at`. Without a `status` filter, either\nbound switches the response to the mirror-complete sync view (every live\nrow, not only held ones); a `status` filter keeps its own visibility. The\nupper end is always capped by a short stability ceiling (~90s behind now)\nso a mirror never reads rows that may still move. Pair with\n`sortBy=UPDATED&sortDirection=ASC` for the stable sync order.\n\nResolved positions are history: when `status` names `RESOLVED_WIN`,\n`RESOLVED_LOSS` or `RESOLVED_PARTIAL` and `user` is the active wallet of a\nPolymarket account that owns other wallets, the page also holds the other\nwallets' positions in those resolved statuses; each row's `proxy_wallet`\nnames its wallet. Open positions, and the sync window, read `user` alone.\n\nA malformed `condition` combo condition id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state.",
         "operationId": "data_get_combo_positions",
         "parameters": [
           {
@@ -2034,6 +2034,138 @@
           },
           "429": {
             "description": "Service is at heavy-query capacity; retry after `Retry-After`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/data_ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/data_ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Timed out (the request deadline, the datastore statement timeout, or the connection pool's acquire budget) or a serving dependency is unavailable; retry after `Retry-After`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/data_ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [ ],
+        "servers": [
+          {
+            "url": "https://data-api.polymarket.com",
+            "description": "Production"
+          },
+          {
+            "url": "https://data-api-rs.stage.pmd.use1.polymarket.sh",
+            "description": "Staging"
+          }
+        ]
+      }
+    },
+    "/data/v2/positions/snapshot": {
+      "get": {
+        "tags": [
+          "wallet"
+        ],
+        "summary": "Snapshot a wallet's positions at the end of a day",
+        "description": "Every position of one wallet at the end of a closed UTC day, for tax and\naccounting exports: each token it holds above 0.1 share at the cut, open,\nwon and unredeemed, or resolved to 0 and still held (priced 0). Size, cost\nbasis, the price at the cut and the value, with the day's totals on the\nfirst page. The cut is the next day at 00:00:00Z: every block with an\nearlier timestamp counts. A served day never changes, so a `200` is\ncacheable for a day.\n\nThe price at the cut, first match wins: `settlement` when the market\nresolved before the cut (its payout; a combo pays 0 once a leg pays 0, the\nproduct of its legs' payouts once every leg resolved, and its No side 1\nminus that), `mark` when a market price was recorded on or before the\nday (the latest one, clamped to [0, 1]), else `basis` (the average price,\nso `value` equals `cost_basis`). Positions of 0.1 share or less are dust\nand not served. Every contract family is included, combos too; `title`,\n`slug` and `event_slug` are the market's current Gamma metadata and are\nnull for combos. `size` is the wallet's on-chain balance at the cut;\n`cost_basis` is the native cost basis as `/v2/positions` serves it (size\ntimes the average price, or a structural market's entry cost), as\n`/v2/positions/combos` serves it for a combo, frozen at resolution for a\nposition resolved to 0, and 0 for a balance with no native basis.\n\n`date` must lie in the servable range: the days closed since the snapshot\nhistory began, through yesterday once the writer has passed midnight\n(about an hour after it). Any other day is a `400` whose message names the\nrange. Pages are in a stable order (not `asset` order); follow `next_cursor` with the same\n`user` (`date` may be omitted; restated, it must agree).\n\nA new walk (a first page: `date` and no `cursor`) is limited to one per\nclient every 30 seconds; a second one inside that window is a `429` whose\n`Retry-After` is the rest of the window. Cursor pages are not counted,\nnor is a walk that fails. A cold first page of a very large wallet can\ntake several seconds.\n\nResponses are served gzip-compressed: a request must send\n`Accept-Encoding: gzip`, as browsers and most HTTP clients do by default\n(with curl, pass `--compressed`). A request that does not is a `406`.",
+        "operationId": "data_get_positions_snapshot",
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Opaque pagination cursor from a prior response's `next_cursor`.",
+            "schema": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "The UTC day, `YYYY-MM-DD`: the positions held at its end, the cut\nbeing the next day at 00:00:00Z. It must be a closed, servable day; a\nday outside the servable range is a `400` that names the range.",
+            "schema": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page size, 0 to 1000 (default 100). Ignored when `cursor` is supplied\n(the cursor's size wins).",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 0,
+              "type": [
+                "null",
+                "integer"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Proxy wallet, `0x` followed by 40 hex digits. The `user_address`\nspelling is accepted as an alias.",
+            "schema": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of the wallet's positions at the end of the day; `summary` on the first page",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PositionsSnapshotPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A missing or malformed 'user' or 'date', a day outside the servable range (the message names it), an invalid 'limit' or 'cursor', or a 'user' that is a known protocol contract address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/data_ErrorResponse"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The request does not accept gzip; send `Accept-Encoding: gzip`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/data_ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "A new walk within 30 seconds of the client's last one, or the service is at heavy-query capacity; retry after `Retry-After`",
             "content": {
               "application/json": {
                 "schema": {
@@ -2500,7 +2632,7 @@
           "feeds"
         ],
         "summary": "List trades",
-        "description": "Keyset-paginated trade feed in the standard\n`{ data, pagination }` envelope.\n\nPass `?cursor=` from a prior response's `next_cursor` to fetch the next page;\nit carries both the page size and the `(block_timestamp, sequence_id)` seek\nanchor, so deep pages cost the same as shallow ones.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
+        "description": "Keyset-paginated trade feed in the standard\n`{ data, pagination }` envelope.\n\nPass `?cursor=` from a prior response's `next_cursor` to fetch the next page;\nit carries both the page size and the `(block_timestamp, sequence_id)` seek\nanchor, so deep pages cost the same as shallow ones.\n\nWhen `user` is the active wallet of a Polymarket account that owns other\nwallets, the feed holds every wallet's trades; each row's `proxy_wallet`\nnames the wallet it belongs to.\n\nA malformed `condition` id is a `400` naming the value; a\nwell-formed one that matches nothing serves an empty `data` array, which\nis the meaningful zero-state; absence means the market is not servable,\nand only that.",
         "operationId": "data_get_trades",
         "parameters": [
           {
@@ -2702,7 +2834,7 @@
           "wallet"
         ],
         "summary": "Get a user's PnL series",
-        "description": "Complete cumulative native-PnL atoms and compositions.",
+        "description": "Complete cumulative native-PnL atoms and compositions.\n\nWhen `user` is the active wallet of a Polymarket account that owns other\nwallets, the series describes the person: each point adds every wallet's\nnewest observation at or before it, so PnL made on a former wallet keeps\ncounting after the user moves to a new one, and the final point equals\n`/v2/user-stats` `all_time_pnl`. A field one wallet does not cover is\n`null` on the point. Any other wallet reads alone.",
         "operationId": "data_get_user_pnl_v2",
         "parameters": [
           {
@@ -2810,7 +2942,7 @@
           "wallet"
         ],
         "summary": "Get a user's profile stats",
-        "description": "The profile card for one wallet in a single call.\n\n`?user=` is required. Returns `{ data: { trades, biggest_win, views,\njoin_date, all_time_pnl } }`, or `{ data: null }` when the wallet is not a\nknown user.\n\n**`data: null` and a row of zeros mean different things.** `null` is \"no such\nuser\"; zeros are \"this user exists but has never traded, never won and has no\nprofile views\".\n\n`trades` counts DISTINCT MARKETS traded, not individual trades. It is exact,\nnot estimated.\n\n`biggest_win` is the best single **resolved** position win in USDC, market\nand combo arms unified, and `0` when the wallet has no win over $1.\n\n`join_date` is epoch seconds, or `null` when unknown.\n\n`all_time_pnl` is the newest persisted cumulative `/v2/user-pnl` point at\nits actual observation timestamp. It is `null` when the user exists but no\nobservation has been published yet. For the composition card: trading\nrealized is `realized_market_pnl + realized_combo_pnl`; LP realized is\n`realized_lp_pnl`; rebates, yield, rewards, referral, and fees paid map to\ntheir same-named fields (`fees_paid` is refunds minus charges). `volume`,\n`volume_usdc`, and `trade_count` are cumulative maker-attributed canonical\nfill metrics.\n\nNot paginated: one row by construction, so `data` is the bare object with no\n`pagination`; the `/v2/value` shape.",
+        "description": "The profile card for one wallet in a single call.\n\n`?user=` is required. Returns `{ data: { trades, biggest_win, views,\njoin_date, all_time_pnl } }`, or `{ data: null }` when the wallet is not a\nknown user.\n\n**`data: null` and a row of zeros mean different things.** `null` is \"no such\nuser\"; zeros are \"this user exists but has never traded, never won and has no\nprofile views\".\n\n`trades` counts DISTINCT MARKETS traded, not individual trades. It is exact,\nnot estimated.\n\n`biggest_win` is the best single **resolved** position win in USDC, market\nand combo arms unified, and `0` when the wallet has no win over $1.\n\n`join_date` is epoch seconds, or `null` when unknown.\n\nWhen `user` is the active wallet of a Polymarket account that owns other\nwallets, the card describes the person: `trades` counts distinct markets\nacross every wallet, `biggest_win` is the best of any of them, and\n`all_time_pnl` adds each wallet's newest point. Any other wallet reads alone.\n\n`all_time_pnl` is the newest persisted cumulative `/v2/user-pnl` point at\nits actual observation timestamp. It is `null` when the user exists but no\nobservation has been published yet. For the composition card: trading\nrealized is `realized_market_pnl + realized_combo_pnl`; LP realized is\n`realized_lp_pnl`; rebates, yield, rewards, referral, and fees paid map to\ntheir same-named fields (`fees_paid` is refunds minus charges). `volume`,\n`volume_usdc`, and `trade_count` are cumulative maker-attributed canonical\nfill metrics.\n\nNot paginated: one row by construction, so `data` is the bare object with no\n`pagination`; the `/v2/value` shape.",
         "operationId": "data_get_user_stats",
         "parameters": [
           {
@@ -23395,6 +23527,8 @@
           "icon",
           "event_id",
           "event_slug",
+          "event_title",
+          "group_item_title",
           "outcome",
           "outcome_index",
           "opposite_outcome",
@@ -23458,10 +23592,18 @@
             "type": "string",
             "description": "Parent event slug."
           },
+          "event_title": {
+            "type": "string",
+            "description": "Parent event title; `\"\"` when Gamma has none."
+          },
           "first_entry_at": {
             "type": "integer",
             "description": "First acquisition of the position (buy, split, mint, transfer in), epoch seconds; 0 when no acquisition is recorded.",
             "format": "int64"
+          },
+          "group_item_title": {
+            "type": "string",
+            "description": "Gamma's short label for this market inside a multi-market event (e.g.\n`Rene Haas` under `Next CEO of NVIDIA?`); `\"\"` for single-market events."
           },
           "icon": {
             "type": "string",
@@ -23595,6 +23737,46 @@
           }
         },
         "description": "`{ data, pagination }` envelope for `/v2/positions`."
+      },
+      "PositionsSnapshotPage": {
+        "required": [
+          "data",
+          "pagination"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SnapshotPosition"
+            },
+            "description": "The page's positions, in the walk's stable order (not `asset` order)."
+          },
+          "pagination": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Pagination"
+              }
+            ],
+            "description": "Page size, display offset, `has_more` and the `next_cursor` to follow."
+          },
+          "summary": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/SnapshotSummary"
+                  }
+                ],
+                "description": "The day's totals; present on the first page only."
+              }
+            ]
+          }
+        },
+        "description": "`{ data, summary, pagination }`: `summary` is present on the first page\nonly."
       },
       "PricePoint": {
         "required": [
@@ -23877,6 +24059,172 @@
           }
         },
         "description": "One serving mechanism's freshness."
+      },
+      "SnapshotPosition": {
+        "required": [
+          "asset",
+          "module",
+          "size",
+          "avg_price",
+          "cost_basis",
+          "price",
+          "price_source",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "asset": {
+            "type": "string",
+            "description": "The ERC-1155 token id, decimal."
+          },
+          "avg_price": {
+            "type": "number",
+            "description": "`cost_basis / size`, entry fees included (`/v2/positions` reports its\n`avg_price` without fees).",
+            "format": "double"
+          },
+          "condition_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The market's condition id (66 characters), or the combo condition id\nof a combo position; null when the token is unknown."
+          },
+          "cost_basis": {
+            "type": "number",
+            "description": "The remaining cost basis of the shares in USDC, entry fees included\n(the `total_cost_usdc` of the same position on `/v2/positions`).",
+            "format": "double"
+          },
+          "event_slug": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The slug of the market's Gamma event; null for combos."
+          },
+          "module": {
+            "type": "integer",
+            "description": "The contract family: 0 ConditionalTokens, 1 and 2 polymarket-v2\nbinary and neg-risk, 3 combo, 4 directional.",
+            "format": "int32"
+          },
+          "outcome": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The outcome label; `Yes` or `No` for a combo."
+          },
+          "price": {
+            "type": "number",
+            "description": "The price at the cut: the payout for `settlement`, the mark (0 to 1)\nfor `mark`, and `avg_price` for `basis`, which can exceed 1.",
+            "format": "double"
+          },
+          "price_source": {
+            "type": "string",
+            "description": "Where `price` came from: `settlement` (the market resolved before the\ncut: its payout), `mark` (the last market price recorded at a\nmidnight on or before the day), or `basis` (no price: the average price, so `value`\nequals `cost_basis`)."
+          },
+          "size": {
+            "type": "number",
+            "description": "Shares held at the end of the day.",
+            "format": "double"
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The current Gamma market slug; null for combos."
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The current Gamma market question; null for combos."
+          },
+          "value": {
+            "type": "number",
+            "description": "`size * price`.",
+            "format": "double"
+          }
+        },
+        "description": "One position held at the end of the day, valued at the cut."
+      },
+      "SnapshotSummary": {
+        "required": [
+          "date",
+          "cut",
+          "closed_block",
+          "positions",
+          "cost_basis",
+          "value",
+          "value_by_source"
+        ],
+        "type": "object",
+        "properties": {
+          "closed_block": {
+            "type": "integer",
+            "description": "The highest block of the day's recorded moves.",
+            "format": "int64"
+          },
+          "cost_basis": {
+            "type": "number",
+            "description": "The remaining cost basis of every position, in USDC.",
+            "format": "double"
+          },
+          "cut": {
+            "type": "string",
+            "description": "The cut, `date + 1 day` at 00:00:00Z (RFC 3339)."
+          },
+          "date": {
+            "type": "string",
+            "description": "The requested day, `YYYY-MM-DD`."
+          },
+          "positions": {
+            "type": "integer",
+            "description": "Positions held at the end of the day (every page together).",
+            "format": "int64"
+          },
+          "value": {
+            "type": "number",
+            "description": "The value of every position at the cut, in USDC.",
+            "format": "double"
+          },
+          "value_by_source": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SnapshotValueBySource"
+              }
+            ],
+            "description": "`value` split by `price_source`."
+          }
+        },
+        "description": "The totals of every position of the day; on the first page only."
+      },
+      "SnapshotValueBySource": {
+        "required": [
+          "settlement",
+          "mark",
+          "basis"
+        ],
+        "type": "object",
+        "properties": {
+          "basis": {
+            "type": "number",
+            "description": "Value of the positions with no price (their cost basis).",
+            "format": "double"
+          },
+          "mark": {
+            "type": "number",
+            "description": "Value of the positions priced at a recorded midnight market price.",
+            "format": "double"
+          },
+          "settlement": {
+            "type": "number",
+            "description": "Value of the positions whose market resolved before the cut.",
+            "format": "double"
+          }
+        },
+        "description": "`value` split by `price_source`."
       },
       "TokenModule": {
         "enum": [

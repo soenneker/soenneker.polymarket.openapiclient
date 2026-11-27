@@ -40,8 +40,12 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             else if (parseNode.GetChildNode("event_id") is { } nullNodeEventId && nullNodeEventId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventId = null;
             if (parseNode.GetChildNode("event_slug") is null) { _explicitNullValueEventSlug = default!; _explicitNullProperties?.Remove("event_slug"); }
             else if (parseNode.GetChildNode("event_slug") is { } nullNodeEventSlug && nullNodeEventSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventSlug = null;
+            if (parseNode.GetChildNode("event_title") is null) { _explicitNullValueEventTitle = default!; _explicitNullProperties?.Remove("event_title"); }
+            else if (parseNode.GetChildNode("event_title") is { } nullNodeEventTitle && nullNodeEventTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventTitle = null;
             if (parseNode.GetChildNode("first_entry_at") is null) { _explicitNullValueFirstEntryAt = default!; _explicitNullProperties?.Remove("first_entry_at"); }
             else if (parseNode.GetChildNode("first_entry_at") is { } nullNodeFirstEntryAt && nullNodeFirstEntryAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstEntryAt = null;
+            if (parseNode.GetChildNode("group_item_title") is null) { _explicitNullValueGroupItemTitle = default!; _explicitNullProperties?.Remove("group_item_title"); }
+            else if (parseNode.GetChildNode("group_item_title") is { } nullNodeGroupItemTitle && nullNodeGroupItemTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupItemTitle = null;
             if (parseNode.GetChildNode("icon") is null) { _explicitNullValueIcon = default!; _explicitNullProperties?.Remove("icon"); }
             else if (parseNode.GetChildNode("icon") is { } nullNodeIcon && nullNodeIcon.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Icon = null;
             if (parseNode.GetChildNode("last_event_at") is null) { _explicitNullValueLastEventAt = default!; _explicitNullProperties?.Remove("last_event_at"); }
@@ -155,9 +159,29 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         public string EventSlug { get => _explicitNullValueEventSlug; set { _explicitNullValueEventSlug = value; AdditionalData?.Remove("event_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_slug"); else _explicitNullProperties?.Remove("event_slug"); } }
         private string _explicitNullValueEventSlug = default!;
 #endif
+        /// <summary>Parent event title; `&quot;&quot;` when Gamma has none.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EventTitle { get => _explicitNullValueEventTitle; set { _explicitNullValueEventTitle = value; AdditionalData?.Remove("event_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_title"); else _explicitNullProperties?.Remove("event_title"); } }
+        private string? _explicitNullValueEventTitle = default!;
+#nullable restore
+#else
+        public string EventTitle { get => _explicitNullValueEventTitle; set { _explicitNullValueEventTitle = value; AdditionalData?.Remove("event_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_title"); else _explicitNullProperties?.Remove("event_title"); } }
+        private string _explicitNullValueEventTitle = default!;
+#endif
         /// <summary>First acquisition of the position (buy, split, mint, transfer in), epoch seconds; 0 when no acquisition is recorded.</summary>
         public long? FirstEntryAt { get => _explicitNullValueFirstEntryAt; set { _explicitNullValueFirstEntryAt = value; AdditionalData?.Remove("first_entry_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_entry_at"); else _explicitNullProperties?.Remove("first_entry_at"); } }
         private long? _explicitNullValueFirstEntryAt = default!;
+        /// <summary>Gamma&apos;s short label for this market inside a multi-market event (e.g.`Rene Haas` under `Next CEO of NVIDIA?`); `&quot;&quot;` for single-market events.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GroupItemTitle { get => _explicitNullValueGroupItemTitle; set { _explicitNullValueGroupItemTitle = value; AdditionalData?.Remove("group_item_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_item_title"); else _explicitNullProperties?.Remove("group_item_title"); } }
+        private string? _explicitNullValueGroupItemTitle = default!;
+#nullable restore
+#else
+        public string GroupItemTitle { get => _explicitNullValueGroupItemTitle; set { _explicitNullValueGroupItemTitle = value; AdditionalData?.Remove("group_item_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_item_title"); else _explicitNullProperties?.Remove("group_item_title"); } }
+        private string _explicitNullValueGroupItemTitle = default!;
+#endif
         /// <summary>Market icon URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -330,7 +354,7 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(36)
+            return new Dictionary<string, Action<IParseNode>>(38)
             {
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "avg_price", n => { AvgPrice = n.GetDoubleValue(); } },
@@ -343,7 +367,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
                 { "entry_fees_usdc", n => { EntryFeesUsdc = n.GetDoubleValue(); } },
                 { "event_id", n => { EventId = n.GetStringValue(); } },
                 { "event_slug", n => { EventSlug = n.GetStringValue(); } },
+                { "event_title", n => { EventTitle = n.GetStringValue(); } },
                 { "first_entry_at", n => { FirstEntryAt = n.GetLongValue(); } },
+                { "group_item_title", n => { GroupItemTitle = n.GetStringValue(); } },
                 { "icon", n => { Icon = n.GetStringValue(); } },
                 { "last_event_at", n => { LastEventAt = n.GetLongValue(); } },
                 { "mergeable", n => { Mergeable = n.GetBoolValue(); } },
@@ -388,7 +414,9 @@ namespace Soenneker.Polymarket.OpenApiClient.Models
             writer.WriteDoubleValue("entry_fees_usdc", EntryFeesUsdc);
             writer.WriteStringValue("event_id", EventId);
             writer.WriteStringValue("event_slug", EventSlug);
+            writer.WriteStringValue("event_title", EventTitle);
             writer.WriteLongValue("first_entry_at", FirstEntryAt);
+            writer.WriteStringValue("group_item_title", GroupItemTitle);
             writer.WriteStringValue("icon", Icon);
             writer.WriteLongValue("last_event_at", LastEventAt);
             writer.WriteBoolValue("mergeable", Mergeable);
